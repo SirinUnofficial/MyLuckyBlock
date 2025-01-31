@@ -1,0 +1,10 @@
+# idea
+.idea/
+# gradle
+.gradle/
+build/
+run/
+# docs
+docs/ignore
+docs/idChecker.js
+docs/idUpdater.js

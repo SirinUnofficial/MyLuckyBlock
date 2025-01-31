@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "myluckyblock",
+    "version": "${version}",
+    "name": "MyLuckyBlock",
+    "description": "My lucky block mod",
+    "authors": [
+        "Sycamore0",
+        "aL1sia"
+    ],
+    "contact": {
+        "homepage": "https://github.com/SirinUnofficial",
+        "sources": "https://github.com/SirinUnofficial/MyLuckyBlock"},
+    "license": "Unlicensed",
+    "icon": "assets/myluckyblock/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "fabric-datagen": [
+            "io.github.sycamore0.myluckyblock.MyLuckyBlockDataGenerator"
+        ],
+        "main": [
+            "io.github.sycamore0.myluckyblock.MyLuckyBlock"
+        ],
+        "client": [
+            "io.github.sycamore0.myluckyblock.client.MyluckyblockClient"
+        ]
+    },
+    "mixins": [
+        "myluckyblock.mixins.json",
+        {
+            "config": "myluckyblock.client.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "depends": {
+        "fabricloader": ">=${loader_version}",
+        "minecraft": ">=1.21 <1.21.2",
+        "java": ">=21",
+        "fabric-api": "*"
+    }
+}

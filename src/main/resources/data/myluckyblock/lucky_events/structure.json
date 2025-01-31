@@ -1,0 +1,57 @@
+{
+    "name": "Structure Random Events",
+    "version": "%ModVersion%",
+    "info": "Add events with structure.",
+    "random_events": [
+        {
+            "id": 1,
+            "load_structures": [
+                {
+                    "id": "xn",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -2,
+                        "y": 8,
+                        "z": -2
+                    }
+                }
+            ],
+            "give_potion_effects": [
+                {
+                    "id": "minecraft:levitation",
+                    "amplifier": 200,
+                    "duration": 1200
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "load_structures": [
+                {
+                    "id": "cherry_house",
+                    "pos_src": 0
+                }
+            ],
+            "send_messages": [
+                {
+                    "msg": "本建筑由aL1sia投稿",
+                    "receiver": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "load_structures": [
+                {
+                    "id": "cherry_tree",
+                    "pos_src": 0,
+                    "offset": {
+                        "x" : -7,
+                        "y" : 0,
+                        "z" : -7
+                    }
+                }
+            ]
+        }
+    ]
+}
