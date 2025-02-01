@@ -120,7 +120,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "装B我让你飞起来",
+                    "name": "B",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
