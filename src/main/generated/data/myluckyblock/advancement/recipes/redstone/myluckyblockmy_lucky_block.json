@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "myluckyblock:my_lucky_block"
+        "recipe": "minecraft:myluckyblockmy_lucky_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "myluckyblock:my_lucky_block"
+      "minecraft:myluckyblockmy_lucky_block"
     ]
   }
 }

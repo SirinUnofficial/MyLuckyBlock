@@ -12,7 +12,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.vehicle.CommandBlockMinecartEntity;
-import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.inventory.LootableInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -104,23 +103,23 @@ public class LuckyFunctions {
     }
 
     public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, @Nullable String nbtString) {
-        Entity entity = entityType.create(world);
+        Entity entity = entityType.create(world, SpawnReason.MOB_SUMMONED);
         MobEntity mobEntity = (MobEntity) entity;
         if (mobEntity != null) {
+            NbtCompound nbt = NbtHelper.generateNbt(nbtString);
+            mobEntity.readNbt(nbt);
+            mobEntity.saveNbt(nbt);
             if (name != null) {
                 mobEntity.setCustomName(Text.of(name));
                 mobEntity.setCustomNameVisible(nameVisible);
             }
-            NbtCompound nbt = NbtHelper.generateNbt(nbtString);
-            mobEntity.readNbt(nbt);
-            mobEntity.saveNbt(nbt);
             mobEntity.setPosition(pos);
             world.spawnEntity(mobEntity);
         }
     }
 
     public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, boolean isBaby) {
-        Entity entity = entityType.create(world);
+        Entity entity = entityType.create(world, SpawnReason.MOB_SUMMONED);
         MobEntity mobEntity = (MobEntity) entity;
         if (mobEntity != null) {
             if (name != null) {
@@ -156,7 +155,7 @@ public class LuckyFunctions {
         if (receiver == 0) {
             player.sendMessage(Text.of(message), true);
         } else if (receiver == 1) {
-            player.sendMessage(Text.of(message));
+            player.sendMessage(Text.of(message), false);
         } else {
             MyLuckyBlock.LOGGER.error("Error: SendMessages Invalid Receiver: {}", receiver);
         }
@@ -225,7 +224,8 @@ public class LuckyFunctions {
     // 提高自定义程度
     public static void executeCommand(World world, Vec3d pos, String command) {
         if (world instanceof ServerWorld serverWorld) {
-            CommandBlockMinecartEntity cBMinecart = new CommandBlockMinecartEntity(serverWorld, pos.getX(), pos.getY(), pos.getZ());
+            CommandBlockMinecartEntity cBMinecart = new CommandBlockMinecartEntity(EntityType.COMMAND_BLOCK_MINECART, serverWorld);
+            cBMinecart.setPos(pos.getX(), pos.getY(), pos.getZ());
             cBMinecart.getCommandExecutor().setCommand(command);
             cBMinecart.getCommandExecutor().execute(serverWorld);
             serverWorld.spawnEntity(cBMinecart);
