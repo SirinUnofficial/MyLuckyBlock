@@ -3,9 +3,10 @@
 为Minecraft 1.21+添加了一个幸运方块，玩家可以破坏它以获得随机奖励。<br>
 Add a lucky block to Minecraft 1.21+ that players can break to receive random rewards.<br>
 ## 依赖Dependencies
- - Minecraft (1.21-1.21.1)
- - [Fabric Loader](https://github.com/FabricMC/fabric-loader) (>=0.15.11)
- - [Fabric API](https://github.com/FabricMC/fabric) (>=0.102.1)
+| File Name | Support Version | Fabric Loader | Fabric API |
+| -------- | -------- | -------- | -------- |
+| `MyLuckyBlock-1.0.1-1.21.jar` |  1.21-1.21.1 | >=0.15.11 | >=0.102.1 |
+| `MyLuckyBlock-1.0.1-1.21.2.jar` | 1.21.2-1.21.3 | >=0.16.7 | >=0.106.1 |
 ## 功能Features
 > 详见[JSON格式文档](./docs/JsonFormat.md)<br>
 > See [JSON Format Document](./docs/JsonFormat.md)<br>
