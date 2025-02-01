@@ -1,7 +1,7 @@
 {
     "name": "Special Random Events",
     "version": "%ModVersion%",
-    "info": "Add events with NBT data.",
+    "info": "Add events with special data.",
     "random_events": [
         {
             "id": 1,
@@ -76,104 +76,6 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "黄金切尔西",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:golden_boots,count:1,components:{custom_name:'[\"\",{\"text\":\"黄金切尔西\",\"italic\":false}]',lore:['[\"\",{\"text\":\"当你觉得你不行的时候就去人行道吧，这样你就成了行人。\",\"italic\":false}]','[\"不用担心，你还是步行。\"]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:\"generic.movement_speed\",amount:0.5,slot:feet,operation:add_value,id:1737465163970}]},repair_cost:32767}}}"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "坚硬的法式面包",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:bread,count:1,components:{custom_name:'[\"\",{\"text\":\"坚硬的法式面包\",\"italic\":false}]',lore:['[\"\",{\"text\":\"耐久 X\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:\"generic.attack_damage\",amount:4,slot:mainhand,operation:add_value,id:1737466659801}]},food:{eat_seconds:32767,nutrition:1,saturation:1}}}}"
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "牢大球鞋",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:leather_boots,count:1,components:{custom_name:'[\"\",{\"text\":\"牢大球鞋\",\"italic\":false}]',lore:['[\"\",{\"text\":\"坠机 XXIV\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:\"generic.safe_fall_distance\",amount:-24,slot:feet,operation:add_value,id:1737466090975}]}}}}"
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "泰坦胸甲",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:iron_chestplate,count:1,components:{custom_name:'[\"\",{\"text\":\"泰坦胸甲\",\"italic\":false}]',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:\"generic.armor\",amount:-20,slot:chest,operation:add_value,id:1737470549391},{type:\"generic.max_health\",amount:40,slot:chest,operation:add_value,id:1737470549391},{type:\"player.block_interaction_range\",amount:32,slot:chest,operation:add_value,id:1737470549391},{type:\"generic.movement_speed\",amount:1,slot:chest,operation:add_value,id:1737470549391},{type:\"generic.step_height\",amount:10,slot:chest,operation:add_value,id:1737470549391},{type:\"generic.scale\",amount:8,slot:chest,operation:add_value,id:1737470549391},{type:\"generic.safe_fall_distance\",amount:24,slot:chest,operation:add_value,id:1737470549391},{type:\"player.entity_interaction_range\",amount:32,slot:chest,operation:add_value,id:1737470549391},{type:\"generic.water_movement_efficiency\",amount:0.5,slot:chest,operation:add_value,id:1737470549391}]},repair_cost:32767}}}"
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "缩小护腿",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:netherite_leggings,count:1,components:{custom_name:'[\"\",{\"text\":\"缩小护腿\",\"italic\":false}]',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:\"generic.scale\",amount:-0.5,slot:legs,operation:add_value,id:1737525360562},{type:\"generic.attack_speed\",amount:1,slot:legs,operation:add_value,id:1737525360562},{type:\"generic.armor\",amount:-10,slot:legs,operation:add_value,id:1737525360562},{type:\"generic.movement_speed\",amount:-0.02,slot:legs,operation:add_value,id:1737465163970}]},repair_cost:32767}}}"
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "奇怪的头盔",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:golden_helmet,count:1,components:{custom_name:'[\"\",{\"text\":\"奇怪的头盔\",\"italic\":false}]',rarity:epic,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:\"generic.armor\",amount:-100,slot:head,operation:add_value,id:1737528269338},{type:\"generic.attack_damage\",amount:20,slot:head,operation:add_value,id:1737528269338},{type:\"generic.max_health\",amount:-18,slot:head,operation:add_value,id:1737528269338},{type:\"generic.movement_speed\",amount:0.05,slot:head,operation:add_value,id:1737528269338},{type:\"generic.attack_speed\",amount:0.25,slot:head,operation:add_value,id:1737528269338}]},repair_cost:32767}}}"
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "REACH!",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:stick,count:1,components:{custom_name:'[\"\",{\"text\":\"REACH!\",\"italic\":false}]',rarity:uncommon,enchantments:{levels:{binding_curse:1,vanishing_curse:1}},attribute_modifiers:{modifiers:[{type:\"player.entity_interaction_range\",amount:64,slot:mainhand,operation:add_value,id:1737529090168},{type:\"player.block_interaction_range\",amount:64,slot:mainhand,operation:add_value,id:1737529090168}]},unbreakable:{}}}}"
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
                     "name": "英雄之弓",
                     "name_visible": true,
                     "use_random": false,
@@ -197,35 +99,7 @@
             ]
         },
         {
-            "id": 12,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "负魔金苹果",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:golden_apple,count:4,components:{custom_name:'[\"\",{\"text\":\"负魔金苹果\",\"italic\":false}]',rarity:epic,enchantment_glint_override:true,food:{nutrition:1,saturation:1,effects:[{effect:{id:blindness,duration:2000,amplifier:1},probability:1f},{effect:{id:darkness,duration:2000,amplifier:1},probability:1f},{effect:{id:hunger,duration:2000,amplifier:1},probability:1f},{effect:{id:mining_fatigue,duration:2000,amplifier:1},probability:1f},{effect:{id:nausea,duration:2000,amplifier:1},probability:1f},{effect:{id:poison,duration:2000,amplifier:1},probability:1f},{effect:{id:slowness,duration:2000,amplifier:1},probability:1f},{effect:{id:unluck,duration:2000,amplifier:1},probability:1f}]}}}}"
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "装B我让你飞起来",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:chainmail_leggings,count:1,components:{custom_name:'[\"\",{\"text\":\"B\",\"italic\":false}]',lore:['[\"\",{\"text\":\"装B我让你飞起来!\",\"italic\":false}]'],rarity:uncommon,attribute_modifiers:{modifiers:[{type:\"generic.gravity\",amount:-1,slot:legs,operation:add_value,id:1738138856459}]}}}}"
-                }
-            ]
-        },
-        {
-            "id": 14,
+            "id": 5,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -239,7 +113,7 @@
             ]
         },
         {
-            "id": 15,
+            "id": 6,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -253,7 +127,7 @@
             ]
         },
         {
-            "id": 16,
+            "id": 7,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -267,7 +141,7 @@
             ]
         },
         {
-            "id": 17,
+            "id": 8,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -281,7 +155,7 @@
             ]
         },
         {
-            "id": 18,
+            "id": 9,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -295,7 +169,7 @@
             ]
         },
         {
-            "id": 19,
+            "id": 10,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -309,7 +183,7 @@
             ]
         },
         {
-            "id": 20,
+            "id": 11,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -323,7 +197,7 @@
             ]
         },
         {
-            "id": 21,
+            "id": 12,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -337,21 +211,7 @@
             ]
         },
         {
-            "id": 22,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "可疑的铁",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:iron_ingot,count:1,components:{custom_name:'[\"\",{\"text\":\"可疑的铁\",\"italic\":false}]',lore:['[\"\",{\"text\":\"民以食为天\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,food:{can_always_eat:1b,nutrition:1,saturation:1,effects:[{effect:{id:instant_damage,duration:1,amplifier:0},probability:1f}]}}}}"
-                }
-            ]
-        },
-        {
-            "id": 23,
+            "id": 13,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -365,7 +225,7 @@
             ]
         },
         {
-            "id": 24,
+            "id": 14,
             "spawn_mobs": [
                 {
                     "id": "minecraft:fireball",
@@ -380,7 +240,7 @@
             ]
         },
         {
-            "id": 25,
+            "id": 15,
             "spawn_mobs": [
                 {
                     "id": "minecraft:villager",
@@ -395,7 +255,7 @@
             ]
         },
         {
-            "id": 26,
+            "id": 16,
             "spawn_mobs": [
                 {
                     "id": "minecraft:villager",
@@ -410,7 +270,7 @@
             ]
         },
         {
-            "id": 27,
+            "id": 17,
             "spawn_mobs": [
                 {
                     "id": "minecraft:zombie",
@@ -425,7 +285,7 @@
             ]
         },
         {
-            "id": 28,
+            "id": 18,
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
@@ -440,7 +300,7 @@
             ]
         },
         {
-            "id": 29,
+            "id": 19,
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
@@ -455,7 +315,7 @@
             ]
         },
         {
-            "id": 30,
+            "id": 20,
             "spawn_mobs": [
                 {
                     "id": "minecraft:slime",
@@ -470,7 +330,7 @@
             ]
         },
         {
-            "id": 31,
+            "id": 21,
             "spawn_mobs": [
                 {
                     "id": "minecraft:magma_cube",
@@ -485,7 +345,7 @@
             ]
         },
         {
-            "id": 32,
+            "id": 22,
             "spawn_mobs": [
                 {
                     "id": "minecraft:horse",
@@ -500,7 +360,7 @@
             ]
         },
         {
-            "id": 33,
+            "id": 23,
             "execute_commands": [
                 {
                     "command": "summon minecraft:bat ~ ~ ~ {Passengers:[{id:skeleton_horse,SaddleItem:{id:saddle,Count:1},Tame:1,Passengers:[{id:skeleton,CustomName:'[{\"text\":\"骷髅骑士\"}]',CustomNameVisible:1b,Glowing:1b,HandItems:[{id:bow,components:{enchantments:{levels:{infinity:1,mending:1,power:2,punch:2,unbreaking:3}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:chainmail_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}]}]}]}",
@@ -510,7 +370,7 @@
             "comment": "TODO: 修复nbt生成"
         },
         {
-            "id": 34,
+            "id": 24,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -525,7 +385,7 @@
             ]
         },
         {
-            "id": 35,
+            "id": 25,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -540,7 +400,7 @@
             ]
         },
         {
-            "id": 36,
+            "id": 26,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -555,7 +415,7 @@
             ]
         },
         {
-            "id": 37,
+            "id": 27,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -570,7 +430,7 @@
             ]
         },
         {
-            "id": 38,
+            "id": 28,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -585,7 +445,7 @@
             ]
         },
         {
-            "id": 39,
+            "id": 29,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -600,7 +460,7 @@
             ]
         },
         {
-            "id": 40,
+            "id": 30,
             "spawn_mobs": [
                 {
                     "id": "minecraft:pillager",
