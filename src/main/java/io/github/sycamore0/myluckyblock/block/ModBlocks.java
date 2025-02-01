@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.block;
 
+import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -11,7 +12,7 @@ public class ModBlocks {
     private ModBlocks() {
     }
 
-    public static final LuckyBlock MY_LUCKY_BLOCK;
+    public static final Block MY_LUCKY_BLOCK;
     public static final Block DEBUG_LUCKY_BLOCK;
 
     static {
@@ -20,8 +21,8 @@ public class ModBlocks {
     }
 
     private static <T extends Block> T register(String path, T block) {
-        Registry.register(Registries.BLOCK, Identifier.of("myluckyblock", path), block);
-        Registry.register(Registries.ITEM, Identifier.of("myluckyblock", path), new BlockItem(block, new Item.Settings()));
+        Registry.register(Registries.BLOCK, Identifier.of(MyLuckyBlock.MOD_ID, path), block);
+        Registry.register(Registries.ITEM, Identifier.of(MyLuckyBlock.MOD_ID, path), new BlockItem(block, new Item.Settings()));
         return block;
     }
 

@@ -107,13 +107,13 @@ public class LuckyFunctions {
         Entity entity = entityType.create(world);
         MobEntity mobEntity = (MobEntity) entity;
         if (mobEntity != null) {
+            NbtCompound nbt = NbtHelper.generateNbt(nbtString);
+            mobEntity.readNbt(nbt);
+            mobEntity.saveNbt(nbt);
             if (name != null) {
                 mobEntity.setCustomName(Text.of(name));
                 mobEntity.setCustomNameVisible(nameVisible);
             }
-            NbtCompound nbt = NbtHelper.generateNbt(nbtString);
-            mobEntity.readNbt(nbt);
-            mobEntity.saveNbt(nbt);
             mobEntity.setPosition(pos);
             world.spawnEntity(mobEntity);
         }
@@ -156,7 +156,7 @@ public class LuckyFunctions {
         if (receiver == 0) {
             player.sendMessage(Text.of(message), true);
         } else if (receiver == 1) {
-            player.sendMessage(Text.of(message));
+            player.sendMessage(Text.of(message), false);
         } else {
             MyLuckyBlock.LOGGER.error("Error: SendMessages Invalid Receiver: {}", receiver);
         }
@@ -228,6 +228,7 @@ public class LuckyFunctions {
             CommandBlockMinecartEntity cBMinecart = new CommandBlockMinecartEntity(serverWorld, pos.getX(), pos.getY(), pos.getZ());
             cBMinecart.getCommandExecutor().setCommand(command);
             cBMinecart.getCommandExecutor().execute(serverWorld);
+            cBMinecart.setPos(pos.getX(), pos.getY(), pos.getZ());
             serverWorld.spawnEntity(cBMinecart);
             cBMinecart.discard();
         }
