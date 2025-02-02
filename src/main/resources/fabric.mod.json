@@ -15,19 +15,26 @@
     "icon": "assets/myluckyblock/icon.png",
     "environment": "*",
     "entrypoints": {
-        "fabric-datagen": [
-            "io.github.sycamore0.myluckyblock.MyLuckyBlockDataGenerator"
-        ],
         "main": [
             "io.github.sycamore0.myluckyblock.MyLuckyBlock"
+        ],
+        "fabric-datagen": [
+            "io.github.sycamore0.myluckyblock.client.MyLuckyBlockDataGenerator"
+        ],
+        "client": [
+            "io.github.sycamore0.myluckyblock.client.MyLuckyBlockClient"
         ]
     },
     "mixins": [
-        "myluckyblock.mixins.json"
+        "myluckyblock.mixins.json",
+        {
+            "config": "myluckyblock.client.mixins.json",
+            "environment": "client"
+        }
     ],
     "depends": {
         "fabricloader": ">=${loader_version}",
-        "minecraft": ">=1.21.2 <=1.21.3",
+        "minecraft": "1.21.4",
         "java": ">=21",
         "fabric-api": "*"
     }

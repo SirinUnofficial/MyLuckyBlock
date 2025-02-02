@@ -1,4 +1,4 @@
-package io.github.sycamore0.myluckyblock.datagen;
+package io.github.sycamore0.myluckyblock.client.datagen;
 
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -21,5 +21,10 @@ public class ModBlockTagsProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.MY_LUCKY_BLOCK);
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.MY_LUCKY_BLOCK);
+    }
+
+    @Override
+    public String getName() {
+        return "tags";
     }
 }

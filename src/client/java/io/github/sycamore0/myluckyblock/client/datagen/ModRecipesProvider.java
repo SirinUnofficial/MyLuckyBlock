@@ -1,10 +1,10 @@
-package io.github.sycamore0.myluckyblock.datagen;
+package io.github.sycamore0.myluckyblock.client.datagen;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
@@ -22,7 +22,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
             @Override
             public void generate() {
-                createShaped(RecipeCategory.REDSTONE, ModBlocks.MY_LUCKY_BLOCK, 1)
+                createShaped(RecipeCategory.REDSTONE, ModBlocks.MY_LUCKY_BLOCK )
                         .pattern("GGG")
                         .pattern("GRG")
                         .pattern("GGG")
@@ -31,7 +31,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                         .criterion("has_item", conditionsFromItem(Items.GOLD_INGOT))
                         .criterion("has_item", conditionsFromItem(Items.REDSTONE_BLOCK))
                         .criterion("has_item", conditionsFromItem(ModBlocks.MY_LUCKY_BLOCK))
-                        .offerTo(exporter, MyLuckyBlock.MOD_ID + "my_lucky_block");
+                        .offerTo(exporter, "my_lucky_block");
             }
         };
     }

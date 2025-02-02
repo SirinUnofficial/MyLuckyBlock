@@ -1,6 +1,6 @@
-package io.github.sycamore0.myluckyblock;
+package io.github.sycamore0.myluckyblock.client;
 
-import io.github.sycamore0.myluckyblock.datagen.*;
+import io.github.sycamore0.myluckyblock.client.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -10,9 +10,7 @@ public class MyLuckyBlockDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(ModBlockTagsProvider::new);
-        // pack.addProvider(ModItemTagsProvider::new);
         pack.addProvider(ModModelsProvider::new);
         pack.addProvider(ModRecipesProvider::new);
-        pack.addProvider(ModLootTableProvider::new);
     }
 }
