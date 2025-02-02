@@ -1,5 +1,6 @@
 {
     "itemGroup.myluckyblock.myluckyblock_group": "我的幸运方块",
     "item.myluckyblock.my_lucky_block": "幸运方块",
-    "block.myluckyblock.my_lucky_block": "幸运方块"
+    "block.myluckyblock.my_lucky_block": "幸运方块",
+    "myluckyblock.message.snapshot_warning": "§6[MyLuckyBlock|警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r"
 }

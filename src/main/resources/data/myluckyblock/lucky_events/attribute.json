@@ -13,7 +13,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:golden_boots,count:1,components:{custom_name:'[\"\",{\"text\":\"黄金切尔西\",\"italic\":false}]',lore:['[\"\",{\"text\":\"当你觉得你不行的时候就去人行道吧，这样你就成了行人。\",\"italic\":false}]','[\"\",{\"text\":\"不用担心，你还是步行。\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:movement_speed,amount:0.5,slot:feet,operation:add_value,id:1738393208351}]},repair_cost:32767}}}"
+                    "nbt": "{Item:{id:golden_boots,count:1,components:{custom_name:'黄金切尔西',lore:['当你觉得你不行的时候就去人行道吧，这样你就成了行人。','不用担心，你还是步行。'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:movement_speed,amount:0.5,slot:feet,operation:add_value,id:1738393208351}]},repair_cost:32767}}}"
                 }
             ]
         },
@@ -27,7 +27,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:bread,count:1,components:{custom_name:'[\"\",{\"text\":\"坚硬的法式面包\",\"italic\":false}]',rarity:uncommon,enchantment_glint_override:true,enchantments:{levels:{unbreaking:10}},attribute_modifiers:{modifiers:[{type:attack_damage,amount:4,slot:mainhand,operation:add_value,id:1738393387865}]},consumable:{consume_seconds:32767},food:{nutrition:1,saturation:1}}}}"
+                    "nbt": "{Item:{id:bread,count:1,components:{custom_name:'坚硬的法式面包',rarity:uncommon,enchantment_glint_override:true,enchantments:{levels:{unbreaking:10}},attribute_modifiers:{modifiers:[{type:attack_damage,amount:4,slot:mainhand,operation:add_value,id:1738393387865}]},consumable:{consume_seconds:32767},food:{nutrition:1,saturation:1}}}}"
                 }
             ]
         },
@@ -41,7 +41,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:leather_boots,count:1,components:{custom_name:'[\"\",{\"text\":\"牢大球鞋\",\"italic\":false}]',lore:['[\"\",{\"text\":\"坠机 XXIV\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:safe_fall_distance,amount:-24,slot:feet,operation:add_value,id:1738393520395}]}}}}"
+                    "nbt": "{Item:{id:leather_boots,count:1,components:{custom_name:'牢大球鞋',lore:['坠机 XXIV'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:safe_fall_distance,amount:-24,slot:feet,operation:add_value,id:1738393520395}]}}}}"
                 }
             ]
         },
@@ -55,7 +55,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:iron_chestplate,count:1,components:{custom_name:'[\"\",{\"text\":\"泰坦胸甲\",\"italic\":false}]',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:armor,amount:-20,slot:chest,operation:add_value,id:1738393809716},{type:max_health,amount:40,slot:chest,operation:add_value,id:1738393809716},{type:block_interaction_range,amount:32,slot:chest,operation:add_value,id:1738393809716},{type:movement_speed,amount:1,slot:chest,operation:add_value,id:1738393809716},{type:step_height,amount:10,slot:chest,operation:add_value,id:1738393809716},{type:scale,amount:8,slot:chest,operation:add_value,id:1738393809716},{type:safe_fall_distance,amount:24,slot:chest,operation:add_value,id:1738393809716},{type:entity_interaction_range,amount:32,slot:chest,operation:add_value,id:1738393809716},{type:water_movement_efficiency,amount:0.5,slot:chest,operation:add_value,id:1738393809716}]}}}}"
+                    "nbt": "{Item:{id:iron_chestplate,count:1,components:{custom_name:'泰坦胸甲',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:armor,amount:-20,slot:chest,operation:add_value,id:1738393809716},{type:max_health,amount:40,slot:chest,operation:add_value,id:1738393809716},{type:block_interaction_range,amount:32,slot:chest,operation:add_value,id:1738393809716},{type:movement_speed,amount:1,slot:chest,operation:add_value,id:1738393809716},{type:step_height,amount:10,slot:chest,operation:add_value,id:1738393809716},{type:scale,amount:8,slot:chest,operation:add_value,id:1738393809716},{type:safe_fall_distance,amount:24,slot:chest,operation:add_value,id:1738393809716},{type:entity_interaction_range,amount:32,slot:chest,operation:add_value,id:1738393809716},{type:water_movement_efficiency,amount:0.5,slot:chest,operation:add_value,id:1738393809716}]}}}}"
                 }
             ]
         },
@@ -69,7 +69,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:netherite_leggings,count:1,components:{custom_name:'[\"\",{\"text\":\"缩小护腿\",\"italic\":false}]',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:scale,amount:-0.5,slot:legs,operation:add_value,id:1738394110273},{type:attack_speed,amount:1,slot:legs,operation:add_value,id:1738394110273},{type:armor,amount:-10,slot:legs,operation:add_value,id:1738394110273},{type:movement_speed,amount:-0.02,slot:legs,operation:add_value,id:1738394110273}]},repair_cost:32767}}}"
+                    "nbt": "{Item:{id:netherite_leggings,count:1,components:{custom_name:'缩小护腿',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:scale,amount:-0.5,slot:legs,operation:add_value,id:1738394110273},{type:attack_speed,amount:1,slot:legs,operation:add_value,id:1738394110273},{type:armor,amount:-10,slot:legs,operation:add_value,id:1738394110273},{type:movement_speed,amount:-0.02,slot:legs,operation:add_value,id:1738394110273}]},repair_cost:32767}}}"
                 }
             ]
         },
@@ -83,7 +83,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:golden_helmet,count:1,components:{custom_name:'[\"\",{\"text\":\"奇怪的头盔\",\"italic\":false}]',rarity:epic,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:armor,amount:-100,slot:head,operation:add_value,id:1738394272823},{type:max_health,amount:-18,slot:head,operation:add_value,id:1738394272823},{type:attack_damage,amount:20,slot:head,operation:add_value,id:1738394272823},{type:movement_speed,amount:0.25,slot:head,operation:add_value,id:1738394272823}]},repair_cost:32767}}}"
+                    "nbt": "{Item:{id:golden_helmet,count:1,components:{custom_name:'奇怪的头盔',rarity:epic,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:armor,amount:-100,slot:head,operation:add_value,id:1738394272823},{type:max_health,amount:-18,slot:head,operation:add_value,id:1738394272823},{type:attack_damage,amount:20,slot:head,operation:add_value,id:1738394272823},{type:movement_speed,amount:0.25,slot:head,operation:add_value,id:1738394272823}]},repair_cost:32767}}}"
                 }
             ]
         },
@@ -97,7 +97,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:stick,count:1,components:{custom_name:'[\"\",{\"text\":\"REACH!\",\"italic\":false}]',rarity:uncommon,enchantments:{levels:{binding_curse:1,vanishing_curse:1}},attribute_modifiers:{modifiers:[{type:entity_interaction_range,amount:64,slot:mainhand,operation:add_value,id:1738394673493},{type:block_interaction_range,amount:64,slot:mainhand,operation:add_value,id:1738394673493}]},unbreakable:{}}}}"
+                    "nbt": "{Item:{id:stick,count:1,components:{custom_name:'REACH!',rarity:uncommon,enchantments:{levels:{binding_curse:1,vanishing_curse:1}},attribute_modifiers:{modifiers:[{type:entity_interaction_range,amount:64,slot:mainhand,operation:add_value,id:1738394673493},{type:block_interaction_range,amount:64,slot:mainhand,operation:add_value,id:1738394673493}]},unbreakable:{}}}}"
                 }
             ]
         },
@@ -111,7 +111,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:golden_apple,count:1,components:{custom_name:'[\"\",{\"text\":\"负魔金苹果\",\"italic\":false}]',rarity:epic,enchantment_glint_override:true,consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:blindness,duration:2000,amplifier:1},{id:darkness,duration:2000,amplifier:1},{id:hunger,duration:2000,amplifier:1},{id:mining_fatigue,duration:2000,amplifier:1},{id:nausea,duration:2000,amplifier:1},{id:poison,duration:2000,amplifier:1},{id:slowness,duration:2000,amplifier:1},{id:unluck,duration:2000,amplifier:1}]}]},food:{can_always_eat:1b,nutrition:1,saturation:1}}}}"
+                    "nbt": "{Item:{id:golden_apple,count:1,components:{custom_name:'负魔金苹果',rarity:epic,enchantment_glint_override:true,consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:blindness,duration:2000,amplifier:1},{id:darkness,duration:2000,amplifier:1},{id:hunger,duration:2000,amplifier:1},{id:mining_fatigue,duration:2000,amplifier:1},{id:nausea,duration:2000,amplifier:1},{id:poison,duration:2000,amplifier:1},{id:slowness,duration:2000,amplifier:1},{id:unluck,duration:2000,amplifier:1}]}]},food:{can_always_eat:1b,nutrition:1,saturation:1}}}}"
                 }
             ]
         },
@@ -125,7 +125,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:chainmail_leggings,count:1,components:{custom_name:'[\"\",{\"text\":\"B\",\"italic\":false}]',lore:['[\"\",{\"text\":\"装B我让你飞起来\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:gravity,amount:-1,slot:legs,operation:add_value,id:1738394953484}]}}}}"
+                    "nbt": "{Item:{id:chainmail_leggings,count:1,components:{custom_name:'B',lore:['装B我让你飞起来'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:gravity,amount:-1,slot:legs,operation:add_value,id:1738394953484}]}}}}"
                 }
             ]
         },
@@ -139,7 +139,21 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:iron_ingot,count:1,components:{custom_name:'[\"\",{\"text\":\"可疑的铁\",\"italic\":false}]',lore:['[\"\",{\"text\":\"民以食为天\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,food:{can_always_eat:1b,nutrition:1,saturation:1},consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:instant_damage,duration:1,amplifier:0}]}]}}}}"
+                    "nbt": "{Item:{id:iron_ingot,count:1,components:{custom_name:'可疑的铁',lore:['民以食为天'],rarity:rare,enchantment_glint_override:true,food:{can_always_eat:1b,nutrition:1,saturation:1},consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:instant_damage,duration:1,amplifier:0}]}]}}}}"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "雪（难视）",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:cocoa_beans,count:1,components:{custom_name:'雪（难视）',lore:['吃下去可能会发生不好的事？'],enchantment_glint_override:true,food:{can_always_eat:1b,nutrition:4,saturation:1},consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:nausea,duration:400,amplifier:0}]}]}}}}"
                 }
             ]
         }

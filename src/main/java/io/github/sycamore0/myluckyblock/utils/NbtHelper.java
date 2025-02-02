@@ -9,7 +9,7 @@ public class NbtHelper {
     public static NbtCompound generateNbt(@Nullable String string) {
         try {
             if (string != null) {
-                NbtCompound nbt = StringNbtReader.parse(string);
+                NbtCompound nbt = StringNbtReader.readCompound(string);
                 if (nbt instanceof NbtCompound) {
                     return nbt;
                 } else {

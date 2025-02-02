@@ -1,5 +1,6 @@
 {
     "itemGroup.myluckyblock.myluckyblock_group": "My Lucky Block",
     "item.myluckyblock.my_lucky_block": "Lucky Block",
-    "block.myluckyblock.my_lucky_block": "Lucky Block"
+    "block.myluckyblock.my_lucky_block": "Lucky Block",
+    "myluckyblock.message.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r"
 }
