@@ -10,9 +10,7 @@ public class MyLuckyBlockDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(ModBlockTagsProvider::new);
-        // pack.addProvider(ModItemTagsProvider::new);
         pack.addProvider(ModModelsProvider::new);
         pack.addProvider(ModRecipesProvider::new);
-        pack.addProvider(ModLootTableProvider::new);
     }
 }

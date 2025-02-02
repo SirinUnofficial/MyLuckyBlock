@@ -178,7 +178,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"连弩\",\"italic\":false}]',lore:['[\"\",{\"text\":\"零帧起手\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{piercing:0,quick_charge:255},show_in_tooltip:false}}}}"
+                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"连弩\",\"italic\":false}]',lore:['[\"\",{\"text\":\"零帧起手\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{piercing:1,quick_charge:255},show_in_tooltip:false}}}}"
                 }
             ]
         },
