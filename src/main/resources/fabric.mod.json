@@ -20,17 +20,10 @@
         ],
         "main": [
             "io.github.sycamore0.myluckyblock.MyLuckyBlock"
-        ],
-        "client": [
-            "io.github.sycamore0.myluckyblock.client.MyluckyblockClient"
         ]
     },
     "mixins": [
-        "myluckyblock.mixins.json",
-        {
-            "config": "myluckyblock.client.mixins.json",
-            "environment": "client"
-        }
+        "myluckyblock.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=${loader_version}",

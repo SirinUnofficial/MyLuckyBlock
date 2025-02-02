@@ -15,7 +15,6 @@ public class ModItemGroups {
             .displayName(Text.translatable("itemGroup.myluckyblock.myluckyblock_group"))
             .entries((context, entries) -> {
                 entries.add(ModBlocks.MY_LUCKY_BLOCK);
-                entries.add(ModBlocks.DEBUG_LUCKY_BLOCK);
             })
             .build();
 
