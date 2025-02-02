@@ -31,7 +31,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                         .criterion("has_item", conditionsFromItem(Items.GOLD_INGOT))
                         .criterion("has_item", conditionsFromItem(Items.REDSTONE_BLOCK))
                         .criterion("has_item", conditionsFromItem(ModBlocks.MY_LUCKY_BLOCK))
-                        .offerTo(exporter, MyLuckyBlock.MOD_ID + "my_lucky_block");
+                        .offerTo(exporter, "my_lucky_block");
             }
         };
     }
