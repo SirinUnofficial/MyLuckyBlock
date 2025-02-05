@@ -17,17 +17,19 @@ import org.slf4j.LoggerFactory;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MyLuckyBlock implements ModInitializer {
     public static final String MOD_ID = "myluckyblock";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    private static final String JSON_DIR = "lucky_events";
-    private static final List<JsonObject> loadedEvents = new ArrayList<>();
+    private static final Map<String, List<JsonObject>> loadedEventsByMod = new HashMap<>();
+    public static final List<String> modIdList = new ArrayList<>();
 
-    public static List<JsonObject> getLoadedEvents() {
-        return loadedEvents;
+    public static List<JsonObject> getLoadedEventsForMod(String modId) {
+        return loadedEventsByMod.getOrDefault(modId, new ArrayList<>());
     }
 
     @Override
@@ -37,34 +39,48 @@ public class MyLuckyBlock implements ModInitializer {
         ModEventHandlers.onInitialize();
         ModWorldGen.register();
 
+        addModId(MOD_ID);
+        // addModId("test");
         // Data Loader
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(
-                new SimpleSynchronousResourceReloadListener() { // 使用同步加载简化逻辑
+                new SimpleSynchronousResourceReloadListener() {
                     @Override
                     public Identifier getFabricId() {
-                        return Identifier.of(MOD_ID, JSON_DIR);
+                        return Identifier.of(MOD_ID, "lucky_events_loader");
                     }
 
                     @Override
                     public void reload(ResourceManager manager) {
-                        loadedEvents.clear();
-                        try {
-                            manager.findResources(JSON_DIR, path -> path.getPath().endsWith(".json"))
-                                    .forEach((id, resource) -> {
-                                        try (InputStreamReader reader = new InputStreamReader(resource.getInputStream())) {
-                                            JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-                                            json.addProperty("fileName", id.getPath());
-                                            loadedEvents.add(json);
-                                        } catch (Exception e) {
-                                            LOGGER.error("Failed to load {}", id, e);
-                                        }
-                                    });
-                            LOGGER.info("Loaded {} event files", loadedEvents.size());
-                        } catch (Exception e) {
-                            LOGGER.error("Resource reload failed", e);
+                        loadedEventsByMod.clear();
+                        // Load events for all mods
+                        for (String modId : modIdList) {
+                            loadEventsForMod(manager, modId);
                         }
+                        LOGGER.info("Loaded {} event files for mod {}", getLoadedEventsForMod(MOD_ID).size(), MOD_ID);
                     }
                 }
         );
+    }
+
+    public static void addModId(String modId) {
+        if (!modIdList.contains(modId)) {
+            modIdList.add(modId);
+        }
+    }
+
+    public static void loadEventsForMod(ResourceManager manager, String modId) {
+        String jsonDir = "lucky_events/" + modId;
+        List<JsonObject> events = new ArrayList<>();
+        manager.findResources(jsonDir, path -> path.getPath().endsWith(".json"))
+                .forEach((id, resource) -> {
+                    try (InputStreamReader reader = new InputStreamReader(resource.getInputStream())) {
+                        JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+                        json.addProperty("fileName", id.getPath());
+                        events.add(json);
+                    } catch (Exception e) {
+                        LOGGER.error("Failed to load {}", id, e);
+                    }
+                });
+        loadedEventsByMod.put(modId, events);
     }
 }

@@ -16,8 +16,8 @@ public class ModBlocks {
     public static final Block DEBUG_LUCKY_BLOCK;
 
     static {
-        MY_LUCKY_BLOCK = register("my_lucky_block", new LuckyBlock(Block.Settings.create().mapColor(MapColor.GOLD).strength(0.5f).resistance(5000000.0f)));
-        DEBUG_LUCKY_BLOCK = register("debug_lucky_block", new Block(Block.Settings.create().mapColor(MapColor.GOLD).strength(0.5f).resistance(5000000.0f)));
+        MY_LUCKY_BLOCK = register("my_lucky_block", new LuckyBlock(Block.Settings.create().mapColor(MapColor.GOLD).strength(0.5f).resistance(5000000.0f), MyLuckyBlock.MOD_ID, true));
+        DEBUG_LUCKY_BLOCK = register("debug_lucky_block", new LuckyBlock(Block.Settings.create().mapColor(MapColor.GOLD).strength(0.5f).resistance(5000000.0f), "test", false));
     }
 
     private static <T extends Block> T register(String path, T block) {

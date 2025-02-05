@@ -16,14 +16,21 @@
     "environment": "*",
     "entrypoints": {
         "fabric-datagen": [
-            "io.github.sycamore0.myluckyblock.MyLuckyBlockDataGenerator"
+            "io.github.sycamore0.myluckyblock.client.MyLuckyBlockDataGenerator"
         ],
         "main": [
             "io.github.sycamore0.myluckyblock.MyLuckyBlock"
+        ],
+        "client": [
+            "io.github.sycamore0.myluckyblock.client.MyluckyblockClient"
         ]
     },
     "mixins": [
-        "myluckyblock.mixins.json"
+        "myluckyblock.mixins.json",
+        {
+            "config": "myluckyblock.client.mixins.json",
+            "environment": "client"
+        }
     ],
     "depends": {
         "fabricloader": ">=${loader_version}",

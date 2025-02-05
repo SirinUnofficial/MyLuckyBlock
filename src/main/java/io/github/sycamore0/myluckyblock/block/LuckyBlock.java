@@ -9,8 +9,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class LuckyBlock extends Block {
-    public LuckyBlock(Settings settings) {
+    private final String modId;
+    private final boolean includeBuiltIn;
+
+    public LuckyBlock(Settings settings, String modId, boolean includeBuiltIn) {
         super(settings);
+        this.modId = modId; // path: data/myluckyblock/lucky_events/%modId%/
+        this.includeBuiltIn = includeBuiltIn; // include built-in lucky events
+    }
+
+    public String getModId() {
+        return modId;
+    }
+
+    public boolean includeBuiltIn() {
+        return includeBuiltIn;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package io.github.sycamore0.myluckyblock.datagen;
+package io.github.sycamore0.myluckyblock.client.datagen;
 
 import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
