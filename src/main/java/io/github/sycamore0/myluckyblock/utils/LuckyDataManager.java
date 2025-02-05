@@ -6,20 +6,22 @@ import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 import java.util.*;
 
 public class LuckyDataManager {
-    protected final List<LuckyEventReader> randomEvents = new ArrayList<>();
+    private final Map<String, List<LuckyEventReader>> eventsByMod = new HashMap<>();
 
-    public LuckyDataManager() {
-        loadEvents(MyLuckyBlock.getLoadedEvents()); // 直接使用已加载的数据
-    }
+    public void loadEvents(String modId, boolean includeBuiltIn) {
 
-    private void loadEvents(List<JsonObject> jsonObjects) {
-        if (jsonObjects == null || jsonObjects.isEmpty()) {
-            MyLuckyBlock.LOGGER.warn("No event data provided. Skipping event loading.");
-            return;
+        // load events for the specified mod
+        List<JsonObject> modEvents = MyLuckyBlock.getLoadedEventsForMod(modId);
+        List<JsonObject> targetEvents = new ArrayList<>(modEvents);
+
+        // if include built-in events
+        if (includeBuiltIn && !modId.equals(MyLuckyBlock.MOD_ID)) {
+            List<JsonObject> mainEvents = MyLuckyBlock.getLoadedEventsForMod(MyLuckyBlock.MOD_ID);
+            targetEvents.addAll(mainEvents);
         }
 
-        // 优先加载 default.json，其他按文件名字母顺序排序
-        jsonObjects.sort((a, b) -> {
+        // sort filename
+        targetEvents.sort((a, b) -> {
             String aName = a.get("fileName").getAsString();
             String bName = b.get("fileName").getAsString();
             if (aName.equals("default.json")) return -1;
@@ -27,8 +29,10 @@ public class LuckyDataManager {
             return aName.compareToIgnoreCase(bName);
         });
 
+        // Parse and store events
+        List<LuckyEventReader> modEventList = new ArrayList<>();
         int currentId = 1;
-        for (JsonObject json : jsonObjects) {
+        for (JsonObject json : targetEvents) {
             try {
                 LuckyDataReader data = LuckyJsonUtil.loadJsonData(json);
                 if (data == null) {
@@ -40,9 +44,8 @@ public class LuckyDataManager {
 
                 for (LuckyEventReader event : data.getRandomEvents()) {
                     event.setId(currentId++);
-                    randomEvents.add(event);
+                    modEventList.add(event);
 
-                    // 验证必要字段
                     if (event.getId() <= 0) {
                         MyLuckyBlock.LOGGER.warn("Invalid event ID in {}: {}", json.get("fileName"), event.getId());
                     }
@@ -60,27 +63,28 @@ public class LuckyDataManager {
             }
         }
 
-        MyLuckyBlock.LOGGER.info("Successfully loaded {} random events", randomEvents.size());
+        eventsByMod.put(modId, modEventList);
+        MyLuckyBlock.LOGGER.info("Successfully loaded {} random events for mod {}", modEventList.size(), modId);
     }
 
-    public int getRandomEventsCount() {
-        return randomEvents.size();
+    public boolean isLoaded(String modId) {
+        return eventsByMod.containsKey(modId);
     }
 
-    public LuckyEventReader getRandomEvent() {
-        if (randomEvents.isEmpty()) {
+    public LuckyEventReader getRandomEvent(String modId) {
+        List<LuckyEventReader> events = eventsByMod.get(modId);
+        if (events == null || events.isEmpty()) {
             return null;
         }
-        Random random = new Random();
-        int randomIndex = random.nextInt(randomEvents.size());
-        return randomEvents.get(randomIndex);
+        return events.get(new Random().nextInt(events.size()));
     }
 
-    public LuckyEventReader getEventById(int id) {
-        if (randomEvents.isEmpty()) {
-            return null;
-        }
-        for (LuckyEventReader event : randomEvents) {
+    public int getRandomEventsCount(String modId) {
+        return eventsByMod.getOrDefault(modId, new ArrayList<>()).size();
+    }
+
+    public LuckyEventReader getEventById(String modId, int id) {
+        for (LuckyEventReader event : eventsByMod.getOrDefault(modId, new ArrayList<>())) {
             if (event.getId() == id) {
                 return event;
             }
