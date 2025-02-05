@@ -1,8 +1,0 @@
-{
-    "biomes": {
-        "deny": [
-            "minecraft:void",
-            "minecraft:ocean"
-        ]
-    }
-}
