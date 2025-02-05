@@ -5,7 +5,6 @@ import com.google.gson.JsonParser;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import io.github.sycamore0.myluckyblock.item.ModItemGroups;
 import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
-import io.github.sycamore0.myluckyblock.world.gen.ModWorldGen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
@@ -37,7 +36,6 @@ public class MyLuckyBlock implements ModInitializer {
         ModBlocks.registerModBlocks();
         ModItemGroups.registerModItemGroups();
         ModEventHandlers.onInitialize();
-        ModWorldGen.register();
 
         addModId(MOD_ID);
 
