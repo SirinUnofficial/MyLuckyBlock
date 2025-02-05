@@ -1,6 +1,6 @@
-package io.github.sycamore0.myluckyblock;
+package io.github.sycamore0.myluckyblock.client;
 
-import io.github.sycamore0.myluckyblock.datagen.*;
+import io.github.sycamore0.myluckyblock.client.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 

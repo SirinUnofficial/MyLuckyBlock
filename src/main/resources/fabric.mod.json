@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "fabric-datagen": [
-            "io.github.sycamore0.myluckyblock.MyLuckyBlockDataGenerator"
+            "io.github.sycamore0.myluckyblock.client.MyLuckyBlockDataGenerator"
         ],
         "main": [
             "io.github.sycamore0.myluckyblock.MyLuckyBlock"

@@ -21,14 +21,4 @@ public class NbtHelper {
         }
         return null;
     }
-
-    // covnvert Item NBT to ItemEntity NBT
-    // {Enchantments:[{id:"minecraft:blast_protection",lvl:1s}
-    // ↓
-    // {Item:{id:"minecraft:iron_pickaxe",Count:1b,tag:{Enchantments:[{id:"minecraft:blast_protection",lvl:1s}]}}}
-
-    // public static NbtCompound convertNbt(NbtCompound itemNbt) {
-    //     NbtCompound itemEntityNbt = new NbtCompound();
-    //     return itemEntityNbt;
-    // }
 }
