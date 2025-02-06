@@ -11,7 +11,7 @@
     "contact": {
         "homepage": "https://github.com/SirinUnofficial",
         "sources": "https://github.com/SirinUnofficial/MyLuckyBlock"},
-    "license": "Unlicensed",
+    "license": "MIT",
     "icon": "assets/myluckyblock/icon.png",
     "environment": "*",
     "entrypoints": {
