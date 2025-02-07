@@ -4,8 +4,8 @@
     "block.myluckyblock.my_lucky_block": "Lucky Block",
     "item.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
     "block.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
-    "block.myluckyblock.lucky_block.tooltip": "Lucky Block",
-    "block.myluckyblock.debug_lucky_block.tooltip": "for debug",
+
+    "myluckyblock.message.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
 
     "name.myluckyblock.great_villager": "Great Villager",
     "name.myluckyblock.hero_blacksmith": "Hero's Blacksmith",
