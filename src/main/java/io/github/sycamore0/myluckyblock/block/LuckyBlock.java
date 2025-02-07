@@ -6,19 +6,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class LuckyBlock extends Block {
     private String modId = MyLuckyBlock.MOD_ID; // path: data/myluckyblock/lucky_events/%modId%/
     private boolean includeBuiltIn = false; // if include built-in lucky events(include lucky_events/my_lucky_block/)
-    private Text toolTips = null; // ToolTips
 
     public LuckyBlock(Settings settings) {
         super(settings);
@@ -35,23 +28,12 @@ public class LuckyBlock extends Block {
         this.includeBuiltIn = includeBuiltIn;
     }
 
-    public LuckyBlock(Settings settings, String modId, boolean includeBuiltIn, Text tooltip) {
-        super(settings);
-        this.modId = modId;
-        this.includeBuiltIn = includeBuiltIn;
-        this.toolTips = tooltip;
-    }
-
     public String getModId() {
         return modId;
     }
 
     public boolean includeBuiltIn() {
         return includeBuiltIn;
-    }
-
-    public Text getTooltip() {
-        return toolTips;
     }
 
     @Override
@@ -69,10 +51,5 @@ public class LuckyBlock extends Block {
                 BreakLuckyBlock.breakLuckyBlock(world, player, pos, state);
             }
         }
-    }
-
-    @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
-        tooltip.add(toolTips);
     }
 }
