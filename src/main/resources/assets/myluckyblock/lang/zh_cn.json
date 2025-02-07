@@ -4,8 +4,8 @@
     "block.myluckyblock.my_lucky_block": "幸运方块",
     "item.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
     "block.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
-    "block.myluckyblock.lucky_block.tooltip": "幸运方块",
-    "block.myluckyblock.debug_lucky_block.tooltip": "仅供调试",
+
+    "myluckyblock.message.snapshot_warning": "§6[MyLuckyBlock|警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
 
     "name.myluckyblock.great_villager": "良心商人",
     "name.myluckyblock.hero_blacksmith": "英雄盔甲匠",
