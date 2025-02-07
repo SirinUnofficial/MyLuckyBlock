@@ -20,15 +20,6 @@ public class LuckyDataManager {
             targetEvents.addAll(mainEvents);
         }
 
-        // sort filename
-        targetEvents.sort((a, b) -> {
-            String aName = a.get("fileName").getAsString();
-            String bName = b.get("fileName").getAsString();
-            if (aName.equals("default.json")) return -1;
-            if (bName.equals("default.json")) return 1;
-            return aName.compareToIgnoreCase(bName);
-        });
-
         // Parse and store events
         List<LuckyEventReader> modEventList = new ArrayList<>();
         int currentId = 1;

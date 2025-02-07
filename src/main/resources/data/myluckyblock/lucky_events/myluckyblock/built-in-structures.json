@@ -1,7 +1,7 @@
 {
-    "name": "Structure Random Events",
+    "name": "(Built-in)Structures Event Pack",
     "version": "%ModVersion%",
-    "info": "Add events with structure.",
+    "info": "Structures.",
     "random_events": [
         {
             "id": 1,
@@ -11,7 +11,7 @@
                     "pos_src": 1,
                     "offset": {
                         "x": -2,
-                        "y": 8,
+                        "y": 12,
                         "z": -2
                     }
                 }
@@ -30,12 +30,6 @@
                 {
                     "id": "cherry_house",
                     "pos_src": 0
-                }
-            ],
-            "send_messages": [
-                {
-                    "msg": "本建筑由aL1sia投稿",
-                    "receiver": 0
                 }
             ]
         },

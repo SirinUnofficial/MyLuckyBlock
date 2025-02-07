@@ -1,0 +1,318 @@
+{
+    "name": "(Built-in)Enchanted Items Event Pack",
+    "version": "%ModVersion%",
+    "info": "Enchanted Items.",
+    "random_events": [
+        {
+            "id": 1,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.hero_sword",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:diamond_sword,count:1,components:{custom_name:'[\"\",{\"text\":\"英雄之剑\",\"italic\":false}]',item_name:\"英雄之剑\",rarity:epic,enchantments:{levels:{bane_of_arthropods:5,fire_aspect:3,knockback:2,looting:3,sharpness:5,smite:5,sweeping_edge:2,unbreaking:3}}}}}"
+                }
+            ],
+            "add_particles": [
+                {
+                    "id": "dragon_breath",
+                    "count": 16,
+                    "speed": 0,
+                    "velocity": {
+                        "x": 4,
+                        "y": 4,
+                        "z": 4
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.knockback_stick",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:stick,count:1,components:{item_name:\"击退棒\",rarity:epic,enchantments:{levels:{knockback:10}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "秒人斧",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:golden_axe,count:1,components:{item_name:\"秒人斧\",rarity:uncommon,enchantments:{levels:{sharpness:255}},damage:32,repair_cost:32767}}}"
+                }
+            ],
+            "add_particles": [
+                {
+                    "id": "dragon_breath",
+                    "count": 16,
+                    "speed": 0,
+                    "velocity": {
+                        "x": 4,
+                        "y": 4,
+                        "z": 4
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.hero_bow",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:bow,count:1,components:{custom_name:'[\"\",{\"text\":\"英雄之弓\",\"italic\":false}]',rarity:epic,enchantments:{levels:{flame:1,infinity:1,looting:3,power:5,punch:2,unbreaking:3}}}}}"
+                }
+            ],
+            "add_particles": [
+                {
+                    "id": "dragon_breath",
+                    "count": 16,
+                    "speed": 0,
+                    "velocity": {
+                        "x": 4,
+                        "y": 4,
+                        "z": 4
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.thorns_chestplate",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:iron_chestplate,count:1,components:{trim:{pattern:raiser,material:redstone},custom_name:'[\"\",{\"text\":\"反伤刺甲\",\"italic\":false}]',enchantments:{levels:{thorns:10}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.furious_cocktail",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:potion,count:1,components:{potion_contents:{custom_color:0,custom_effects:[{id:absorption,duration:3000,amplifier:1},{id:bad_omen,duration:3000,amplifier:1},{id:blindness,duration:3000,amplifier:1},{id:conduit_power,duration:3000,amplifier:1},{id:darkness,duration:3000,amplifier:1},{id:dolphins_grace,duration:3000,amplifier:1},{id:fire_resistance,duration:3000,amplifier:1},{id:glowing,duration:3000,amplifier:1},{id:haste,duration:3000,amplifier:1},{id:health_boost,duration:3000,amplifier:1},{id:hero_of_the_village,duration:3000,amplifier:1},{id:hunger,duration:3000,amplifier:1},{id:infested,duration:3000,amplifier:1},{id:invisibility,duration:3000,amplifier:1},{id:jump_boost,duration:3000,amplifier:1},{id:levitation,duration:3000,amplifier:1},{id:luck,duration:3000,amplifier:1},{id:mining_fatigue,duration:3000,amplifier:1},{id:nausea,duration:3000,amplifier:1},{id:night_vision,duration:3000,amplifier:1},{id:oozing,duration:3000,amplifier:1},{id:poison,duration:3000,amplifier:1},{id:regeneration,duration:3000,amplifier:1},{id:resistance,duration:3000,amplifier:1},{id:saturation,duration:3000,amplifier:1},{id:slow_falling,duration:3000,amplifier:1},{id:slowness,duration:3000,amplifier:1},{id:speed,duration:3000,amplifier:1},{id:strength,duration:3000,amplifier:1},{id:unluck,duration:3000,amplifier:1},{id:water_breathing,duration:3000,amplifier:1},{id:weakness,duration:3000,amplifier:1},{id:weaving,duration:3000,amplifier:1},{id:wind_charged,duration:3000,amplifier:1},{id:wither,duration:3000,amplifier:1}]},custom_name:'[\"\",{\"text\":\"狂乱的鸡尾酒\",\"italic\":false}]',rarity:epic}}}"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.shit",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:cocoa_beans,count:1,components:{custom_name:'[\"\",{\"text\":\"雪（难视）\",\"italic\":false}]',lore:['[\"\",{\"text\":\"吃下去可能会发生不好的事？\",\"italic\":false}]'],enchantment_glint_override:true,food:{nutrition:4,saturation:0,can_always_eat:1b,effects:[{effect:{id:nausea,duration:400,amplifier:0},probability:1f}]},unbreakable:{}}}}"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.hero_crossbow",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"英雄之弩\",\"italic\":false}]',rarity:epic,enchantments:{levels:{mending:1,multishot:1,piercing:4,quick_charge:3,unbreaking:3}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.odd_crossbow",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"奇怪的弩\",\"italic\":false}]',rarity:uncommon,enchantments:{levels:{multishot:255}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.quick_firing_crossbow",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"连弩\",\"italic\":false}]',lore:['[\"\",{\"text\":\"零帧起手\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{quick_charge:255},show_in_tooltip:false}}}}"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.hero_mace",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"英雄的重锤\",\"italic\":false}]',rarity:epic,enchantments:{levels:{mending:1,unbreaking:3,breach:4,density:5,wind_burst:3}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.wind_burst",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"飞起来\",\"italic\":false}]',rarity:rare,enchantments:{levels:{wind_burst:255}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.omnipotent_enchantment_book",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:enchanted_book,count:1,components:{stored_enchantments:{levels:{aqua_affinity:1,bane_of_arthropods:5,blast_protection:4,channeling:1,depth_strider:3,efficiency:5,feather_falling:4,fire_aspect:2,fire_protection:4,flame:1,fortune:3,frost_walker:2,impaling:5,infinity:1,knockback:2,looting:3,loyalty:3,luck_of_the_sea:3,lure:3,mending:1,multishot:1,piercing:4,power:5,projectile_protection:4,protection:4,punch:2,quick_charge:3,respiration:3,riptide:3,sharpness:5,silk_touch:1,smite:5,soul_speed:3,sweeping_edge:3,swift_sneak:3,thorns:3,unbreaking:3,breach:4,density:5,wind_burst:3}},custom_name:'[\"\",{\"text\":\"万能附魔书\",\"italic\":false}]'}},StoredEnchantmentsUx:[{lvl:1,id:aqua_affinity},{lvl:5,id:bane_of_arthropods},{lvl:4,id:blast_protection},{lvl:1,id:channeling},{lvl:3,id:depth_strider},{lvl:5,id:efficiency},{lvl:4,id:feather_falling},{lvl:2,id:fire_aspect},{lvl:4,id:fire_protection},{lvl:1,id:flame},{lvl:3,id:fortune},{lvl:2,id:frost_walker},{lvl:5,id:impaling},{lvl:1,id:infinity},{lvl:2,id:knockback},{lvl:3,id:looting},{lvl:3,id:loyalty},{lvl:3,id:luck_of_the_sea},{lvl:3,id:lure},{lvl:1,id:mending},{lvl:1,id:multishot},{lvl:4,id:piercing},{lvl:5,id:power},{lvl:4,id:projectile_protection},{lvl:4,id:protection},{lvl:2,id:punch},{lvl:3,id:quick_charge},{lvl:3,id:respiration},{lvl:3,id:riptide},{lvl:5,id:sharpness},{lvl:1,id:silk_touch},{lvl:5,id:smite},{lvl:3,id:soul_speed},{lvl:3,id:sweeping_edge},{lvl:3,id:swift_sneak},{lvl:3,id:thorns},{lvl:3,id:unbreaking},{lvl:4,id:breach},{lvl:5,id:density},{lvl:3,id:wind_burst}]}"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "喷溅型诅咒药水",
+                    "name_visible": true,
+                    "is_baby": false,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:splash_potion,count:1,components:{potion_contents:{custom_color:1908001,custom_effects:[{id:bad_omen,duration:1200,amplifier:4},{id:blindness,duration:1200,amplifier:0},{id:darkness,duration:1200,amplifier:1},{id:hunger,duration:1200,amplifier:2},{id:infested,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0},{id:mining_fatigue,duration:1200,amplifier:0},{id:nausea,duration:1200,amplifier:0},{id:oozing,duration:1200,amplifier:2},{id:poison,duration:1200,amplifier:0},{id:slowness,duration:1200,amplifier:0},{id:slow_falling,duration:1200,amplifier:0},{id:unluck,duration:1200,amplifier:5},{id:weakness,duration:1200,amplifier:2},{id:weaving,duration:1200,amplifier:0},{id:wind_charged,duration:1200,amplifier:0},{id:wither,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"喷溅型诅咒药水\",\"italic\":false}]'}}}"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "诅咒药水",
+                    "name_visible": true,
+                    "is_baby": false,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:potion,count:1,components:{potion_contents:{custom_color:1908001,custom_effects:[{id:bad_omen,duration:1200,amplifier:4},{id:blindness,duration:1200,amplifier:0},{id:darkness,duration:1200,amplifier:1},{id:hunger,duration:1200,amplifier:2},{id:infested,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0},{id:mining_fatigue,duration:1200,amplifier:0},{id:nausea,duration:1200,amplifier:0},{id:oozing,duration:1200,amplifier:2},{id:poison,duration:1200,amplifier:0},{id:slowness,duration:1200,amplifier:0},{id:slow_falling,duration:1200,amplifier:0},{id:unluck,duration:1200,amplifier:5},{id:weakness,duration:1200,amplifier:2},{id:weaving,duration:1200,amplifier:0},{id:wind_charged,duration:1200,amplifier:0},{id:wither,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"诅咒药水\",\"italic\":false}]'}}}"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "滞留型诅咒药水",
+                    "name_visible": true,
+                    "is_baby": false,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:lingering_potion,count:1,components:{potion_contents:{custom_color:1908001,custom_effects:[{id:bad_omen,duration:1200,amplifier:4},{id:blindness,duration:1200,amplifier:0},{id:darkness,duration:1200,amplifier:1},{id:hunger,duration:1200,amplifier:2},{id:infested,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0},{id:mining_fatigue,duration:1200,amplifier:0},{id:nausea,duration:1200,amplifier:0},{id:oozing,duration:1200,amplifier:2},{id:poison,duration:1200,amplifier:0},{id:slowness,duration:1200,amplifier:0},{id:slow_falling,duration:1200,amplifier:0},{id:unluck,duration:1200,amplifier:5},{id:weakness,duration:1200,amplifier:2},{id:weaving,duration:1200,amplifier:0},{id:wind_charged,duration:1200,amplifier:0},{id:wither,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"滞留型诅咒药水\",\"italic\":false}]'}}}"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "喷溅型祝福药水",
+                    "name_visible": true,
+                    "is_baby": false,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:splash_potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"喷溅型祝福药水\",\"italic\":false}]'}}}"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "祝福药水",
+                    "name_visible": true,
+                    "is_baby": false,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"祝福药水\",\"italic\":false}]'}}}"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "滞留型祝福药水",
+                    "name_visible": true,
+                    "is_baby": false,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:lingering_potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"滞留型祝福药水\",\"italic\":false}]'}}}"
+                }
+            ]
+        }
+    ]
+}
