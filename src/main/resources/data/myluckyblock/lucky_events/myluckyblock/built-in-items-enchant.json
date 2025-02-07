@@ -8,7 +8,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄之剑",
+                    "name": "name.myluckyblock.hero_sword",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -35,7 +35,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "击退棒",
+                    "name": "name.myluckyblock.knockback_stick",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -76,7 +76,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄之弓",
+                    "name": "name.myluckyblock.hero_bow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -103,7 +103,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "反伤刺甲",
+                    "name": "name.myluckyblock.thorns_chestplate",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -117,7 +117,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "狂乱的鸡尾酒",
+                    "name": "name.myluckyblock.furious_cocktail",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -131,7 +131,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "雪（难视）",
+                    "name": "name.myluckyblock.shit",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -145,7 +145,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄之弩",
+                    "name": "name.myluckyblock.hero_crossbow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -159,7 +159,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "奇怪的弩",
+                    "name": "name.myluckyblock.odd_crossbow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -173,7 +173,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "连弩",
+                    "name": "name.myluckyblock.quick_firing_crossbow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -187,12 +187,12 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄的重锤",
+                    "name": "name.myluckyblock.hero_mace",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"英雄的重锤\",\"italic\":false}]',rarity:epic,enchantments:{levels:{mending:1,unbreaking:3,breach:4,density:5,wind_burst:3}}}}}"
+                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"英雄之锤\",\"italic\":false}]',rarity:epic,enchantments:{levels:{mending:1,unbreaking:3,breach:4,density:5,wind_burst:3}}}}}"
                 }
             ]
         },
@@ -201,7 +201,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "飞起来",
+                    "name": "name.myluckyblock.wind_burst",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -215,7 +215,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "万能附魔书",
+                    "name": "name.myluckyblock.omnipotent_enchantment_book",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
