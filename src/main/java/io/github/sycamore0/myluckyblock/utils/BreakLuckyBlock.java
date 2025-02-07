@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
+import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,14 @@ public class BreakLuckyBlock {
             LuckyEventReader event = manager.getRandomEvent(modId);
             if (event != null) {
                 LuckyExecutor.executeLuckyFunction(world, player, pos, event);
+            }
+
+            if (state.getBlock() == ModBlocks.DEBUG_LUCKY_BLOCK) {
+                // 执行所有事件
+                for (int i = 1; i <= manager.getRandomEventsCount(modId); i++) {
+                    LuckyEventReader event1 = manager.getEventById(modId, i);
+                    LuckyExecutor.executeLuckyFunction(world, player, pos, event1);
+                }
             }
         }
     }

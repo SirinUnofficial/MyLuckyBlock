@@ -6837,406 +6837,6 @@
         },
         {
             "id": 222,
-            "place_chests": [
-                {
-                    "id": "chests/end_city_treasure",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 223,
-            "place_chests": [
-                {
-                    "id": "chests/simple_dungeon",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 224,
-            "place_chests": [
-                {
-                    "id": "chests/abandoned_mineshaft",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 225,
-            "place_chests": [
-                {
-                    "id": "chests/nether_bridge",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 226,
-            "place_chests": [
-                {
-                    "id": "chests/stronghold_library",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 227,
-            "place_chests": [
-                {
-                    "id": "chests/stronghold_crossing",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 228,
-            "place_chests": [
-                {
-                    "id": "chests/stronghold_corridor",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 229,
-            "place_chests": [
-                {
-                    "id": "chests/desert_pyramid",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 230,
-            "place_chests": [
-                {
-                    "id": "chests/jungle_temple",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 231,
-            "place_chests": [
-                {
-                    "id": "chests/jungle_temple_dispenser",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 232,
-            "place_chests": [
-                {
-                    "id": "chests/igloo_chest",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 233,
-            "place_chests": [
-                {
-                    "id": "chests/woodland_mansion",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 234,
-            "place_chests": [
-                {
-                    "id": "chests/underwater_ruin_small",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 235,
-            "place_chests": [
-                {
-                    "id": "chests/underwater_ruin_big",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 236,
-            "place_chests": [
-                {
-                    "id": "chests/buried_treasure",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 237,
-            "place_chests": [
-                {
-                    "id": "chests/shipwreck_map",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 238,
-            "place_chests": [
-                {
-                    "id": "chests/shipwreck_supply",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 239,
-            "place_chests": [
-                {
-                    "id": "chests/shipwreck_treasure",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 240,
-            "place_chests": [
-                {
-                    "id": "chests/pillager_outpost",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 241,
-            "place_chests": [
-                {
-                    "id": "chests/bastion_treasure",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 242,
-            "place_chests": [
-                {
-                    "id": "chests/bastion_other",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 243,
-            "place_chests": [
-                {
-                    "id": "chests/bastion_bridge",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 244,
-            "place_chests": [
-                {
-                    "id": "chests/bastion_hoglin_stable",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 245,
-            "place_chests": [
-                {
-                    "id": "chests/ancient_city",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 246,
-            "place_chests": [
-                {
-                    "id": "chests/ancient_city_ice_box",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 247,
-            "place_chests": [
-                {
-                    "id": "chests/ruined_portal",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 248,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 249,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_common",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 250,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_rare",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 251,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_unique",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 252,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_ominous",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 253,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_ominous_common",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 254,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_ominous_rare",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 255,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/reward_ominous_unique",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 256,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/supply",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 257,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/corridor",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 258,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/intersection",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 259,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/intersection_barrel",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 260,
-            "place_chests": [
-                {
-                    "id": "chests/trial_chambers/entrance",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 261,
-            "place_chests": [
-                {
-                    "id": "chests/spawn_bonus_chest",
-                    "type": 0,
-                    "pos_src": 0
-                }
-            ]
-        },
-        {
-            "id": 262,
             "place_blocks": [
                 {
                     "id": "minecraft:redstone_block",
@@ -7319,7 +6919,7 @@
             ]
         },
         {
-            "id": 263,
+            "id": 223,
             "fall_blocks": [
                 {
                     "id": "minecraft:anvil",
@@ -7351,7 +6951,7 @@
             ]
         },
         {
-            "id": 264,
+            "id": 224,
             "place_blocks": [
                 {
                     "id": "minecraft:lava",
@@ -7373,7 +6973,7 @@
             ]
         },
         {
-            "id": 265,
+            "id": 225,
             "place_blocks": [
                 {
                     "id": "minecraft:water",
@@ -7395,7 +6995,7 @@
             ]
         },
         {
-            "id": 266,
+            "id": 226,
             "create_explosions": [
                 {
                     "power": 100,
@@ -7404,7 +7004,7 @@
             ]
         },
         {
-            "id": 267,
+            "id": 227,
             "spawn_mobs": [
                 {
                     "id": "minecraft:allay",
@@ -7418,7 +7018,7 @@
             ]
         },
         {
-            "id": 268,
+            "id": 228,
             "spawn_mobs": [
                 {
                     "id": "minecraft:axolotl",
@@ -7432,7 +7032,7 @@
             ]
         },
         {
-            "id": 269,
+            "id": 229,
             "spawn_mobs": [
                 {
                     "id": "minecraft:bat",
@@ -7446,7 +7046,7 @@
             ]
         },
         {
-            "id": 270,
+            "id": 230,
             "spawn_mobs": [
                 {
                     "id": "minecraft:bee",
@@ -7460,7 +7060,7 @@
             ]
         },
         {
-            "id": 271,
+            "id": 231,
             "spawn_mobs": [
                 {
                     "id": "minecraft:blaze",
@@ -7474,7 +7074,7 @@
             ]
         },
         {
-            "id": 272,
+            "id": 232,
             "spawn_mobs": [
                 {
                     "id": "minecraft:camel",
@@ -7488,7 +7088,7 @@
             ]
         },
         {
-            "id": 273,
+            "id": 233,
             "spawn_mobs": [
                 {
                     "id": "minecraft:cat",
@@ -7502,7 +7102,7 @@
             ]
         },
         {
-            "id": 274,
+            "id": 234,
             "spawn_mobs": [
                 {
                     "id": "minecraft:cave_spider",
@@ -7516,7 +7116,7 @@
             ]
         },
         {
-            "id": 275,
+            "id": 235,
             "spawn_mobs": [
                 {
                     "id": "minecraft:chicken",
@@ -7530,7 +7130,7 @@
             ]
         },
         {
-            "id": 276,
+            "id": 236,
             "spawn_mobs": [
                 {
                     "id": "minecraft:cod",
@@ -7544,7 +7144,7 @@
             ]
         },
         {
-            "id": 277,
+            "id": 237,
             "spawn_mobs": [
                 {
                     "id": "minecraft:cow",
@@ -7558,7 +7158,7 @@
             ]
         },
         {
-            "id": 278,
+            "id": 238,
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
@@ -7572,7 +7172,7 @@
             ]
         },
         {
-            "id": 279,
+            "id": 239,
             "spawn_mobs": [
                 {
                     "id": "minecraft:dolphin",
@@ -7586,7 +7186,7 @@
             ]
         },
         {
-            "id": 280,
+            "id": 240,
             "spawn_mobs": [
                 {
                     "id": "minecraft:donkey",
@@ -7600,7 +7200,7 @@
             ]
         },
         {
-            "id": 281,
+            "id": 241,
             "spawn_mobs": [
                 {
                     "id": "minecraft:drowned",
@@ -7614,7 +7214,7 @@
             ]
         },
         {
-            "id": 282,
+            "id": 242,
             "spawn_mobs": [
                 {
                     "id": "minecraft:elder_guardian",
@@ -7634,7 +7234,7 @@
             ]
         },
         {
-            "id": 283,
+            "id": 243,
             "spawn_mobs": [
                 {
                     "id": "minecraft:breeze",
@@ -7648,7 +7248,7 @@
             ]
         },
         {
-            "id": 284,
+            "id": 244,
             "spawn_mobs": [
                 {
                     "id": "minecraft:enderman",
@@ -7662,7 +7262,7 @@
             ]
         },
         {
-            "id": 285,
+            "id": 245,
             "spawn_mobs": [
                 {
                     "id": "minecraft:endermite",
@@ -7676,7 +7276,7 @@
             ]
         },
         {
-            "id": 286,
+            "id": 246,
             "spawn_mobs": [
                 {
                     "id": "minecraft:evoker",
@@ -7690,7 +7290,7 @@
             ]
         },
         {
-            "id": 287,
+            "id": 247,
             "spawn_mobs": [
                 {
                     "id": "minecraft:fox",
@@ -7704,7 +7304,7 @@
             ]
         },
         {
-            "id": 288,
+            "id": 248,
             "spawn_mobs": [
                 {
                     "id": "minecraft:frog",
@@ -7718,7 +7318,7 @@
             ]
         },
         {
-            "id": 289,
+            "id": 249,
             "spawn_mobs": [
                 {
                     "id": "minecraft:ghast",
@@ -7732,7 +7332,7 @@
             ]
         },
         {
-            "id": 290,
+            "id": 250,
             "spawn_mobs": [
                 {
                     "id": "minecraft:giant",
@@ -7746,7 +7346,7 @@
             ]
         },
         {
-            "id": 291,
+            "id": 251,
             "spawn_mobs": [
                 {
                     "id": "minecraft:glow_squid",
@@ -7760,7 +7360,7 @@
             ]
         },
         {
-            "id": 292,
+            "id": 252,
             "spawn_mobs": [
                 {
                     "id": "minecraft:goat",
@@ -7774,7 +7374,7 @@
             ]
         },
         {
-            "id": 293,
+            "id": 253,
             "spawn_mobs": [
                 {
                     "id": "minecraft:guardian",
@@ -7785,7 +7385,7 @@
             ]
         },
         {
-            "id": 294,
+            "id": 254,
             "spawn_mobs": [
                 {
                     "id": "minecraft:hoglin",
@@ -7799,7 +7399,7 @@
             ]
         },
         {
-            "id": 295,
+            "id": 255,
             "spawn_mobs": [
                 {
                     "id": "minecraft:horse",
@@ -7813,7 +7413,7 @@
             ]
         },
         {
-            "id": 296,
+            "id": 256,
             "spawn_mobs": [
                 {
                     "id": "minecraft:husk",
@@ -7827,7 +7427,7 @@
             ]
         },
         {
-            "id": 297,
+            "id": 257,
             "spawn_mobs": [
                 {
                     "id": "minecraft:illusioner",
@@ -7841,7 +7441,7 @@
             ]
         },
         {
-            "id": 298,
+            "id": 258,
             "spawn_mobs": [
                 {
                     "id": "minecraft:iron_golem",
@@ -7855,7 +7455,7 @@
             ]
         },
         {
-            "id": 299,
+            "id": 259,
             "spawn_mobs": [
                 {
                     "id": "minecraft:llama",
@@ -7869,7 +7469,7 @@
             ]
         },
         {
-            "id": 300,
+            "id": 260,
             "spawn_mobs": [
                 {
                     "id": "minecraft:magma_cube",
@@ -7883,7 +7483,7 @@
             ]
         },
         {
-            "id": 301,
+            "id": 261,
             "spawn_mobs": [
                 {
                     "id": "minecraft:mooshroom",
@@ -7897,7 +7497,7 @@
             ]
         },
         {
-            "id": 302,
+            "id": 262,
             "spawn_mobs": [
                 {
                     "id": "minecraft:mule",
@@ -7911,7 +7511,7 @@
             ]
         },
         {
-            "id": 303,
+            "id": 263,
             "spawn_mobs": [
                 {
                     "id": "minecraft:ocelot",
@@ -7925,7 +7525,7 @@
             ]
         },
         {
-            "id": 304,
+            "id": 264,
             "spawn_mobs": [
                 {
                     "id": "minecraft:panda",
@@ -7939,7 +7539,7 @@
             ]
         },
         {
-            "id": 305,
+            "id": 265,
             "spawn_mobs": [
                 {
                     "id": "minecraft:parrot",
@@ -7953,7 +7553,7 @@
             ]
         },
         {
-            "id": 306,
+            "id": 266,
             "spawn_mobs": [
                 {
                     "id": "minecraft:phantom",
@@ -7967,7 +7567,7 @@
             ]
         },
         {
-            "id": 307,
+            "id": 267,
             "spawn_mobs": [
                 {
                     "id": "minecraft:pig",
@@ -7981,7 +7581,7 @@
             ]
         },
         {
-            "id": 308,
+            "id": 268,
             "spawn_mobs": [
                 {
                     "id": "minecraft:piglin",
@@ -7995,7 +7595,7 @@
             ]
         },
         {
-            "id": 309,
+            "id": 269,
             "spawn_mobs": [
                 {
                     "id": "minecraft:piglin_brute",
@@ -8009,7 +7609,7 @@
             ]
         },
         {
-            "id": 310,
+            "id": 270,
             "spawn_mobs": [
                 {
                     "id": "minecraft:pillager",
@@ -8023,7 +7623,7 @@
             ]
         },
         {
-            "id": 311,
+            "id": 271,
             "spawn_mobs": [
                 {
                     "id": "minecraft:player",
@@ -8037,7 +7637,7 @@
             ]
         },
         {
-            "id": 312,
+            "id": 272,
             "spawn_mobs": [
                 {
                     "id": "minecraft:polar_bear",
@@ -8051,7 +7651,7 @@
             ]
         },
         {
-            "id": 313,
+            "id": 273,
             "spawn_mobs": [
                 {
                     "id": "minecraft:pufferfish",
@@ -8065,7 +7665,7 @@
             ]
         },
         {
-            "id": 314,
+            "id": 274,
             "spawn_mobs": [
                 {
                     "id": "minecraft:rabbit",
@@ -8079,7 +7679,7 @@
             ]
         },
         {
-            "id": 315,
+            "id": 275,
             "spawn_mobs": [
                 {
                     "id": "minecraft:ravager",
@@ -8090,7 +7690,7 @@
             ]
         },
         {
-            "id": 316,
+            "id": 276,
             "spawn_mobs": [
                 {
                     "id": "minecraft:salmon",
@@ -8104,7 +7704,7 @@
             ]
         },
         {
-            "id": 317,
+            "id": 277,
             "spawn_mobs": [
                 {
                     "id": "minecraft:sheep",
@@ -8118,7 +7718,7 @@
             ]
         },
         {
-            "id": 318,
+            "id": 278,
             "spawn_mobs": [
                 {
                     "id": "minecraft:shulker",
@@ -8132,7 +7732,7 @@
             ]
         },
         {
-            "id": 319,
+            "id": 279,
             "spawn_mobs": [
                 {
                     "id": "minecraft:silverfish",
@@ -8146,7 +7746,7 @@
             ]
         },
         {
-            "id": 320,
+            "id": 280,
             "spawn_mobs": [
                 {
                     "id": "minecraft:skeleton",
@@ -8160,7 +7760,7 @@
             ]
         },
         {
-            "id": 321,
+            "id": 281,
             "spawn_mobs": [
                 {
                     "id": "minecraft:skeleton_horse",
@@ -8174,7 +7774,7 @@
             ]
         },
         {
-            "id": 322,
+            "id": 282,
             "spawn_mobs": [
                 {
                     "id": "minecraft:slime",
@@ -8188,7 +7788,7 @@
             ]
         },
         {
-            "id": 323,
+            "id": 283,
             "spawn_mobs": [
                 {
                     "id": "minecraft:sniffer",
@@ -8202,7 +7802,7 @@
             ]
         },
         {
-            "id": 324,
+            "id": 284,
             "spawn_mobs": [
                 {
                     "id": "minecraft:snow_golem",
@@ -8216,7 +7816,7 @@
             ]
         },
         {
-            "id": 325,
+            "id": 285,
             "spawn_mobs": [
                 {
                     "id": "minecraft:spider",
@@ -8230,7 +7830,7 @@
             ]
         },
         {
-            "id": 326,
+            "id": 286,
             "spawn_mobs": [
                 {
                     "id": "minecraft:squid",
@@ -8244,7 +7844,7 @@
             ]
         },
         {
-            "id": 327,
+            "id": 287,
             "spawn_mobs": [
                 {
                     "id": "minecraft:stray",
@@ -8258,7 +7858,7 @@
             ]
         },
         {
-            "id": 328,
+            "id": 288,
             "spawn_mobs": [
                 {
                     "id": "minecraft:strider",
@@ -8272,7 +7872,7 @@
             ]
         },
         {
-            "id": 329,
+            "id": 289,
             "spawn_mobs": [
                 {
                     "id": "minecraft:tadpole",
@@ -8286,7 +7886,7 @@
             ]
         },
         {
-            "id": 330,
+            "id": 290,
             "spawn_mobs": [
                 {
                     "id": "minecraft:trader_llama",
@@ -8300,7 +7900,7 @@
             ]
         },
         {
-            "id": 331,
+            "id": 291,
             "spawn_mobs": [
                 {
                     "id": "minecraft:tropical_fish",
@@ -8314,7 +7914,7 @@
             ]
         },
         {
-            "id": 332,
+            "id": 292,
             "spawn_mobs": [
                 {
                     "id": "minecraft:turtle",
@@ -8328,7 +7928,7 @@
             ]
         },
         {
-            "id": 333,
+            "id": 293,
             "spawn_mobs": [
                 {
                     "id": "minecraft:vex",
@@ -8342,7 +7942,7 @@
             ]
         },
         {
-            "id": 334,
+            "id": 294,
             "spawn_mobs": [
                 {
                     "id": "minecraft:villager",
@@ -8356,7 +7956,7 @@
             ]
         },
         {
-            "id": 335,
+            "id": 295,
             "spawn_mobs": [
                 {
                     "id": "minecraft:vindicator",
@@ -8370,7 +7970,7 @@
             ]
         },
         {
-            "id": 336,
+            "id": 296,
             "spawn_mobs": [
                 {
                     "id": "minecraft:wandering_trader",
@@ -8384,7 +7984,7 @@
             ]
         },
         {
-            "id": 337,
+            "id": 297,
             "spawn_mobs": [
                 {
                     "id": "minecraft:warden",
@@ -8395,7 +7995,7 @@
             ]
         },
         {
-            "id": 338,
+            "id": 298,
             "spawn_mobs": [
                 {
                     "id": "minecraft:witch",
@@ -8409,7 +8009,7 @@
             ]
         },
         {
-            "id": 339,
+            "id": 299,
             "spawn_mobs": [
                 {
                     "id": "minecraft:bogged",
@@ -8423,7 +8023,7 @@
             ]
         },
         {
-            "id": 340,
+            "id": 300,
             "spawn_mobs": [
                 {
                     "id": "minecraft:wither_skeleton",
@@ -8437,7 +8037,7 @@
             ]
         },
         {
-            "id": 341,
+            "id": 301,
             "spawn_mobs": [
                 {
                     "id": "minecraft:wolf",
@@ -8451,7 +8051,7 @@
             ]
         },
         {
-            "id": 342,
+            "id": 302,
             "spawn_mobs": [
                 {
                     "id": "minecraft:zoglin",
@@ -8465,7 +8065,7 @@
             ]
         },
         {
-            "id": 343,
+            "id": 303,
             "spawn_mobs": [
                 {
                     "id": "minecraft:zombie",
@@ -8479,7 +8079,7 @@
             ]
         },
         {
-            "id": 344,
+            "id": 304,
             "spawn_mobs": [
                 {
                     "id": "minecraft:zombie_horse",
@@ -8493,7 +8093,7 @@
             ]
         },
         {
-            "id": 345,
+            "id": 305,
             "spawn_mobs": [
                 {
                     "id": "minecraft:zombie_villager",
@@ -8507,7 +8107,7 @@
             ]
         },
         {
-            "id": 346,
+            "id": 306,
             "spawn_mobs": [
                 {
                     "id": "minecraft:zombified_piglin",
@@ -8521,7 +8121,7 @@
             ]
         },
         {
-            "id": 347,
+            "id": 307,
             "drop_items": [
                 {
                     "id": "minecraft:dandelion",
@@ -8697,7 +8297,7 @@
             ]
         },
         {
-            "id": 348,
+            "id": 308,
             "spawn_mobs": [
                 {
                     "id": "minecraft:lightning_bolt",
@@ -8714,7 +8314,7 @@
             ]
         },
         {
-            "id": 349,
+            "id": 309,
             "fall_blocks": [
                 {
                     "id": "minecraft:diamond_block",
@@ -8739,7 +8339,7 @@
             ]
         },
         {
-            "id": 350,
+            "id": 310,
             "fall_blocks": [
                 {
                     "id": "myluckyblock:my_lucky_block",
