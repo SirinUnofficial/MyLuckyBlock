@@ -1,14 +1,14 @@
 {
-    "name": "Special Random Events",
+    "name": "(Built-in)Enchanted Items Event Pack",
     "version": "%ModVersion%",
-    "info": "Add events with special data.",
+    "info": "Enchanted Items.",
     "random_events": [
         {
             "id": 1,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄之剑",
+                    "name": "name.myluckyblock.hero_sword",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -35,7 +35,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "击退棒",
+                    "name": "name.myluckyblock.knockback_stick",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -76,7 +76,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄之弓",
+                    "name": "name.myluckyblock.hero_bow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -103,7 +103,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "反伤刺甲",
+                    "name": "name.myluckyblock.thorns_chestplate",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -117,7 +117,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "狂乱的鸡尾酒",
+                    "name": "name.myluckyblock.furious_cocktail",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -131,7 +131,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "雪（难视）",
+                    "name": "name.myluckyblock.shit",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -145,7 +145,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄之弩",
+                    "name": "name.myluckyblock.hero_crossbow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -159,7 +159,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "奇怪的弩",
+                    "name": "name.myluckyblock.odd_crossbow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -173,7 +173,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "连弩",
+                    "name": "name.myluckyblock.quick_firing_crossbow",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -187,7 +187,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "英雄的重锤",
+                    "name": "name.myluckyblock.hero_mace",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -201,7 +201,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "飞起来",
+                    "name": "name.myluckyblock.wind_burst",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -215,7 +215,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "万能附魔书",
+                    "name": "name.myluckyblock.omnipotent_enchantment_book",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -226,151 +226,6 @@
         },
         {
             "id": 14,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:fireball",
-                    "name": null,
-                    "name_visible": false,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Motion:[0d,-1d],ExplosionPower:127}"
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:villager",
-                    "name": "良心商人",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{VillagerData:{type:plains,profession:farmer,level:5},Offers:{Recipes:[{maxUses:12,buy:{id:dirt,count:16},sell:{id:emerald,count:1}},{maxUses:12,buy:{id:cobblestone,count:16},sell:{id:emerald,count:1}}]}}"
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:villager",
-                    "name": "超级盔甲匠",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{VillagerData:{type:plains,profession:armorer,level:5},Offers:{Recipes:[{maxUses:6,buy:{id:diamond,count:20},sell:{id:diamond_helmet,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:32},sell:{id:diamond_chestplate,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:28},sell:{id:diamond_leggings,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:16},sell:{id:diamond_boots,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}}]}}"
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:zombie",
-                    "name": "超级僵尸",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{CustomName:'[{\"text\":\"超级僵尸\"}]',CustomNameVisible:1b,HandItems:[{id:netherite_sword,components:{enchantments:{levels:{bane_of_arthropods:5,fire_aspect:2,knockback:2,looting:3,sharpness:5,silk_touch:1,smite:5,sweeping_edge:3,unbreaking:3,breach:4}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:netherite_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}],ArmorDropChances:[0.1f,0.1f,0.1f,0.1f]}"
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:creeper",
-                    "name": null,
-                    "name_visible": false,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{powered:1}"
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:creeper",
-                    "name": "超级高压爬行者",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{powered:1,ExplosionRadius:50,CustomName:'[{\"text\":\"超级高压爬行者\"}]',Glowing:1b}"
-                }
-            ]
-        },
-        {
-            "id": 20,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:slime",
-                    "name": null,
-                    "name_visible": false,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Size:32}"
-                }
-            ]
-        },
-        {
-            "id": 21,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:magma_cube",
-                    "name": null,
-                    "name_visible": false,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Size:32}"
-                }
-            ]
-        },
-        {
-            "id": 22,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:horse",
-                    "name": null,
-                    "name_visible": false,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Variant:260,SaddleItem:{id:saddle,Count:1},Tame:1,body_armor_item:{id:diamond_horse_armor,Count:1}}"
-                }
-            ]
-        },
-        {
-            "id": 23,
-            "execute_commands": [
-                {
-                    "command": "summon minecraft:bat ~ ~ ~ {Passengers:[{id:skeleton_horse,SaddleItem:{id:saddle,Count:1},Tame:1,Passengers:[{id:skeleton,CustomName:'[{\"text\":\"骷髅骑士\"}]',CustomNameVisible:1b,Glowing:1b,HandItems:[{id:bow,components:{enchantments:{levels:{infinity:1,mending:1,power:2,punch:2,unbreaking:3}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:chainmail_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}]}]}]}",
-                    "pos_src": 0
-                }
-            ],
-            "comment": "TODO: 修复nbt生成"
-        },
-        {
-            "id": 24,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -385,7 +240,7 @@
             ]
         },
         {
-            "id": 25,
+            "id": 15,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -400,7 +255,7 @@
             ]
         },
         {
-            "id": 26,
+            "id": 16,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -415,7 +270,7 @@
             ]
         },
         {
-            "id": 27,
+            "id": 17,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -430,7 +285,7 @@
             ]
         },
         {
-            "id": 28,
+            "id": 18,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -445,7 +300,7 @@
             ]
         },
         {
-            "id": 29,
+            "id": 19,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -456,21 +311,6 @@
                     "num": 1,
                     "pos_src": 0,
                     "nbt": "{Item:{id:lingering_potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"滞留型祝福药水\",\"italic\":false}]'}}}"
-                }
-            ]
-        },
-        {
-            "id": 30,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:pillager",
-                    "name": "掠夺者·智识",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Glowing:1b,HandItems:[{id:crossbow,components:{enchantments:{levels:{multishot:20}},unbreakable:{},repair_cost:32767},count:1}],HandDropChances:[0.01f]}"
                 }
             ]
         }

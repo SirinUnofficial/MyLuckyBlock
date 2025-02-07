@@ -398,6 +398,9 @@ public class LuckyEventReader {
         @SerializedName("power")
         protected int power = 1;
 
+        @SerializedName("create_fire")
+        protected boolean createFire = false;
+
         // Getters
         public int getPosSrc() {
             return posSrc;
@@ -409,6 +412,10 @@ public class LuckyEventReader {
 
         public int getPower() {
             return power;
+        }
+
+        public boolean isCreateFire() {
+            return createFire;
         }
     }
 

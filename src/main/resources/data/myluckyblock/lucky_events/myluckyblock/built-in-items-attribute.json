@@ -1,14 +1,14 @@
 {
-    "name": "Attribute Random Events",
+    "name": "(Built-in)Attribute Items Event Pack",
     "version": "%ModVersion%",
-    "info": "Add events with attribute data.",
+    "info": "Items with special attribute data.",
     "random_events": [
         {
             "id": 1,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "黄金切尔西",
+                    "name": "name.myluckyblock.speed_boots",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -22,7 +22,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "坚硬的法式面包",
+                    "name": "name.myluckyblock.baguette",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -36,7 +36,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "牢大球鞋",
+                    "name": "name.myluckyblock.fall_boots",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -50,7 +50,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "泰坦胸甲",
+                    "name": "name.myluckyblock.titan_chestplate",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -64,7 +64,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "缩小护腿",
+                    "name": "name.myluckyblock.shrinking_leggings",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -78,7 +78,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "奇怪的头盔",
+                    "name": "name.myluckyblock.odd_helmet",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -92,7 +92,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "REACH!",
+                    "name": "name.myluckyblock.reach",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -106,7 +106,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "负魔金苹果",
+                    "name": "name.myluckyblock.detnahcne_golden_apple",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -120,7 +120,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "B",
+                    "name": "name.myluckyblock.b",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
@@ -134,7 +134,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "可疑的铁",
+                    "name": "name.myluckyblock.odd_iron_ingot",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
