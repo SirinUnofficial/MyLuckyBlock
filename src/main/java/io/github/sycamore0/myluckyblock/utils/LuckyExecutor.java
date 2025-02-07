@@ -213,12 +213,6 @@ public class LuckyExecutor {
                     if (entityType == EntityType.ITEM) {
                         LuckyFunctions.dropItemsByNbt(world, spawnMobPos, name, nameVisible, nbtString);
                     }
-                    else if (entityType == EntityType.LIGHTNING_BOLT) {
-                        LuckyFunctions.spawnLightning(world, spawnMobPos);
-                    }
-                    else if (entityType == EntityType.FIREBALL) {
-                        LuckyFunctions.spawnFireball(world, spawnMobPos, nbtString);
-                    }
                     else {
                         if (nbtString != null) {
                             LuckyFunctions.spawnMob(world, spawnMobPos, entityType, name, nameVisible, nbtString);
@@ -263,7 +257,8 @@ public class LuckyExecutor {
                 }
 
                 float power = createExplosion.getPower();
-                LuckyFunctions.createExplosion(world, createExplosionPos, power);
+                boolean createFire = createExplosion.isCreateFire();
+                LuckyFunctions.createExplosion(world, createExplosionPos, power, createFire);
             }
         }
 

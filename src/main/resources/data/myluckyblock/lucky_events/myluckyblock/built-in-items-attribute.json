@@ -1,7 +1,7 @@
 {
-    "name": "Attribute Random Events",
+    "name": "(Built-in)Attribute Items Event Pack",
     "version": "%ModVersion%",
-    "info": "Add events with attribute data.",
+    "info": "Items with special attribute data.",
     "random_events": [
         {
             "id": 1,

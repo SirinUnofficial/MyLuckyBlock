@@ -1,5 +1,15 @@
 {
     "itemGroup.myluckyblock.myluckyblock_group": "My Lucky Block",
     "item.myluckyblock.my_lucky_block": "Lucky Block",
-    "block.myluckyblock.my_lucky_block": "Lucky Block"
+    "block.myluckyblock.my_lucky_block": "Lucky Block",
+    "item.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
+    "block.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
+    "block.myluckyblock.lucky_block.tooltip": "Lucky Block",
+    "block.myluckyblock.debug_lucky_block.tooltip": "for debug",
+
+    "name.myluckyblock.great_villager": "Great Villager",
+    "name.myluckyblock.hero_blacksmith": "Hero's Blacksmith",
+    "name.myluckyblock.super_zombie": "Super Zombie",
+    "name.myluckyblock.super_charged_creeper": "Super Charged Creeper",
+    "name.myluckyblock.super_pillager": "Super Pillager"
 }

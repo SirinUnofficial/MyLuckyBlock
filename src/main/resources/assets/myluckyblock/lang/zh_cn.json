@@ -1,5 +1,15 @@
 {
     "itemGroup.myluckyblock.myluckyblock_group": "我的幸运方块",
     "item.myluckyblock.my_lucky_block": "幸运方块",
-    "block.myluckyblock.my_lucky_block": "幸运方块"
+    "block.myluckyblock.my_lucky_block": "幸运方块",
+    "item.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
+    "block.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
+    "block.myluckyblock.lucky_block.tooltip": "幸运方块",
+    "block.myluckyblock.debug_lucky_block.tooltip": "仅供调试",
+
+    "name.myluckyblock.great_villager": "良心商人",
+    "name.myluckyblock.hero_blacksmith": "英雄盔甲匠",
+    "name.myluckyblock.super_zombie": "超级僵尸",
+    "name.myluckyblock.super_charged_creeper": "超级高压爬行者",
+    "name.myluckyblock.super_pillager": "超级掠夺者"
 }

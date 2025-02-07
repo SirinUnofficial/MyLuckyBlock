@@ -58,7 +58,7 @@ public class LuckyFunctions {
         item.saveNbt(nbt);
 
         if (name != null) {
-            item.setCustomName(Text.of(name));
+            item.setCustomName(Text.translatable(name));
             item.setCustomNameVisible(nameVisible);
         }
 
@@ -104,32 +104,30 @@ public class LuckyFunctions {
 
     public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, @Nullable String nbtString) {
         Entity entity = entityType.create(world);
-        MobEntity mobEntity = (MobEntity) entity;
-        if (mobEntity != null) {
-            NbtCompound nbt = NbtHelper.generateNbt(nbtString);
-            mobEntity.readNbt(nbt);
-            mobEntity.saveNbt(nbt);
-            if (name != null) {
-                mobEntity.setCustomName(Text.of(name));
-                mobEntity.setCustomNameVisible(nameVisible);
-            }
-            mobEntity.setPosition(pos);
-            world.spawnEntity(mobEntity);
+        if (entity == null) return;
+        NbtCompound nbt = NbtHelper.generateNbt(nbtString);
+        entity.readNbt(nbt);
+        entity.saveNbt(nbt);
+        if (name != null) {
+            entity.setCustomName(Text.translatable(name));
+            entity.setCustomNameVisible(nameVisible);
         }
+        entity.setPosition(pos);
+        world.spawnEntity(entity);
     }
 
     public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, boolean isBaby) {
         Entity entity = entityType.create(world);
-        MobEntity mobEntity = (MobEntity) entity;
-        if (mobEntity != null) {
-            if (name != null) {
-                mobEntity.setCustomName(Text.of(name));
-                mobEntity.setCustomNameVisible(nameVisible);
-            }
-            mobEntity.setBaby(isBaby);
-            mobEntity.setPosition(pos);
-            world.spawnEntity(mobEntity);
+        if (entity == null) return;
+        if (name != null) {
+            entity.setCustomName(Text.translatable(name));
+            entity.setCustomNameVisible(nameVisible);
         }
+        if (entity instanceof MobEntity mobEntity) {
+            mobEntity.setBaby(isBaby);
+        }
+        entity.setPosition(pos);
+        world.spawnEntity(entity);
     }
 
     public static void spawnLightning(World world, Vec3d pos) {
@@ -147,15 +145,15 @@ public class LuckyFunctions {
         world.spawnEntity(fireballEntity);
     }
 
-    public static void createExplosion(World world, Vec3d pos, float power) {
-        world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, World.ExplosionSourceType.BLOCK);
+    public static void createExplosion(World world, Vec3d pos, float power, boolean createFire) {
+        world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, createFire, World.ExplosionSourceType.BLOCK);
     }
 
     public static void sendMessage(PlayerEntity player, String message, int receiver) {
         if (receiver == 0) {
-            player.sendMessage(Text.of(message), true);
+            player.sendMessage(Text.translatable(message), true);
         } else if (receiver == 1) {
-            player.sendMessage(Text.of(message), false);
+            player.sendMessage(Text.translatable(message), false);
         } else {
             MyLuckyBlock.LOGGER.error("Error: SendMessages Invalid Receiver: {}", receiver);
         }
@@ -186,7 +184,7 @@ public class LuckyFunctions {
             if (template.isEmpty()) {
                 Identifier resourcePath = Identifier.of(
                         MyLuckyBlock.MOD_ID,
-                        "structures/" + structureName + ".nbt"
+                        "structure/" + structureName + ".nbt"
                 );
 
                 ResourceManager resourceManager = server.getResourceManager();
@@ -225,6 +223,7 @@ public class LuckyFunctions {
     public static void executeCommand(World world, Vec3d pos, String command) {
         if (world instanceof ServerWorld serverWorld) {
             CommandBlockMinecartEntity cBMinecart = new CommandBlockMinecartEntity(serverWorld, pos.getX(), pos.getY(), pos.getZ());
+            cBMinecart.setCustomName(Text.translatable(MyLuckyBlock.MOD_ID));
             cBMinecart.getCommandExecutor().setCommand(command);
             cBMinecart.getCommandExecutor().execute(serverWorld);
             cBMinecart.setPos(pos.getX(), pos.getY(), pos.getZ());
