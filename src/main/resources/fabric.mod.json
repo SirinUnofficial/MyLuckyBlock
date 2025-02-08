@@ -2,7 +2,7 @@
     "schemaVersion": 1,
     "id": "myluckyblock",
     "version": "${version}",
-    "name": "MyLuckyBlock",
+    "name": "My Lucky Block",
     "description": "My lucky block mod",
     "authors": [
         "Sycamore0",
