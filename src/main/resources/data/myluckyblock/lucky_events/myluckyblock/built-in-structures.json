@@ -40,9 +40,77 @@
                     "id": "cherry_tree",
                     "pos_src": 0,
                     "offset": {
-                        "x" : -7,
-                        "y" : 0,
-                        "z" : -7
+                        "x": -7,
+                        "y": 0,
+                        "z": -7
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "load_structures": [
+                {
+                    "id": "longzi",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -1,
+                        "y": -1,
+                        "z": -1
+                    }
+                }
+            ],
+            "fall_blocks": [
+                {
+                    "id": "minecraft:anvil",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 30,
+                        "z": 0
+                    }
+                },
+                {
+                    "id": "minecraft:anvil",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 31,
+                        "z": 0
+                    }
+                },
+                {
+                    "id": "minecraft:anvil",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 32,
+                        "z": 0
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "load_structures": [
+                {
+                    "id": "longzi",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -1,
+                        "y": -1,
+                        "z": -1
+                    }
+                }
+            ],
+            "place_blocks": [
+                {
+                    "id": "minecraft:lava",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 2,
+                        "z": 0
                     }
                 }
             ]
