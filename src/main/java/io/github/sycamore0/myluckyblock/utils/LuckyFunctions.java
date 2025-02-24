@@ -10,7 +10,6 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.vehicle.CommandBlockMinecartEntity;
 import net.minecraft.inventory.LootableInventory;
 import net.minecraft.item.ItemStack;
@@ -97,12 +96,13 @@ public class LuckyFunctions {
         }
     }
 
-    public static void fallBlock(World world, BlockPos blockPos, Block block) {
+    public static void fallBlock(World world, BlockPos blockPos, Block block, Vec3d velocity) {
         BlockState blockState = block.getDefaultState();
-        FallingBlockEntity.spawnFromBlock(world, blockPos, blockState);
+        FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, blockPos, blockState);
+        fallingBlockEntity.addVelocity(velocity);
     }
 
-    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, @Nullable String nbtString) {
+    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, @Nullable String nbtString, Vec3d velocity) {
         Entity entity = entityType.create(world);
         if (entity == null) return;
         NbtCompound nbt = NbtHelper.generateNbt(nbtString);
@@ -113,10 +113,11 @@ public class LuckyFunctions {
             entity.setCustomNameVisible(nameVisible);
         }
         entity.setPosition(pos);
+        entity.addVelocity(velocity);
         world.spawnEntity(entity);
     }
 
-    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, boolean isBaby) {
+    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, boolean isBaby, Vec3d velocity) {
         Entity entity = entityType.create(world);
         if (entity == null) return;
         if (name != null) {
@@ -127,22 +128,8 @@ public class LuckyFunctions {
             mobEntity.setBaby(isBaby);
         }
         entity.setPosition(pos);
+        entity.addVelocity(velocity);
         world.spawnEntity(entity);
-    }
-
-    public static void spawnLightning(World world, Vec3d pos) {
-        LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-        lightningEntity.setPosition(pos);
-        world.spawnEntity(lightningEntity);
-    }
-
-    public static void spawnFireball(World world, Vec3d pos, @Nullable String nbtString) {
-        FireballEntity fireballEntity = new FireballEntity(EntityType.FIREBALL, world);
-        fireballEntity.setPosition(pos);
-        NbtCompound nbt = NbtHelper.generateNbt(nbtString);
-        fireballEntity.readNbt(nbt);
-        fireballEntity.saveNbt(nbt);
-        world.spawnEntity(fireballEntity);
     }
 
     public static void createExplosion(World world, Vec3d pos, float power, boolean createFire) {

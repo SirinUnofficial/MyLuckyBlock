@@ -138,6 +138,7 @@ public class LuckyExecutor {
                 int posSrc = fallBlock.getPosSrc();
                 Vec3d fallBlockPos = PosHelper.parseBlockPos(blockPos);
                 Vec3d playerPos = PosHelper.parseBlockPos(player.getBlockPos());
+                Vec3d velocity = fallBlock.getVelocity();
                 double x, y, z;
                 switch (posSrc) {
                     case 0:
@@ -158,7 +159,7 @@ public class LuckyExecutor {
                 }
 
                 Block blockId = Registries.BLOCK.get(Identifier.of(fallBlock.getId()));
-                LuckyFunctions.fallBlock(world, PosHelper.parseVec3d(fallBlockPos), blockId);
+                LuckyFunctions.fallBlock(world, PosHelper.parseVec3d(fallBlockPos), blockId, velocity);
             }
         }
 
@@ -191,6 +192,7 @@ public class LuckyExecutor {
                 for (int i = 0; i < count; i++) {
                     Vec3d spawnMobPos = PosHelper.parseBlockPos(blockPos);
                     Vec3d playerPos = PosHelper.parseBlockPos(player.getBlockPos());
+                    Vec3d velocity = spawnMob.getVelocity();
                     double x, y, z;
                     switch (posSrc) {
                         case 0:
@@ -215,9 +217,9 @@ public class LuckyExecutor {
                     }
                     else {
                         if (nbtString != null) {
-                            LuckyFunctions.spawnMob(world, spawnMobPos, entityType, name, nameVisible, nbtString);
+                            LuckyFunctions.spawnMob(world, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
                         } else {
-                            LuckyFunctions.spawnMob(world, spawnMobPos, entityType, name, nameVisible, isBaby);
+                            LuckyFunctions.spawnMob(world, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
                         }
                     }
                 }

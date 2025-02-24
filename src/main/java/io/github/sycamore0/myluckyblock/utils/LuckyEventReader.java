@@ -2,6 +2,7 @@ package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.annotations.SerializedName;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.List;
 
@@ -167,7 +168,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -190,7 +191,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
     }
@@ -200,7 +201,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         @SerializedName("id")
         protected String id;
@@ -210,7 +211,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
 
@@ -224,7 +225,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         @SerializedName("id")
         protected String id = "empty";
@@ -237,7 +238,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
 
@@ -251,22 +252,29 @@ public class LuckyEventReader {
     }
 
     public static class FallBlock {
+        @SerializedName("id")
+        protected String id;
+
         @SerializedName("pos_src")
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
-        @SerializedName("id")
-        protected String id;
+        @SerializedName("velocity")
+        protected Vec3d velocity = new Vec3d(0.0, 0.0, 0.0);
 
         // Getters
         public int getPosSrc() {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
+        }
+
+        public Vec3d getVelocity() {
+            return velocity;
         }
 
         public String getId() {
@@ -306,7 +314,10 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
+
+        @SerializedName("velocity")
+        protected Vec3d velocity = new Vec3d(0.0, 0.0, 0.0);
 
         @SerializedName("name")
         protected String name = null;
@@ -334,8 +345,12 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
+        }
+
+        public Vec3d getVelocity() {
+            return velocity;
         }
 
         public String getId() {
@@ -393,7 +408,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         @SerializedName("power")
         protected int power = 1;
@@ -406,7 +421,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
 
@@ -436,7 +451,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -459,7 +474,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
     }
@@ -472,7 +487,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -483,7 +498,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
     }
@@ -496,7 +511,7 @@ public class LuckyEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
         // Getters
         public String getCommand() {
@@ -507,7 +522,7 @@ public class LuckyEventReader {
             return posSrc;
         }
 
-        public Offset getOffset() {
+        public Vec3d getOffset() {
             return offset;
         }
     }
@@ -532,37 +547,6 @@ public class LuckyEventReader {
 
         public int getMax() {
             return max;
-        }
-    }
-
-    public static class Offset {
-        @SerializedName("x")
-        protected double x;
-
-        @SerializedName("y")
-        protected double y;
-
-        @SerializedName("z")
-        protected double z;
-
-        // Default Constructor
-        public Offset(double x, double y, double z) {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
-
-        // Getters
-        public double getX() {
-            return x;
-        }
-
-        public double getY() {
-            return y;
-        }
-
-        public double getZ() {
-            return z;
         }
     }
 
