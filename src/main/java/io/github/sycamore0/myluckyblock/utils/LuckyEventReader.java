@@ -170,6 +170,9 @@ public class LuckyEventReader {
         @SerializedName("offset")
         protected Vec3d offset = new Vec3d(0.0, 0.0, 0.0);
 
+        @SerializedName("nbt")
+        protected String nbt = null;
+
         // Getters
         public String getId() {
             return id;
@@ -193,6 +196,10 @@ public class LuckyEventReader {
 
         public Vec3d getOffset() {
             return offset;
+        }
+
+        public String getNbt() {
+            return nbt;
         }
     }
 
@@ -390,12 +397,12 @@ public class LuckyEventReader {
         @SerializedName("msg")
         protected String msg;
 
-        @SerializedName("receiver")
-        protected int receiver = 0;
+        @SerializedName("overlay")
+        protected boolean overlay = true;
 
         // Getters
-        public int getReceiver() {
-            return receiver;
+        public boolean getReceiver() {
+            return overlay;
         }
 
         public String getMsg() {

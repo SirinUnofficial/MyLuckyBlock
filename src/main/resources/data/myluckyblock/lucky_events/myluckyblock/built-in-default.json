@@ -3862,7 +3862,7 @@
             "send_messages": [
                 {
                     "msg": "哇，好吃的！",
-                    "receiver": 0
+                    "overlay": true
                 }
             ]
         },

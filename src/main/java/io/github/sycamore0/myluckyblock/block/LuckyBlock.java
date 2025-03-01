@@ -1,7 +1,7 @@
 package io.github.sycamore0.myluckyblock.block;
 
 import io.github.sycamore0.myluckyblock.MyLuckyBlock;
-import io.github.sycamore0.myluckyblock.utils.BreakLuckyBlock;
+import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -20,6 +20,7 @@ public class LuckyBlock extends Block {
     public LuckyBlock(Settings settings, String modId) {
         super(settings);
         this.modId = modId;
+        this.includeBuiltIn = false;
     }
 
     public LuckyBlock(Settings settings, String modId, boolean includeBuiltIn) {

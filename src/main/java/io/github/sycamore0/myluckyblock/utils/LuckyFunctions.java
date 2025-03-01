@@ -12,6 +12,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.CommandBlockMinecartEntity;
 import net.minecraft.inventory.LootableInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.nbt.NbtSizeTracker;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.resource.Resource;
@@ -44,11 +46,29 @@ import java.nio.file.NoSuchFileException;
 import java.util.Optional;
 
 public class LuckyFunctions {
-    public static void dropItems(World world, Vec3d pos, ItemStack itemStack) {
-        world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack));
+    public static void dropItems(World world, Vec3d pos, String itemId, int count) {
+        dropItems(world, pos, itemId, count,null);
     }
 
-    public static void dropItemsByNbt(World world, Vec3d pos, String name, boolean nameVisible, @Nullable String nbtString) {
+    public static void dropItems(World world, Vec3d pos, String itemId, int count, @Nullable String nbtString) {
+        if (itemId.equals("minecraft:air")) return;
+        Item item = Registries.ITEM.get(Identifier.of(itemId));
+        ItemStack itemStack = new ItemStack(item, count);
+
+        ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack);
+
+        if (nbtString != null) {
+            NbtCompound nbt = NbtHelper.generateItemNbt(itemId, count, nbtString);
+            itemEntity.readNbt(nbt);
+            itemEntity.saveNbt(nbt);
+        }
+
+        itemEntity.setPosition(pos);
+        world.spawnEntity(itemEntity);
+    }
+
+    // use in spawn mob
+    public static void dropItemsByNbt(World world, Vec3d pos, @Nullable String name, boolean nameVisible, @Nullable String nbtString) {
         ItemStack itemStack = new ItemStack(Items.AIR);
         ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack);
 
@@ -65,8 +85,10 @@ public class LuckyFunctions {
         world.spawnEntity(item);
     }
 
-    public static void placeBlock(World world, BlockPos blockPos, Block block) {
+    public static void placeBlock(World world, Vec3d pos, String blockId) {
+        Block block = Registries.BLOCK.get(Identifier.of(blockId));
         BlockState blockState = block.getDefaultState();
+        BlockPos blockPos = PosHelper.parseVec3d(pos);
         world.setBlockState(blockPos, blockState);
     }
 
@@ -102,7 +124,7 @@ public class LuckyFunctions {
         fallingBlockEntity.addVelocity(velocity);
     }
 
-    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, @Nullable String nbtString, Vec3d velocity) {
+    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, @Nullable String nbtString, Vec3d velocity) {
         Entity entity = entityType.create(world);
         if (entity == null) return;
         NbtCompound nbt = NbtHelper.generateNbt(nbtString);
@@ -117,7 +139,7 @@ public class LuckyFunctions {
         world.spawnEntity(entity);
     }
 
-    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, Boolean nameVisible, boolean isBaby, Vec3d velocity) {
+    public static void spawnMob(World world, Vec3d pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3d velocity) {
         Entity entity = entityType.create(world);
         if (entity == null) return;
         if (name != null) {
@@ -136,14 +158,8 @@ public class LuckyFunctions {
         world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, createFire, World.ExplosionSourceType.BLOCK);
     }
 
-    public static void sendMessage(PlayerEntity player, String message, int receiver) {
-        if (receiver == 0) {
-            player.sendMessage(Text.translatable(message), true);
-        } else if (receiver == 1) {
-            player.sendMessage(Text.translatable(message), false);
-        } else {
-            MyLuckyBlock.LOGGER.error("Error: SendMessages Invalid Receiver: {}", receiver);
-        }
+    public static void sendMessage(PlayerEntity player, String message, boolean overlay) {
+        player.sendMessage(Text.translatable(message), overlay);
     }
 
     public static void givePotionEffect(PlayerEntity player, RegistryEntry<StatusEffect> effect, int duration, int amplifier) {

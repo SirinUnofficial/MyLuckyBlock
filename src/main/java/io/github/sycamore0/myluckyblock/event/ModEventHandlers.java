@@ -1,6 +1,5 @@
 package io.github.sycamore0.myluckyblock.event;
 
-import io.github.sycamore0.myluckyblock.utils.*;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 
 public class ModEventHandlers {

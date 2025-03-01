@@ -1,15 +1,17 @@
 package io.github.sycamore0.myluckyblock.utils;
 
+import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.StringNbtReader;
 import org.jetbrains.annotations.Nullable;
 
 public class NbtHelper {
     // generate NBT from string
-    public static NbtCompound generateNbt(@Nullable String string) {
+    public static NbtCompound generateNbt(@Nullable String nbtStr) {
         try {
-            if (string != null) {
-                NbtCompound nbt = StringNbtReader.parse(string);
+            if (nbtStr != null) {
+                NbtCompound nbt = StringNbtReader.parse(nbtStr);
                 if (nbt instanceof NbtCompound) {
                     return nbt;
                 } else {
@@ -18,6 +20,22 @@ public class NbtHelper {
             }
         } catch (Exception e) {
             throw new IllegalArgumentException("Failed to parse NBT data: " + e.getMessage(), e);
+        }
+        return null;
+    }
+
+    public static NbtCompound generateItemNbt(String itemId, int count, @Nullable String itemNbtStr) {
+        if (itemNbtStr != null) {
+            String nbtStr = "{Item:"
+                    + "{id:\""
+                    + itemId
+                    + "\",count:"
+                    + count
+                    + ","
+                    + "components:{"
+                    + itemNbtStr
+                    + "}}}";
+            return generateNbt(nbtStr);
         }
         return null;
     }
