@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffect;

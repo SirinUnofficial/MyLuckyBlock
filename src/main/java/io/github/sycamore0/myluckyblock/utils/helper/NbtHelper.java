@@ -1,7 +1,5 @@
-package io.github.sycamore0.myluckyblock.utils;
+package io.github.sycamore0.myluckyblock.utils.helper;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.StringNbtReader;
 import org.jetbrains.annotations.Nullable;

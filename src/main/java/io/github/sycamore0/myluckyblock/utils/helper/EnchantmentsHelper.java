@@ -1,4 +1,4 @@
-package io.github.sycamore0.myluckyblock.utils;
+package io.github.sycamore0.myluckyblock.utils.helper;
 
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;

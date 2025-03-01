@@ -1,4 +1,4 @@
-package io.github.sycamore0.myluckyblock.utils;
+package io.github.sycamore0.myluckyblock.utils.helper;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;

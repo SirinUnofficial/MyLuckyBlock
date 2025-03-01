@@ -3,6 +3,7 @@ package io.github.sycamore0.myluckyblock.event;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import io.github.sycamore0.myluckyblock.utils.*;
+import io.github.sycamore0.myluckyblock.utils.helper.EnchantmentsHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;

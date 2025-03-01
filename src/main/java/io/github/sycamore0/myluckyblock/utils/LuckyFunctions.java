@@ -1,6 +1,8 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
+import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -216,13 +218,6 @@ public class LuckyFunctions {
         }
     }
 
-    // Experimental
-    public static void playSound(PlayerEntity player, World world, Vec3d pos, SoundCategory soundCategory, float volume, float pitch) {
-        world.playSound(player, PosHelper.parseVec3d(pos), SoundEvents.BLOCK_CHERRY_LEAVES_BREAK, soundCategory, volume, pitch);
-    }
-
-    // Experimental
-    // 提高自定义程度
     public static void executeCommand(World world, Vec3d pos, String command) {
         if (world instanceof ServerWorld serverWorld) {
             CommandBlockMinecartEntity cBMinecart = new CommandBlockMinecartEntity(serverWorld, pos.getX(), pos.getY(), pos.getZ());
@@ -233,5 +228,10 @@ public class LuckyFunctions {
             serverWorld.spawnEntity(cBMinecart);
             cBMinecart.discard();
         }
+    }
+
+    // Experimental
+    public static void playSound(PlayerEntity player, World world, Vec3d pos, SoundCategory soundCategory, float volume, float pitch) {
+        world.playSound(player, PosHelper.parseVec3d(pos), SoundEvents.BLOCK_CHERRY_LEAVES_BREAK, soundCategory, volume, pitch);
     }
 }
