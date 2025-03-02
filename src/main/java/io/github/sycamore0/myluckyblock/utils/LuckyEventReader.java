@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.annotations.SerializedName;
+import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -490,6 +491,9 @@ public class LuckyEventReader {
         @SerializedName("id")
         protected String id;
 
+        @SerializedName("mod_id")
+        protected String modId = MyLuckyBlock.MOD_ID;
+
         @SerializedName("pos_src")
         protected int posSrc = 0;
 
@@ -499,6 +503,10 @@ public class LuckyEventReader {
         // Getters
         public String getId() {
             return id;
+        }
+
+        public String getModId() {
+            return modId;
         }
 
         public int getPosSrc() {

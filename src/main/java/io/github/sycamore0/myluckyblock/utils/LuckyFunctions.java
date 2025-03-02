@@ -176,19 +176,19 @@ public class LuckyFunctions {
         }
     }
 
-    public static void loadStructure(World world, BlockPos pos, String structureName) {
+    public static void loadStructure(World world, BlockPos pos, String modIdd, String structureName) {
         if (!(world instanceof ServerWorld serverWorld)) return;
 
         MinecraftServer server = serverWorld.getServer();
         StructureTemplateManager manager = serverWorld.getStructureTemplateManager();
-        Identifier structureId = Identifier.of(MyLuckyBlock.MOD_ID, structureName);
+        Identifier structureId = Identifier.of(modIdd, structureName);
 
         try {
             Optional<StructureTemplate> template = manager.getTemplate(structureId);
 
             if (template.isEmpty()) {
                 Identifier resourcePath = Identifier.of(
-                        MyLuckyBlock.MOD_ID,
+                        modIdd,
                         "structure/" + structureName + ".nbt"
                 );
 

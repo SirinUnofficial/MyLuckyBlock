@@ -271,6 +271,7 @@ public class LuckyExecutor {
         if (function.hasLoadStructures()) {
             for (LuckyEventReader.LoadStructure loadStructure : function.getLoadStructures()) {
                 // Get Structure ID
+                String modId = loadStructure.getModId();
                 String structureId = loadStructure.getId();
 
                 // Get Position
@@ -290,7 +291,7 @@ public class LuckyExecutor {
                         break;
                 }
 
-                LuckyFunctions.loadStructure(world, PosHelper.parseVec3d(loadStructurePos), structureId);
+                LuckyFunctions.loadStructure(world, PosHelper.parseVec3d(loadStructurePos), modId, structureId);
             }
         }
 
