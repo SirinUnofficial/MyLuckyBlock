@@ -53,8 +53,8 @@ public class LuckyFunctions {
     }
 
     public static void dropItems(World world, Vec3d pos, String itemId, int count, @Nullable String nbtString) {
-        if (itemId.equals("minecraft:air")) return;
         Item item = Registries.ITEM.get(Identifier.of(itemId));
+        if (item.equals(Items.AIR)) return;
         ItemStack itemStack = new ItemStack(item, count);
 
         ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack);
@@ -94,6 +94,7 @@ public class LuckyFunctions {
         world.setBlockState(blockPos, blockState);
     }
 
+    // TODO: not type but block id?
     public static void placeChest(World world, BlockPos blockPos, int type, RegistryKey<LootTable> lootTableId) {
         Block block = Blocks.CHEST;
         switch (type) {
@@ -107,6 +108,7 @@ public class LuckyFunctions {
                 block = Blocks.SHULKER_BOX;
                 break;
             case 0:
+                // Default is Chest
                 break;
             default:
                 MyLuckyBlock.LOGGER.error("Error: PlaceChests Invalid Type: {}", type);
@@ -176,19 +178,19 @@ public class LuckyFunctions {
         }
     }
 
-    public static void loadStructure(World world, BlockPos pos, String modIdd, String structureName) {
+    public static void loadStructure(World world, BlockPos pos, String modId, String structureName) {
         if (!(world instanceof ServerWorld serverWorld)) return;
 
         MinecraftServer server = serverWorld.getServer();
         StructureTemplateManager manager = serverWorld.getStructureTemplateManager();
-        Identifier structureId = Identifier.of(modIdd, structureName);
+        Identifier structureId = Identifier.of(modId, structureName);
 
         try {
             Optional<StructureTemplate> template = manager.getTemplate(structureId);
 
             if (template.isEmpty()) {
                 Identifier resourcePath = Identifier.of(
-                        modIdd,
+                        modId,
                         "structure/" + structureName + ".nbt"
                 );
 
