@@ -13,12 +13,11 @@ import java.util.Set;
 public class EnchantmentsHelper {
     public static int getEnchantmentLevel(ItemStack stack, RegistryKey<Enchantment> enchantment) {
         ItemEnchantmentsComponent enchants = stack.getEnchantments();
-        if (!enchants.equals(ItemEnchantmentsComponent.DEFAULT)) {
-            Set<RegistryEntry<Enchantment>> enchantList = enchants.getEnchantments();
-            for (RegistryEntry<Enchantment> entry : enchantList) {
-                if (entry.matchesKey(enchantment)) {
-                    return enchants.getLevel(entry);
-                }
+        if (enchants.equals(ItemEnchantmentsComponent.DEFAULT)) return -1;
+        Set<RegistryEntry<Enchantment>> enchantList = enchants.getEnchantments();
+        for (RegistryEntry<Enchantment> entry : enchantList) {
+            if (entry.matchesKey(enchantment)) {
+                return enchants.getLevel(entry);
             }
         }
         return -1;
