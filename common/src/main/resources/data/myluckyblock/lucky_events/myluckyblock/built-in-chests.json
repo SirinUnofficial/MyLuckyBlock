@@ -1,0 +1,407 @@
+{
+    "name": "(Built-in)Loot Chests Event Pack",
+    "version": "1.0",
+    "info": "Loot table chests.",
+    "random_events": [
+        {
+            "id": 1,
+            "place_chests": [
+                {
+                    "id": "chests/end_city_treasure",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "place_chests": [
+                {
+                    "id": "chests/simple_dungeon",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "place_chests": [
+                {
+                    "id": "chests/abandoned_mineshaft",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "place_chests": [
+                {
+                    "id": "chests/nether_bridge",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "place_chests": [
+                {
+                    "id": "chests/stronghold_library",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "place_chests": [
+                {
+                    "id": "chests/stronghold_crossing",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "place_chests": [
+                {
+                    "id": "chests/stronghold_corridor",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "place_chests": [
+                {
+                    "id": "chests/desert_pyramid",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "place_chests": [
+                {
+                    "id": "chests/jungle_temple",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "place_chests": [
+                {
+                    "id": "chests/jungle_temple_dispenser",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "place_chests": [
+                {
+                    "id": "chests/igloo_chest",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "place_chests": [
+                {
+                    "id": "chests/woodland_mansion",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "place_chests": [
+                {
+                    "id": "chests/underwater_ruin_small",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "place_chests": [
+                {
+                    "id": "chests/underwater_ruin_big",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "place_chests": [
+                {
+                    "id": "chests/buried_treasure",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "place_chests": [
+                {
+                    "id": "chests/shipwreck_map",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "place_chests": [
+                {
+                    "id": "chests/shipwreck_supply",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "place_chests": [
+                {
+                    "id": "chests/shipwreck_treasure",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "place_chests": [
+                {
+                    "id": "chests/pillager_outpost",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "place_chests": [
+                {
+                    "id": "chests/bastion_treasure",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "place_chests": [
+                {
+                    "id": "chests/bastion_other",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "place_chests": [
+                {
+                    "id": "chests/bastion_bridge",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "place_chests": [
+                {
+                    "id": "chests/bastion_hoglin_stable",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "place_chests": [
+                {
+                    "id": "chests/ancient_city",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "place_chests": [
+                {
+                    "id": "chests/ancient_city_ice_box",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "place_chests": [
+                {
+                    "id": "chests/ruined_portal",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_common",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_rare",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_unique",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous_common",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous_rare",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous_unique",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/supply",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/corridor",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/intersection",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/intersection_barrel",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/entrance",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "place_chests": [
+                {
+                    "id": "chests/spawn_bonus_chest",
+                    "type": 0,
+                    "pos_src": 0
+                }
+            ]
+        }
+    ]
+}

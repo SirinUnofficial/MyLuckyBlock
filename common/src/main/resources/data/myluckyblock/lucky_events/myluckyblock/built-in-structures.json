@@ -1,0 +1,119 @@
+{
+    "name": "(Built-in)Structures Event Pack",
+    "version": "1.3",
+    "info": "Structures.",
+    "random_events": [
+        {
+            "id": 1,
+            "load_structures": [
+                {
+                    "id": "xn",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -2,
+                        "y": 12,
+                        "z": -2
+                    }
+                }
+            ],
+            "give_potion_effects": [
+                {
+                    "id": "minecraft:levitation",
+                    "amplifier": 200,
+                    "duration": 1200
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "load_structures": [
+                {
+                    "id": "cherry_house",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "load_structures": [
+                {
+                    "id": "cherry_tree",
+                    "pos_src": 0,
+                    "offset": {
+                        "x": -7,
+                        "y": 0,
+                        "z": -7
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "load_structures": [
+                {
+                    "id": "longzi",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -1,
+                        "y": -1,
+                        "z": -1
+                    }
+                }
+            ],
+            "fall_blocks": [
+                {
+                    "id": "minecraft:anvil",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 30,
+                        "z": 0
+                    }
+                },
+                {
+                    "id": "minecraft:anvil",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 31,
+                        "z": 0
+                    }
+                },
+                {
+                    "id": "minecraft:anvil",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 32,
+                        "z": 0
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "load_structures": [
+                {
+                    "id": "longzi",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -1,
+                        "y": -1,
+                        "z": -1
+                    }
+                }
+            ],
+            "place_blocks": [
+                {
+                    "id": "minecraft:lava",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": 0,
+                        "y": 2,
+                        "z": 0
+                    }
+                }
+            ]
+        }
+    ]
+}
