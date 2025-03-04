@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.block;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -20,8 +20,8 @@ public class ModBlocks {
     }
 
     public static <T extends Block> T register(String path, T block) {
-        Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(MyLuckyBlock.MOD_ID, path), block);
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MyLuckyBlock.MOD_ID, path), new BlockItem(block, new Item.Properties()));
+        Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path), block);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path), new BlockItem(block, new Item.Properties()));
         return block;
     }
 

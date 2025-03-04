@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.block;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class LuckyBlock extends Block {
-    private String modId = MyLuckyBlock.MOD_ID; // path: data/myluckyblock/lucky_events/%modId%/
+    private String modId = Constants.MOD_ID; // path: data/myluckyblock/lucky_events/%modId%/
     private boolean includeBuiltIn = false; // if include built-in lucky events(include lucky_events/my_lucky_block/)
 
     public LuckyBlock(BlockBehaviour.Properties settings) {

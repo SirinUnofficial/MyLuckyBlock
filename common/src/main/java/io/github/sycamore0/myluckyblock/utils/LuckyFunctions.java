@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.utils;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.BlockPos;
@@ -118,7 +118,7 @@ public class LuckyFunctions {
                 // Default is Chest
                 break;
             default:
-                MyLuckyBlock.LOGGER.error("Error: PlaceChests Invalid Type: {}", type);
+                Constants.LOG.error("Error: PlaceChests Invalid Type: {}", type);
                 break;
         }
         BlockState blockState = block.defaultBlockState();
@@ -211,7 +211,7 @@ public class LuckyFunctions {
 
                     template = Optional.of(structure);
                 } catch (NoSuchFileException e) {
-                    MyLuckyBlock.LOGGER.error("Structure file not exist: {}", resourcePath);
+                    Constants.LOG.error("Structure file not exist: {}", resourcePath);
                     return;
                 }
             }
@@ -225,14 +225,14 @@ public class LuckyFunctions {
 
             structure.placeInWorld(serverLevel, pos, pos, placement, serverLevel.getRandom(), 3);
         } catch (Exception e) {
-            MyLuckyBlock.LOGGER.error("Catch error when loading structure: ", e);
+            Constants.LOG.error("Catch error when loading structure: ", e);
         }
     }
 
     public static void executeCommand(Level level, Vec3 pos, String command) {
         if (level instanceof ServerLevel serverLevel) {
             MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
-            cBMinecart.setCustomName(Component.translatableEscape(MyLuckyBlock.MOD_ID));
+            cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
             cBMinecart.getCommandBlock().setCommand(command);
             cBMinecart.getCommandBlock().performCommand(serverLevel);
             cBMinecart.setPos(pos.x(), pos.y(), pos.z());

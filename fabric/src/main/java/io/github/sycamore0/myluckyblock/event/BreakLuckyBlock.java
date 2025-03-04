@@ -3,15 +3,13 @@ package io.github.sycamore0.myluckyblock.event;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import io.github.sycamore0.myluckyblock.utils.*;
-import io.github.sycamore0.myluckyblock.utils.helper.EnchantmentsHelper;
+import io.github.sycamore0.myluckyblock.utils.helper.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BreakLuckyBlock {

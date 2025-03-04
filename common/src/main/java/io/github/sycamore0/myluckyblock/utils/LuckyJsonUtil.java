@@ -2,7 +2,7 @@ package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 
 public class LuckyJsonUtil {
     private static final Gson GSON = new Gson();
@@ -11,7 +11,7 @@ public class LuckyJsonUtil {
         try {
             return GSON.fromJson(json, LuckyDataReader.class);
         } catch (Exception e) {
-            MyLuckyBlock.LOGGER.error("Failed to parse JSON: {}", json.get("fileName"), e);
+            Constants.LOG.error("Failed to parse JSON: {}", json.get("fileName"), e);
             return null;
         }
     }

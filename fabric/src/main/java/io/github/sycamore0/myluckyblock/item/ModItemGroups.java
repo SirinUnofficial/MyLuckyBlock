@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.item;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
@@ -20,7 +20,7 @@ public class ModItemGroups {
             .build();
 
     public static void registerModItemGroups() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MyLuckyBlock.MOD_ID, "myluckyblock_group"), MYLUCKYBLOCK_GROUP);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "myluckyblock_group"), MYLUCKYBLOCK_GROUP);
     }
 
 }

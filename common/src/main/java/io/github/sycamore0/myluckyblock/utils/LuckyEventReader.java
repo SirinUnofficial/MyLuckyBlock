@@ -1,7 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.annotations.SerializedName;
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
@@ -492,7 +492,7 @@ public class LuckyEventReader {
         protected String id;
 
         @SerializedName("mod_id")
-        protected String modId = MyLuckyBlock.MOD_ID;
+        protected String modId = Constants.MOD_ID;
 
         @SerializedName("pos_src")
         protected int posSrc = 0;

@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.utils;
 
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -50,7 +50,7 @@ public class LuckyExecutor {
                         dropItemPos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: DropItems Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: DropItems Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -80,7 +80,7 @@ public class LuckyExecutor {
                         placeBlockPos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: PlaceBlocks Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: PlaceBlocks Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -103,7 +103,7 @@ public class LuckyExecutor {
                         placeChestPos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: PlaceChests Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: PlaceChests Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -131,7 +131,7 @@ public class LuckyExecutor {
                         fallBlockPos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: FallBlocks Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: FallBlocks Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -182,7 +182,7 @@ public class LuckyExecutor {
                         spawnMobPos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: SpawnMobs Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: SpawnMobs Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -226,7 +226,7 @@ public class LuckyExecutor {
                         createExplosionPos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: CreateExplosions Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: CreateExplosions Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -256,7 +256,7 @@ public class LuckyExecutor {
                         addParticlePos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: AddParticles Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: AddParticles Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -287,7 +287,7 @@ public class LuckyExecutor {
                         loadStructurePos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: LoadStructures Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: LoadStructures Invalid Pos Src: {}", posSrc);
                         break;
                 }
 
@@ -314,7 +314,7 @@ public class LuckyExecutor {
                         loadStructurePos = PosHelper.calcOffset(playerPos, offset);
                         break;
                     default:
-                        MyLuckyBlock.LOGGER.error("Error: ExecuteCommands Invalid Pos Src: {}", posSrc);
+                        Constants.LOG.error("Error: ExecuteCommands Invalid Pos Src: {}", posSrc);
                         break;
                 }
 

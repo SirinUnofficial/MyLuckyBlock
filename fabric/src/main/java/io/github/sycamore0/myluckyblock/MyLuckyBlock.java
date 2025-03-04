@@ -11,8 +11,6 @@ import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -21,10 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MyLuckyBlock implements ModInitializer {
-    public static final String MOD_ID = "myluckyblock";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-    private static final Map<String, List<JsonObject>> loadedEventsByMod = new HashMap<>();
+    public static final Map<String, List<JsonObject>> loadedEventsByMod = new HashMap<>();
     public static final List<String> modIdList = new ArrayList<>();
 
     public static List<JsonObject> getLoadedEventsForMod(String modId) {
@@ -37,14 +32,14 @@ public class MyLuckyBlock implements ModInitializer {
         ModItemGroups.registerModItemGroups();
         ModEventHandlers.onInitialize();
 
-        addModId(MOD_ID);
+        addModId(Constants.MOD_ID);
 
         // Data Loader
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(
                 new SimpleSynchronousResourceReloadListener() {
                     @Override
                     public ResourceLocation getFabricId() {
-                        return ResourceLocation.fromNamespaceAndPath(MOD_ID, "lucky_events_loader");
+                        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lucky_events_loader");
                     }
 
                     @Override
@@ -54,7 +49,7 @@ public class MyLuckyBlock implements ModInitializer {
                         for (String modId : modIdList) {
                             loadEventsForMod(manager, modId);
                         }
-                        LOGGER.info("Loaded {} event files for mod {}", getLoadedEventsForMod(MOD_ID).size(), MOD_ID);
+                        Constants.LOG.info("Loaded {} event files for mod {}", getLoadedEventsForMod(Constants.MOD_ID).size(), Constants.MOD_ID);
                     }
                 }
         );
@@ -76,7 +71,7 @@ public class MyLuckyBlock implements ModInitializer {
                         json.addProperty("fileName", id.getPath());
                         events.add(json);
                     } catch (Exception e) {
-                        LOGGER.error("Failed to load {}", id, e);
+                        Constants.LOG.error("Failed to load {}", id, e);
                     }
                 });
         loadedEventsByMod.put(modId, events);

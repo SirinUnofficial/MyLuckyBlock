@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.JsonObject;
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 
 import java.util.*;
@@ -15,8 +16,8 @@ public class LuckyDataManager {
         List<JsonObject> targetEvents = new ArrayList<>(modEvents);
 
         // if include built-in events
-        if (includeBuiltIn && !modId.equals(MyLuckyBlock.MOD_ID)) {
-            List<JsonObject> mainEvents = MyLuckyBlock.getLoadedEventsForMod(MyLuckyBlock.MOD_ID);
+        if (includeBuiltIn && !modId.equals(Constants.MOD_ID)) {
+            List<JsonObject> mainEvents = MyLuckyBlock.getLoadedEventsForMod(Constants.MOD_ID);
             targetEvents.addAll(mainEvents);
         }
 
@@ -27,27 +28,27 @@ public class LuckyDataManager {
             try {
                 LuckyDataReader data = LuckyJsonUtil.loadJsonData(json);
                 if (data == null) {
-                    MyLuckyBlock.LOGGER.error("Failed to parse JSON file: {}", json.get("fileName").getAsString());
+                    Constants.LOG.error("Failed to parse JSON file: {}", json.get("fileName").getAsString());
                     continue;
                 }
 
-                MyLuckyBlock.LOGGER.info("Loading {} (v{})", data.getName(), data.getVersion());
+                Constants.LOG.info("Loading {} (v{})", data.getName(), data.getVersion());
 
                 for (LuckyEventReader event : data.getRandomEvents()) {
                     event.setId(currentId++);
                     modEventList.add(event);
 
                     if (event.getId() <= 0) {
-                        MyLuckyBlock.LOGGER.warn("Invalid event ID in {}: {}", json.get("fileName"), event.getId());
+                        Constants.LOG.warn("Invalid event ID in {}: {}", json.get("fileName"), event.getId());
                     }
                 }
 
-                MyLuckyBlock.LOGGER.info("Loaded {} events from {}",
+                Constants.LOG.info("Loaded {} events from {}",
                         data.getRandomEvents().size(),
                         json.get("fileName").getAsString()
                 );
             } catch (Exception e) {
-                MyLuckyBlock.LOGGER.error("Critical error loading {}: {}",
+                Constants.LOG.error("Critical error loading {}: {}",
                         json.get("fileName").getAsString(),
                         e.getMessage()
                 );
@@ -55,7 +56,7 @@ public class LuckyDataManager {
         }
 
         eventsByMod.put(modId, modEventList);
-        MyLuckyBlock.LOGGER.info("Successfully loaded {} random events for mod {}", modEventList.size(), modId);
+        Constants.LOG.info("Successfully loaded {} random events for mod {}", modEventList.size(), modId);
     }
 
     public boolean isLoaded(String modId) {
