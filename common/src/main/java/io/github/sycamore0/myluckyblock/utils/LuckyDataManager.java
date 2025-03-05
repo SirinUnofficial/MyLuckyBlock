@@ -1,8 +1,8 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.JsonObject;
+import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 
 import java.util.*;
 
@@ -12,12 +12,12 @@ public class LuckyDataManager {
     public void loadEvents(String modId, boolean includeBuiltIn) {
 
         // load events for the specified mod
-        List<JsonObject> modEvents = MyLuckyBlock.getLoadedEventsForMod(modId);
+        List<JsonObject> modEvents = CommonClass.getLoadedEventsForMod(modId);
         List<JsonObject> targetEvents = new ArrayList<>(modEvents);
 
         // if include built-in events
         if (includeBuiltIn && !modId.equals(Constants.MOD_ID)) {
-            List<JsonObject> mainEvents = MyLuckyBlock.getLoadedEventsForMod(Constants.MOD_ID);
+            List<JsonObject> mainEvents = CommonClass.getLoadedEventsForMod(Constants.MOD_ID);
             targetEvents.addAll(mainEvents);
         }
 
