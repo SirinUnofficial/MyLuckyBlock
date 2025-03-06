@@ -3,6 +3,7 @@ package io.github.sycamore0.myluckyblock.item;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -16,7 +17,10 @@ public class ModItemGroups {
 
     static {
         MYLUCKYBLOCK_GROUP = TABS.register("myluckyblock_group",
-                () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.MY_LUCKY_BLOCK.get())).build());
+                () -> CreativeModeTab.builder()
+                        .icon(() -> new ItemStack(ModBlocks.MY_LUCKY_BLOCK.get()))
+                        .title(Component.translatable("itemGroup.myluckyblock.myluckyblock_group"))
+                        .build());
     }
 
     public static void buildCreativeTabContent(BuildCreativeModeTabContentsEvent event) {
