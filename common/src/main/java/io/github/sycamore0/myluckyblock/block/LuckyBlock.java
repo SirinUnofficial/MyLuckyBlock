@@ -1,8 +1,15 @@
 package io.github.sycamore0.myluckyblock.block;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class LuckyBlock extends Block {
     private String modId = Constants.MOD_ID; // path: data/myluckyblock/lucky_events/%modId%/
@@ -30,5 +37,22 @@ public class LuckyBlock extends Block {
 
     public boolean includeBuiltIn() {
         return includeBuiltIn;
+    }
+
+    @Override
+    protected void neighborChanged(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Block sourceBlock, @NotNull BlockPos sourcePos, boolean notify) {
+        if (level.isClientSide) {
+            return;
+        }
+        if (level.hasNeighborSignal(pos)) {
+            Player player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 64, null);
+            if (player != null) {
+                if (player.isSpectator()) {
+                    return;
+                }
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
+                BreakLuckyBlock.breakLuckyBlock(level, player, pos, state);
+            }
+        }
     }
 }

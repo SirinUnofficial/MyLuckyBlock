@@ -1,7 +1,6 @@
 package io.github.sycamore0.myluckyblock.event;
 
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
-import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import io.github.sycamore0.myluckyblock.utils.*;
 import io.github.sycamore0.myluckyblock.utils.helper.*;
 import net.minecraft.core.BlockPos;
@@ -34,14 +33,6 @@ public class BreakLuckyBlock {
             LuckyEventReader event = manager.getRandomEvent(modId);
             if (event != null) {
                 LuckyExecutor.executeLuckyFunction(level, player, pos, event);
-            }
-
-            if (state.getBlock() == ModBlocks.DEBUG_LUCKY_BLOCK) {
-                // Trigger all events
-                for (int i = 1; i <= manager.getRandomEventsCount(modId); i++) {
-                    LuckyEventReader event1 = manager.getEventById(modId, i);
-                    LuckyExecutor.executeLuckyFunction(level, player, pos, event1);
-                }
             }
         }
     }

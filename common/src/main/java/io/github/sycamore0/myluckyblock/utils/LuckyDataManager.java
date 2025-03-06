@@ -10,7 +10,6 @@ public class LuckyDataManager {
     private final Map<String, List<LuckyEventReader>> eventsByMod = new HashMap<>();
 
     public void loadEvents(String modId, boolean includeBuiltIn) {
-
         // load events for the specified mod
         List<JsonObject> modEvents = CommonClass.getLoadedEventsForMod(modId);
         List<JsonObject> targetEvents = new ArrayList<>(modEvents);
