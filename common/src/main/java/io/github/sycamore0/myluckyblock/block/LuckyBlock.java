@@ -9,7 +9,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.redstone.Orientation;
+import org.jetbrains.annotations.Nullable;
 
 public class LuckyBlock extends Block {
     private String modId = Constants.MOD_ID; // path: data/myluckyblock/lucky_events/%modId%/
@@ -40,18 +41,18 @@ public class LuckyBlock extends Block {
     }
 
     @Override
-    protected void neighborChanged(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Block sourceBlock, @NotNull BlockPos sourcePos, boolean notify) {
+    protected void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, @Nullable Orientation orientation, boolean bl) {
         if (level.isClientSide) {
             return;
         }
-        if (level.hasNeighborSignal(pos)) {
-            Player player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 64, null);
+        if (level.hasNeighborSignal(blockPos)) {
+            Player player = level.getNearestPlayer(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 64, null);
             if (player != null) {
                 if (player.isSpectator()) {
                     return;
                 }
-                level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
-                BreakLuckyBlock.breakLuckyBlock(level, player, pos, state);
+                level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
+                BreakLuckyBlock.breakLuckyBlock(level, player, blockPos, blockState);
             }
         }
     }

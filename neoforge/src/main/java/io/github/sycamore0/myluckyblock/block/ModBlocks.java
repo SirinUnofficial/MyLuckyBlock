@@ -1,6 +1,9 @@
 package io.github.sycamore0.myluckyblock.block;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -21,9 +24,15 @@ public class ModBlocks {
 
     static {
         MY_LUCKY_BLOCK = BLOCKS.register(MY_LUCKY_BLOCK_ID,
-                () -> new LuckyBlock((BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f))));
+                registryName -> new LuckyBlock(BlockBehaviour.Properties.of()
+                        .setId(ResourceKey.create(Registries.BLOCK, registryName))
+                        .destroyTime(0.5f)
+                        .explosionResistance(5000000.0f)
+                ));
         MY_LUCKY_BLOCK_ITEM = ITEMS.register(MY_LUCKY_BLOCK_ID,
-                () -> new BlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()));
+                registryName -> new BlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()
+                        .setId(ResourceKey.create(Registries.ITEM, registryName))
+                ));
     }
 
     public static void registerModBlocks(IEventBus eventBus) {

@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class LuckyExecutor {
@@ -135,8 +136,13 @@ public class LuckyExecutor {
                         break;
                 }
 
-                Block blockId = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
-                LuckyFunctions.fallBlock(level, PosHelper.parseVec3d(fallBlockPos), blockId, velocity);
+                Optional<Holder.Reference<Block>> blockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
+                if (blockOptional.isPresent()) {
+                    Block blockId = blockOptional.get().value();
+                    LuckyFunctions.fallBlock(level, PosHelper.parseVec3d(fallBlockPos), blockId, velocity);
+                } else {
+                    Constants.LOG.error("Error: FallBlocks Invalid Block: {}", fallBlock.getId());
+                }
             }
         }
 
@@ -145,7 +151,7 @@ public class LuckyExecutor {
             for (LuckyEventReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
                 int amplifier = givePotionEffect.getAmplifier();
                 int duration = givePotionEffect.getDuration();
-                Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(givePotionEffect.getId())).orElseThrow();
+                Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(givePotionEffect.getId())).orElseThrow();
                 LuckyFunctions.givePotionEffect(player, effect, duration, amplifier);
             }
         }
@@ -154,49 +160,51 @@ public class LuckyExecutor {
         if (function.hasSpawnMobs()) {
             for (LuckyEventReader.SpawnMob spawnMob : function.getSpawnMobs()) {
                 String mobId = spawnMob.getId();
-                EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(mobId));
+                Optional<Holder.Reference<EntityType<?>>> entityTypeOptional = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(mobId));
+                if (entityTypeOptional.isPresent()) {
+                    EntityType<?> entityType = entityTypeOptional.get().value();
 
-                String name = spawnMob.getName();
-                boolean nameVisible = spawnMob.isNameVisible();
+                    String name = spawnMob.getName();
+                    boolean nameVisible = spawnMob.isNameVisible();
 
-                boolean isBaby = spawnMob.isBaby();
-                String nbtString = spawnMob.getNbt();
+                    boolean isBaby = spawnMob.isBaby();
+                    String nbtString = spawnMob.getNbt();
 
-                boolean isUseRandom = spawnMob.isUseRandom();
-                int count;
-                if (isUseRandom) {
-                    count = getRandomNumber(spawnMob.getRandomNum().getMin(), spawnMob.getRandomNum().getMax());
-                } else {
-                    count = spawnMob.getNum();
-                }
-
-                int posSrc = spawnMob.getPosSrc();
-                Vec3 spawnMobPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = spawnMob.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        spawnMobPos = PosHelper.calcOffset(spawnMobPos, offset);
-                        break;
-                    case 1:
-                        spawnMobPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: SpawnMobs Invalid Pos Src: {}", posSrc);
-                        break;
-                }
-
-                Vec3 velocity = spawnMob.getVelocity();
-
-                for (int i = 0; i < count; i++) {
-                    if (entityType == EntityType.ITEM) {
-                        LuckyFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
+                    boolean isUseRandom = spawnMob.isUseRandom();
+                    int count;
+                    if (isUseRandom) {
+                        count = getRandomNumber(spawnMob.getRandomNum().getMin(), spawnMob.getRandomNum().getMax());
+                    } else {
+                        count = spawnMob.getNum();
                     }
-                    else {
-                        if (nbtString != null) {
-                            LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
+
+                    int posSrc = spawnMob.getPosSrc();
+                    Vec3 spawnMobPos = PosHelper.parseBlockPos(blockPos);
+                    Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
+                    Vec3 offset = spawnMob.getOffset();
+                    switch (posSrc) {
+                        case 0:
+                            spawnMobPos = PosHelper.calcOffset(spawnMobPos, offset);
+                            break;
+                        case 1:
+                            spawnMobPos = PosHelper.calcOffset(playerPos, offset);
+                            break;
+                        default:
+                            Constants.LOG.error("Error: SpawnMobs Invalid Pos Src: {}", posSrc);
+                            break;
+                    }
+
+                    Vec3 velocity = spawnMob.getVelocity();
+
+                    for (int i = 0; i < count; i++) {
+                        if (entityType == EntityType.ITEM) {
+                            LuckyFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
                         } else {
-                            LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
+                            if (nbtString != null) {
+                                LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
+                            } else {
+                                LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
+                            }
                         }
                     }
                 }
@@ -240,30 +248,33 @@ public class LuckyExecutor {
         // Add Particles
         if (function.hasAddParticles()) {
             for (LuckyEventReader.AddParticle addParticle : function.getAddParticles()) {
-                ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(addParticle.getId()));
-                ParticleOptions particle = (ParticleOptions) particleType;
+                Optional<Holder.Reference<ParticleType<?>>> particleTypeOptional = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(addParticle.getId()));
+                if (particleTypeOptional.isPresent()) {
+                    ParticleType<?> particleType = particleTypeOptional.get().value();
+                    ParticleOptions particle = (ParticleOptions) particleType;
 
-                // Get Position
-                int posSrc = addParticle.getPosSrc();
-                Vec3 addParticlePos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = addParticle.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        addParticlePos = PosHelper.calcOffset(addParticlePos, offset);
-                        break;
-                    case 1:
-                        addParticlePos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: AddParticles Invalid Pos Src: {}", posSrc);
-                        break;
+                    // Get Position
+                    int posSrc = addParticle.getPosSrc();
+                    Vec3 addParticlePos = PosHelper.parseBlockPos(blockPos);
+                    Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
+                    Vec3 offset = addParticle.getOffset();
+                    switch (posSrc) {
+                        case 0:
+                            addParticlePos = PosHelper.calcOffset(addParticlePos, offset);
+                            break;
+                        case 1:
+                            addParticlePos = PosHelper.calcOffset(playerPos, offset);
+                            break;
+                        default:
+                            Constants.LOG.error("Error: AddParticles Invalid Pos Src: {}", posSrc);
+                            break;
+                    }
+
+                    int count = addParticle.getCount();
+                    double speed = addParticle.getSpeed();
+
+                    LuckyFunctions.addParticles(level, particle, addParticlePos, count, addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), speed);
                 }
-
-                int count = addParticle.getCount();
-                double speed = addParticle.getSpeed();
-
-                LuckyFunctions.addParticles(level, particle, addParticlePos, count, addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), speed);
             }
         }
 
@@ -297,7 +308,7 @@ public class LuckyExecutor {
 
         // Execute Commands
         if (function.hasExecuteCommands()) {
-            for (LuckyEventReader.ExecuteCommand executeCommand: function.getExecuteCommands()) {
+            for (LuckyEventReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
                 // Get Command
                 String command = executeCommand.getCommand();
 

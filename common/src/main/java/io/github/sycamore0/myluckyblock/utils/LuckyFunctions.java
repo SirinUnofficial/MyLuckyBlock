@@ -23,6 +23,7 @@ import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.FallingBlockEntity;
@@ -56,21 +57,24 @@ public class LuckyFunctions {
     }
 
     public static void dropItems(Level level, Vec3 pos, String itemId, int count, @Nullable String nbtString) {
-        Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
-        if (item.equals(Items.AIR)) return;
-        ItemStack itemStack = new ItemStack(item, count);
+        Optional<Holder.Reference<Item>> itemOptional = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
+        if (itemOptional.isPresent()) {
+            Item item = itemOptional.get().value();
+            if (item.equals(Items.AIR)) return;
+            ItemStack itemStack = new ItemStack(item, count);
 
-        ItemEntity itemEntity = new ItemEntity(level, pos.x(), pos.y(), pos.z(), itemStack);
+            ItemEntity itemEntity = new ItemEntity(level, pos.x(), pos.y(), pos.z(), itemStack);
 
-        if (nbtString != null) {
-            CompoundTag nbt = NbtHelper.generateItemNbt(itemId, count, nbtString);
-            if (nbt == null) return;
-            itemEntity.load(nbt);
-            itemEntity.save(nbt);
+            if (nbtString != null) {
+                CompoundTag nbt = NbtHelper.generateItemNbt(itemId, count, nbtString);
+                if (nbt == null) return;
+                itemEntity.load(nbt);
+                itemEntity.save(nbt);
+            }
+
+            itemEntity.setPos(pos);
+            level.addFreshEntity(itemEntity);
         }
-
-        itemEntity.setPos(pos);
-        level.addFreshEntity(itemEntity);
     }
 
     // use in spawn mob
@@ -95,10 +99,13 @@ public class LuckyFunctions {
     }
 
     public static void placeBlock(Level level, Vec3 pos, String blockId) {
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
-        BlockState blockState = block.defaultBlockState();
-        BlockPos blockPos = PosHelper.parseVec3d(pos);
-        level.setBlockAndUpdate(blockPos, blockState);
+        Optional<Holder.Reference<Block>> blockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
+        if (blockOptional.isPresent()) {
+            Block block = blockOptional.get().value();
+            BlockState blockState = block.defaultBlockState();
+            BlockPos blockPos = PosHelper.parseVec3d(pos);
+            level.setBlockAndUpdate(blockPos, blockState);
+        }
     }
 
     // TODO: not type but block id?
@@ -137,7 +144,7 @@ public class LuckyFunctions {
     }
 
     public static void spawnMob(Level level, Vec3 pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, @Nullable String nbtString, Vec3 velocity) {
-        Entity entity = entityType.create(level);
+        Entity entity = entityType.create(level, EntitySpawnReason.MOB_SUMMONED);
         if (entity == null) return;
         CompoundTag nbt = NbtHelper.generateNbt(nbtString);
         if (nbt == null) return;
@@ -153,7 +160,7 @@ public class LuckyFunctions {
     }
 
     public static void spawnMob(Level level, Vec3 pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity) {
-        Entity entity = entityType.create(level);
+        Entity entity = entityType.create(level, EntitySpawnReason.MOB_SUMMONED);
         if (entity == null) return;
         if (name != null) {
             entity.setCustomName(Component.translatableEscape(name));
@@ -231,7 +238,7 @@ public class LuckyFunctions {
 
     public static void executeCommand(Level level, Vec3 pos, String command) {
         if (level instanceof ServerLevel serverLevel) {
-            MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
+            MinecartCommandBlock cBMinecart = new MinecartCommandBlock(EntityType.COMMAND_BLOCK_MINECART, serverLevel);
             cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
             cBMinecart.getCommandBlock().setCommand(command);
             cBMinecart.getCommandBlock().performCommand(serverLevel);
