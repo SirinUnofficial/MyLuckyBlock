@@ -22,5 +22,4 @@ public class ModItemGroups {
     public static void registerModItemGroups() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "myluckyblock_group"), MYLUCKYBLOCK_GROUP);
     }
-
 }
