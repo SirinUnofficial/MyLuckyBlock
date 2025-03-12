@@ -15,16 +15,28 @@ public class ModBlocks {
     public static final Block MY_LUCKY_BLOCK;
 
     static {
-        MY_LUCKY_BLOCK = register("my_lucky_block", LuckyBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).strength(0.5f).explosionResistance(5000000.0f));
+        MY_LUCKY_BLOCK = createNewLB("my_lucky_block", Constants.MOD_ID, true);
     }
 
-    private static Block register(String path, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
-        final ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
+    private static Block register(String path, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, String modId) {
+        final ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(modId, path);
         final ResourceKey<Block> registryKey = ResourceKey.create(Registries.BLOCK, identifier);
 
         final Block block = Blocks.register(registryKey, factory, settings);
         Items.registerBlock(block);
         return block;
+    }
+
+    public static Block createNewLB(String blockId, String modId) {
+        return createNewLB(blockId, modId, MapColor.COLOR_PINK, false);
+    }
+
+    public static Block createNewLB(String blockId, String modId, boolean includeBuiltIn) {
+        return createNewLB(blockId, modId, MapColor.COLOR_PINK, includeBuiltIn);
+    }
+
+    public static Block createNewLB(String blockId, String modId, MapColor color, boolean includeBuiltIn) {
+        return register(blockId, (props) -> new LuckyBlock(props, modId, includeBuiltIn), BlockBehaviour.Properties.of().mapColor(color).strength(0.5f).explosionResistance(5000000.0f), modId);
     }
 
     public static void registerModBlocks() {
