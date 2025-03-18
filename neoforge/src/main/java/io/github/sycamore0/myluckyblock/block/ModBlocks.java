@@ -11,8 +11,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModBlocks {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.Items.createItems(Constants.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.Blocks.createBlocks(Constants.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.Items.createItems(Constants.MOD_ID);
 
     public static final String MY_LUCKY_BLOCK_ID = "my_lucky_block";
 
@@ -27,7 +27,7 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks(IEventBus eventBus) {
-        ITEMS.register(eventBus);
         BLOCKS.register(eventBus);
+        ITEMS.register(eventBus);
     }
 }
