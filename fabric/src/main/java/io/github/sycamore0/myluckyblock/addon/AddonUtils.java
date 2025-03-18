@@ -11,10 +11,8 @@ import net.minecraft.world.level.material.MapColor;
 public class AddonUtils {
     // Example Code
     // CommonClass.addModId("newluckyblock");
-    // public static final Block NEW_LUCKY_BLOCK = createNewLB("new_lucky_block", "newluckyblock");
-    // public static void test() {
-    //     addToGroup(NEW_LUCKY_BLOCK);
-    // }
+    // final Block NEW_LUCKY_BLOCK = AddonUtils.createNewLB("new_lucky_block", "newluckyblock", true);
+    // AddonUtils.addToGroup(NEW_LUCKY_BLOCK);
 
     public static Block createNewLB(String blockId, String modId) {
         return createNewLB(blockId, modId, MapColor.COLOR_PINK, false);

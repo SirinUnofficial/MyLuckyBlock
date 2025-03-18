@@ -1,0 +1,16 @@
+{
+    "name": "(Built-in)Loaders Event Pack",
+    "version": "2.1",
+    "info": "Cute Fox with Fabric",
+    "random_events": [
+        {
+            "id": 1,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:fox",
+                    "nbt": "{Type:red,Sitting:1,CustomName:'[{\"text\":\"NeoForge\"}]',HandItems:[{id:mojang_banner_pattern},{}],HandDropChances:[1f,0f]}"
+                }
+            ]
+        }
+    ]
+}
