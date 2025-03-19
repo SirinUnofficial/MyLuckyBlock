@@ -26,7 +26,7 @@ public class ModBlocks {
                 () -> new BlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()));
     }
 
-    public static void registerModBlocks(IEventBus eventBus) {
+    public static void onInitialize(IEventBus eventBus) {
         BLOCKS.register(eventBus);
         ITEMS.register(eventBus);
     }

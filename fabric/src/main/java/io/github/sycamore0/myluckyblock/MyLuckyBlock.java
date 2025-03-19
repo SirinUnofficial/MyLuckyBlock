@@ -9,8 +9,8 @@ public class MyLuckyBlock implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ModBlocks.registerModBlocks();
-        ModItemGroups.registerModItemGroups();
+        ModBlocks.onInitialize();
+        ModItemGroups.onInitialize();
         ModEventHandlers.onInitialize();
 
         CommonClass.addModId(Constants.MOD_ID);

@@ -13,8 +13,8 @@ public class MyLuckyBlock {
         Constants.LOG.info("Hello NeoForge world!");
         CommonClass.init();
 
-        ModBlocks.registerModBlocks(eventBus);
-        ModItemGroups.registerModItemGroups(eventBus);
+        ModBlocks.onInitialize(eventBus);
+        ModItemGroups.onInitialize(eventBus);
         NeoForge.EVENT_BUS.register(ModEventHandlers.class);
 
         CommonClass.addModId(Constants.MOD_ID);

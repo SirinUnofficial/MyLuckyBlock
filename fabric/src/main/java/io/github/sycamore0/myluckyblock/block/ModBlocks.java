@@ -23,6 +23,6 @@ public class ModBlocks {
         return block;
     }
 
-    public static void registerModBlocks() {
+    public static void onInitialize() {
     }
 }
