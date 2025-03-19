@@ -57,9 +57,6 @@ public class LuckyExecutor {
                 // Get NBT
                 String nbtString = dropItem.getNbt();
 
-                // WIP
-                nbtString = LuckyString.process(nbtString, player, blockPos);
-
                 LuckyFunctions.dropItems(level, dropItemPos, itemId, count, nbtString);
             }
         }
@@ -197,9 +194,6 @@ public class LuckyExecutor {
                     }
                     else {
                         if (nbtString != null) {
-                            // WIP
-                            nbtString = LuckyString.process(nbtString, player, blockPos);
-                            
                             LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
                         } else {
                             LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
@@ -212,7 +206,14 @@ public class LuckyExecutor {
         // Send Messages
         if (function.hasSendMessages()) {
             for (LuckyEventReader.SendMessage sendMessage : function.getSendMessages()) {
-                LuckyFunctions.sendMessage(player, sendMessage.getMsg(), sendMessage.getReceiver());
+                LuckyFunctions.sendMessage(player, sendMessage.getMsg());
+            }
+        }
+
+        // Display Messages
+        if (function.hasDisplayMessages()) {
+            for (LuckyEventReader.DisplayMessage sendMessage : function.getDisplayMessages()) {
+                LuckyFunctions.displayClientMessage(player, sendMessage.getMsg(), sendMessage.getOverlay());
             }
         }
 

@@ -1,8 +1,9 @@
 package io.github.sycamore0.myluckyblock.event;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.MyLuckyBlock;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +18,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModEventHandlers {
     @SubscribeEvent
@@ -59,11 +64,27 @@ public class ModEventHandlers {
         public void onResourceManagerReload(@NotNull ResourceManager manager) {
             CommonClass.loadedEventsByMod.clear();
             for (String modId : CommonClass.modIdList) {
-                MyLuckyBlock.loadEventsForMod(manager, modId);
+                loadEventsForMod(manager, modId);
             }
             Constants.LOG.info("Loaded {} event files for mod {}",
                     CommonClass.getLoadedEventsForMod(Constants.MOD_ID).size(),
                     Constants.MOD_ID);
         }
+    }
+
+    private static void loadEventsForMod(ResourceManager manager, String modId) {
+        String jsonDir = "lucky/events/" + modId;
+        List<JsonObject> events = new ArrayList<>();
+        manager.listResources(jsonDir, path -> path.getPath().endsWith(".json"))
+                .forEach((id, resource) -> {
+                    try (InputStreamReader reader = new InputStreamReader(resource.open())) {
+                        JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+                        json.addProperty("fileName", id.getPath());
+                        events.add(json);
+                    } catch (Exception e) {
+                        Constants.LOG.error("Failed to load {}", id, e);
+                    }
+                });
+        CommonClass.loadedEventsByMod.put(modId, events);
     }
 }

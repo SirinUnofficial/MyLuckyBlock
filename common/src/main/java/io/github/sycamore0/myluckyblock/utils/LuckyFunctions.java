@@ -171,7 +171,11 @@ public class LuckyFunctions {
         level.explode(null, pos.x(), pos.y(), pos.z(), power, createFire, Level.ExplosionInteraction.BLOCK);
     }
 
-    public static void sendMessage(Player player, String message, boolean overlay) {
+    public static void sendMessage(Player player, String message) {
+        player.sendSystemMessage(Component.translatableEscape(message));
+    }
+
+    public static void displayClientMessage(Player player, String message, boolean overlay) {
         player.displayClientMessage(Component.translatableEscape(message), overlay);
     }
 

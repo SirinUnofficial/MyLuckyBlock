@@ -161,6 +161,15 @@
                     "nbt": "{Glowing:1b,HandItems:[{id:crossbow,components:{enchantments:{levels:{multishot:20}},unbreakable:{},repair_cost:32767},count:1}],HandDropChances:[0.01f]}"
                 }
             ]
+        },
+        {
+            "id": 12,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:fox",
+                    "nbt": "{Type:red,Sitting:1,CustomName:'[{\"text\":\"NeoForge\"}]',HandItems:[{id:mojang_banner_pattern},{}],HandDropChances:[1f,0f]}"
+                }
+            ]
         }
     ]
 }
