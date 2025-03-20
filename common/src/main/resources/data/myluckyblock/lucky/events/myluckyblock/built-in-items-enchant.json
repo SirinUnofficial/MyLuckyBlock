@@ -49,7 +49,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "秒人斧",
+                    "name": "name.myluckyblock.super_axe",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
