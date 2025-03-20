@@ -20,7 +20,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
 
-public class LuckyExecutor {
+public class LuckyEventExecutor {
     public static void executeLuckyFunction(Level level, Player player, BlockPos blockPos, LuckyEventReader function) {
         // Drop Items
         if (function.hasDropItems()) {
@@ -57,7 +57,7 @@ public class LuckyExecutor {
                 // Get NBT
                 String nbtString = dropItem.getNbt();
 
-                LuckyFunctions.dropItems(level, dropItemPos, itemId, count, nbtString);
+                LuckyEventFunctions.dropItems(level, dropItemPos, itemId, count, nbtString);
             }
         }
 
@@ -84,7 +84,7 @@ public class LuckyExecutor {
                         break;
                 }
 
-                LuckyFunctions.placeBlock(level, placeBlockPos, blockId);
+                LuckyEventFunctions.placeBlock(level, placeBlockPos, blockId);
             }
         }
 
@@ -111,7 +111,7 @@ public class LuckyExecutor {
                 String lootTableId = placeChest.getId();
 
                 ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
-                LuckyFunctions.placeChest(level, PosHelper.parseVec3d(placeChestPos), type, lootTable);
+                LuckyEventFunctions.placeChest(level, PosHelper.parseVec3d(placeChestPos), type, lootTable);
             }
         }
 
@@ -136,7 +136,7 @@ public class LuckyExecutor {
                 }
 
                 Block blockId = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
-                LuckyFunctions.fallBlock(level, PosHelper.parseVec3d(fallBlockPos), blockId, velocity);
+                LuckyEventFunctions.fallBlock(level, PosHelper.parseVec3d(fallBlockPos), blockId, velocity);
             }
         }
 
@@ -146,7 +146,7 @@ public class LuckyExecutor {
                 int amplifier = givePotionEffect.getAmplifier();
                 int duration = givePotionEffect.getDuration();
                 Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(givePotionEffect.getId())).orElseThrow();
-                LuckyFunctions.givePotionEffect(player, effect, duration, amplifier);
+                LuckyEventFunctions.givePotionEffect(player, effect, duration, amplifier);
             }
         }
 
@@ -190,13 +190,13 @@ public class LuckyExecutor {
 
                 for (int i = 0; i < count; i++) {
                     if (entityType == EntityType.ITEM) {
-                        LuckyFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
+                        LuckyEventFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
                     }
                     else {
                         if (nbtString != null) {
-                            LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
+                            LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
                         } else {
-                            LuckyFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
+                            LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
                         }
                     }
                 }
@@ -206,14 +206,14 @@ public class LuckyExecutor {
         // Send Messages
         if (function.hasSendMessages()) {
             for (LuckyEventReader.SendMessage sendMessage : function.getSendMessages()) {
-                LuckyFunctions.sendMessage(player, sendMessage.getMsg());
+                LuckyEventFunctions.sendMessage(player, sendMessage.getMsg());
             }
         }
 
         // Display Messages
         if (function.hasDisplayMessages()) {
             for (LuckyEventReader.DisplayMessage sendMessage : function.getDisplayMessages()) {
-                LuckyFunctions.displayClientMessage(player, sendMessage.getMsg(), sendMessage.getOverlay());
+                LuckyEventFunctions.displayClientMessage(player, sendMessage.getMsg(), sendMessage.getOverlay());
             }
         }
 
@@ -240,7 +240,7 @@ public class LuckyExecutor {
                 float power = createExplosion.getPower();
                 boolean createFire = createExplosion.isCreateFire();
 
-                LuckyFunctions.createExplosion(level, createExplosionPos, power, createFire);
+                LuckyEventFunctions.createExplosion(level, createExplosionPos, power, createFire);
             }
         }
 
@@ -270,7 +270,7 @@ public class LuckyExecutor {
                 int count = addParticle.getCount();
                 double speed = addParticle.getSpeed();
 
-                LuckyFunctions.addParticles(level, particle, addParticlePos, count, addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), speed);
+                LuckyEventFunctions.addParticles(level, particle, addParticlePos, count, addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), speed);
             }
         }
 
@@ -298,7 +298,7 @@ public class LuckyExecutor {
                         break;
                 }
 
-                LuckyFunctions.loadStructure(level, PosHelper.parseVec3d(loadStructurePos), modId, structureId);
+                LuckyEventFunctions.loadStructure(level, PosHelper.parseVec3d(loadStructurePos), modId, structureId);
             }
         }
 
@@ -325,7 +325,7 @@ public class LuckyExecutor {
                         break;
                 }
 
-                LuckyFunctions.executeCommand(level, loadStructurePos, command);
+                LuckyEventFunctions.executeCommand(level, loadStructurePos, command);
             }
         }
     }

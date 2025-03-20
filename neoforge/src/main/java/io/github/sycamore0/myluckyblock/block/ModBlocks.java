@@ -17,12 +17,11 @@ public class ModBlocks {
     public static final String MY_LUCKY_BLOCK_ID = "my_lucky_block";
 
     public static final DeferredHolder<Block, Block> MY_LUCKY_BLOCK;
-    public static final DeferredHolder<Item, BlockItem> MY_LUCKY_BLOCK_ITEM;
 
     static {
         MY_LUCKY_BLOCK = BLOCKS.register(MY_LUCKY_BLOCK_ID,
                 () -> new LuckyBlock((BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f))));
-        MY_LUCKY_BLOCK_ITEM = ITEMS.register(MY_LUCKY_BLOCK_ID,
+        ITEMS.register(MY_LUCKY_BLOCK_ID,
                 () -> new BlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()));
     }
 

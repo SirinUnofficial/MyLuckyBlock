@@ -50,7 +50,7 @@ import java.io.InputStream;
 import java.nio.file.NoSuchFileException;
 import java.util.Optional;
 
-public class LuckyFunctions {
+public class LuckyEventFunctions {
     public static void dropItems(Level level, Vec3 pos, String itemId, int count) {
         dropItems(level, pos, itemId, count, null);
     }

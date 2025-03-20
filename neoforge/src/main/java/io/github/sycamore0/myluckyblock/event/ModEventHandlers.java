@@ -62,18 +62,18 @@ public class ModEventHandlers {
     private static class LuckyEventsReloadListener implements ResourceManagerReloadListener {
         @Override
         public void onResourceManagerReload(@NotNull ResourceManager manager) {
-            CommonClass.loadedEventsByMod.clear();
-            for (String modId : CommonClass.modIdList) {
-                loadEventsForMod(manager, modId);
+            Constants.loadedEventPacks.clear();
+            for (String eventPackId : Constants.eventPackIdList) {
+                loadEventsPack(manager, eventPackId);
             }
             Constants.LOG.info("Loaded {} event files for mod {}",
-                    CommonClass.getLoadedEventsForMod(Constants.MOD_ID).size(),
+                    CommonClass.getLoadedEvents(Constants.MOD_ID).size(),
                     Constants.MOD_ID);
         }
     }
 
-    private static void loadEventsForMod(ResourceManager manager, String modId) {
-        String jsonDir = "lucky/events/" + modId;
+    private static void loadEventsPack(ResourceManager manager, String eventPackId) {
+        String jsonDir = "lucky/events/" + eventPackId;
         List<JsonObject> events = new ArrayList<>();
         manager.listResources(jsonDir, path -> path.getPath().endsWith(".json"))
                 .forEach((id, resource) -> {
@@ -85,6 +85,6 @@ public class ModEventHandlers {
                         Constants.LOG.error("Failed to load {}", id, e);
                     }
                 });
-        CommonClass.loadedEventsByMod.put(modId, events);
+        Constants.loadedEventPacks.put(eventPackId, events);
     }
 }

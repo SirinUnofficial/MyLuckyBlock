@@ -6,13 +6,11 @@ import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
 import net.fabricmc.api.ModInitializer;
 
 public class MyLuckyBlock implements ModInitializer {
-
     @Override
     public void onInitialize() {
+        CommonClass.init();
         ModBlocks.onInitialize();
         ModItemGroups.onInitialize();
         ModEventHandlers.onInitialize();
-
-        CommonClass.addModId(Constants.MOD_ID);
     }
 }

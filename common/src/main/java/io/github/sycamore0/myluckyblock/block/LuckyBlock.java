@@ -12,27 +12,27 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class LuckyBlock extends Block {
-    private String modId = Constants.MOD_ID; // path: data/myluckyblock/lucky_events/%modId%/
-    private boolean includeBuiltIn = false; // if include built-in lucky events(include lucky_events/my_lucky_block/)
+    private String eventPackId = Constants.MOD_ID; // path: data/myluckyblock/lucky/events/%eventPackId%/
+    private boolean includeBuiltIn = false; // if include built-in lucky events(include lucky/events/my_lucky_block/)
 
     public LuckyBlock(BlockBehaviour.Properties settings) {
         super(settings);
     }
 
-    public LuckyBlock(BlockBehaviour.Properties settings, String modId) {
+    public LuckyBlock(BlockBehaviour.Properties settings, String eventPackId) {
         super(settings);
-        this.modId = modId;
+        this.eventPackId = eventPackId;
         this.includeBuiltIn = false;
     }
 
-    public LuckyBlock(BlockBehaviour.Properties settings, String modId, boolean includeBuiltIn) {
+    public LuckyBlock(BlockBehaviour.Properties settings, String eventPackId, boolean includeBuiltIn) {
         super(settings);
-        this.modId = modId;
+        this.eventPackId = eventPackId;
         this.includeBuiltIn = includeBuiltIn;
     }
 
-    public String getModId() {
-        return modId;
+    public String getEventPackId() {
+        return eventPackId;
     }
 
     public boolean includeBuiltIn() {

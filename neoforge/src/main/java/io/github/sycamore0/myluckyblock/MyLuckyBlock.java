@@ -10,13 +10,9 @@ import net.neoforged.neoforge.common.NeoForge;
 @Mod(Constants.MOD_ID)
 public class MyLuckyBlock {
     public MyLuckyBlock(IEventBus eventBus) {
-        Constants.LOG.info("Hello NeoForge world!");
         CommonClass.init();
-
         ModBlocks.onInitialize(eventBus);
         ModItemGroups.onInitialize(eventBus);
         NeoForge.EVENT_BUS.register(ModEventHandlers.class);
-
-        CommonClass.addModId(Constants.MOD_ID);
     }
 }
