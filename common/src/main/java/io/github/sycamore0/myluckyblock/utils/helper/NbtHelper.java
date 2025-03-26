@@ -9,7 +9,7 @@ public class NbtHelper {
     public static CompoundTag generateNbt(@Nullable String nbtStr) {
         try {
             if (nbtStr != null) {
-                CompoundTag nbt = TagParser.parseTag(nbtStr);
+                CompoundTag nbt = TagParser.parseCompoundFully(nbtStr);
                 if (nbt instanceof CompoundTag) {
                     return nbt;
                 } else {
