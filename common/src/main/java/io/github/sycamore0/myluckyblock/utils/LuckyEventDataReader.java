@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LuckyDataReader {
+public class LuckyEventDataReader {
     @SerializedName("name")
     protected String name;
 
@@ -18,7 +18,7 @@ public class LuckyDataReader {
     @SerializedName("random_events")
     protected List<LuckyEventReader> randomEvents;
 
-    public LuckyDataReader() {
+    public LuckyEventDataReader() {
         // Default Construct
         this.name = "unknown";
         this.version = "unknown";

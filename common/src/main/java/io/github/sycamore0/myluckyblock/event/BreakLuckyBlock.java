@@ -12,27 +12,27 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BreakLuckyBlock {
-    public static LuckyDataManager manager = new LuckyDataManager();
+    public static LuckyEventDataManager manager = new LuckyEventDataManager();
 
     public static void breakLuckyBlock(Level level, Player player, BlockPos pos, BlockState state) {
         if (level instanceof ServerLevel && state.getBlock() instanceof LuckyBlock luckyBlock) {
             // Check silk touch
             boolean hasSilkTouch = EnchantmentsHelper.checkSilkTouch(player);
             if (hasSilkTouch) {
-                level.addFreshEntity(new ItemEntity(level, pos.getCenter().x, pos.getY(), pos.getCenter().z(), new ItemStack(luckyBlock)));
+                level.addFreshEntity(new ItemEntity(level, pos.getCenter().x, pos.getY(), pos.getCenter().z, new ItemStack(luckyBlock)));
                 return;
             }
-            String modId = luckyBlock.getModId();
+            String eventPackId = luckyBlock.getEventPackId();
             boolean includeBuiltIn = luckyBlock.includeBuiltIn();
 
-            if (!manager.isLoaded(modId)) {
-                manager.loadEvents(modId, includeBuiltIn);
+            if (!manager.isLoaded(eventPackId)) {
+                manager.loadEvents(eventPackId, includeBuiltIn);
             }
 
             // Trigger random event
-            LuckyEventReader event = manager.getRandomEvent(modId);
+            LuckyEventReader event = manager.getRandomEvent(eventPackId);
             if (event != null) {
-                LuckyExecutor.executeLuckyFunction(level, player, pos, event);
+                LuckyEventExecutor.executeLuckyFunction(level, player, pos, event);
             }
         }
     }

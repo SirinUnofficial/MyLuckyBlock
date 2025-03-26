@@ -29,7 +29,7 @@ public class ModItemGroups {
         }
     }
 
-    public static void registerModItemGroups(IEventBus eventBus) {
+    public static void onInitialize(IEventBus eventBus) {
         TABS.register(eventBus);
         eventBus.addListener(ModItemGroups::buildCreativeTabContent);
     }

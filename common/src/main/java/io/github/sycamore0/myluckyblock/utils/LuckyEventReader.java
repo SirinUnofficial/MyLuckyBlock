@@ -32,6 +32,9 @@ public class LuckyEventReader {
     @SerializedName("send_messages")
     protected List<SendMessage> sendMessages;
 
+    @SerializedName("display_messages")
+    protected List<DisplayMessage> displayMessages;
+
     @SerializedName("create_explosions")
     protected List<CreateExplosion> createExplosions;
 
@@ -44,101 +47,76 @@ public class LuckyEventReader {
     @SerializedName("execute_commands")
     protected List<ExecuteCommand> executeCommands;
 
-    // 检查 dropItems 是否为空
     public boolean hasDropItems() {
         return dropItems != null && !dropItems.isEmpty();
+    }
+    public boolean hasPlaceBlocks() {
+        return placeBlocks != null && !placeBlocks.isEmpty();
+    }
+    public boolean hasPlaceChests() {
+        return placeChests != null && !placeChests.isEmpty();
+    }
+    public boolean hasFallBlocks() {
+        return fallBlocks != null && !fallBlocks.isEmpty();
+    }
+    public boolean hasGivePotionEffects() {
+        return givePotionEffects != null && !givePotionEffects.isEmpty();
+    }
+    public boolean hasSpawnMobs() {
+        return spawnMobs != null && !spawnMobs.isEmpty();
+    }
+    public boolean hasSendMessages() {
+        return sendMessages != null && !sendMessages.isEmpty();
+    }
+    public boolean hasDisplayMessages() {
+        return displayMessages != null && !displayMessages.isEmpty();
+    }
+    public boolean hasCreateExplosions() {
+        return createExplosions != null && !createExplosions.isEmpty();
+    }
+    public boolean hasAddParticles() {
+        return addParticles != null && !addParticles.isEmpty();
+    }
+    public boolean hasLoadStructures() {
+        return loadStructures != null && !loadStructures.isEmpty();
+    }
+    public boolean hasExecuteCommands() {
+        return executeCommands != null && !executeCommands.isEmpty();
     }
 
     public List<DropItem> getDropItems() {
         return dropItems;
     }
-
-    // 检查 placeBlocks 是否为空
-    public boolean hasPlaceBlocks() {
-        return placeBlocks != null && !placeBlocks.isEmpty();
-    }
-
     public List<PlaceBlock> getPlaceBlocks() {
         return placeBlocks;
     }
-
-    // 检查 placeChests 是否为空
-    public boolean hasPlaceChests() {
-        return placeChests != null && !placeChests.isEmpty();
-    }
-
     public List<PlaceChest> getPlaceChests() {
         return placeChests;
     }
-
-    // 检查 fallBlocks 是否为空
-    public boolean hasFallBlocks() {
-        return fallBlocks != null && !fallBlocks.isEmpty();
-    }
-
     public List<FallBlock> getFallBlocks() {
         return fallBlocks;
     }
-
-    // 检查 givePotionEffects 是否为空
-    public boolean hasGivePotionEffects() {
-        return givePotionEffects != null && !givePotionEffects.isEmpty();
-    }
-
     public List<GivePotionEffect> getGivePotionEffects() {
         return givePotionEffects;
     }
-
-    // 检查 spawnMobs 是否为空
-    public boolean hasSpawnMobs() {
-        return spawnMobs != null && !spawnMobs.isEmpty();
-    }
-
     public List<SpawnMob> getSpawnMobs() {
         return spawnMobs;
     }
-
-    // 检查 sendMessages 是否为空
-    public boolean hasSendMessages() {
-        return sendMessages != null && !sendMessages.isEmpty();
-    }
-
     public List<SendMessage> getSendMessages() {
         return sendMessages;
     }
-
-    // 检查 createExplosions 是否为空
-    public boolean hasCreateExplosions() {
-        return createExplosions != null && !createExplosions.isEmpty();
+    public List<DisplayMessage> getDisplayMessages() {
+        return displayMessages;
     }
-
     public List<CreateExplosion> getCreateExplosions() {
         return createExplosions;
     }
-
-    // 检查 addParticles 是否为空
-    public boolean hasAddParticles() {
-        return addParticles != null && !addParticles.isEmpty();
-    }
-
     public List<AddParticle> getAddParticles() {
         return addParticles;
     }
-
-    // 检查 loadStructures 是否为空
-    public boolean hasLoadStructures() {
-        return loadStructures != null && !loadStructures.isEmpty();
-    }
-
     public List<LoadStructure> getLoadStructures() {
         return loadStructures;
     }
-
-    // 检查 executeCommands 是否为空
-    public boolean hasExecuteCommands() {
-        return executeCommands != null && !executeCommands.isEmpty();
-    }
-
     public List<ExecuteCommand> getExecuteCommands() {
         return executeCommands;
     }
@@ -394,7 +372,7 @@ public class LuckyEventReader {
         }
     }
 
-    public static class SendMessage {
+    public static class DisplayMessage {
         @SerializedName("msg")
         protected String msg;
 
@@ -402,10 +380,20 @@ public class LuckyEventReader {
         protected boolean overlay = true;
 
         // Getters
-        public boolean getReceiver() {
+        public boolean getOverlay() {
             return overlay;
         }
 
+        public String getMsg() {
+            return msg;
+        }
+    }
+
+    public static class SendMessage {
+        @SerializedName("msg")
+        protected String msg;
+
+        // Getters
         public String getMsg() {
             return msg;
         }
