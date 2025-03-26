@@ -179,7 +179,7 @@ public class LuckyEventFunctions {
     }
 
     public static void sendMessage(Player player, String message) {
-        player.sendSystemMessage(Component.translatableEscape(message));
+        player.displayClientMessage(Component.translatableEscape(message), false);
     }
 
     public static void displayClientMessage(Player player, String message, boolean overlay) {
