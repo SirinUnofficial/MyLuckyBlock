@@ -6,17 +6,17 @@ import io.github.sycamore0.myluckyblock.Constants;
 
 import java.util.*;
 
-public class LuckyDataManager {
+public class LuckyEventDataManager {
     private final Map<String, List<LuckyEventReader>> eventsByMod = new HashMap<>();
 
-    public void loadEvents(String modId, boolean includeBuiltIn) {
+    public void loadEvents(String eventPackId, boolean includeBuiltIn) {
         // load events for the specified mod
-        List<JsonObject> modEvents = CommonClass.getLoadedEventsForMod(modId);
+        List<JsonObject> modEvents = CommonClass.getLoadedEvents(eventPackId);
         List<JsonObject> targetEvents = new ArrayList<>(modEvents);
 
         // if include built-in events
-        if (includeBuiltIn && !modId.equals(Constants.MOD_ID)) {
-            List<JsonObject> mainEvents = CommonClass.getLoadedEventsForMod(Constants.MOD_ID);
+        if (includeBuiltIn && !eventPackId.equals(Constants.MOD_ID)) {
+            List<JsonObject> mainEvents = CommonClass.getLoadedEvents(Constants.MOD_ID);
             targetEvents.addAll(mainEvents);
         }
 
@@ -25,7 +25,7 @@ public class LuckyDataManager {
         int currentId = 1;
         for (JsonObject json : targetEvents) {
             try {
-                LuckyDataReader data = LuckyJsonUtil.loadJsonData(json);
+                LuckyEventDataReader data = LuckyJsonUtil.loadJsonData(json);
                 if (data == null) {
                     Constants.LOG.error("Failed to parse JSON file: {}", json.get("fileName").getAsString());
                     continue;
@@ -54,28 +54,30 @@ public class LuckyDataManager {
             }
         }
 
-        eventsByMod.put(modId, modEventList);
-        Constants.LOG.info("Successfully loaded {} random events for mod {}", modEventList.size(), modId);
+        eventsByMod.put(eventPackId, modEventList);
+        Constants.LOG.info("Successfully loaded {} random events for mod {}", modEventList.size(), eventPackId);
     }
 
-    public boolean isLoaded(String modId) {
-        return eventsByMod.containsKey(modId);
+    public boolean isLoaded(String eventPackId) {
+        return eventsByMod.containsKey(eventPackId);
     }
 
-    public LuckyEventReader getRandomEvent(String modId) {
-        List<LuckyEventReader> events = eventsByMod.get(modId);
+    public LuckyEventReader getRandomEvent(String eventPackId) {
+        List<LuckyEventReader> events = eventsByMod.get(eventPackId);
         if (events == null || events.isEmpty()) {
             return null;
         }
         return events.get(new Random().nextInt(events.size()));
     }
 
-    public int getRandomEventsCount(String modId) {
-        return eventsByMod.getOrDefault(modId, new ArrayList<>()).size();
+    // Debug method
+    public int getRandomEventsCount(String eventPackId) {
+        return eventsByMod.getOrDefault(eventPackId, new ArrayList<>()).size();
     }
 
-    public LuckyEventReader getEventById(String modId, int id) {
-        for (LuckyEventReader event : eventsByMod.getOrDefault(modId, new ArrayList<>())) {
+    // Debug method
+    public LuckyEventReader getEventById(String eventPackId, int id) {
+        for (LuckyEventReader event : eventsByMod.getOrDefault(eventPackId, new ArrayList<>())) {
             if (event.getId() == id) {
                 return event;
             }

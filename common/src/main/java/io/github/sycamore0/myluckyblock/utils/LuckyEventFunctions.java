@@ -51,7 +51,7 @@ import java.io.InputStream;
 import java.nio.file.NoSuchFileException;
 import java.util.Optional;
 
-public class LuckyFunctions {
+public class LuckyEventFunctions {
     public static void dropItems(Level level, Vec3 pos, String itemId, int count) {
         dropItems(level, pos, itemId, count, null);
     }
@@ -178,7 +178,11 @@ public class LuckyFunctions {
         level.explode(null, pos.x(), pos.y(), pos.z(), power, createFire, Level.ExplosionInteraction.BLOCK);
     }
 
-    public static void sendMessage(Player player, String message, boolean overlay) {
+    public static void sendMessage(Player player, String message) {
+        player.displayClientMessage(Component.translatableEscape(message), false);
+    }
+
+    public static void displayClientMessage(Player player, String message, boolean overlay) {
         player.displayClientMessage(Component.translatableEscape(message), overlay);
     }
 
