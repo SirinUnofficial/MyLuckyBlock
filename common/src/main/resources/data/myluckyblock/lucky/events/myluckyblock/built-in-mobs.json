@@ -44,7 +44,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{VillagerData:{type:plains,profession:armorer,level:5},Offers:{Recipes:[{maxUses:6,buy:{id:diamond,count:20},sell:{id:diamond_helmet,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:32},sell:{id:diamond_chestplate,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:28},sell:{id:diamond_leggings,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:16},sell:{id:diamond_boots,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}}]}}"
+                    "nbt": "{VillagerData:{type:plains,profession:armorer,level:5},Offers:{Recipes:[{maxUses:6,buy:{id:diamond,count:20},sell:{id:diamond_helmet,count:1,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}},{maxUses:6,buy:{id:diamond,count:32},sell:{id:diamond_chestplate,count:1,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}},{maxUses:6,buy:{id:diamond,count:28},sell:{id:diamond_leggings,count:1,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}},{maxUses:6,buy:{id:diamond,count:16},sell:{id:diamond_boots,count:1,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}]}}"
                 }
             ]
         },
@@ -59,7 +59,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{CustomName:'[{\"text\":\"超级僵尸\"}]',CustomNameVisible:1b,HandItems:[{id:netherite_sword,components:{enchantments:{levels:{bane_of_arthropods:5,fire_aspect:2,knockback:2,looting:3,sharpness:5,silk_touch:1,smite:5,sweeping_edge:3,unbreaking:3,breach:4}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:netherite_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}],ArmorDropChances:[0.1f,0.1f,0.1f,0.1f]}"
+                    "nbt": "{CustomName:[{\"text\":\"超级僵尸\"}],CustomNameVisible:1b,equipment:{mainhand:{id:netherite_sword,components:{enchantments:{bane_of_arthropods:5,fire_aspect:2,knockback:2,looting:3,sharpness:5,silk_touch:1,smite:5,sweeping_edge:3,unbreaking:3,breach:4}}},head:{id:netherite_helmet,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},chest:{id:netherite_chestplate,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},legs:{id:netherite_leggings,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},feet:{id:netherite_boots,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}},drop_chances:{mainhand:0.1f,head:0.1f,chest:0.1f,legs:0.1f,feet:0.1f}}"
                 }
             ]
         },
@@ -89,7 +89,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{powered:1,ExplosionRadius:50,CustomName:'[{\"text\":\"超级高压爬行者\"}]',Glowing:1b}"
+                    "nbt": "{powered:1,ExplosionRadius:50,CustomName:[{\"text\":\"超级高压爬行者\"}],Glowing:1b}"
                 }
             ]
         },
@@ -134,7 +134,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Variant:260,SaddleItem:{id:saddle,Count:1},Tame:1,body_armor_item:{id:diamond_horse_armor,Count:1}}"
+                    "nbt": "{Variant:260,equipment:{saddle:{id:saddle,count:1},body:{id:diamond_horse_armor,count:1}},Tame:1}"
                 }
             ]
         },
@@ -143,7 +143,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:bat",
-                    "nbt": "{Passengers:[{id:skeleton_horse,SaddleItem:{id:saddle,Count:1},Tame:1,Passengers:[{id:skeleton,CustomName:'[{\"text\":\"骷髅骑士\"}]',CustomNameVisible:1b,Glowing:1b,HandItems:[{id:bow,components:{enchantments:{levels:{infinity:1,mending:1,power:2,punch:2,unbreaking:3}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:chainmail_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}]}]}]}",
+                    "nbt": "{Passengers:[{id:skeleton_horse,equipment:{saddle:{id:saddle,count:1}},Tame:1,Passengers:[{id:skeleton,CustomName:[{\"text\":\"骷髅骑士\"}],CustomNameVisible:1b,Glowing:1b,equipment:{mainhand:{id:bow,components:{enchantments:{infinity:1,mending:1,power:2,punch:2,unbreaking:3}}},head:{id:chainmail_helmet,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},chest:{id:chainmail_chestplate,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},legs:{id:chainmail_leggings,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},feet:{id:chainmail_boots,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}}]}]}",
                     "pos_src": 0
                 }
             ]
@@ -159,7 +159,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Glowing:1b,HandItems:[{id:crossbow,components:{enchantments:{levels:{multishot:20}},unbreakable:{},repair_cost:32767},count:1}],HandDropChances:[0.01f]}"
+                    "nbt": "{Glowing:1b,equipment:{mainhand:{id:crossbow,components:{enchantments:{multishot:20},unbreakable:{},repair_cost:32767}},drop_chances:{mainhand:0.1f}}"
                 }
             ]
         },
@@ -168,7 +168,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:fox",
-                    "nbt": "{Type:red,Sitting:1,CustomName:'[{\"text\":\"NeoForge\"}]',HandItems:[{id:mojang_banner_pattern},{}],HandDropChances:[1f,0f]}"
+                    "nbt": "{Type:red,Sitting:1,CustomName:[{\"text\":\"NeoForge\"}],equipment:{mainhand:{id:mojang_banner_pattern}},drop_chances:{mainhand:1f}}"
                 }
             ]
         }
