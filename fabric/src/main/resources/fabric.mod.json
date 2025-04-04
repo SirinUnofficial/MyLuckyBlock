@@ -9,7 +9,8 @@
     ],
     "contact": {
         "homepage": "https://modrinth.com/mod/myluckyblock",
-        "sources": "https://github.com/SirinUnofficial/MyLuckyBlock"
+        "sources": "https://github.com/SirinUnofficial/MyLuckyBlock",
+        "issues": "https://github.com/SirinUnofficial/MyLuckyBlock/issues"
     },
     "license": "${license}",
     "icon": "icon.png",
