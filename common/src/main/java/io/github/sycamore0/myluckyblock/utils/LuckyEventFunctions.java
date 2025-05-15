@@ -34,7 +34,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -115,7 +114,7 @@ public class LuckyEventFunctions {
         fallingBlockEntity.push(velocity);
     }
 
-    public static void spawnMob(Level level, Vec3 pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, @Nullable String nbtString, Vec3 velocity) {
+    public static void spawnMob(Level level, Vec3 pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, Vec3 velocity, @Nullable String nbtString) {
         Entity entity = entityType.create(level);
         if (entity == null) return;
         CompoundTag nbt = NbtHelper.generateNbt(nbtString);

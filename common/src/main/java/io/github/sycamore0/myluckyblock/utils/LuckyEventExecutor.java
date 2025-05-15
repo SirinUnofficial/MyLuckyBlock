@@ -111,6 +111,8 @@ public class LuckyEventExecutor {
                 int type = placeChest.getType(); // @Deprecated
                 String chestId = placeChest.getChestId();
 
+                // @Deprecated
+                // Remove next release
                 switch (type) {
                     case 1:
                         chestId = "minecraft:trapped_chest";
@@ -212,7 +214,7 @@ public class LuckyEventExecutor {
                         LuckyEventFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
                     } else {
                         if (nbtString != null) {
-                            LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
+                            LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, velocity, nbtString);
                         } else {
                             LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, isBaby, velocity);
                         }
