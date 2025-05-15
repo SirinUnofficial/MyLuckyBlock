@@ -15,6 +15,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 
@@ -107,11 +108,29 @@ public class LuckyEventExecutor {
                         break;
                 }
 
-                int type = placeChest.getType();
+                int type = placeChest.getType(); // @Deprecated
+                String chestId = placeChest.getChestId();
+
+                switch (type) {
+                    case 1:
+                        chestId = "minecraft:trapped_chest";
+                        break;
+                    case 2:
+                        chestId = "minecraft:barrel";
+                        break;
+                    case 3:
+                        chestId = "minecraft:shulker_box";
+                        break;
+                    default:
+                        break;
+                }
+                Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestId));
+                BlockState chestBlockState = chestBlock.defaultBlockState();
+
                 String lootTableId = placeChest.getId();
 
                 ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
-                LuckyEventFunctions.placeChest(level, PosHelper.parseVec3d(placeChestPos), type, lootTable);
+                LuckyEventFunctions.placeChest(level, PosHelper.parseVec3d(placeChestPos), chestBlockState, lootTable);
             }
         }
 
@@ -191,8 +210,7 @@ public class LuckyEventExecutor {
                 for (int i = 0; i < count; i++) {
                     if (entityType == EntityType.ITEM) {
                         LuckyEventFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
-                    }
-                    else {
+                    } else {
                         if (nbtString != null) {
                             LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, nbtString, velocity);
                         } else {
@@ -304,7 +322,7 @@ public class LuckyEventExecutor {
 
         // Execute Commands
         if (function.hasExecuteCommands()) {
-            for (LuckyEventReader.ExecuteCommand executeCommand: function.getExecuteCommands()) {
+            for (LuckyEventReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
                 // Get Command
                 String command = executeCommand.getCommand();
 

@@ -101,30 +101,9 @@ public class LuckyEventFunctions {
         level.setBlockAndUpdate(blockPos, blockState);
     }
 
-    // TODO: not type but block id?
-    public static void placeChest(Level level, BlockPos blockPos, int type, ResourceKey<LootTable> lootTableId) {
-        Block block = Blocks.CHEST;
-        switch (type) {
-            case 1:
-                block = Blocks.TRAPPED_CHEST;
-                break;
-            case 2:
-                block = Blocks.BARREL;
-                break;
-            case 3:
-                block = Blocks.SHULKER_BOX;
-                break;
-            case 0:
-                // Default is Chest
-                break;
-            default:
-                Constants.LOG.error("Error: PlaceChests Invalid Type: {}", type);
-                break;
-        }
-        BlockState blockState = block.defaultBlockState();
-        level.setBlockAndUpdate(blockPos, blockState);
+    public static void placeChest(Level level, BlockPos blockPos, BlockState chestBlockState, ResourceKey<LootTable> lootTableId) {
+        level.setBlockAndUpdate(blockPos, chestBlockState);
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
-        // TODO: fix
         if (blockEntity instanceof RandomizableContainer lootableInventory) {
             lootableInventory.setLootTable(lootTableId);
         }

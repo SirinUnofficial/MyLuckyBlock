@@ -216,6 +216,10 @@ public class LuckyEventReader {
         @SerializedName("id")
         protected String id = "empty";
 
+        @SerializedName("chest_id")
+        protected String chestId = "minecraft:chest";
+
+        @Deprecated
         @SerializedName("type")
         protected int type = 0;
 
@@ -232,6 +236,11 @@ public class LuckyEventReader {
             return id;
         }
 
+        public String getChestId() {
+            return chestId;
+        }
+
+        @Deprecated
         public int getType() {
             return type;
         }
