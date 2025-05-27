@@ -320,6 +320,9 @@ public class LuckyEventReader {
         @SerializedName("name_visible")
         protected boolean nameVisible = false;
 
+        @SerializedName("desc")
+        protected String desc = null;
+
         @SerializedName("is_baby")
         protected boolean isBaby = false;
 
@@ -362,6 +365,10 @@ public class LuckyEventReader {
 
         public String getName() {
             return name;
+        }
+
+        public String getDesc() {
+            return desc;
         }
 
         public Boolean isNameVisible() {

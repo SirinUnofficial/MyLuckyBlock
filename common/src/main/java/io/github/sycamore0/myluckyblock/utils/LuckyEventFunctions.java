@@ -5,6 +5,7 @@ import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -32,6 +33,7 @@ import net.minecraft.world.entity.vehicle.MinecartCommandBlock;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
@@ -47,6 +49,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.InputStream;
 import java.nio.file.NoSuchFileException;
+import java.util.List;
 import java.util.Optional;
 
 public class LuckyEventFunctions {
@@ -73,7 +76,7 @@ public class LuckyEventFunctions {
     }
 
     // use in spawn mob
-    public static void dropItemsByNbt(Level level, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String nbtString) {
+    public static void dropItemsByNbt(Level level, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         ItemStack itemStack = new ItemStack(Items.AIR);
         ItemEntity item = new ItemEntity(level, pos.x(), pos.y(), pos.z(), itemStack);
 
@@ -85,8 +88,14 @@ public class LuckyEventFunctions {
         }
 
         if (name != null) {
-            item.setCustomName(Component.translatableEscape(name));
+            item.setCustomName(Component.translatable(name));
             item.setCustomNameVisible(nameVisible);
+            item.getItem().set(DataComponents.CUSTOM_NAME, Component.translatable(name));
+        }
+
+        if (desc != null) {
+            ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
+            item.getItem().set(DataComponents.LORE, itemLore);
         }
 
         item.setPos(pos);

@@ -180,6 +180,8 @@ public class LuckyEventExecutor {
                 String name = spawnMob.getName();
                 boolean nameVisible = spawnMob.isNameVisible();
 
+                String desc = spawnMob.getDesc();
+
                 boolean isBaby = spawnMob.isBaby();
                 String nbtString = spawnMob.getNbt();
 
@@ -211,7 +213,7 @@ public class LuckyEventExecutor {
 
                 for (int i = 0; i < count; i++) {
                     if (entityType == EntityType.ITEM) {
-                        LuckyEventFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, nbtString);
+                        LuckyEventFunctions.dropItemsByNbt(level, spawnMobPos, name, nameVisible, desc, nbtString);
                     } else {
                         if (nbtString != null) {
                             LuckyEventFunctions.spawnMob(level, spawnMobPos, entityType, name, nameVisible, velocity, nbtString);
