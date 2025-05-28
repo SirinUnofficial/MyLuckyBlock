@@ -149,6 +149,15 @@ public class LuckyEventReader {
         @SerializedName("offset")
         protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
 
+        @SerializedName("name")
+        protected String name = null;
+
+        @SerializedName("name_visible")
+        protected boolean nameVisible = false;
+
+        @SerializedName("desc")
+        protected String desc = null;
+
         @SerializedName("nbt")
         protected String nbt = null;
 
@@ -175,6 +184,18 @@ public class LuckyEventReader {
 
         public Vec3 getOffset() {
             return offset;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public boolean isNameVisible() {
+            return nameVisible;
+        }
+
+        public String getDesc() {
+            return desc;
         }
 
         public String getNbt() {

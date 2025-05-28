@@ -28,6 +28,12 @@ public class LuckyEventExecutor {
             for (LuckyEventReader.DropItem dropItem : function.getDropItems()) {
                 // Get ItemStack
                 String itemId = dropItem.getId();
+
+                String name = dropItem.getName();
+                boolean nameVisible = dropItem.isNameVisible();
+
+                String desc = dropItem.getDesc();
+
                 boolean isUseRandom = dropItem.isUseRandom();
                 int count;
                 if (isUseRandom) {
@@ -58,7 +64,7 @@ public class LuckyEventExecutor {
                 // Get NBT
                 String nbtString = dropItem.getNbt();
 
-                LuckyEventFunctions.dropItems(level, dropItemPos, itemId, count, nbtString);
+                LuckyEventFunctions.dropItems(level, dropItemPos, itemId, count, name, nameVisible, desc, nbtString);
             }
         }
 

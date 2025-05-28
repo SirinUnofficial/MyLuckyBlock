@@ -53,11 +53,17 @@ import java.util.List;
 import java.util.Optional;
 
 public class LuckyEventFunctions {
+    @Deprecated
     public static void dropItems(Level level, Vec3 pos, String itemId, int count) {
-        dropItems(level, pos, itemId, count, null);
+        dropItems(level, pos, itemId, count, null, false, null, null);
     }
 
+    @Deprecated
     public static void dropItems(Level level, Vec3 pos, String itemId, int count, @Nullable String nbtString) {
+        dropItems(level, pos, itemId, count, null, false, null, nbtString);
+    }
+
+    public static void dropItems(Level level, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
         if (item.equals(Items.AIR)) return;
         ItemStack itemStack = new ItemStack(item, count);
@@ -69,6 +75,17 @@ public class LuckyEventFunctions {
             if (nbt == null) return;
             itemEntity.load(nbt);
             itemEntity.save(nbt);
+        }
+
+        if (name != null) {
+            itemEntity.setCustomName(Component.translatable(name));
+            itemEntity.setCustomNameVisible(nameVisible);
+            itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(name));
+        }
+
+        if (desc != null) {
+            ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
+            itemStack.set(DataComponents.LORE, itemLore);
         }
 
         itemEntity.setPos(pos);
