@@ -7,7 +7,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-public class LuckyEventReader {
+public class RandomEventReader {
     @SerializedName("id")
     protected int id;
 

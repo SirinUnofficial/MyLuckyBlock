@@ -3,11 +3,13 @@ package io.github.sycamore0.myluckyblock.utils;
 import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.platform.Services;
+import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
 
 import java.util.*;
 
 public class LuckyEventDataManager {
-    private final Map<String, List<LuckyEventReader>> eventsByMod = new HashMap<>();
+    private final Map<String, List<RandomEventReader>> eventsByMod = new HashMap<>();
 
     public void loadEvents(String eventPackId, boolean includeBuiltIn) {
         // load events for the specified mod
@@ -21,11 +23,11 @@ public class LuckyEventDataManager {
         }
 
         // Parse and store events
-        List<LuckyEventReader> modEventList = new ArrayList<>();
+        List<RandomEventReader> modEventList = new ArrayList<>();
         int currentId = 1;
         for (JsonObject json : targetEvents) {
             try {
-                LuckyEventDataReader data = LuckyJsonUtil.loadJsonData(json);
+                EventDataReader data = ModJsonUtil.loadJsonData(json);
                 if (data == null) {
                     Constants.LOG.error("Failed to parse JSON file: {}", json.get("fileName").getAsString());
                     continue;
@@ -33,19 +35,11 @@ public class LuckyEventDataManager {
 
                 Constants.LOG.info("Loading {} (v{})", data.getName(), data.getVersion());
 
-                boolean allDependenciesLoaded = true;
-                List<DependenciesDataReader> dependencies = data.getDependencies();
-                if (dependencies != null) {
-                    for (DependenciesDataReader dependency : dependencies) {
-                        if (!CommonClass.checkModLoaded(dependency.getId())) {
-                            allDependenciesLoaded = false;
-                            Constants.LOG.warn("Dependency {} is not loaded", dependency.getId());
-                        }
-                    }
-                }
+                boolean allDependenciesLoaded = checkDependencies(data);
+
 
                 if (allDependenciesLoaded) {
-                    for (LuckyEventReader event : data.getRandomEvents()) {
+                    for (RandomEventReader event : data.getRandomEvents()) {
                         event.setId(currentId++);
                         modEventList.add(event);
 
@@ -77,12 +71,56 @@ public class LuckyEventDataManager {
         return eventsByMod.containsKey(eventPackId);
     }
 
-    public LuckyEventReader getRandomEvent(String eventPackId) {
-        List<LuckyEventReader> events = eventsByMod.get(eventPackId);
+    public RandomEventReader getRandomEvent(String eventPackId) {
+        List<RandomEventReader> events = eventsByMod.get(eventPackId);
         if (events == null || events.isEmpty()) {
             return null;
         }
         return events.get(new Random().nextInt(events.size()));
+    }
+
+    private boolean checkDependencies(EventDataReader data) {
+        List<DependenciesDataReader> dependencies = data.getDependencies();
+
+        if (dependencies == null) {
+            return true;
+        }
+
+        Constants.LOG.debug("Dependencies not null: {}", dependencies); // TODO: del this DEBUG log
+
+        for (DependenciesDataReader dependency : dependencies) {
+            if (dependency.getId() == null) {
+                continue;
+            }
+
+            if (!CommonClass.checkModLoaded(dependency.getId())) {
+                Constants.LOG.warn("Dependency {} is not loaded", dependency.getId());
+                return false;
+            }
+
+            String versionRange = dependency.getVersionRange();
+            if ("*".equals(versionRange)) {
+                return true;
+            }
+
+            if (versionRange != null) {
+                String currentDependencyVersion;
+                try {
+                    currentDependencyVersion = Services.PLATFORM.getModVersion(dependency.getId());
+                } catch (Exception e) {
+                    Constants.LOG.error("Failed to get version for dependency {}", dependency.getId(), e);
+                    return false;
+                }
+
+                if (!VersionHelper.isVersionInRange(currentDependencyVersion, versionRange)) {
+                    Constants.LOG.warn("Dependency {} version {} is not in range {}",
+                            dependency.getId(), currentDependencyVersion, versionRange);
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     // Debug method
@@ -91,8 +129,8 @@ public class LuckyEventDataManager {
     }
 
     // Debug method
-    public LuckyEventReader getEventById(String eventPackId, int id) {
-        for (LuckyEventReader event : eventsByMod.getOrDefault(eventPackId, new ArrayList<>())) {
+    public RandomEventReader getEventById(String eventPackId, int id) {
+        for (RandomEventReader event : eventsByMod.getOrDefault(eventPackId, new ArrayList<>())) {
             if (event.getId() == id) {
                 return event;
             }

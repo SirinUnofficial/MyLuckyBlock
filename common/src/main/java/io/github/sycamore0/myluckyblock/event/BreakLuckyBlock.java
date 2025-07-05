@@ -30,7 +30,7 @@ public class BreakLuckyBlock {
             }
 
             // Trigger random event
-            LuckyEventReader event = manager.getRandomEvent(eventPackId);
+            RandomEventReader event = manager.getRandomEvent(eventPackId);
             if (event != null) {
                 LuckyEventExecutor.executeLuckyFunction(level, player, pos, event);
             }
