@@ -74,7 +74,6 @@ public class LuckyEventFunctions {
             CompoundTag nbt = NbtHelper.generateItemNbt(itemId, count, nbtString);
             if (nbt == null) return;
             itemEntity.load(nbt);
-            itemEntity.save(nbt);
         }
 
         if (name != null) {
@@ -101,7 +100,6 @@ public class LuckyEventFunctions {
             CompoundTag nbt = NbtHelper.generateNbt(nbtString);
             if (nbt == null) return;
             item.load(nbt);
-            item.save(nbt);
         }
 
         if (name != null) {
@@ -146,7 +144,6 @@ public class LuckyEventFunctions {
         CompoundTag nbt = NbtHelper.generateNbt(nbtString);
         if (nbt == null) return;
         entity.load(nbt);
-        entity.save(nbt);
         if (name != null) {
             entity.setCustomName(Component.translatableEscape(name));
             entity.setCustomNameVisible(nameVisible);
