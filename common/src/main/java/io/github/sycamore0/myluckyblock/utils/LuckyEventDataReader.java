@@ -15,6 +15,9 @@ public class LuckyEventDataReader {
     @SerializedName("info")
     protected String info;
 
+    @SerializedName("dependencies")
+    protected List<DependenciesDataReader> dependencies;
+
     @SerializedName("random_events")
     protected List<LuckyEventReader> randomEvents;
 
@@ -23,6 +26,7 @@ public class LuckyEventDataReader {
         this.name = "unknown";
         this.version = "unknown";
         this.info = "unknown";
+        this.dependencies = new ArrayList<>();
         this.randomEvents = new ArrayList<>();
     }
 
@@ -37,6 +41,10 @@ public class LuckyEventDataReader {
 
     public String getInfo() {
         return info;
+    }
+
+    public List<DependenciesDataReader> getDependencies() {
+        return dependencies;
     }
 
     public List<LuckyEventReader> getRandomEvents() {

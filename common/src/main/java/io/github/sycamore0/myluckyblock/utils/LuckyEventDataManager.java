@@ -33,19 +33,34 @@ public class LuckyEventDataManager {
 
                 Constants.LOG.info("Loading {} (v{})", data.getName(), data.getVersion());
 
-                for (LuckyEventReader event : data.getRandomEvents()) {
-                    event.setId(currentId++);
-                    modEventList.add(event);
-
-                    if (event.getId() <= 0) {
-                        Constants.LOG.warn("Invalid event ID in {}: {}", json.get("fileName"), event.getId());
+                boolean allDependenciesLoaded = true;
+                List<DependenciesDataReader> dependencies = data.getDependencies();
+                if (dependencies != null) {
+                    for (DependenciesDataReader dependency : dependencies) {
+                        if (!CommonClass.checkModLoaded(dependency.getId())) {
+                            allDependenciesLoaded = false;
+                            Constants.LOG.warn("Dependency {} is not loaded", dependency.getId());
+                        }
                     }
                 }
 
-                Constants.LOG.info("Loaded {} events from {}",
-                        data.getRandomEvents().size(),
-                        json.get("fileName").getAsString()
-                );
+                if (allDependenciesLoaded) {
+                    for (LuckyEventReader event : data.getRandomEvents()) {
+                        event.setId(currentId++);
+                        modEventList.add(event);
+
+                        if (event.getId() <= 0) {
+                            Constants.LOG.warn("Invalid event ID in {}: {}", json.get("fileName"), event.getId());
+                        }
+                    }
+
+                    Constants.LOG.info("Loaded {} events from {}",
+                            data.getRandomEvents().size(),
+                            json.get("fileName").getAsString()
+                    );
+                } else {
+                    Constants.LOG.warn("Skipping {} because not all dependencies are loaded", json.get("fileName").getAsString());
+                }
             } catch (Exception e) {
                 Constants.LOG.error("Critical error loading {}: {}",
                         json.get("fileName").getAsString(),
