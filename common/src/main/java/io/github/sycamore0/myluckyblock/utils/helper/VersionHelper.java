@@ -22,6 +22,11 @@ public class VersionHelper {
      * @return if in range return true，or return false
      */
     public static boolean isVersionInRange(String versionStr, String rangeStr) {
+        // ANY
+        if ("*".equals(rangeStr)) {
+            return true;
+        }
+
         try {
             Version version = parseVersion(versionStr);
             VersionRange range = parseVersionRange(rangeStr);
@@ -39,6 +44,13 @@ public class VersionHelper {
      * @return Version Object
      */
     private static Version parseVersion(String versionStr) {
+        // if not Semantic Versioning
+        if (versionStr.matches("^\\d+$")) {
+            versionStr += ".0.0";
+        } else if (versionStr.matches("^\\d+\\.\\d+$")) {
+            versionStr += ".0";
+        }
+
         Matcher matcher = VERSION_PATTERN.matcher(versionStr);
         if (!matcher.matches()) {
             throw new IllegalArgumentException("Invalid Version String: " + versionStr);
@@ -118,6 +130,18 @@ public class VersionHelper {
                 int preReleaseCompare = comparePreRelease(this.preRelease, other.preRelease);
                 if (preReleaseCompare != 0) {
                     return preReleaseCompare;
+                }
+            }
+
+            // compare build data "+build.1"
+            if (this.build == null && other.build != null) {
+                return -1;
+            } else if (this.build != null && other.build == null) {
+                return 1;
+            } else if (this.build != null && other.build != null) {
+                int buildCompare = this.build.compareTo(other.build);
+                if (buildCompare != 0) {
+                    return buildCompare;
                 }
             }
 
@@ -218,14 +242,5 @@ public class VersionHelper {
             sb.append(maxInclusive ? "]" : ")");
             return sb.toString();
         }
-    }
-
-    // Debug method
-    public static void test() {
-        String versionStr = "1.8.9-dev";
-        String rangeStr = "[1.2.3,1.25.7)";
-
-        boolean result = isVersionInRange(versionStr, rangeStr);
-        Constants.LOG.debug("{}", result);
     }
 }

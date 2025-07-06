@@ -13,7 +13,6 @@ public class CommonClass {
     }
 
     public static void init() {
-        Services.init();
         addEventPackId(Constants.MOD_ID);
     }
 

@@ -37,7 +37,6 @@ public class LuckyEventDataManager {
 
                 boolean allDependenciesLoaded = checkDependencies(data);
 
-
                 if (allDependenciesLoaded) {
                     for (RandomEventReader event : data.getRandomEvents()) {
                         event.setId(currentId++);
@@ -86,35 +85,34 @@ public class LuckyEventDataManager {
             return true;
         }
 
-        Constants.LOG.debug("Dependencies not null: {}", dependencies); // TODO: del this DEBUG log
-
         for (DependenciesDataReader dependency : dependencies) {
-            if (dependency.getId() == null) {
-                continue;
-            }
-
-            if (!CommonClass.checkModLoaded(dependency.getId())) {
-                Constants.LOG.warn("Dependency {} is not loaded", dependency.getId());
-                return false;
-            }
-
-            String versionRange = dependency.getVersionRange();
-            if ("*".equals(versionRange)) {
+            if (dependency.getModId() == null) {
                 return true;
             }
 
-            if (versionRange != null) {
+            if (!CommonClass.checkModLoaded(dependency.getModId())) {
+                Constants.LOG.warn("Dependency {} is not loaded", dependency.getModId());
+                return false;
+            } else {
+                String versionRange = dependency.getVersionRange();
+                if (versionRange == null) {
+                    return true;
+                }
                 String currentDependencyVersion;
                 try {
-                    currentDependencyVersion = Services.PLATFORM.getModVersion(dependency.getId());
+                    currentDependencyVersion = Services.PLATFORM.getModVersion(dependency.getModId());
                 } catch (Exception e) {
-                    Constants.LOG.error("Failed to get version for dependency {}", dependency.getId(), e);
+                    Constants.LOG.error("Failed to get version for dependency {}", dependency.getModId(), e);
+                    return false;
+                }
+
+                if (currentDependencyVersion == null) {
                     return false;
                 }
 
                 if (!VersionHelper.isVersionInRange(currentDependencyVersion, versionRange)) {
                     Constants.LOG.warn("Dependency {} version {} is not in range {}",
-                            dependency.getId(), currentDependencyVersion, versionRange);
+                            dependency.getModId(), currentDependencyVersion, versionRange);
                     return false;
                 }
             }
