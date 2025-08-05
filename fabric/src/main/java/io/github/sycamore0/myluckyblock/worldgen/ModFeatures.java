@@ -1,7 +1,7 @@
 package io.github.sycamore0.myluckyblock.worldgen;
 
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.config.ConfigManager;
+import io.github.sycamore0.myluckyblock.config.ModConfigManager;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -14,7 +14,7 @@ public class ModFeatures {
     public static TagKey<Biome> LB_GEN_BIOME_TAG = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lb_gen"));
 
     public static void onInitialize() {
-        if (ConfigManager.loadConfig().generate_lucky_block) {
+        if (ModConfigManager.loadConfig().generate_lucky_block) {
             BiomeModifications.addFeature(
                     biomeSelectionContext -> biomeSelectionContext.hasTag(LB_GEN_BIOME_TAG),
                     GenerationStep.Decoration.SURFACE_STRUCTURES,

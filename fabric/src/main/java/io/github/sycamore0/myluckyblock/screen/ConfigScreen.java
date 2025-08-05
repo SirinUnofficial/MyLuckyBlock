@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.screen;
 
-import io.github.sycamore0.myluckyblock.config.Config;
+import io.github.sycamore0.myluckyblock.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -12,9 +12,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class ConfigScreen extends Screen {
     private final Screen parent;
-    private final Config config;
+    private final ModConfig config;
 
-    public ConfigScreen(Screen parent, Config config) {
+    public ConfigScreen(Screen parent, ModConfig config) {
         super(Component.translatable("config.myluckyblock.title"));
         this.parent = parent;
         this.config = config;

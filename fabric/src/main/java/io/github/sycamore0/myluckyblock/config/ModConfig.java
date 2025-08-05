@@ -1,14 +1,14 @@
 package io.github.sycamore0.myluckyblock.config;
 
-public class Config {
+public class ModConfig {
     public boolean generate_lucky_block = true;
 
     public void load() {
-        Config loadedConfig = ConfigManager.loadConfig();
+        ModConfig loadedConfig = ModConfigManager.loadConfig();
         this.generate_lucky_block = loadedConfig.generate_lucky_block;
     }
 
     public void save() {
-        ConfigManager.saveConfig(this);
+        ModConfigManager.saveConfig(this);
     }
 }
