@@ -3,6 +3,12 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+def customJar = fileTree(dir: 'libs', include: '*.jar')
+
+dependencies {
+    implementation customJar
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists
