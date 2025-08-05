@@ -1,12 +1,5 @@
 {
     "type": "neoforge:add_features",
-    "condition": {
-        "type": "neoforge:not",
-        "value": {
-            "type": "neoforge:config",
-            "config": "myluckyblock:generate_lucky_block"
-        }
-    },
     "biomes": "#myluckyblock:lb_gen",
     "features": "myluckyblock:lucky_block_surface",
     "step": "surface_structures"
