@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
-def customJar = fileTree(dir: 'libs', include: '*.jar')
+def customJar = fileTree(dir: 'src/main/resources/META-INF/libs', include: '*.jar')
 
 dependencies {
     implementation customJar
