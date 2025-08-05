@@ -5,7 +5,12 @@
     "item.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
     "block.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
 
-    "myluckyblock.message.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
+    "config.myluckyblock.title": "MyLuckyBlock Config",
+    "config.myluckyblock.generate_lucky_block": "Generate Lucky Block §e(Require Restart)§r",
+    "config.myluckyblock.require_restart": "§4Require Restart Minecraft!§r",
+    "config.myluckyblock.done": "Done",
+
+    "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
 
     "name.myluckyblock.great_villager": "Great Villager",
     "name.myluckyblock.hero_blacksmith": "Hero's Blacksmith",

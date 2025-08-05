@@ -5,7 +5,12 @@
     "item.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
     "block.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
 
-    "myluckyblock.message.snapshot_warning": "§6[MyLuckyBlock|警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
+    "config.myluckyblock.title": "我的幸运方块 配置",
+    "config.myluckyblock.generate_lucky_block": "生成幸运方块 §e(需要重启)§r",
+    "config.myluckyblock.require_restart": "§4需要重启Minecraft!§r",
+    "config.myluckyblock.done": "完成",
+
+    "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
 
     "name.myluckyblock.great_villager": "良心商人",
     "name.myluckyblock.hero_blacksmith": "英雄盔甲匠",

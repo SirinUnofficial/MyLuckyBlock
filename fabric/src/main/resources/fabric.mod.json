@@ -18,6 +18,9 @@
     "entrypoints": {
         "main": [
             "io.github.sycamore0.myluckyblock.MyLuckyBlock"
+        ],
+        "modmenu": [
+            "io.github.sycamore0.myluckyblock.MyLuckyBlockModMenu"
         ]
     },
     "mixins": [],
@@ -28,6 +31,6 @@
         "java": ">=${java_version}"
     },
     "suggests": {
-        "another-mod": "*"
+        "modmenu": "*"
     }
 }
