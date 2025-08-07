@@ -45,21 +45,7 @@ public class LuckyEventExecutor {
                 }
 
                 // Get Position
-                int posSrc = dropItem.getPosSrc();
-                Vec3 dropItemPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = dropItem.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        dropItemPos = PosHelper.calcOffset(dropItemPos, offset);
-                        break;
-                    case 1:
-                        dropItemPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: DropItems Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                Vec3 dropItemPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), dropItem.getPosSrc(), dropItem.getOffset(), "DropItems");
 
                 // Get NBT
                 String nbtString = dropItem.getNbt();
@@ -75,21 +61,7 @@ public class LuckyEventExecutor {
                 String blockId = placeBlock.getId();
 
                 // Get Position
-                int posSrc = placeBlock.getPosSrc();
-                Vec3 placeBlockPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = placeBlock.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        placeBlockPos = PosHelper.calcOffset(placeBlockPos, offset);
-                        break;
-                    case 1:
-                        placeBlockPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: PlaceBlocks Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                Vec3 placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeBlock.getPosSrc(), placeBlock.getOffset(), "PlaceBlocks");
 
                 LuckyEventFunctions.placeBlock(level, placeBlockPos, blockId);
             }
@@ -98,40 +70,11 @@ public class LuckyEventExecutor {
         // Place Chests
         if (function.hasPlaceChests()) {
             for (RandomEventReader.PlaceChest placeChest : function.getPlaceChests()) {
-                int posSrc = placeChest.getPosSrc();
-                Vec3 placeChestPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = placeChest.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        placeChestPos = PosHelper.calcOffset(placeChestPos, offset);
-                        break;
-                    case 1:
-                        placeChestPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: PlaceChests Invalid Pos Src: {}", posSrc);
-                        break;
-                }
-
-                int type = placeChest.getType(); // @Deprecated
                 String chestId = placeChest.getChestId();
 
-                // @Deprecated
-                // Remove next release
-                switch (type) {
-                    case 1:
-                        chestId = "minecraft:trapped_chest";
-                        break;
-                    case 2:
-                        chestId = "minecraft:barrel";
-                        break;
-                    case 3:
-                        chestId = "minecraft:shulker_box";
-                        break;
-                    default:
-                        break;
-                }
+                // Get Position
+                Vec3 placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeChest.getPosSrc(), placeChest.getOffset(), "PlaceChests");
+
                 Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestId));
                 BlockState chestBlockState = chestBlock.defaultBlockState();
 
@@ -145,22 +88,10 @@ public class LuckyEventExecutor {
         // Fall Blocks
         if (function.hasFallBlocks()) {
             for (RandomEventReader.FallBlock fallBlock : function.getFallBlocks()) {
-                int posSrc = fallBlock.getPosSrc();
-                Vec3 fallBlockPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
+                // Get Position
+                Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), fallBlock.getPosSrc(), fallBlock.getOffset(), "FallBlocks");
+
                 Vec3 velocity = fallBlock.getVelocity();
-                Vec3 offset = fallBlock.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        fallBlockPos = PosHelper.calcOffset(fallBlockPos, offset);
-                        break;
-                    case 1:
-                        fallBlockPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: FallBlocks Invalid Pos Src: {}", posSrc);
-                        break;
-                }
 
                 Block blockId = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
                 LuckyEventFunctions.fallBlock(level, PosHelper.parseVec3d(fallBlockPos), blockId, velocity);
@@ -199,21 +130,8 @@ public class LuckyEventExecutor {
                     count = spawnMob.getNum();
                 }
 
-                int posSrc = spawnMob.getPosSrc();
-                Vec3 spawnMobPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = spawnMob.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        spawnMobPos = PosHelper.calcOffset(spawnMobPos, offset);
-                        break;
-                    case 1:
-                        spawnMobPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: SpawnMobs Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                // Get Position
+                Vec3 spawnMobPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), spawnMob.getPosSrc(), spawnMob.getOffset(), "SpawnMobs");
 
                 Vec3 velocity = spawnMob.getVelocity();
 
@@ -249,21 +167,7 @@ public class LuckyEventExecutor {
         if (function.hasCreateExplosions()) {
             for (RandomEventReader.CreateExplosion createExplosion : function.getCreateExplosions()) {
                 // Get Position
-                int posSrc = createExplosion.getPosSrc();
-                Vec3 createExplosionPos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = createExplosion.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        createExplosionPos = PosHelper.calcOffset(createExplosionPos, offset);
-                        break;
-                    case 1:
-                        createExplosionPos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: CreateExplosions Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                Vec3 createExplosionPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), createExplosion.getPosSrc(), createExplosion.getOffset(), "CreateExplosions");
 
                 float power = createExplosion.getPower();
                 boolean createFire = createExplosion.isCreateFire();
@@ -279,21 +183,7 @@ public class LuckyEventExecutor {
                 ParticleOptions particle = (ParticleOptions) particleType;
 
                 // Get Position
-                int posSrc = addParticle.getPosSrc();
-                Vec3 addParticlePos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = addParticle.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        addParticlePos = PosHelper.calcOffset(addParticlePos, offset);
-                        break;
-                    case 1:
-                        addParticlePos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: AddParticles Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                Vec3 addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), addParticle.getPosSrc(), addParticle.getOffset(), "AddParticles");
 
                 int count = addParticle.getCount();
                 double speed = addParticle.getSpeed();
@@ -310,21 +200,7 @@ public class LuckyEventExecutor {
                 String structureId = loadStructure.getId();
 
                 // Get Position
-                int posSrc = loadStructure.getPosSrc();
-                Vec3 loadStructurePos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = loadStructure.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        loadStructurePos = PosHelper.calcOffset(loadStructurePos, offset);
-                        break;
-                    case 1:
-                        loadStructurePos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: LoadStructures Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                Vec3 loadStructurePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), loadStructure.getPosSrc(), loadStructure.getOffset(), "LoadStructures");
 
                 LuckyEventFunctions.loadStructure(level, PosHelper.parseVec3d(loadStructurePos), modId, structureId);
             }
@@ -337,23 +213,9 @@ public class LuckyEventExecutor {
                 String command = executeCommand.getCommand();
 
                 // Get Position
-                int posSrc = executeCommand.getPosSrc();
-                Vec3 loadStructurePos = PosHelper.parseBlockPos(blockPos);
-                Vec3 playerPos = PosHelper.parseBlockPos(player.blockPosition());
-                Vec3 offset = executeCommand.getOffset();
-                switch (posSrc) {
-                    case 0:
-                        loadStructurePos = PosHelper.calcOffset(loadStructurePos, offset);
-                        break;
-                    case 1:
-                        loadStructurePos = PosHelper.calcOffset(playerPos, offset);
-                        break;
-                    default:
-                        Constants.LOG.error("Error: ExecuteCommands Invalid Pos Src: {}", posSrc);
-                        break;
-                }
+                Vec3 executeCommandPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), executeCommand.getPosSrc(), executeCommand.getOffset(), "ExecuteCommands");
 
-                LuckyEventFunctions.executeCommand(level, loadStructurePos, command);
+                LuckyEventFunctions.executeCommand(level, executeCommandPos, command);
             }
         }
     }
