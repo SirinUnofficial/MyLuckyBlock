@@ -1,6 +1,6 @@
 {
     "name": "(Built-in)Structures Event Pack",
-    "version": "1.3",
+    "version": "1.4",
     "info": "Structures.",
     "random_events": [
         {
@@ -103,14 +103,40 @@
                     }
                 }
             ],
-            "place_blocks": [
+            "fall_blocks": [
                 {
                     "id": "minecraft:lava",
                     "pos_src": 1,
                     "offset": {
                         "x": 0,
-                        "y": 2,
+                        "y": 5,
                         "z": 0
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "load_structures": [
+                {
+                    "id": "fall_lava",
+                    "pos_src": 1,
+                    "offset": {
+                        "x": -1,
+                        "y": -10,
+                        "z": -1
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "load_structures": [
+                {
+                    "id": "fall_dripstone",
+                    "pos_src": 1,
+                    "offset": {
+                        "y": -10
                     }
                 }
             ]
