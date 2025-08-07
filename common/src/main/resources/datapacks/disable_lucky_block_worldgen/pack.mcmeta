@@ -1,0 +1,13 @@
+{
+    "pack": {
+        "id": "disable_lucky_block_worldgen",
+        "pack_format": 48,
+        "supported_formats": [48,233],
+        "description": [
+            {
+                "text": "Disable my_lucky_block WorldGen",
+                "color": "gray"
+            }
+        ]
+    }
+}

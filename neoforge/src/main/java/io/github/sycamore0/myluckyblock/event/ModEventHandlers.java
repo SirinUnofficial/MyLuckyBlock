@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ModEventHandlers {
     @SubscribeEvent
-    public static void onDestroyedByPlayer(BlockEvent.BreakEvent event) {
+    private static void onDestroyedByPlayer(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         BlockPos blockPos = event.getPos();
         BlockState blockState = event.getState();
@@ -55,7 +55,7 @@ public class ModEventHandlers {
     }
 
     @SubscribeEvent
-    public static void onAddReloadListeners(AddReloadListenerEvent event) {
+    private static void onAddReloadListeners(AddReloadListenerEvent event) {
         event.addListener(new LuckyEventsReloadListener());
     }
 

@@ -5,6 +5,8 @@
     "item.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
     "block.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
 
+    "pack.name.disable_lucky_block_worldgen":"Disable LB WorldGen",
+
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
 
     "name.myluckyblock.great_villager": "Great Villager",
