@@ -40,18 +40,15 @@ public class LuckyBlock extends Block {
     }
 
     @Override
-    protected void neighborChanged(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Block sourceBlock, @NotNull BlockPos sourcePos, boolean notify) {
-        if (level.isClientSide) {
-            return;
-        }
-        if (level.hasNeighborSignal(pos)) {
-            Player player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 64, null);
+    protected void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block sourceBlock, @NotNull BlockPos sourceBlockPos, boolean notify) {
+        if (level.hasNeighborSignal(blockPos)) {
+            Player player = level.getNearestPlayer(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 64, null);
             if (player != null) {
                 if (player.isSpectator()) {
                     return;
                 }
-                level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
-                BreakLuckyBlock.breakLuckyBlock(level, player, pos, state);
+                level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
+                BreakLuckyBlock.breakLuckyBlock(level, player, blockPos, blockState);
             }
         }
     }
