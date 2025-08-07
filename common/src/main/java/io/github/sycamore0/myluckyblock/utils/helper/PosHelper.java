@@ -22,10 +22,10 @@ public class PosHelper {
         Vec3 targetPos = blockPos;
         switch (posSrc) {
             case 0:
-                targetPos = PosHelper.calcOffset(blockPos, offset);
+                targetPos = calcOffset(blockPos, offset);
                 break;
             case 1:
-                targetPos = PosHelper.calcOffset(playerPos, offset);
+                targetPos = calcOffset(playerPos, offset);
                 break;
             default:
                 Constants.LOG.error("Error: {} Invalid Pos Src: {}", funName, posSrc);

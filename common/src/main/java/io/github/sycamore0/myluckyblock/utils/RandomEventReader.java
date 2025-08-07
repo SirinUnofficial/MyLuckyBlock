@@ -147,7 +147,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         @SerializedName("name")
         protected String name = null;
@@ -183,7 +183,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
 
         public String getName() {
@@ -208,7 +208,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         @SerializedName("id")
         protected String id;
@@ -219,7 +219,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
 
         public String getId() {
@@ -232,7 +232,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         @SerializedName("id")
         protected String id = "empty";
@@ -250,7 +250,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
 
         public String getId() {
@@ -275,7 +275,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         @SerializedName("velocity")
         protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
@@ -286,7 +286,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
 
         public Vec3 getVelocity() {
@@ -330,7 +330,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         @SerializedName("velocity")
         protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
@@ -365,7 +365,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
 
         public Vec3 getVelocity() {
@@ -441,7 +441,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         @SerializedName("power")
         protected int power = 1;
@@ -455,7 +455,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
 
         public int getPower() {
@@ -484,7 +484,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -508,7 +508,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
     }
 
@@ -523,7 +523,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -539,7 +539,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
     }
 
@@ -551,7 +551,7 @@ public class RandomEventReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Vec3 offset = new Vec3(0.0, 0.0, 0.0);
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         // Getters
         public String getCommand() {
@@ -563,7 +563,7 @@ public class RandomEventReader {
         }
 
         public Vec3 getOffset() {
-            return offset;
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
     }
 
@@ -602,6 +602,37 @@ public class RandomEventReader {
 
         // Default Constructor
         public Velocity(double x, double y, double z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        // Getters
+        public double getX() {
+            return x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public double getZ() {
+            return z;
+        }
+    }
+
+    public static class Offset {
+        @SerializedName("x")
+        protected double x;
+
+        @SerializedName("y")
+        protected double y;
+
+        @SerializedName("z")
+        protected double z;
+
+        // Default Constructor
+        public Offset(double x, double y, double z) {
             this.x = x;
             this.y = y;
             this.z = z;

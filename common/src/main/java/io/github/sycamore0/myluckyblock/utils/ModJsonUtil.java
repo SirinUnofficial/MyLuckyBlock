@@ -1,6 +1,5 @@
 package io.github.sycamore0.myluckyblock.utils;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.Constants;
 
