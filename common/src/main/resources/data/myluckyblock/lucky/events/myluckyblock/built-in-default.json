@@ -3858,12 +3858,6 @@
                     "num": 1,
                     "pos_src": 0
                 }
-            ],
-            "send_messages": [
-                {
-                    "msg": "哇，好吃的！",
-                    "overlay": true
-                }
             ]
         },
         {
