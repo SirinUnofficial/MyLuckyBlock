@@ -1,6 +1,6 @@
 {
-    "name": "(Built-in)Enchanted Items Event Pack",
-    "version": "1.3",
+    "name": "Enchanted Items Event Pack",
+    "version": "2.0",
     "info": "Enchanted Items.",
     "random_events": [
         {
@@ -174,145 +174,12 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "name.myluckyblock.quick_firing_crossbow",
-                    "desc": "desc.myluckyblock.quick_firing_crossbow",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.quick_firing_crossbow\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.quick_firing_crossbow\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{piercing:0,quick_charge:255},show_in_tooltip:false}}}}"
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.hero_mace",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.hero_mace\",\"italic\":false}]',rarity:epic,enchantments:{levels:{mending:1,unbreaking:3,breach:4,density:5,wind_burst:3}}}}}"
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.wind_burst",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.wind_burst\",\"italic\":false}]',rarity:rare,enchantments:{levels:{wind_burst:255}}}}}"
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
                     "name": "name.myluckyblock.omnipotent_enchantment_book",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
                     "nbt": "{Item:{id:enchanted_book,count:1,components:{stored_enchantments:{levels:{aqua_affinity:1,bane_of_arthropods:5,blast_protection:4,channeling:1,depth_strider:3,efficiency:5,feather_falling:4,fire_aspect:2,fire_protection:4,flame:1,fortune:3,frost_walker:2,impaling:5,infinity:1,knockback:2,looting:3,loyalty:3,luck_of_the_sea:3,lure:3,mending:1,multishot:1,piercing:4,power:5,projectile_protection:4,protection:4,punch:2,quick_charge:3,respiration:3,riptide:3,sharpness:5,silk_touch:1,smite:5,soul_speed:3,sweeping_edge:3,swift_sneak:3,thorns:3,unbreaking:3,breach:4,density:5,wind_burst:3}},custom_name:'[\"\",{\"text\":\"name.myluckyblock.omnipotent_enchantment_book\",\"italic\":false}]'}},StoredEnchantmentsUx:[{lvl:1,id:aqua_affinity},{lvl:5,id:bane_of_arthropods},{lvl:4,id:blast_protection},{lvl:1,id:channeling},{lvl:3,id:depth_strider},{lvl:5,id:efficiency},{lvl:4,id:feather_falling},{lvl:2,id:fire_aspect},{lvl:4,id:fire_protection},{lvl:1,id:flame},{lvl:3,id:fortune},{lvl:2,id:frost_walker},{lvl:5,id:impaling},{lvl:1,id:infinity},{lvl:2,id:knockback},{lvl:3,id:looting},{lvl:3,id:loyalty},{lvl:3,id:luck_of_the_sea},{lvl:3,id:lure},{lvl:1,id:mending},{lvl:1,id:multishot},{lvl:4,id:piercing},{lvl:5,id:power},{lvl:4,id:projectile_protection},{lvl:4,id:protection},{lvl:2,id:punch},{lvl:3,id:quick_charge},{lvl:3,id:respiration},{lvl:3,id:riptide},{lvl:5,id:sharpness},{lvl:1,id:silk_touch},{lvl:5,id:smite},{lvl:3,id:soul_speed},{lvl:3,id:sweeping_edge},{lvl:3,id:swift_sneak},{lvl:3,id:thorns},{lvl:3,id:unbreaking},{lvl:4,id:breach},{lvl:5,id:density},{lvl:3,id:wind_burst}]}"
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.splash_potion_of_curse",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:splash_potion,count:1,components:{potion_contents:{custom_color:1908001,custom_effects:[{id:bad_omen,duration:1200,amplifier:4},{id:blindness,duration:1200,amplifier:0},{id:darkness,duration:1200,amplifier:1},{id:hunger,duration:1200,amplifier:2},{id:infested,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0},{id:mining_fatigue,duration:1200,amplifier:0},{id:nausea,duration:1200,amplifier:0},{id:oozing,duration:1200,amplifier:2},{id:poison,duration:1200,amplifier:0},{id:slowness,duration:1200,amplifier:0},{id:slow_falling,duration:1200,amplifier:0},{id:unluck,duration:1200,amplifier:5},{id:weakness,duration:1200,amplifier:2},{id:weaving,duration:1200,amplifier:0},{id:wind_charged,duration:1200,amplifier:0},{id:wither,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.splash_potion_of_curse\",\"italic\":false}]'}}}"
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.potion_of_curse",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:potion,count:1,components:{potion_contents:{custom_color:1908001,custom_effects:[{id:bad_omen,duration:1200,amplifier:4},{id:blindness,duration:1200,amplifier:0},{id:darkness,duration:1200,amplifier:1},{id:hunger,duration:1200,amplifier:2},{id:infested,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0},{id:mining_fatigue,duration:1200,amplifier:0},{id:nausea,duration:1200,amplifier:0},{id:oozing,duration:1200,amplifier:2},{id:poison,duration:1200,amplifier:0},{id:slowness,duration:1200,amplifier:0},{id:slow_falling,duration:1200,amplifier:0},{id:unluck,duration:1200,amplifier:5},{id:weakness,duration:1200,amplifier:2},{id:weaving,duration:1200,amplifier:0},{id:wind_charged,duration:1200,amplifier:0},{id:wither,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.potion_of_curse\",\"italic\":false}]'}}}"
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.lingering_potion_of_curse",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:lingering_potion,count:1,components:{potion_contents:{custom_color:1908001,custom_effects:[{id:bad_omen,duration:1200,amplifier:4},{id:blindness,duration:1200,amplifier:0},{id:darkness,duration:1200,amplifier:1},{id:hunger,duration:1200,amplifier:2},{id:infested,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0},{id:mining_fatigue,duration:1200,amplifier:0},{id:nausea,duration:1200,amplifier:0},{id:oozing,duration:1200,amplifier:2},{id:poison,duration:1200,amplifier:0},{id:slowness,duration:1200,amplifier:0},{id:slow_falling,duration:1200,amplifier:0},{id:unluck,duration:1200,amplifier:5},{id:weakness,duration:1200,amplifier:2},{id:weaving,duration:1200,amplifier:0},{id:wind_charged,duration:1200,amplifier:0},{id:wither,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.lingering_potion_of_curse\",\"italic\":false}]'}}}"
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.splash_potion_of_bless",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:splash_potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.splash_potion_of_bless\",\"italic\":false}]'}}}"
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.potion_of_bless",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.potion_of_bless\",\"italic\":false}]'}}}"
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.lingering_potion_of_bless",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:lingering_potion,count:1,components:{potion_contents:{custom_color:16092074,custom_effects:[{id:absorption,duration:1200,amplifier:4},{id:conduit_power,duration:1200,amplifier:1},{id:dolphins_grace,duration:1200,amplifier:0},{id:fire_resistance,duration:1200,amplifier:0},{id:health_boost,duration:1200,amplifier:4},{id:hero_of_the_village,duration:1200,amplifier:4},{id:instant_health,duration:1,amplifier:4},{id:jump_boost,duration:1200,amplifier:2},{id:luck,duration:1200,amplifier:4},{id:night_vision,duration:1200,amplifier:0},{id:regeneration,duration:1200,amplifier:1},{id:resistance,duration:1200,amplifier:2},{id:saturation,duration:1200,amplifier:1},{id:speed,duration:1200,amplifier:0},{id:strength,duration:1200,amplifier:2},{id:water_breathing,duration:1200,amplifier:0}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.lingering_potion_of_bless\",\"italic\":false}]'}}}"
                 }
             ]
         }

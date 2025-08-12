@@ -1,6 +1,6 @@
 {
-    "name": "(Built-in)Attribute Items Event Pack",
-    "version": "1.3",
+    "name": "Special Items Event Pack",
+    "version": "2.0",
     "info": "Items with special attribute data.",
     "random_events": [
         {

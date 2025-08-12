@@ -1,0 +1,321 @@
+{
+    "name": "Random Events Pack for 1.21",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 1.21.",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version": "[1.21,2.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:breeze_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 8
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:ominous_bottle",
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:ominous_trial_key",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    },
+                    "pos_src": 0
+                },
+                {
+                    "id": "minecraft:trial_key",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 4
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:heavy_core",
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "drop_items": [
+                {
+                    "id": "minecraft:crafter",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "drop_items": [
+                {
+                    "id": "minecraft:armadillo_scute",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 4
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "drop_items": [
+                {
+                    "id": "minecraft:music_disc_precipice",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:music_disc_creator",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    },
+                    "pos_src": 0
+                },
+                {
+                    "id": "minecraft:music_disc_creator_music_box",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "drop_items": [
+                {
+                    "id": "minecraft:wind_charge",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "drop_items": [
+                {
+                    "id": "minecraft:mace",
+                    "use_random": false,
+                    "num": 1
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:breeze",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:bogged",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_common",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_rare",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_unique",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous_common",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous_rare",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/reward_ominous_unique",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/supply",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/corridor",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/intersection",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/intersection_barrel",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "place_chests": [
+                {
+                    "id": "chests/trial_chambers/entrance",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "place_chests": [
+                {
+                    "id": "chests/spawn_bonus_chest",
+                    "chest_id": "minecraft:chest",
+                    "pos_src": 0
+                }
+            ]
+        }
+    ]
+}

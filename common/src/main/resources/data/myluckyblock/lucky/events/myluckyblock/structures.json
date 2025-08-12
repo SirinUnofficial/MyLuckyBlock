@@ -1,7 +1,7 @@
 {
-    "name": "(Built-in)Structures Event Pack",
-    "version": "1.4",
-    "info": "Structures.",
+    "name": "Structures Event Pack",
+    "version": "2.0",
+    "info": "Some structures.",
     "random_events": [
         {
             "id": 1,
