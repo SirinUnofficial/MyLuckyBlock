@@ -1,11 +1,11 @@
 {
     "name": "Random Events Pack for 1.21",
     "version": "2.0",
-    "info": "Random events for Vanilla Minecraft 1.21.",
+    "info": "Random events for Vanilla Minecraft 1.21+",
     "dependencies": [
         {
             "mod_id": "minecraft",
-            "version": "[1.21,2.0)"
+            "version_range": "(1.20.6,2.0)"
         }
     ],
     "random_events": [

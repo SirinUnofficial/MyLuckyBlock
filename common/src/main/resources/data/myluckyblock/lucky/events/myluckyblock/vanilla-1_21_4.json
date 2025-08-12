@@ -1,0 +1,240 @@
+{
+    "name": "Random Events Pack for 1.21.4",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 1.21.4+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.21.3,2.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_log",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 8,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_planks",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 16,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_wood",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 8,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:stripped_pale_oak_wood",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 8,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:stripped_pale_oak_log",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 8,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_planks",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 16,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:stripped_pale_oak_log",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 8,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_planks",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 16,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_trapdoor",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_door",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_fence",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_fence_gate",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_button",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_pressure_plate",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_leaves",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_sapling",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "drop_items": [
+                {
+                    "id": "minecraft:pale_oak_leaves",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                },
+                {
+                    "id": "minecraft:pale_oak_sapling",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "drop_items": [
+                {
+                    "id": "minecraft:creaking_heart"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "load_structures": [
+                {
+                    "id": "creaking",
+                    "pos_src": 0
+                }
+            ]
+        }
+    ]
+}

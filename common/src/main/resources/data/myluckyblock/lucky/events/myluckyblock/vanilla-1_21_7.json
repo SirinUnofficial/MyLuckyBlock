@@ -1,0 +1,33 @@
+{
+    "name": "Random Events Pack for 1.21.7",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 1.21.7+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.21.6,2.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:music_disc_lava_chicken",
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "offset": {
+                        "y": 1
+                    }
+                }
+            ],
+            "place_blocks": [
+                {
+                    "id": "minecraft:jukebox",
+                    "pos_src": 0
+                }
+            ]
+        }
+    ]
+}

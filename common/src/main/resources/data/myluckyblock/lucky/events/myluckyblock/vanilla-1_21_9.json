@@ -1,0 +1,643 @@
+{
+    "name": "Random Events Pack for 1.21.9",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 1.21.9+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.21.8,2.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:exposed_copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:oxidized_copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_exposed_copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_weathered_copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_oxidized_copper_chest",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:exposed_copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:oxidized_copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_exposed_copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_weathered_copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_oxidized_copper_golem_statue",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:exposed_lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:oxidized_lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_exposed_lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_weathered_lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_oxidized_lightning_rod",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_torch",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:exposed_copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:oxidized_copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_exposed_copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_weathered_copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_oxidized_copper_bars",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:exposed_copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:oxidized_copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_exposed_copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_weathered_copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_oxidized_copper_chain",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 4
+                    }
+                },
+                {
+                    "id": "minecraft:exposed_copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 2
+                    }
+                },
+                {
+                    "id": "minecraft:oxidized_copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 2
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 2
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_exposed_copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 2
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_weathered_copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 2
+                    }
+                },
+                {
+                    "id": "minecraft:waxed_oxidized_copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 2
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_lantern",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "drop_items": [
+                {
+                    "id": "minecraft:oak_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:spruce_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:birch_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:jungle_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:dark_oak_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:mangrove_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:cherry_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:bamboo_raft",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "drop_items": [
+                {
+                    "id": "minecraft:oak_shelf",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_helmet",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_chestplate",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_leggings",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_boots",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_sword",
+                    "use_random": false,
+                    "num": 1
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_sword",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_shovel",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_pickaxe",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_hoe",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "id": "minecraft:copper_axe",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_horse_armor",
+                    "use_random": true,
+                    "num": 1
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_ingot",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                },
+                {
+                    "id": "minecraft:copper_nugget",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:copper_golem",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    },
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "place_blocks": [
+                {
+                    "id": "minecraft:copper_chest"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "place_blocks": [
+                {
+                    "id": "minecraft:copper_block",
+                    "pos_src": 0
+                },
+                {
+                    "id": "minecraft:carved_pumpkin",
+                    "pos_src": 0,
+                    "offset": {
+                        "y": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

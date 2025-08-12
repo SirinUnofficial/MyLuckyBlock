@@ -1,7 +1,13 @@
 {
     "name": "Special Items Event Pack",
     "version": "2.0",
-    "info": "Items with special attribute data.",
+    "info": "Items with special attribute data(nbt for 1.21).",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.20.6,1.21.1]"
+        }
+    ],
     "random_events": [
         {
             "id": 1,
@@ -145,6 +151,21 @@
                     "num": 1,
                     "pos_src": 0,
                     "nbt": "{Item:{id:iron_ingot,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.odd_iron_ingot\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.odd_iron_ingot\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,food:{can_always_eat:1b,nutrition:1,saturation:1,effects:[{effect:{id:instant_damage,duration:1,amplifier:0},probability:1f}]}}}}"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.shit",
+                    "desc": "desc.myluckyblock.shit",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:cocoa_beans,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.shit\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.shit\",\"italic\":false}]'],enchantment_glint_override:true,food:{nutrition:4,saturation:0,can_always_eat:1b,effects:[{effect:{id:nausea,duration:400,amplifier:0},probability:1f}]},unbreakable:{}}}}"
                 }
             ]
         }

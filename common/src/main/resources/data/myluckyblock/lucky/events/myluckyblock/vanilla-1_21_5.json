@@ -1,0 +1,105 @@
+{
+    "name": "Random Events Pack for 1.21.5",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 1.21.5+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.21.4,2.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:short_dry_grass",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:tall_dry_grass",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:wildflowers",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:leaf_litter",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:firefly_bush",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:bush",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:egg",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 16,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:blue_egg",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 4,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:brown_egg",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 4,
+                        "max": 32
+                    }
+                }
+            ]
+        }
+    ]
+}

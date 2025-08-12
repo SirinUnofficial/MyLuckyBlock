@@ -1,7 +1,13 @@
 {
     "name": "Special Mobs/Entity Event Pack",
     "version": "2.0",
-    "info": "Special Mobs and Entitys.",
+    "info": "Special Mobs and Entitys(nbt for 1.21~1.21.4).",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.20.6,1.21.4]"
+        }
+    ],
     "random_events": [
         {
             "id": 1,

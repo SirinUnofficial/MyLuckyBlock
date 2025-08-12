@@ -1,7 +1,13 @@
 {
     "name": "Enchanted Items Event Pack",
     "version": "2.0",
-    "info": "Enchanted Items.",
+    "info": "Enchanted Items(nbt for 1.21~1.21.4).",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.20.6,1.21.4]"
+        }
+    ],
     "random_events": [
         {
             "id": 1,
@@ -117,35 +123,6 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
-                    "name": "name.myluckyblock.furious_cocktail",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:potion,count:1,components:{potion_contents:{custom_color:0,custom_effects:[{id:absorption,duration:3000,amplifier:1},{id:bad_omen,duration:3000,amplifier:1},{id:blindness,duration:3000,amplifier:1},{id:conduit_power,duration:3000,amplifier:1},{id:darkness,duration:3000,amplifier:1},{id:dolphins_grace,duration:3000,amplifier:1},{id:fire_resistance,duration:3000,amplifier:1},{id:glowing,duration:3000,amplifier:1},{id:haste,duration:3000,amplifier:1},{id:health_boost,duration:3000,amplifier:1},{id:hero_of_the_village,duration:3000,amplifier:1},{id:hunger,duration:3000,amplifier:1},{id:infested,duration:3000,amplifier:1},{id:invisibility,duration:3000,amplifier:1},{id:jump_boost,duration:3000,amplifier:1},{id:levitation,duration:3000,amplifier:1},{id:luck,duration:3000,amplifier:1},{id:mining_fatigue,duration:3000,amplifier:1},{id:nausea,duration:3000,amplifier:1},{id:night_vision,duration:3000,amplifier:1},{id:oozing,duration:3000,amplifier:1},{id:poison,duration:3000,amplifier:1},{id:regeneration,duration:3000,amplifier:1},{id:resistance,duration:3000,amplifier:1},{id:saturation,duration:3000,amplifier:1},{id:slow_falling,duration:3000,amplifier:1},{id:slowness,duration:3000,amplifier:1},{id:speed,duration:3000,amplifier:1},{id:strength,duration:3000,amplifier:1},{id:unluck,duration:3000,amplifier:1},{id:water_breathing,duration:3000,amplifier:1},{id:weakness,duration:3000,amplifier:1},{id:weaving,duration:3000,amplifier:1},{id:wind_charged,duration:3000,amplifier:1},{id:wither,duration:3000,amplifier:1}]},custom_name:'[\"\",{\"text\":\"name.myluckyblock.furious_cocktail\",\"italic\":false}]',rarity:epic}}}"
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
-                    "name": "name.myluckyblock.shit",
-                    "desc": "desc.myluckyblock.shit",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{Item:{id:cocoa_beans,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.shit\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.shit\",\"italic\":false}]'],enchantment_glint_override:true,food:{nutrition:4,saturation:0,can_always_eat:1b,effects:[{effect:{id:nausea,duration:400,amplifier:0},probability:1f}]},unbreakable:{}}}}"
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:item",
                     "name": "name.myluckyblock.hero_crossbow",
                     "name_visible": true,
                     "use_random": false,
@@ -156,7 +133,7 @@
             ]
         },
         {
-            "id": 9,
+            "id": 7,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -170,7 +147,7 @@
             ]
         },
         {
-            "id": 10,
+            "id": 8,
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
@@ -180,7 +157,35 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.quick_firing_crossbow\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.quick_firing_crossbow\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{piercing:0,quick_charge:255},show_in_tooltip:false}}}}"
+                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.quick_firing_crossbow\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.quick_firing_crossbow\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{quick_charge:255},show_in_tooltip:false}}}}"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.hero_mace",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.hero_mace\",\"italic\":false}]',rarity:epic,enchantments:{levels:{mending:1,unbreaking:3,breach:4,density:5,wind_burst:3}}}}}"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
+                    "name": "name.myluckyblock.wind_burst",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:mace,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.wind_burst\",\"italic\":false}]',rarity:rare,enchantments:{levels:{wind_burst:255}}}}}"
                 }
             ]
         },
