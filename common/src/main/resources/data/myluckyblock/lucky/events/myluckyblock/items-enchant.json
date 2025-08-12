@@ -174,6 +174,21 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:item",
+                    "name": "name.myluckyblock.quick_firing_crossbow",
+                    "desc": "desc.myluckyblock.quick_firing_crossbow",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{Item:{id:crossbow,count:1,components:{custom_name:'[\"\",{\"text\":\"name.myluckyblock.quick_firing_crossbow\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.quick_firing_crossbow\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,enchantments:{levels:{piercing:0,quick_charge:255},show_in_tooltip:false}}}}"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:item",
                     "name": "name.myluckyblock.omnipotent_enchantment_book",
                     "name_visible": true,
                     "use_random": false,
