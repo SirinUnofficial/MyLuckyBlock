@@ -24,7 +24,7 @@ public class ModBlocks {
     }
 
     public static LuckyBlock createNewLuckyBlock(String blockId, String modId, String eventPackId, boolean includeBuiltIn, MapColor mapColor, float strength, float explosionResistance) {
-        return register(blockId, new LuckyBlock(BlockBehaviour.Properties.of().mapColor(mapColor).strength(0.5f).explosionResistance(5000000.0f), eventPackId, includeBuiltIn), modId);
+        return register(blockId, new LuckyBlock(BlockBehaviour.Properties.of().mapColor(mapColor).strength(strength).explosionResistance(explosionResistance), eventPackId, includeBuiltIn), modId);
     }
 
     public static void onInitialize() {
