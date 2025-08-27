@@ -7448,6 +7448,33 @@
                     }
                 }
             ]
+        },
+        {
+            "id": 303,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:zombie",
+                    "num": 20
+                }
+            ]
+        },
+        {
+            "id": 304,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:slime",
+                    "num": 10
+                }
+            ]
+        },
+        {
+            "id": 305,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:wither",
+                    "num": 1
+                }
+            ]
         }
     ]
 }

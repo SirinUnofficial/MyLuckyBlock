@@ -14,6 +14,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:fireball",
+                    "randomize": false,
                     "name": null,
                     "name_visible": false,
                     "is_baby": false,
@@ -29,6 +30,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:villager",
+                    "randomize": false,
                     "name": "name.myluckyblock.great_villager",
                     "name_visible": true,
                     "is_baby": false,
@@ -44,6 +46,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:villager",
+                    "randomize": false,
                     "name": "name.myluckyblock.hero_blacksmith",
                     "name_visible": true,
                     "is_baby": false,
@@ -59,6 +62,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:zombie",
+                    "randomize": false,
                     "name": "name.myluckyblock.super_zombie",
                     "name_visible": true,
                     "is_baby": false,
@@ -74,6 +78,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
+                    "randomize": false,
                     "name": null,
                     "name_visible": false,
                     "is_baby": false,
@@ -89,6 +94,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
+                    "randomize": false,
                     "name": "name.myluckyblock.super_charged_creeper",
                     "name_visible": true,
                     "is_baby": false,
@@ -104,6 +110,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:slime",
+                    "randomize": false,
                     "name": null,
                     "name_visible": false,
                     "is_baby": false,
@@ -119,6 +126,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:magma_cube",
+                    "randomize": false,
                     "name": null,
                     "name_visible": false,
                     "is_baby": false,
@@ -134,6 +142,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:horse",
+                    "randomize": true,
                     "name": null,
                     "name_visible": false,
                     "is_baby": false,
@@ -158,6 +167,7 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:pillager",
+                    "randomize": false,
                     "name": "name.myluckyblock.super_pillager",
                     "name_visible": true,
                     "is_baby": false,
@@ -173,7 +183,17 @@
             "spawn_mobs": [
                 {
                     "id": "minecraft:fox",
+                    "randomize": false,
                     "nbt": "{Type:red,Sitting:1,CustomName:'[{\"text\":\"NeoForge\"}]',HandItems:[{id:mojang_banner_pattern},{}],HandDropChances:[1f,0f]}"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:rabbit",
+                    "nbt": "{RabbitType:99}"
                 }
             ]
         }
