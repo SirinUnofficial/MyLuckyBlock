@@ -213,16 +213,20 @@ public class RandomEventReader {
     }
 
     public static class PlaceBlock {
+        @SerializedName("id")
+        protected String id;
+
         @SerializedName("pos_src")
         protected int posSrc = 0;
 
         @SerializedName("offset")
         protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
-        @SerializedName("id")
-        protected String id;
-
         // Getters
+        public String getId() {
+            return id;
+        }
+
         public int getPosSrc() {
             return posSrc;
         }
@@ -230,28 +234,20 @@ public class RandomEventReader {
         public Vec3 getOffset() {
             return new Vec3(offset.getX(), offset.getY(), offset.getZ());
         }
-
-        public String getId() {
-            return id;
-        }
     }
 
     public static class PlaceChest {
-        @SerializedName("pos_src")
-        protected int posSrc = 0;
-
-        @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
-
         @SerializedName("id")
         protected String id = "empty";
 
         @SerializedName("chest_id")
         protected String chestId = "minecraft:chest";
 
-        @Deprecated
-        @SerializedName("type")
-        protected int type = 0;
+        @SerializedName("pos_src")
+        protected int posSrc = 0;
+
+        @SerializedName("offset")
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         // Getters
         public int getPosSrc() {
@@ -268,11 +264,6 @@ public class RandomEventReader {
 
         public String getChestId() {
             return chestId;
-        }
-
-        @Deprecated
-        public int getType() {
-            return type;
         }
     }
 
