@@ -335,6 +335,9 @@ public class RandomEventReader {
         @SerializedName("velocity")
         protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
 
+        @SerializedName("randomize")
+        protected boolean randomize = true;
+
         @SerializedName("name")
         protected String name = null;
 
@@ -382,6 +385,10 @@ public class RandomEventReader {
 
         public RandomNum getRandomNum() {
             return randomNum;
+        }
+
+        public boolean getRandomize() {
+            return randomize;
         }
 
         public String getName() {

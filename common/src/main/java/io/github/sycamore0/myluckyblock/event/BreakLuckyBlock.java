@@ -32,7 +32,9 @@ public class BreakLuckyBlock {
             // Trigger random event
             RandomEventReader event = manager.getRandomEvent(eventPackId);
             if (event != null) {
-                LuckyEventExecutor.executeLuckyFunction(level, player, pos, event);
+                if (level instanceof ServerLevel serverLevel) {
+                    LuckyEventExecutor.executeLuckyFunction(serverLevel, player, pos, event);
+                }
             }
         }
     }

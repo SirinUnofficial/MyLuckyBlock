@@ -26,6 +26,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -34,7 +35,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -54,21 +54,21 @@ import java.util.Optional;
 
 public class LuckyEventFunctions {
     @Deprecated
-    public static void dropItems(Level level, Vec3 pos, String itemId, int count) {
-        dropItems(level, pos, itemId, count, null, false, null, null);
+    public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count) {
+        dropItems(serverLevel, pos, itemId, count, null, false, null, null);
     }
 
     @Deprecated
-    public static void dropItems(Level level, Vec3 pos, String itemId, int count, @Nullable String nbtString) {
-        dropItems(level, pos, itemId, count, null, false, null, nbtString);
+    public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String nbtString) {
+        dropItems(serverLevel, pos, itemId, count, null, false, null, nbtString);
     }
 
-    public static void dropItems(Level level, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
+    public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
         if (item.equals(Items.AIR)) return;
         ItemStack itemStack = new ItemStack(item, count);
 
-        ItemEntity itemEntity = new ItemEntity(level, pos.x(), pos.y(), pos.z(), itemStack);
+        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
 
         if (nbtString != null) {
             CompoundTag nbt = NbtHelper.generateItemNbt(itemId, count, nbtString);
@@ -88,13 +88,13 @@ public class LuckyEventFunctions {
         }
 
         itemEntity.setPos(pos);
-        level.addFreshEntity(itemEntity);
+        serverLevel.addFreshEntity(itemEntity);
     }
 
     // use in spawn mob
-    public static void dropItemsByNbt(Level level, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
+    public static void dropItemsByNbt(ServerLevel serverLevel, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         ItemStack itemStack = new ItemStack(Items.AIR);
-        ItemEntity item = new ItemEntity(level, pos.x(), pos.y(), pos.z(), itemStack);
+        ItemEntity item = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
 
         if (nbtString != null) {
             CompoundTag nbt = NbtHelper.generateNbt(nbtString);
@@ -114,48 +114,54 @@ public class LuckyEventFunctions {
         }
 
         item.setPos(pos);
-        level.addFreshEntity(item);
+        serverLevel.addFreshEntity(item);
     }
 
-    public static void placeBlock(Level level, Vec3 pos, String blockId) {
+    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
         Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
         BlockState blockState = block.defaultBlockState();
         BlockPos blockPos = PosHelper.parseVec3d(pos);
-        level.setBlockAndUpdate(blockPos, blockState);
+        serverLevel.setBlockAndUpdate(blockPos, blockState);
     }
 
-    public static void placeChest(Level level, BlockPos blockPos, BlockState chestBlockState, ResourceKey<LootTable> lootTableId) {
-        level.setBlockAndUpdate(blockPos, chestBlockState);
-        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, BlockState chestBlockState, ResourceKey<LootTable> lootTableId) {
+        serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
+        BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
         if (blockEntity instanceof RandomizableContainer lootableInventory) {
             lootableInventory.setLootTable(lootTableId);
         }
     }
 
-    public static void fallBlock(Level level, BlockPos blockPos, Block block, Vec3 velocity) {
+    public static void fallBlock(ServerLevel serverLevel, BlockPos blockPos, Block block, Vec3 velocity) {
         BlockState blockState = block.defaultBlockState();
-        FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(level, blockPos, blockState);
+        FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(serverLevel, blockPos, blockState);
         fallingBlockEntity.push(velocity);
     }
 
-    public static void spawnMob(Level level, Vec3 pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, Vec3 velocity, @Nullable String nbtString) {
-        Entity entity = entityType.create(level);
+    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, Vec3 velocity, @Nullable String nbtString) {
+        Entity entity = entityType.create(serverLevel);
         if (entity == null) return;
         CompoundTag nbt = NbtHelper.generateNbt(nbtString);
-        if (nbt == null) return;
-        entity.load(nbt);
+        if (nbt != null) {
+            entity.load(nbt);
+        }
         if (name != null) {
             entity.setCustomName(Component.translatableEscape(name));
             entity.setCustomNameVisible(nameVisible);
         }
         entity.setPos(pos);
         entity.push(velocity);
-        level.addFreshEntity(entity);
+        serverLevel.addFreshEntity(entity);
     }
 
-    public static void spawnMob(Level level, Vec3 pos, EntityType<?> entityType, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity) {
-        Entity entity = entityType.create(level);
+    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity) {
+        Entity entity = entityType.create(serverLevel);
         if (entity == null) return;
+
+        if (randomize && entity instanceof Mob mobEntity) {
+            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+        }
+
         if (name != null) {
             entity.setCustomName(Component.translatableEscape(name));
             entity.setCustomNameVisible(nameVisible);
@@ -165,11 +171,11 @@ public class LuckyEventFunctions {
         }
         entity.setPos(pos);
         entity.push(velocity);
-        level.addFreshEntity(entity);
+        serverLevel.addFreshEntity(entity);
     }
 
-    public static void createExplosion(Level level, Vec3 pos, float power, boolean createFire) {
-        level.explode(null, pos.x(), pos.y(), pos.z(), power, createFire, Level.ExplosionInteraction.BLOCK);
+    public static void createExplosion(ServerLevel serverLevel, Vec3 pos, float power, boolean createFire) {
+        serverLevel.explode(null, pos.x(), pos.y(), pos.z(), power, createFire, ServerLevel.ExplosionInteraction.BLOCK);
     }
 
     public static void sendMessage(Player player, String message) {
@@ -186,15 +192,11 @@ public class LuckyEventFunctions {
         }
     }
 
-    public static void addParticles(Level level, ParticleOptions particleEffect, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
-        if (level instanceof ServerLevel serverLevel) {
-            serverLevel.sendParticles(particleEffect, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
-        }
+    public static void addParticles(ServerLevel serverLevel, ParticleOptions particleEffect, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
+        serverLevel.sendParticles(particleEffect, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
     }
 
-    public static void loadStructure(Level level, BlockPos pos, String modId, String structureName) {
-        if (!(level instanceof ServerLevel serverLevel)) return;
-
+    public static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
         MinecraftServer server = serverLevel.getServer();
         StructureTemplateManager manager = serverLevel.getStructureManager();
         ResourceLocation structureId = ResourceLocation.fromNamespaceAndPath(modId, structureName);
@@ -234,20 +236,18 @@ public class LuckyEventFunctions {
         }
     }
 
-    public static void executeCommand(Level level, Vec3 pos, String command) {
-        if (level instanceof ServerLevel serverLevel) {
-            MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
-            cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
-            cBMinecart.getCommandBlock().setCommand(command);
-            cBMinecart.getCommandBlock().performCommand(serverLevel);
-            cBMinecart.setPos(pos.x(), pos.y(), pos.z());
-            serverLevel.addFreshEntity(cBMinecart);
-            cBMinecart.discard();
-        }
+    public static void executeCommand(ServerLevel serverLevel, Vec3 pos, String command) {
+        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
+        cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
+        cBMinecart.getCommandBlock().setCommand(command);
+        cBMinecart.getCommandBlock().performCommand(serverLevel);
+        cBMinecart.setPos(pos.x(), pos.y(), pos.z());
+        serverLevel.addFreshEntity(cBMinecart);
+        cBMinecart.discard();
     }
 
     // Experimental
-    public static void playSound(Player player, Level level, Vec3 pos, SoundSource soundSource, float volume, float pitch) {
-        level.playSound(player, PosHelper.parseVec3d(pos), SoundEvents.CHERRY_LEAVES_BREAK, soundSource, volume, pitch);
+    public static void playSound(Player player, ServerLevel serverLevel, Vec3 pos, SoundSource soundSource, float volume, float pitch) {
+        serverLevel.playSound(player, PosHelper.parseVec3d(pos), SoundEvents.CHERRY_LEAVES_BREAK, soundSource, volume, pitch);
     }
 }
