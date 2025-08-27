@@ -41,6 +41,9 @@ public class RandomEventReader {
     @SerializedName("add_particles")
     protected List<AddParticle> addParticles;
 
+    @SerializedName("play_sounds")
+    protected List<PlaySound> playSounds;
+
     @SerializedName("load_structures")
     protected List<LoadStructure> loadStructures;
 
@@ -76,6 +79,9 @@ public class RandomEventReader {
     }
     public boolean hasAddParticles() {
         return addParticles != null && !addParticles.isEmpty();
+    }
+    public boolean hasPlaySounds() {
+        return playSounds != null && !playSounds.isEmpty();
     }
     public boolean hasLoadStructures() {
         return loadStructures != null && !loadStructures.isEmpty();
@@ -113,6 +119,9 @@ public class RandomEventReader {
     }
     public List<AddParticle> getAddParticles() {
         return addParticles;
+    }
+    public List<PlaySound> getPlaySounds() {
+        return playSounds;
     }
     public List<LoadStructure> getLoadStructures() {
         return loadStructures;
@@ -471,6 +480,30 @@ public class RandomEventReader {
 
         public boolean isCreateFire() {
             return createFire;
+        }
+    }
+
+    public static class PlaySound {
+        @SerializedName("id")
+        protected String id;
+
+        @SerializedName("volume")
+        protected float volume = 1.0f;
+
+        @SerializedName("pitch")
+        protected float pitch = 1.0f;
+
+        // Getters
+        public String getId() {
+            return id;
+        }
+
+        public float getVolume() {
+            return volume;
+        }
+
+        public float getPitch() {
+            return pitch;
         }
     }
 

@@ -18,7 +18,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.effect.MobEffect;
@@ -117,9 +117,7 @@ public class LuckyEventFunctions {
         serverLevel.addFreshEntity(item);
     }
 
-    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
-        BlockState blockState = block.defaultBlockState();
+    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, BlockState blockState) {
         BlockPos blockPos = PosHelper.parseVec3d(pos);
         serverLevel.setBlockAndUpdate(blockPos, blockState);
     }
@@ -141,14 +139,21 @@ public class LuckyEventFunctions {
     public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, Vec3 velocity, @Nullable String nbtString) {
         Entity entity = entityType.create(serverLevel);
         if (entity == null) return;
+
+        if (randomize && entity instanceof Mob mobEntity) {
+            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+        }
+
         CompoundTag nbt = NbtHelper.generateNbt(nbtString);
         if (nbt != null) {
             entity.load(nbt);
         }
+
         if (name != null) {
             entity.setCustomName(Component.translatableEscape(name));
             entity.setCustomNameVisible(nameVisible);
         }
+
         entity.setPos(pos);
         entity.push(velocity);
         serverLevel.addFreshEntity(entity);
@@ -166,9 +171,11 @@ public class LuckyEventFunctions {
             entity.setCustomName(Component.translatableEscape(name));
             entity.setCustomNameVisible(nameVisible);
         }
+
         if (entity instanceof Mob mobEntity) {
             mobEntity.setBaby(isBaby);
         }
+
         entity.setPos(pos);
         entity.push(velocity);
         serverLevel.addFreshEntity(entity);
@@ -194,6 +201,10 @@ public class LuckyEventFunctions {
 
     public static void addParticles(ServerLevel serverLevel, ParticleOptions particleEffect, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
         serverLevel.sendParticles(particleEffect, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
+    }
+
+    public static void playSound(Entity entity, ServerLevel serverLevel, Vec3 pos, SoundEvent soundEvent, float volume, float pitch) {
+        serverLevel.playSound(entity, PosHelper.parseVec3d(pos), soundEvent, SoundSource.BLOCKS, volume, pitch);
     }
 
     public static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
@@ -244,10 +255,5 @@ public class LuckyEventFunctions {
         cBMinecart.setPos(pos.x(), pos.y(), pos.z());
         serverLevel.addFreshEntity(cBMinecart);
         cBMinecart.discard();
-    }
-
-    // Experimental
-    public static void playSound(Player player, ServerLevel serverLevel, Vec3 pos, SoundSource soundSource, float volume, float pitch) {
-        serverLevel.playSound(player, PosHelper.parseVec3d(pos), SoundEvents.CHERRY_LEAVES_BREAK, soundSource, volume, pitch);
     }
 }
