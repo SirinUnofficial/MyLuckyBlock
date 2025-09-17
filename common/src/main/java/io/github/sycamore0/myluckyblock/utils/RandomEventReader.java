@@ -187,8 +187,8 @@ public class RandomEventReader {
             return Mth.clamp(num, 1, 64);
         }
 
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -227,8 +227,8 @@ public class RandomEventReader {
             return id;
         }
 
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -250,8 +250,8 @@ public class RandomEventReader {
         protected Offset offset = new Offset(0.0, 0.0, 0.0);
 
         // Getters
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -281,8 +281,8 @@ public class RandomEventReader {
         protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
 
         // Getters
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -363,8 +363,8 @@ public class RandomEventReader {
         protected String nbt = null;
 
         // Getters
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -457,8 +457,8 @@ public class RandomEventReader {
         protected boolean createFire = false;
 
         // Getters
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -534,8 +534,8 @@ public class RandomEventReader {
             return speed;
         }
 
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -565,8 +565,8 @@ public class RandomEventReader {
             return modId;
         }
 
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {
@@ -589,8 +589,8 @@ public class RandomEventReader {
             return command;
         }
 
-        public int getPosSrc() {
-            return posSrc;
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
         }
 
         public Vec3 getOffset() {

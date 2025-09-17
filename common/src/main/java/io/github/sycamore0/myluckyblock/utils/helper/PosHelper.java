@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils.helper;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 
@@ -18,13 +19,13 @@ public class PosHelper {
     }
 
     // funName just for check error logs
-    public static Vec3 calcPos(Vec3 blockPos, Vec3 playerPos, int posSrc, Vec3 offset, String funName) {
+    public static Vec3 calcPos(Vec3 blockPos, Vec3 playerPos, PosSrc posSrc, Vec3 offset, String funName) {
         Vec3 targetPos = blockPos;
         switch (posSrc) {
-            case 0:
+            case PosSrc.BLOCK:
                 targetPos = calcOffset(blockPos, offset);
                 break;
-            case 1:
+            case PosSrc.PLAYER:
                 targetPos = calcOffset(playerPos, offset);
                 break;
             default:

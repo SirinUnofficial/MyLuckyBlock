@@ -10,18 +10,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 public class BreakLuckyBlock {
     public static LuckyEventDataManager manager = new LuckyEventDataManager();
 
-    public static void breakLuckyBlock(Level level, Player player, BlockPos pos, BlockState state) {
-        if (level instanceof ServerLevel && state.getBlock() instanceof LuckyBlock luckyBlock) {
-            // Check silk touch
-            boolean hasSilkTouch = EnchantmentsHelper.checkSilkTouch(player);
-            if (hasSilkTouch) {
-                level.addFreshEntity(new ItemEntity(level, pos.getCenter().x, pos.getY(), pos.getCenter().z, new ItemStack(luckyBlock)));
-                return;
+    public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos pos, BlockState state) {
+        if (level instanceof ServerLevel serverLevel && state.getBlock() instanceof LuckyBlock luckyBlock) {
+            if (player != null) {
+                // Check silk touch
+                boolean hasSilkTouch = EnchantmentsHelper.checkSilkTouch(player);
+                if (hasSilkTouch) {
+                    serverLevel.addFreshEntity(new ItemEntity(serverLevel, pos.getCenter().x, pos.getY(), pos.getCenter().z, new ItemStack(luckyBlock)));
+                    return;
+                }
             }
+
             String eventPackId = luckyBlock.getEventPackId();
             boolean includeBuiltIn = luckyBlock.includeBuiltIn();
 
@@ -32,9 +36,7 @@ public class BreakLuckyBlock {
             // Trigger random event
             RandomEventReader event = manager.getRandomEvent(eventPackId);
             if (event != null) {
-                if (level instanceof ServerLevel serverLevel) {
-                    LuckyEventExecutor.executeLuckyFunction(serverLevel, player, pos, event);
-                }
+                LuckyEventExecutor.executeLuckyFunction(serverLevel, player, pos, event);
             }
         }
     }
