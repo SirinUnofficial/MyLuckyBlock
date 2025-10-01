@@ -15,7 +15,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -49,23 +48,18 @@ public class LuckyEventExecutor {
         // Place Blocks
         if (function.hasPlaceBlocks()) {
             for (RandomEventReader.PlaceBlock placeBlock : function.getPlaceBlocks()) {
-                String blockId = placeBlock.getId();
-                Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
-                BlockState blockState = block.defaultBlockState();
-
                 Vec3 placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeBlock.getOffset(), "PlaceBlocks");
                 if (player != null && placeBlock.getPosSrc() != PosSrc.BLOCK) {
                     placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeBlock.getPosSrc(), placeBlock.getOffset(), "PlaceBlocks");
                 }
 
-                LuckyEventFunctions.placeBlock(serverLevel, placeBlockPos, blockState);
+                LuckyEventFunctions.placeBlock(serverLevel, placeBlockPos, placeBlock.getId());
             }
         }
 
         // Place Chests
         if (function.hasPlaceChests()) {
             for (RandomEventReader.PlaceChest placeChest : function.getPlaceChests()) {
-                Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(placeChest.getChestId()));
                 ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(placeChest.getId()));
 
                 Vec3 placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeChest.getOffset(), "PlaceChests");
@@ -73,7 +67,7 @@ public class LuckyEventExecutor {
                     placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeChest.getPosSrc(), placeChest.getOffset(), "PlaceChests");
                 }
 
-                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), chestBlock.defaultBlockState(), lootTable);
+                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), placeChest.getChestId(), lootTable);
             }
         }
 

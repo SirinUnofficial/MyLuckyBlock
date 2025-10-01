@@ -117,12 +117,16 @@ public class LuckyEventFunctions {
         serverLevel.addFreshEntity(item);
     }
 
-    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, BlockState blockState) {
+    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
+        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
+        BlockState blockState = block.defaultBlockState();
         BlockPos blockPos = PosHelper.parseVec3d(pos);
         serverLevel.setBlockAndUpdate(blockPos, blockState);
     }
 
-    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, BlockState chestBlockState, ResourceKey<LootTable> lootTableId) {
+    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, ResourceKey<LootTable> lootTableId) {
+        Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
+        BlockState chestBlockState = chestBlock.defaultBlockState();
         serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
         BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
         if (blockEntity instanceof RandomizableContainer lootableInventory) {
