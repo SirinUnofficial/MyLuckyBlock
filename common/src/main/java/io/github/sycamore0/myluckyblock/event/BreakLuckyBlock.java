@@ -21,7 +21,7 @@ public class BreakLuckyBlock {
                 // Check silk touch
                 boolean hasSilkTouch = EnchantmentsHelper.checkSilkTouch(player);
                 if (hasSilkTouch) {
-                    serverLevel.addFreshEntity(new ItemEntity(serverLevel, pos.getCenter().x, pos.getY(), pos.getCenter().z, new ItemStack(luckyBlock)));
+                    dropSelf(serverLevel, pos, luckyBlock);
                     return;
                 }
             }
@@ -39,5 +39,9 @@ public class BreakLuckyBlock {
                 LuckyEventExecutor.executeLuckyFunction(serverLevel, player, pos, event);
             }
         }
+    }
+
+    private static void dropSelf(ServerLevel serverLevel, BlockPos pos, LuckyBlock luckyBlock) {
+        serverLevel.addFreshEntity(new ItemEntity(serverLevel, pos.getCenter().x, pos.getY(), pos.getCenter().z, new ItemStack(luckyBlock)));
     }
 }
