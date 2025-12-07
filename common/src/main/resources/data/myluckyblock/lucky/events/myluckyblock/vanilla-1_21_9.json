@@ -5,7 +5,7 @@
     "dependencies": [
         {
             "mod_id": "minecraft",
-            "version_range": "(1.21.8,2.0)"
+            "version_range": "(1.21.8,99.0)"
         }
     ],
     "random_events": [

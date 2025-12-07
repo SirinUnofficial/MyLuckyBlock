@@ -1,0 +1,169 @@
+{
+    "name": "Random Events Pack for 1.21.11",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 1.21.11+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.21.11,99.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_nautilus_armor"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:iron_nautilus_armor"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:golden_nautilus_armor"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:diamond_nautilus_armor"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "drop_items": [
+                {
+                    "id": "minecraft:netherite_nautilus_armor"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "drop_items": [
+                {
+                    "id": "minecraft:wooden_spear"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "drop_items": [
+                {
+                    "id": "minecraft:stone_spear"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "drop_items": [
+                {
+                    "id": "minecraft:copper_spear"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "drop_items": [
+                {
+                    "id": "minecraft:iron_spear"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "drop_items": [
+                {
+                    "id": "minecraft:golden_spear"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "drop_items": [
+                {
+                    "id": "minecraft:diamond_spear"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "drop_items": [
+                {
+                    "id": "minecraft:netherite_spear"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "drop_items": [
+                {
+                    "id": "minecraft:netherite_horse_armor"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:nautilus",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:zombie_nautilus",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:parched",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:camel_husk",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    }
+                }
+            ]
+        }
+    ]
+}
