@@ -5,6 +5,7 @@ import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
+import net.minecraft.SharedConstants;
 
 import java.util.*;
 
@@ -100,7 +101,12 @@ public class LuckyEventDataManager {
                 }
                 String currentDependencyVersion;
                 try {
-                    currentDependencyVersion = Services.PLATFORM.getModVersion(dependency.getModId());
+                    if (Objects.equals(dependency.getModId(), "minecraft")) {
+                        currentDependencyVersion = SharedConstants.getCurrentVersion().getName();
+                    }
+                    else {
+                        currentDependencyVersion = Services.PLATFORM.getModVersion(dependency.getModId());
+                    }
                 } catch (Exception e) {
                     Constants.LOG.error("Failed to get version for dependency {}", dependency.getModId(), e);
                     return false;

@@ -255,9 +255,9 @@ public class LuckyEventFunctions {
         MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
         cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
         cBMinecart.getCommandBlock().setCommand(command);
-        cBMinecart.getCommandBlock().performCommand(serverLevel);
         cBMinecart.setPos(pos.x(), pos.y(), pos.z());
         serverLevel.addFreshEntity(cBMinecart);
+        cBMinecart.getCommandBlock().performCommand(serverLevel);
         cBMinecart.discard();
     }
 }
