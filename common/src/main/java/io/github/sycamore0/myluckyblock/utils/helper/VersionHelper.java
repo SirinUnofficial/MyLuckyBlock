@@ -6,11 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class VersionHelper {
-    // 版本号正则表达式
     private static final Pattern VERSION_PATTERN = Pattern.compile(
             "^(\\d+)\\.(\\d+)\\.(\\d+)(?:-([a-zA-Z0-9.-]+))?(?:\\+([a-zA-Z0-9.-]+))?$");
-
-    // 版本范围正则表达式
     private static final Pattern RANGE_PATTERN = Pattern.compile(
             "^(\\[|\\()([^,]+),([^\\]\\)]+)(\\]|\\))$");
 
@@ -44,6 +41,12 @@ public class VersionHelper {
      * @return Version Object
      */
     private static Version parseVersion(String versionStr) {
+        // for ' ' split
+        int sp = versionStr.indexOf(' ');
+        if (sp >= 0) {
+            versionStr = versionStr.substring(0, sp);
+        }
+
         // if not Semantic Versioning
         if (versionStr.matches("^\\d+$")) {
             versionStr += ".0.0";
