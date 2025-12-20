@@ -1,70 +1,46 @@
 package io.github.sycamore0.myluckyblock.utils;
 
-import com.google.gson.JsonObject;
-import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.event.listener.ILuckyEventsReloadListener;
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
+import io.github.sycamore0.myluckyblock.utils.reader.DependenciesDataReader;
+import io.github.sycamore0.myluckyblock.utils.reader.EventDataReader;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventReader;
 import net.minecraft.SharedConstants;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class LuckyEventDataManager {
-    private final Map<String, List<RandomEventReader>> eventsByMod = new HashMap<>();
+    private final ILuckyEventsReloadListener listener;
+    private final Map<String, List<RandomEventReader>> eventsByMod = new ConcurrentHashMap<>();
+
+    public LuckyEventDataManager(ILuckyEventsReloadListener listener) {
+        this.listener = listener;
+    }
 
     public void loadEvents(String eventPackId, boolean includeBuiltIn) {
-        // load events for the specified mod
-        List<JsonObject> modEvents = CommonClass.getLoadedEvents(eventPackId);
-        List<JsonObject> targetEvents = new ArrayList<>(modEvents);
+        Map<String, List<EventDataReader>> all = listener.getData();
+        List<EventDataReader> target = new ArrayList<>(all.getOrDefault(eventPackId, List.of()));
 
-        // if include built-in events
         if (includeBuiltIn && !eventPackId.equals(Constants.MOD_ID)) {
-            List<JsonObject> mainEvents = CommonClass.getLoadedEvents(Constants.MOD_ID);
-            targetEvents.addAll(mainEvents);
+            target.addAll(all.getOrDefault(Constants.MOD_ID, List.of()));
         }
 
-        // Parse and store events
-        List<RandomEventReader> modEventList = new ArrayList<>();
-        int currentId = 1;
-        for (JsonObject json : targetEvents) {
-            try {
-                EventDataReader data = ModJsonUtil.loadJsonData(json);
-                if (data == null) {
-                    Constants.LOG.error("Failed to parse JSON file: {}", json.get("fileName").getAsString());
-                    continue;
-                }
-
-                Constants.LOG.info("Loading {} (v{})", data.getName(), data.getVersion());
-
-                boolean allDependenciesLoaded = checkDependencies(data);
-
-                if (allDependenciesLoaded) {
-                    for (RandomEventReader event : data.getRandomEvents()) {
-                        event.setId(currentId++);
-                        modEventList.add(event);
-
-                        if (event.getId() <= 0) {
-                            Constants.LOG.warn("Invalid event ID in {}: {}", json.get("fileName"), event.getId());
-                        }
-                    }
-
-                    Constants.LOG.info("Loaded {} events from {}",
-                            data.getRandomEvents().size(),
-                            json.get("fileName").getAsString()
-                    );
-                } else {
-                    Constants.LOG.warn("Skipping {} because not all dependencies are loaded", json.get("fileName").getAsString());
-                }
-            } catch (Exception e) {
-                Constants.LOG.error("Critical error loading {}: {}",
-                        json.get("fileName").getAsString(),
-                        e.getMessage()
-                );
+        List<RandomEventReader> list = new ArrayList<>();
+        int id = 1;
+        for (EventDataReader data : target) {
+            if (!checkDependencies(data)) {
+                continue;
+            }
+            for (RandomEventReader event : data.getRandomEvents()) {
+                event.setId(id++);
+                list.add(event);
             }
         }
-
-        eventsByMod.put(eventPackId, modEventList);
-        Constants.LOG.info("Successfully loaded {} random events for mod {}", modEventList.size(), eventPackId);
+        eventsByMod.put(eventPackId, list);
+        Constants.LOG.info("Loaded {} random events for pack {}", list.size(), eventPackId);
     }
 
     public boolean isLoaded(String eventPackId) {
@@ -72,58 +48,44 @@ public class LuckyEventDataManager {
     }
 
     public RandomEventReader getRandomEvent(String eventPackId) {
-        List<RandomEventReader> events = eventsByMod.get(eventPackId);
-        if (events == null || events.isEmpty()) {
+        List<RandomEventReader> list = eventsByMod.get(eventPackId);
+        if (list == null || list.isEmpty()) {
             return null;
         }
-        return events.get(new Random().nextInt(events.size()));
+        return list.get(new Random().nextInt(list.size()));
     }
 
     private boolean checkDependencies(EventDataReader data) {
         List<DependenciesDataReader> dependencies = data.getDependencies();
-
         if (dependencies == null) {
             return true;
         }
-
         for (DependenciesDataReader dependency : dependencies) {
+            String versionRange = dependency.getVersionRange();
             if (dependency.getModId() == null) {
-                return true;
+                continue;
             }
-
-            if (!CommonClass.checkModLoaded(dependency.getModId())) {
-                Constants.LOG.warn("Dependency {} is not loaded", dependency.getModId());
+            if (!Services.PLATFORM.isModLoaded(dependency.getModId())) {
                 return false;
-            } else {
-                String versionRange = dependency.getVersionRange();
-                if (versionRange == null) {
-                    return true;
+            }
+            if (versionRange == null) {
+                continue;
+            }
+            String dependencyVersion;
+            try {
+                if (dependency.getModId().equals("minecraft")) {
+                    dependencyVersion = SharedConstants.getCurrentVersion().getName();
+                } else {
+                    dependencyVersion = Services.PLATFORM.getModVersion(dependency.getModId());
                 }
-                String currentDependencyVersion;
-                try {
-                    if (Objects.equals(dependency.getModId(), "minecraft")) {
-                        currentDependencyVersion = SharedConstants.getCurrentVersion().getName();
-                    }
-                    else {
-                        currentDependencyVersion = Services.PLATFORM.getModVersion(dependency.getModId());
-                    }
-                } catch (Exception e) {
-                    Constants.LOG.error("Failed to get version for dependency {}", dependency.getModId(), e);
-                    return false;
-                }
-
-                if (currentDependencyVersion == null) {
-                    return false;
-                }
-
-                if (!VersionHelper.isVersionInRange(currentDependencyVersion, versionRange)) {
-                    Constants.LOG.warn("Dependency {} version {} is not in range {}",
-                            dependency.getModId(), currentDependencyVersion, versionRange);
-                    return false;
-                }
+            } catch (Exception e) {
+                Constants.LOG.error("Failed to get version for {}", dependency.getModId(), e);
+                return false;
+            }
+            if (dependencyVersion == null || !VersionHelper.isVersionInRange(dependencyVersion, versionRange)) {
+                return false;
             }
         }
-
         return true;
     }
 }

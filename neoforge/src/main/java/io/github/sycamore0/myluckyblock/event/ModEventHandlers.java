@@ -1,14 +1,10 @@
 package io.github.sycamore0.myluckyblock.event;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import io.github.sycamore0.myluckyblock.CommonClass;
-import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
+import io.github.sycamore0.myluckyblock.event.listener.LuckyEventsReloadListener;
+import io.github.sycamore0.myluckyblock.utils.LuckyEventDataManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,11 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import org.jetbrains.annotations.NotNull;
-
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModEventHandlers {
     @SubscribeEvent
@@ -35,12 +26,7 @@ public class ModEventHandlers {
             if (blockState.getBlock() instanceof LuckyBlock) {
                 serverLevel.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
-                BreakLuckyBlock.breakLuckyBlock(
-                        serverLevel,
-                        player,
-                        blockPos,
-                        blockState
-                );
+                BreakLuckyBlock.breakLuckyBlock(serverLevel, player, blockPos, blockState);
                 event.setCanceled(true);
 
                 // cost durability
@@ -55,36 +41,9 @@ public class ModEventHandlers {
     }
 
     @SubscribeEvent
-    private static void onAddReloadListeners(AddReloadListenerEvent event) {
-        event.addListener(new LuckyEventsReloadListener());
-    }
-
-    private static class LuckyEventsReloadListener implements ResourceManagerReloadListener {
-        @Override
-        public void onResourceManagerReload(@NotNull ResourceManager manager) {
-            Constants.loadedEventPacks.clear();
-            for (String eventPackId : Constants.eventPackIdList) {
-                loadEventsPack(manager, eventPackId);
-            }
-            Constants.LOG.info("Loaded {} event files for mod {}",
-                    CommonClass.getLoadedEvents(Constants.MOD_ID).size(),
-                    Constants.MOD_ID);
-        }
-    }
-
-    private static void loadEventsPack(ResourceManager manager, String eventPackId) {
-        String jsonDir = "lucky/events/" + eventPackId;
-        List<JsonObject> events = new ArrayList<>();
-        manager.listResources(jsonDir, path -> path.getPath().endsWith(".json"))
-                .forEach((id, resource) -> {
-                    try (InputStreamReader reader = new InputStreamReader(resource.open())) {
-                        JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-                        json.addProperty("fileName", id.getPath());
-                        events.add(json);
-                    } catch (Exception e) {
-                        Constants.LOG.error("Failed to load {}", id, e);
-                    }
-                });
-        Constants.loadedEventPacks.put(eventPackId, events);
+    public static void onAddReloadListeners(AddReloadListenerEvent event) {
+        LuckyEventsReloadListener listener = new LuckyEventsReloadListener();
+        event.addListener(listener);
+        BreakLuckyBlock.manager = new LuckyEventDataManager(listener);
     }
 }

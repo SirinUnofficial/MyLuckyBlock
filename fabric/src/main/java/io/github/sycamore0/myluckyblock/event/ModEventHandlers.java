@@ -1,57 +1,33 @@
 package io.github.sycamore0.myluckyblock.event;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import io.github.sycamore0.myluckyblock.CommonClass;
-import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.block.LuckyBlock;
+import io.github.sycamore0.myluckyblock.event.listener.LuckyEventsReloadListener;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class ModEventHandlers {
-    public static void onInitialize() {
-        PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> BreakLuckyBlock.breakLuckyBlock(world, player, pos, state));
+    private static void onBreakBlock(Level level, Player player, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        if (!(state.getBlock() instanceof LuckyBlock)) {
+            return;
+        }
 
-        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(
-                new SimpleSynchronousResourceReloadListener() {
-                    @Override
-                    public ResourceLocation getFabricId() {
-                        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lucky_events_loader");
-                    }
-
-                    @Override
-                    public void onResourceManagerReload(ResourceManager manager) {
-                        Constants.loadedEventPacks.clear();
-                        // Load events for all mods
-                        for (String eventPackId : Constants.eventPackIdList) {
-                            loadEventsPack(manager, eventPackId);
-                        }
-                        Constants.LOG.info("Loaded {} event files for mod {}", CommonClass.getLoadedEvents(Constants.MOD_ID).size(), Constants.MOD_ID);
-                    }
-                }
-        );
+        BreakLuckyBlock.breakLuckyBlock(serverLevel, player, pos, state);
     }
 
-    private static void loadEventsPack(ResourceManager manager, String eventPackId) {
-        String jsonDir = "lucky/events/" + eventPackId;
-        List<JsonObject> events = new ArrayList<>();
-        manager.listResources(jsonDir, path -> path.getPath().endsWith(".json"))
-                .forEach((id, resource) -> {
-                    try (InputStreamReader reader = new InputStreamReader(resource.open())) {
-                        JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-                        json.addProperty("fileName", id.getPath());
-                        events.add(json);
-                    } catch (Exception e) {
-                        Constants.LOG.error("Failed to load {}", id, e);
-                    }
-                });
-        Constants.loadedEventPacks.put(eventPackId, events);
+    public static void onInitialize() {
+        PlayerBlockBreakEvents.AFTER.register(ModEventHandlers::onBreakBlock);
+
+        LuckyEventsReloadListener RELOAD_LISTENER = new LuckyEventsReloadListener();
+        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(RELOAD_LISTENER);
     }
 }

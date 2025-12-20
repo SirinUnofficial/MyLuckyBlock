@@ -1,7 +1,6 @@
 package io.github.sycamore0.myluckyblock;
 
 import com.google.gson.JsonObject;
-import io.github.sycamore0.myluckyblock.platform.Services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +18,5 @@ public class CommonClass {
         if (!Constants.eventPackIdList.contains(eventPackId)) {
             Constants.eventPackIdList.add(eventPackId);
         }
-    }
-
-    public static boolean checkModLoaded(String modId) {
-        return Services.PLATFORM.isModLoaded(modId);
     }
 }

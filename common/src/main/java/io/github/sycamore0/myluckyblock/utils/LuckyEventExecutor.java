@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;

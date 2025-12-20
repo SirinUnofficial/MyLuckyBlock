@@ -3,6 +3,7 @@ package io.github.sycamore0.myluckyblock.event;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.utils.*;
 import io.github.sycamore0.myluckyblock.utils.helper.*;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class BreakLuckyBlock {
-    public static LuckyEventDataManager manager = new LuckyEventDataManager();
+    public static LuckyEventDataManager manager;
 
     public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos pos, BlockState state) {
         if (level instanceof ServerLevel serverLevel && state.getBlock() instanceof LuckyBlock luckyBlock) {

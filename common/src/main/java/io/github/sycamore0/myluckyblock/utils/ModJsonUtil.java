@@ -2,6 +2,7 @@ package io.github.sycamore0.myluckyblock.utils;
 
 import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.utils.reader.EventDataReader;
 
 public class ModJsonUtil {
     public static EventDataReader loadJsonData(JsonObject json) {
