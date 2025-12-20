@@ -126,19 +126,4 @@ public class LuckyEventDataManager {
 
         return true;
     }
-
-    // Debug method
-    public int getRandomEventsCount(String eventPackId) {
-        return eventsByMod.getOrDefault(eventPackId, new ArrayList<>()).size();
-    }
-
-    // Debug method
-    public RandomEventReader getEventById(String eventPackId, int id) {
-        for (RandomEventReader event : eventsByMod.getOrDefault(eventPackId, new ArrayList<>())) {
-            if (event.getId() == id) {
-                return event;
-            }
-        }
-        return null;
-    }
 }
