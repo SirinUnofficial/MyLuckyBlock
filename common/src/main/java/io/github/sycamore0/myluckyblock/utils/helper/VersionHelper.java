@@ -5,9 +5,11 @@ import io.github.sycamore0.myluckyblock.Constants;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VersionHelper {
+public final class VersionHelper {
+    /* Regex for strict semantic versions: major.minor.patch[-pre][+build] */
     private static final Pattern VERSION_PATTERN = Pattern.compile(
             "^(\\d+)\\.(\\d+)\\.(\\d+)(?:-([a-zA-Z0-9.-]+))?(?:\\+([a-zA-Z0-9.-]+))?$");
+    /* Regex for version ranges: [1.0,2.0) or (1.0,2.0] etc. */
     private static final Pattern RANGE_PATTERN = Pattern.compile(
             "^(\\[|\\()([^,]+),([^\\]\\)]+)(\\]|\\))$");
 
@@ -19,11 +21,9 @@ public class VersionHelper {
      * @return if in range return true，or return false
      */
     public static boolean isVersionInRange(String versionStr, String rangeStr) {
-        // ANY
         if ("*".equals(rangeStr)) {
             return true;
         }
-
         try {
             Version version = parseVersion(versionStr);
             VersionRange range = parseVersionRange(rangeStr);
@@ -36,18 +36,20 @@ public class VersionHelper {
 
     /**
      * Parse version string
+     * <p>
+     * If the input contains a space, only the part before the first space is considered.
      *
      * @param versionStr version string
      * @return Version Object
      */
     private static Version parseVersion(String versionStr) {
-        // for ' ' split
-        int sp = versionStr.indexOf(' ');
-        if (sp >= 0) {
-            versionStr = versionStr.substring(0, sp);
+        /* Strip everything after the first space (if any) */
+        int spacePos = versionStr.indexOf(' ');
+        if (spacePos != -1) {
+            versionStr = versionStr.substring(0, spacePos);
         }
 
-        // if not Semantic Versioning
+        /* Auto-complete missing parts */
         if (versionStr.matches("^\\d+$")) {
             versionStr += ".0.0";
         } else if (versionStr.matches("^\\d+\\.\\d+$")) {
@@ -94,24 +96,7 @@ public class VersionHelper {
         return new VersionRange(minVersion, minInclusive, maxVersion, maxInclusive);
     }
 
-    /**
-     * Version Class
-     */
-    private static class Version implements Comparable<Version> {
-        private final int major;
-        private final int minor;
-        private final int patch;
-        private final String preRelease;
-        private final String build;
-
-        public Version(int major, int minor, int patch, String preRelease, String build) {
-            this.major = major;
-            this.minor = minor;
-            this.patch = patch;
-            this.preRelease = preRelease;
-            this.build = build;
-        }
-
+    private record Version(int major, int minor, int patch, String preRelease, String build) implements Comparable<Version> {
         @Override
         public int compareTo(Version other) {
             if (this.major != other.major) {
@@ -129,7 +114,8 @@ public class VersionHelper {
                 return 1;
             } else if (this.preRelease != null && other.preRelease == null) {
                 return -1;
-            } else if (this.preRelease != null && other.preRelease != null) {
+            } else if (this.preRelease != null) {
+                // && other.preRelease != null
                 int preReleaseCompare = comparePreRelease(this.preRelease, other.preRelease);
                 if (preReleaseCompare != 0) {
                     return preReleaseCompare;
@@ -141,11 +127,9 @@ public class VersionHelper {
                 return -1;
             } else if (this.build != null && other.build == null) {
                 return 1;
-            } else if (this.build != null && other.build != null) {
-                int buildCompare = this.build.compareTo(other.build);
-                if (buildCompare != 0) {
-                    return buildCompare;
-                }
+            } else if (this.build != null) {
+                // && other.build != null
+                return this.build.compareTo(other.build);
             }
 
             return 0;
@@ -205,22 +189,7 @@ public class VersionHelper {
         }
     }
 
-    /**
-     * VersionRange Class
-     */
-    private static class VersionRange {
-        private final Version minVersion;
-        private final boolean minInclusive;
-        private final Version maxVersion;
-        private final boolean maxInclusive;
-
-        public VersionRange(Version minVersion, boolean minInclusive, Version maxVersion, boolean maxInclusive) {
-            this.minVersion = minVersion;
-            this.minInclusive = minInclusive;
-            this.maxVersion = maxVersion;
-            this.maxInclusive = maxInclusive;
-        }
-
+    private record VersionRange(Version minVersion, boolean minInclusive, Version maxVersion, boolean maxInclusive) {
         /**
          * Is version in range
          *
