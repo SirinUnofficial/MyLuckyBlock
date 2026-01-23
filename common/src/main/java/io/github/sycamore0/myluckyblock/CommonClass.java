@@ -10,4 +10,16 @@ public class CommonClass {
             Constants.EVENT_PACK_GROUP_LIST.add(eventPackGroupName);
         }
     }
+
+    /**
+     * @deprecated {@link #addEventPackGroup(String eventPackGroupName)}
+     */
+    @Deprecated(
+            forRemoval = true
+    )
+    public static void addEventPackId(String eventPackId) {
+        addEventPackGroup(eventPackId);
+        String caller = Thread.currentThread().getStackTrace()[2].getClassName();
+        Constants.LOG.error("CommonClass.addEventPackId(String) is deprecated, use addEventPackGroup instead! AT {}", caller);
+    }
 }
