@@ -10,7 +10,6 @@ public class DependenciesDataReader {
     protected String versionRange;
 
     public DependenciesDataReader() {
-        // Default Construct
         this.modId = null;
         this.versionRange = null; // e.p. "[1.0.1,2.4.3)"
     }

@@ -3,7 +3,7 @@ package io.github.sycamore0.myluckyblock.event;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.utils.*;
 import io.github.sycamore0.myluckyblock.utils.helper.*;
-import io.github.sycamore0.myluckyblock.utils.reader.RandomEventReader;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class BreakLuckyBlock {
-    public static LuckyEventDataManager manager;
+    public static LuckyEventDataManager MANAGER;
 
     public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos pos, BlockState state) {
         if (level instanceof ServerLevel serverLevel && state.getBlock() instanceof LuckyBlock luckyBlock) {
@@ -27,15 +27,15 @@ public class BreakLuckyBlock {
                 }
             }
 
-            String eventPackId = luckyBlock.getEventPackId();
-            boolean includeBuiltIn = luckyBlock.includeBuiltIn();
+            String eventPackGroupName = luckyBlock.getEventPackGroupName();
+            boolean isIncludeBuiltIn = luckyBlock.isIncludeBuiltIn();
 
-            if (!manager.isLoaded(eventPackId)) {
-                manager.loadEvents(eventPackId, includeBuiltIn);
+            if (!MANAGER.isLoaded(eventPackGroupName)) {
+                MANAGER.loadEvents(eventPackGroupName, isIncludeBuiltIn);
             }
 
             // Trigger random event
-            RandomEventReader event = manager.getRandomEvent(eventPackId);
+            RandomEventDataReader event = MANAGER.getRandomEvent(eventPackGroupName);
             if (event != null) {
                 LuckyEventExecutor.executeLuckyFunction(serverLevel, player, pos, event);
             }

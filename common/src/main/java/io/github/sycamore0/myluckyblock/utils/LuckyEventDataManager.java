@@ -5,84 +5,86 @@ import io.github.sycamore0.myluckyblock.event.listener.ILuckyEventsReloadListene
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
 import io.github.sycamore0.myluckyblock.utils.reader.DependenciesDataReader;
-import io.github.sycamore0.myluckyblock.utils.reader.EventDataReader;
-import io.github.sycamore0.myluckyblock.utils.reader.RandomEventReader;
+import io.github.sycamore0.myluckyblock.utils.reader.EventPackDataReader;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.SharedConstants;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LuckyEventDataManager {
-    private final ILuckyEventsReloadListener listener;
-    private final Map<String, List<RandomEventReader>> eventsByMod = new ConcurrentHashMap<>();
+    private final ILuckyEventsReloadListener LISTENER;
+    private final Map<String, List<RandomEventDataReader>> EVENTS_BY_GROUP = new ConcurrentHashMap<>();
 
     public LuckyEventDataManager(ILuckyEventsReloadListener listener) {
-        this.listener = listener;
+        this.LISTENER = listener;
     }
 
-    public void loadEvents(String eventPackId, boolean includeBuiltIn) {
-        Map<String, List<EventDataReader>> all = listener.getData();
-        List<EventDataReader> target = new ArrayList<>(all.getOrDefault(eventPackId, List.of()));
+    public void loadEvents(String eventPackGroupName, boolean includeBuiltIn) {
+        Map<String, List<EventPackDataReader>> all = LISTENER.getPackData();
+        List<EventPackDataReader> eventPackList = new ArrayList<>(all.getOrDefault(eventPackGroupName, List.of()));
 
-        if (includeBuiltIn && !eventPackId.equals(Constants.MOD_ID)) {
-            target.addAll(all.getOrDefault(Constants.MOD_ID, List.of()));
+        if (includeBuiltIn && !eventPackGroupName.equals(Constants.MOD_ID)) {
+            eventPackList.addAll(all.getOrDefault(Constants.MOD_ID, List.of()));
         }
 
-        List<RandomEventReader> list = new ArrayList<>();
-        int id = 1;
-        for (EventDataReader data : target) {
-            if (!checkDependencies(data)) {
+        List<RandomEventDataReader> eventDataList = new ArrayList<>();
+        int eventId = 1;
+        for (EventPackDataReader packData : eventPackList) {
+            if (!checkDependencies(packData)) {
                 continue;
             }
-            for (RandomEventReader event : data.getRandomEvents()) {
-                event.setId(id++);
-                list.add(event);
+            for (RandomEventDataReader eventData : packData.getRandomEvents()) {
+                eventData.setId(eventId++);
+                eventDataList.add(eventData);
             }
         }
-        eventsByMod.put(eventPackId, list);
-        Constants.LOG.info("Loaded {} random events for pack {}", list.size(), eventPackId);
+        EVENTS_BY_GROUP.put(eventPackGroupName, eventDataList);
+        Constants.LOG.info("Loaded {} random events from event pack group {}", eventDataList.size(), eventPackGroupName);
     }
 
-    public boolean isLoaded(String eventPackId) {
-        return eventsByMod.containsKey(eventPackId);
+    public boolean isLoaded(String eventPackGroupName) {
+        return EVENTS_BY_GROUP.containsKey(eventPackGroupName);
     }
 
-    public RandomEventReader getRandomEvent(String eventPackId) {
-        List<RandomEventReader> list = eventsByMod.get(eventPackId);
+    public RandomEventDataReader getRandomEvent(String eventPackGroupName) {
+        List<RandomEventDataReader> list = EVENTS_BY_GROUP.get(eventPackGroupName);
         if (list == null || list.isEmpty()) {
             return null;
         }
         return list.get(new Random().nextInt(list.size()));
     }
 
-    private boolean checkDependencies(EventDataReader data) {
-        List<DependenciesDataReader> dependencies = data.getDependencies();
-        if (dependencies == null) {
+    private boolean checkDependencies(EventPackDataReader packData) {
+        List<DependenciesDataReader> neededDependencies = packData.getDependencies();
+        if (neededDependencies == null) {
             return true;
         }
-        for (DependenciesDataReader dependency : dependencies) {
-            String versionRange = dependency.getVersionRange();
-            if (dependency.getModId() == null) {
+        for (DependenciesDataReader neededDependency : neededDependencies) {
+            String neededVersionRange = neededDependency.getVersionRange();
+            if (neededDependency.getModId() == null) {
                 continue;
             }
-            if (!Services.PLATFORM.isModLoaded(dependency.getModId())) {
+            if (!Services.PLATFORM.isModLoaded(neededDependency.getModId())) {
                 return false;
             }
-            if (versionRange == null) {
+            if (neededVersionRange == null) {
                 continue;
             }
-            String dependencyVersion;
+
+            String currentDependencyVersion;
             try {
-                if (dependency.getModId().equals("minecraft")) {
-                    dependencyVersion = SharedConstants.getCurrentVersion().getName();
+                if (neededDependency.getModId().equals("minecraft")) {
+                    currentDependencyVersion = SharedConstants.getCurrentVersion().getName();
                 } else {
-                    dependencyVersion = Services.PLATFORM.getModVersion(dependency.getModId());
+                    currentDependencyVersion = Services.PLATFORM.getModVersion(neededDependency.getModId());
                 }
-            } catch (Exception e) {
-                Constants.LOG.error("Failed to get version for {}", dependency.getModId(), e);
+            } catch (Exception exception) {
+                Constants.LOG.error("Failed to get version for {}", neededDependency.getModId(), exception);
                 return false;
             }
-            if (dependencyVersion == null || !VersionHelper.isVersionInRange(dependencyVersion, versionRange)) {
+
+            if (currentDependencyVersion == null || !VersionHelper.isVersionInRange(currentDependencyVersion, neededVersionRange)) {
                 return false;
             }
         }

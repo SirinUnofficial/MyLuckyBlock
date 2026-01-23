@@ -44,6 +44,6 @@ public class ModEventHandlers {
     public static void onAddReloadListeners(AddReloadListenerEvent event) {
         LuckyEventsReloadListener listener = new LuckyEventsReloadListener();
         event.addListener(listener);
-        BreakLuckyBlock.manager = new LuckyEventDataManager(listener);
+        BreakLuckyBlock.MANAGER = new LuckyEventDataManager(listener);
     }
 }

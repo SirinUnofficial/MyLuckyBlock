@@ -23,8 +23,8 @@ public class ModBlocks {
         return block;
     }
 
-    public static LuckyBlock createNewLuckyBlock(String blockId, String modId, String eventPackId, boolean includeBuiltIn, MapColor mapColor, float strength, float explosionResistance) {
-        return register(blockId, new LuckyBlock(BlockBehaviour.Properties.of().mapColor(mapColor).strength(strength).explosionResistance(explosionResistance), eventPackId, includeBuiltIn), modId);
+    public static LuckyBlock createNewLuckyBlock(String blockId, String modId, String eventPackGroupName, boolean includeBuiltIn, MapColor mapColor, float strength, float explosionResistance) {
+        return register(blockId, new LuckyBlock(BlockBehaviour.Properties.of().mapColor(mapColor).strength(strength).explosionResistance(explosionResistance), eventPackGroupName, includeBuiltIn), modId);
     }
 
     public static void onInitialize() {

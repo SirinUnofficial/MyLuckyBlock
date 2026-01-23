@@ -8,7 +8,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-public class RandomEventReader {
+public class RandomEventDataReader {
     @SerializedName("id")
     protected int id;
 
@@ -606,7 +606,6 @@ public class RandomEventReader {
         @SerializedName("max")
         protected int max;
 
-        // Default Constructor
         public RandomNum(int min, int max) {
             this.min = Mth.clamp(min, 0, max);
             this.max = Mth.clamp(max, min, 64);
@@ -632,7 +631,6 @@ public class RandomEventReader {
         @SerializedName("z")
         protected double z;
 
-        // Default Constructor
         public Velocity(double x, double y, double z) {
             this.x = x;
             this.y = y;
@@ -663,7 +661,6 @@ public class RandomEventReader {
         @SerializedName("z")
         protected double z;
 
-        // Default Constructor
         public Offset(double x, double y, double z) {
             this.x = x;
             this.y = y;

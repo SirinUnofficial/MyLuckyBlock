@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventDataReader {
+public class EventPackDataReader {
     @SerializedName("name")
     protected String name;
 
@@ -19,10 +19,9 @@ public class EventDataReader {
     protected List<DependenciesDataReader> dependencies;
 
     @SerializedName("random_events")
-    protected List<RandomEventReader> randomEvents;
+    protected List<RandomEventDataReader> randomEvents;
 
-    public EventDataReader() {
-        // Default Construct
+    public EventPackDataReader() {
         this.name = "unknown";
         this.version = "unknown";
         this.info = "unknown";
@@ -47,7 +46,7 @@ public class EventDataReader {
         return dependencies;
     }
 
-    public List<RandomEventReader> getRandomEvents() {
+    public List<RandomEventDataReader> getRandomEvents() {
         return randomEvents;
     }
 }

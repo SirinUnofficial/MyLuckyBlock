@@ -1,7 +1,7 @@
 package io.github.sycamore0.myluckyblock.utils;
 
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
-import io.github.sycamore0.myluckyblock.utils.reader.RandomEventReader;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
@@ -23,10 +23,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class LuckyEventExecutor {
-    public static void executeLuckyFunction(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventReader function) {
+    public static void executeLuckyFunction(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         // Drop Items
         if (function.hasDropItems()) {
-            for (RandomEventReader.DropItem dropItem : function.getDropItems()) {
+            for (RandomEventDataReader.DropItem dropItem : function.getDropItems()) {
                 boolean isUseRandom = dropItem.isUseRandom();
                 int count;
                 if (isUseRandom) {
@@ -48,7 +48,7 @@ public class LuckyEventExecutor {
 
         // Place Blocks
         if (function.hasPlaceBlocks()) {
-            for (RandomEventReader.PlaceBlock placeBlock : function.getPlaceBlocks()) {
+            for (RandomEventDataReader.PlaceBlock placeBlock : function.getPlaceBlocks()) {
                 Vec3 placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeBlock.getOffset(), "PlaceBlocks");
                 if (player != null && placeBlock.getPosSrc() != PosSrc.BLOCK) {
                     placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeBlock.getPosSrc(), placeBlock.getOffset(), "PlaceBlocks");
@@ -60,7 +60,7 @@ public class LuckyEventExecutor {
 
         // Place Chests
         if (function.hasPlaceChests()) {
-            for (RandomEventReader.PlaceChest placeChest : function.getPlaceChests()) {
+            for (RandomEventDataReader.PlaceChest placeChest : function.getPlaceChests()) {
                 ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(placeChest.getId()));
 
                 Vec3 placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeChest.getOffset(), "PlaceChests");
@@ -74,7 +74,7 @@ public class LuckyEventExecutor {
 
         // Fall Blocks
         if (function.hasFallBlocks()) {
-            for (RandomEventReader.FallBlock fallBlock : function.getFallBlocks()) {
+            for (RandomEventDataReader.FallBlock fallBlock : function.getFallBlocks()) {
                 Block blockId = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
 
                 Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, fallBlock.getOffset(), "FallBlocks");
@@ -88,7 +88,7 @@ public class LuckyEventExecutor {
 
         // Give Potion Effects
         if (function.hasGivePotionEffects()) {
-            for (RandomEventReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
+            for (RandomEventDataReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
                 if (player != null) {
                     Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(givePotionEffect.getId())).orElseThrow();
                     LuckyEventFunctions.givePotionEffect(player, effect, givePotionEffect.getDuration(), givePotionEffect.getAmplifier());
@@ -98,7 +98,7 @@ public class LuckyEventExecutor {
 
         // Spawn Mobs
         if (function.hasSpawnMobs()) {
-            for (RandomEventReader.SpawnMob spawnMob : function.getSpawnMobs()) {
+            for (RandomEventDataReader.SpawnMob spawnMob : function.getSpawnMobs()) {
                 EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(spawnMob.getId()));
 
                 boolean isUseRandom = spawnMob.isUseRandom();
@@ -132,7 +132,7 @@ public class LuckyEventExecutor {
 
         // Send Messages
         if (function.hasSendMessages()) {
-            for (RandomEventReader.SendMessage sendMessage : function.getSendMessages()) {
+            for (RandomEventDataReader.SendMessage sendMessage : function.getSendMessages()) {
                 if (player != null) {
                     LuckyEventFunctions.sendMessage(player, sendMessage.getMsg());
                 }
@@ -141,7 +141,7 @@ public class LuckyEventExecutor {
 
         // Display Messages
         if (function.hasDisplayMessages()) {
-            for (RandomEventReader.DisplayMessage sendMessage : function.getDisplayMessages()) {
+            for (RandomEventDataReader.DisplayMessage sendMessage : function.getDisplayMessages()) {
                 if (player != null) {
                     LuckyEventFunctions.displayClientMessage(player, sendMessage.getMsg(), sendMessage.getOverlay());
                 }
@@ -150,7 +150,7 @@ public class LuckyEventExecutor {
 
         // Create Explosions
         if (function.hasCreateExplosions()) {
-            for (RandomEventReader.CreateExplosion createExplosion : function.getCreateExplosions()) {
+            for (RandomEventDataReader.CreateExplosion createExplosion : function.getCreateExplosions()) {
                 Vec3 createExplosionPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, createExplosion.getOffset(), "CreateExplosions");
                 if (player != null && createExplosion.getPosSrc() != PosSrc.BLOCK) {
                     createExplosionPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), createExplosion.getPosSrc(), createExplosion.getOffset(), "CreateExplosions");
@@ -162,7 +162,7 @@ public class LuckyEventExecutor {
 
         // Add Particles
         if (function.hasAddParticles()) {
-            for (RandomEventReader.AddParticle addParticle : function.getAddParticles()) {
+            for (RandomEventDataReader.AddParticle addParticle : function.getAddParticles()) {
                 ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(addParticle.getId()));
                 ParticleOptions particle = (ParticleOptions) particleType;
 
@@ -177,7 +177,7 @@ public class LuckyEventExecutor {
 
         // Play Sounds
         if (function.hasPlaySounds()) {
-            for (RandomEventReader.PlaySound playSound : function.getPlaySounds()) {
+            for (RandomEventDataReader.PlaySound playSound : function.getPlaySounds()) {
                 if (player != null) {
                     SoundEvent soundEvent = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(playSound.getId()));
                     LuckyEventFunctions.playSound(player, serverLevel, PosHelper.parseBlockPos(blockPos), soundEvent, playSound.getVolume(), playSound.getPitch());
@@ -187,7 +187,7 @@ public class LuckyEventExecutor {
 
         // Load Structures
         if (function.hasLoadStructures()) {
-            for (RandomEventReader.LoadStructure loadStructure : function.getLoadStructures()) {
+            for (RandomEventDataReader.LoadStructure loadStructure : function.getLoadStructures()) {
                 Vec3 loadStructurePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, loadStructure.getOffset(), "LoadStructures");
                 if (player != null && loadStructure.getPosSrc() != PosSrc.BLOCK) {
                     loadStructurePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), loadStructure.getPosSrc(), loadStructure.getOffset(), "LoadStructures");
@@ -199,7 +199,7 @@ public class LuckyEventExecutor {
 
         // Execute Commands
         if (function.hasExecuteCommands()) {
-            for (RandomEventReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
+            for (RandomEventDataReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
                 Vec3 executeCommandPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, executeCommand.getOffset(), "ExecuteCommands");
                 if (player != null && executeCommand.getPosSrc() != PosSrc.BLOCK) {
                     executeCommandPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), executeCommand.getPosSrc(), executeCommand.getOffset(), "ExecuteCommands");

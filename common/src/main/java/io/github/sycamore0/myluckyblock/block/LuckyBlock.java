@@ -3,7 +3,6 @@ package io.github.sycamore0.myluckyblock.block;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -12,30 +11,29 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class LuckyBlock extends Block {
-    private String eventPackId = Constants.MOD_ID; // path: data/myluckyblock/lucky/events/%eventPackId%/
-    private boolean includeBuiltIn = false; // if include built-in lucky events(include lucky/events/my_lucky_block/)
+    private String EVENT_PACK_GROUP_NAME = Constants.MOD_ID;
+    private boolean includeBuiltIn = false;
 
     public LuckyBlock(BlockBehaviour.Properties settings) {
         super(settings);
     }
 
-    public LuckyBlock(BlockBehaviour.Properties settings, String eventPackId) {
+    public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName) {
         super(settings);
-        this.eventPackId = eventPackId;
-        this.includeBuiltIn = false;
+        this.EVENT_PACK_GROUP_NAME = eventPackGroupName;
     }
 
-    public LuckyBlock(BlockBehaviour.Properties settings, String eventPackId, boolean includeBuiltIn) {
+    public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName, boolean includeBuiltIn) {
         super(settings);
-        this.eventPackId = eventPackId;
+        this.EVENT_PACK_GROUP_NAME = eventPackGroupName;
         this.includeBuiltIn = includeBuiltIn;
     }
 
-    public String getEventPackId() {
-        return eventPackId;
+    public String getEventPackGroupName() {
+        return EVENT_PACK_GROUP_NAME;
     }
 
-    public boolean includeBuiltIn() {
+    public boolean isIncludeBuiltIn() {
         return includeBuiltIn;
     }
 
