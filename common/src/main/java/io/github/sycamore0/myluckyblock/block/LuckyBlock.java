@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class LuckyBlock extends Block {
     private String EVENT_PACK_GROUP_NAME = Constants.MOD_ID;
-    private boolean includeBuiltIn = false;
+    private boolean INCLUDE_BUILTIN = false;
 
     public LuckyBlock(BlockBehaviour.Properties settings) {
         super(settings);
@@ -26,7 +26,7 @@ public class LuckyBlock extends Block {
     public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName, boolean includeBuiltIn) {
         super(settings);
         this.EVENT_PACK_GROUP_NAME = eventPackGroupName;
-        this.includeBuiltIn = includeBuiltIn;
+        this.INCLUDE_BUILTIN = includeBuiltIn;
     }
 
     public String getEventPackGroupName() {
@@ -34,7 +34,7 @@ public class LuckyBlock extends Block {
     }
 
     public boolean isIncludeBuiltIn() {
-        return includeBuiltIn;
+        return INCLUDE_BUILTIN;
     }
 
     @Override
