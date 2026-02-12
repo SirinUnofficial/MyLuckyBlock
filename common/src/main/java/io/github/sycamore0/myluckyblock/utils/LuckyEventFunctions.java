@@ -9,15 +9,10 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.RandomizableContainer;
@@ -47,8 +42,6 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.InputStream;
-import java.nio.file.NoSuchFileException;
 import java.util.List;
 import java.util.Optional;
 
@@ -212,40 +205,24 @@ public class LuckyEventFunctions {
     }
 
     public static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
-        MinecraftServer server = serverLevel.getServer();
         StructureTemplateManager manager = serverLevel.getStructureManager();
         ResourceLocation structureId = ResourceLocation.fromNamespaceAndPath(modId, structureName);
 
         try {
             Optional<StructureTemplate> template = manager.get(structureId);
 
-            if (template.isEmpty()) {
-                ResourceLocation resourcePath = ResourceLocation.fromNamespaceAndPath(
-                        modId,
-                        "structure/" + structureName + ".nbt"
-                );
+            if (template.isPresent()) {
+                StructureTemplate structure = template.get();
+                StructurePlaceSettings placement = new StructurePlaceSettings()
+                        .setIgnoreEntities(false)
+                        .setKnownShape(true)
+                        .setRotation(Rotation.NONE)
+                        .setMirror(Mirror.NONE);
 
-                ResourceManager resourceManager = server.getResourceManager();
-                Resource resource = resourceManager.getResource(resourcePath).orElseThrow();
-                try (InputStream stream = resource.open()) {
-                    CompoundTag nbt = NbtIo.readCompressed(stream, NbtAccounter.unlimitedHeap());
-                    StructureTemplate structure = manager.readStructure(nbt);
-
-                    template = Optional.of(structure);
-                } catch (NoSuchFileException e) {
-                    Constants.LOG.error("Structure file not exist: {}", resourcePath);
-                    return;
-                }
+                structure.placeInWorld(serverLevel, pos, pos, placement, serverLevel.getRandom(), 3);
+            } else {
+                Constants.LOG.error("template.isEmpty()");
             }
-
-            StructureTemplate structure = template.get();
-            StructurePlaceSettings placement = new StructurePlaceSettings()
-                    .setIgnoreEntities(false)
-                    .setKnownShape(true)
-                    .setRotation(Rotation.NONE)
-                    .setMirror(Mirror.NONE);
-
-            structure.placeInWorld(serverLevel, pos, pos, placement, serverLevel.getRandom(), 3);
         } catch (Exception e) {
             Constants.LOG.error("Catch error when loading structure: ", e);
         }
