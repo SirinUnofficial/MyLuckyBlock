@@ -21,5 +21,6 @@ public class ModPacks {
 
     public static void onInitialize() {
         addBuiltInDataPack("disable_lucky_block_worldgen");
+        addBuiltInDataPack("disable_lucky_block_structure");
     }
 }

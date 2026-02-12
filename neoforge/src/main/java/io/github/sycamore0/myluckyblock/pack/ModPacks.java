@@ -18,6 +18,7 @@ public class ModPacks {
     private static void setupDataPack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.SERVER_DATA) {
             addBuiltInDataPack(event, "disable_lucky_block_worldgen");
+            addBuiltInDataPack(event, "disable_lucky_block_structure");
         }
     }
 

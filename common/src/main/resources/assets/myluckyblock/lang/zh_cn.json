@@ -6,6 +6,7 @@
     "block.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
 
     "pack.name.disable_lucky_block_worldgen":"禁用幸运方块自然生成",
+    "pack.name.disable_lucky_block_structure":"禁用幸运方块建筑事件",
 
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
 
