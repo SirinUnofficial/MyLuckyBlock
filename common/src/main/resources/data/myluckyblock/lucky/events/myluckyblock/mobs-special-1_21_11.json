@@ -17,6 +17,22 @@
                     "pos_src": 0
                 }
             ]
+        },
+        {
+            "id": 2,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:zombie",
+                    "randomize": false,
+                    "name": "name.myluckyblock.super_zombie_baby",
+                    "name_visible": true,
+                    "is_baby": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{IsBaby:1,CanBreakDoors:1,CustomName:[\"Super Zombie Baby\"],CustomNameVisible:1b,Glowing:1b,equipment:{mainhand:{id:netherite_spear,components:{enchantments:{binding_curse:1,knockback:2,mending:1,sharpness:5,unbreaking:3,vanishing_curse:1}}},head:{id:netherite_helmet,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},chest:{id:netherite_chestplate,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},legs:{id:netherite_leggings,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},feet:{id:netherite_boots,components:{enchantments:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}},drop_chances:{mainhand:0.1f,head:0.1f,chest:0.1f,legs:0.1f,feet:0.1f}}"
+                }
+            ]
         }
     ]
 }
