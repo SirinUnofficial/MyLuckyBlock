@@ -64,7 +64,7 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
     }
 
     private Map<String, List<EventPackDataReader>> loadEvents(ResourceManager manager, Set<String> disabledSet) {
-        Map<String, List<EventPackDataReader>> eventsMap = new HashMap<>();
+        Map<String, List<EventPackDataReader>> eventPacksMap = new HashMap<>();
         Constants.LOG.info("Loading events with disabled: {}", disabledSet);
 
         manager.listResources(EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
@@ -84,16 +84,16 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
                     }
 
                     try (Reader reader = resource.openAsReader()) {
-                        EventPackDataReader event = Constants.GSON.fromJson(reader, EventPackDataReader.class);
-                        eventsMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(event);
-                        Constants.LOG.info("Loaded event pack: {}", fullEventPackId);
+                        Constants.LOG.info("Loading event pack: {}", fullEventPackId);
+                        EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
+                        eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPackData);
                     } catch (Exception e) {
                         Constants.LOG.error("Failed to parse {}: {}", location, e.getMessage());
                     }
                 });
 
-        Constants.LOG.info("Loaded event groups: {}", eventsMap.keySet());
-        return eventsMap;
+        Constants.LOG.info("Loaded event groups: {}", eventPacksMap.keySet());
+        return eventPacksMap;
     }
 
     public Map<String, List<EventPackDataReader>> getPackData() {

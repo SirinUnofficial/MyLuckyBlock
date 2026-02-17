@@ -32,6 +32,7 @@ public class LuckyEventDataManager {
         int eventId = 1;
         for (EventPackDataReader packData : eventPackList) {
             if (!checkDependencies(packData)) {
+                Constants.LOG.warn("Skipping event pack {} due to missing dependencies {}", packData.getName(), packData.getDependencies());
                 continue;
             }
             for (RandomEventDataReader eventData : packData.getRandomEvents()) {
