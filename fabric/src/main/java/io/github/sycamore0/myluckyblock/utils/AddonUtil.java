@@ -21,7 +21,6 @@ public class AddonUtil {
     }
 
     public static Block createLB(String blockId, String modId, String eventPackGroupName, boolean includeBuiltIn, MapColor mapColor, float strength, float explosionResistance) {
-        CommonClass.addEventPackGroup(eventPackGroupName);
         final Block ADDON_LUCKY_BLOCK = ModBlocks.createNewLuckyBlock(blockId, modId, eventPackGroupName, includeBuiltIn, mapColor, strength, explosionResistance);
         ModItemGroups.addBlockToGroup(new ItemStack(ADDON_LUCKY_BLOCK));
         return ADDON_LUCKY_BLOCK;

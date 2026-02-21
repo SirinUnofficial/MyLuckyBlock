@@ -2,7 +2,6 @@ package io.github.sycamore0.myluckyblock;
 
 public class CommonClass {
     public static void init() {
-        addEventPackGroup(Constants.EVENT_PACK_GROUP_NAME);
     }
 
     public static void addEventPackGroup(String eventPackGroupName) {

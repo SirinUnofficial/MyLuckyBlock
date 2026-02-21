@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.block;
 
+import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import net.minecraft.core.BlockPos;
@@ -16,17 +17,20 @@ public class LuckyBlock extends Block {
 
     public LuckyBlock(BlockBehaviour.Properties settings) {
         super(settings);
+        CommonClass.addEventPackGroup(eventPackGroupName);
     }
 
     public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName) {
         super(settings);
         this.eventPackGroupName = eventPackGroupName;
+        CommonClass.addEventPackGroup(eventPackGroupName);
     }
 
     public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName, boolean includeBuiltIn) {
         super(settings);
         this.eventPackGroupName = eventPackGroupName;
         this.includeBuiltin = includeBuiltIn;
+        CommonClass.addEventPackGroup(eventPackGroupName);
     }
 
     public String getEventPackGroupName() {
