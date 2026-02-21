@@ -46,28 +46,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class LuckyEventFunctions {
-    @Deprecated
-    public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count) {
-        dropItems(serverLevel, pos, itemId, count, null, false, null, null);
-    }
-
-    @Deprecated
-    public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String nbtString) {
-        dropItems(serverLevel, pos, itemId, count, null, false, null, nbtString);
-    }
-
     public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
         if (item.equals(Items.AIR)) return;
         ItemStack itemStack = new ItemStack(item, count);
 
-        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
-
         if (nbtString != null) {
-            CompoundTag nbt = NbtHelper.generateItemNbt(itemId, count, nbtString);
-            if (nbt == null) return;
-            itemEntity.load(nbt);
+            itemStack = NbtHelper.createItemStackWithNBT(itemStack, nbtString, serverLevel.registryAccess());
         }
+
+        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
 
         if (name != null) {
             itemEntity.setCustomName(Component.translatable(name));
@@ -87,27 +75,27 @@ public class LuckyEventFunctions {
     // use in spawn mob
     public static void dropItemsByNbt(ServerLevel serverLevel, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         ItemStack itemStack = new ItemStack(Items.AIR);
-        ItemEntity item = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
+        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
 
         if (nbtString != null) {
             CompoundTag nbt = NbtHelper.generateNbt(nbtString);
             if (nbt == null) return;
-            item.load(nbt);
+            itemEntity.load(nbt);
         }
 
         if (name != null) {
-            item.setCustomName(Component.translatable(name));
-            item.setCustomNameVisible(nameVisible);
-            item.getItem().set(DataComponents.CUSTOM_NAME, Component.translatable(name));
+            itemEntity.setCustomName(Component.translatable(name));
+            itemEntity.setCustomNameVisible(nameVisible);
+            itemEntity.getItem().set(DataComponents.CUSTOM_NAME, Component.translatable(name));
         }
 
         if (desc != null) {
             ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
-            item.getItem().set(DataComponents.LORE, itemLore);
+            itemEntity.getItem().set(DataComponents.LORE, itemLore);
         }
 
-        item.setPos(pos);
-        serverLevel.addFreshEntity(item);
+        itemEntity.setPos(pos);
+        serverLevel.addFreshEntity(itemEntity);
     }
 
     public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
