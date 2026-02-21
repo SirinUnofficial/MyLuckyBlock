@@ -24,8 +24,8 @@ public class LuckyEventDataManager {
         Map<String, List<EventPackDataReader>> all = LISTENER.getPackData();
         List<EventPackDataReader> eventPackList = new ArrayList<>(all.getOrDefault(eventPackGroupName, List.of()));
 
-        if (includeBuiltIn && !eventPackGroupName.equals(Constants.MOD_ID)) {
-            eventPackList.addAll(all.getOrDefault(Constants.MOD_ID, List.of()));
+        if (includeBuiltIn && !eventPackGroupName.equals(Constants.EVENT_PACK_GROUP_NAME)) {
+            eventPackList.addAll(all.getOrDefault(Constants.EVENT_PACK_GROUP_NAME, List.of()));
         }
 
         List<RandomEventDataReader> eventDataList = new ArrayList<>();

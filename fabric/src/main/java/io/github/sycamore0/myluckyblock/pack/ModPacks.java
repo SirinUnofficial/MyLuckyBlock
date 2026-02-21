@@ -9,7 +9,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class ModPacks {
-    public static ModContainer MOD_CONTAINER = FabricLoader.getInstance().getModContainer(Constants.MOD_ID).get();
+    public static final ModContainer MOD_CONTAINER = FabricLoader.getInstance()
+            .getModContainer(Constants.MOD_ID)
+            .orElseThrow(() -> new RuntimeException("Mod " + Constants.MOD_ID + " not found"));
 
     public static ResourceLocation locate(String path) {
         return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);

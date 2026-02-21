@@ -10,7 +10,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class ModFeatures {
-    public static TagKey<Biome> LB_GEN_BIOME_TAG = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lb_gen"));
+    public static final TagKey<Biome> LB_GEN_BIOME_TAG = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lb_gen"));
 
     public static void onInitialize() {
         BiomeModifications.addFeature(

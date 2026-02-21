@@ -15,25 +15,23 @@ import java.io.Reader;
 import java.util.*;
 
 public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloadListener, ILuckyEventsReloadListener {
-    private volatile Map<String, List<EventPackDataReader>> PACK_DATA = Collections.emptyMap();
-    private static final String EVENTS_PATH = "lucky/events";
-    private static final String DISABLED_DATA_PATH = "lucky/disabled.json";
+    private volatile Map<String, List<EventPackDataReader>> packData = Collections.emptyMap();
 
     @Override
     public ResourceLocation getFabricId() {
-        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lucky_events_loader");
+        return Constants.DATA_LOADER_ID;
     }
 
     @Override
     public void onResourceManagerReload(ResourceManager manager) {
         Set<String> disabled = loadDisabled(manager);
-        PACK_DATA = loadEvents(manager, disabled);
-        BreakLuckyBlock.MANAGER = new LuckyEventDataManager(this);
+        packData = loadEvents(manager, disabled);
+        BreakLuckyBlock.manager = new LuckyEventDataManager(this);
     }
 
     private Set<String> loadDisabled(ResourceManager manager) {
         Set<String> disabledPackSet = new HashSet<>();
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, DISABLED_DATA_PATH);
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, Constants.DISABLED_DATA_PATH);
 
         List<Resource> resources = manager.getResourceStack(location);
 
@@ -60,7 +58,7 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
         Map<String, List<EventPackDataReader>> eventPacksMap = new HashMap<>();
         Constants.LOG.info("Loading events with disabled: {}", disabledSet);
 
-        manager.listResources(EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
+        manager.listResources(Constants.EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
                 .forEach((location, resource) -> {
                     String path = location.getPath();
                     Constants.LOG.debug("Checking event pack file: {}", path);
@@ -90,6 +88,6 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
     }
 
     public Map<String, List<EventPackDataReader>> getPackData() {
-        return PACK_DATA;
+        return packData;
     }
 }

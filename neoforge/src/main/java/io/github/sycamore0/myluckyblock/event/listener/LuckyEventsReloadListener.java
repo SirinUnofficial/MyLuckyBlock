@@ -16,13 +16,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class LuckyEventsReloadListener implements PreparableReloadListener, ILuckyEventsReloadListener {
-    private volatile Map<String, List<EventPackDataReader>> PACK_DATA = Map.of();
-    private static final String EVENTS_PATH = "lucky/events";
-    private static final String DISABLED_DATA_PATH = "lucky/disabled.json";
+    private volatile Map<String, List<EventPackDataReader>> packData = Map.of();
 
     @Override
     public @NotNull String getName() {
-        return Constants.MOD_ID + ":lucky_events_loader";
+        return Constants.DATA_LOADER_ID.toString();
     }
 
     @Override
@@ -35,12 +33,12 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
 
             prepProfilerFiller.endTick();
             return eventsMap;
-        }, bgExecutor).thenCompose(preparationBarrier::wait).thenAcceptAsync(res -> PACK_DATA = res, gameExecutor);
+        }, bgExecutor).thenCompose(preparationBarrier::wait).thenAcceptAsync(res -> packData = res, gameExecutor);
     }
 
     private Set<String> loadDisabled(ResourceManager manager) {
         Set<String> disabledPackSet = new HashSet<>();
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, DISABLED_DATA_PATH);
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, Constants.DISABLED_DATA_PATH);
 
         List<Resource> resources = manager.getResourceStack(location);
 
@@ -67,7 +65,7 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
         Map<String, List<EventPackDataReader>> eventPacksMap = new HashMap<>();
         Constants.LOG.info("Loading events with disabled: {}", disabledSet);
 
-        manager.listResources(EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
+        manager.listResources(Constants.EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
                 .forEach((location, resource) -> {
                     String path = location.getPath();
                     Constants.LOG.debug("Checking event pack file: {}", path);
@@ -97,6 +95,6 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
     }
 
     public Map<String, List<EventPackDataReader>> getPackData() {
-        return PACK_DATA;
+        return packData;
     }
 }

@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class BreakLuckyBlock {
-    public static LuckyEventDataManager MANAGER;
+    public static LuckyEventDataManager manager;
 
     public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos pos, BlockState state) {
         if (level instanceof ServerLevel serverLevel && state.getBlock() instanceof LuckyBlock luckyBlock) {
@@ -30,12 +30,12 @@ public class BreakLuckyBlock {
             String eventPackGroupName = luckyBlock.getEventPackGroupName();
             boolean isIncludeBuiltIn = luckyBlock.isIncludeBuiltIn();
 
-            if (!MANAGER.isLoaded(eventPackGroupName)) {
-                MANAGER.loadEvents(eventPackGroupName, isIncludeBuiltIn);
+            if (!manager.isLoaded(eventPackGroupName)) {
+                manager.loadEvents(eventPackGroupName, isIncludeBuiltIn);
             }
 
             // Trigger random event
-            RandomEventDataReader event = MANAGER.getRandomEvent(eventPackGroupName);
+            RandomEventDataReader event = manager.getRandomEvent(eventPackGroupName);
             if (event != null) {
                 LuckyEventExecutor.executeLuckyFunction(serverLevel, player, pos, event);
             }

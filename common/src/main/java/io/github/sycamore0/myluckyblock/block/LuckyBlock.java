@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class LuckyBlock extends Block {
-    private String EVENT_PACK_GROUP_NAME = Constants.MOD_ID;
-    private boolean INCLUDE_BUILTIN = false;
+    private String eventPackGroupName = Constants.EVENT_PACK_GROUP_NAME;
+    private boolean includeBuiltin = false;
 
     public LuckyBlock(BlockBehaviour.Properties settings) {
         super(settings);
@@ -20,21 +20,21 @@ public class LuckyBlock extends Block {
 
     public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName) {
         super(settings);
-        this.EVENT_PACK_GROUP_NAME = eventPackGroupName;
+        this.eventPackGroupName = eventPackGroupName;
     }
 
     public LuckyBlock(BlockBehaviour.Properties settings, String eventPackGroupName, boolean includeBuiltIn) {
         super(settings);
-        this.EVENT_PACK_GROUP_NAME = eventPackGroupName;
-        this.INCLUDE_BUILTIN = includeBuiltIn;
+        this.eventPackGroupName = eventPackGroupName;
+        this.includeBuiltin = includeBuiltIn;
     }
 
     public String getEventPackGroupName() {
-        return EVENT_PACK_GROUP_NAME;
+        return eventPackGroupName;
     }
 
     public boolean isIncludeBuiltIn() {
-        return INCLUDE_BUILTIN;
+        return includeBuiltin;
     }
 
     @Override

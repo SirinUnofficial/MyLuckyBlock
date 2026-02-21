@@ -14,7 +14,7 @@ public class ModBlocks {
     public static final Block MY_LUCKY_BLOCK;
 
     static {
-        MY_LUCKY_BLOCK = register("my_lucky_block", new LuckyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f)), Constants.MOD_ID);
+        MY_LUCKY_BLOCK = register("my_lucky_block", new LuckyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f)), Constants.EVENT_PACK_GROUP_NAME);
     }
 
     public static <T extends Block> T register(String path, T block, String modId) {
