@@ -46,22 +46,20 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
                 disabledPackSet.addAll(data.getValues());
 
             } catch (Exception e) {
-                Constants.LOG.error("Failed to parse disabled data from {}: {}", resource.sourcePackId(), e.getMessage());
+                Constants.LOG.error("Failed to parse disabled event pack list from {}: {}", resource.sourcePackId(), e.getMessage());
             }
         }
 
-        Constants.LOG.info("Final disabled event packs: {}", disabledPackSet);
+        Constants.LOG.info("Disabled event packs: {}", disabledPackSet);
         return disabledPackSet;
     }
 
     private Map<String, List<EventPackDataReader>> loadEvents(ResourceManager manager, Set<String> disabledSet) {
         Map<String, List<EventPackDataReader>> eventPacksMap = new HashMap<>();
-        Constants.LOG.info("Loading events with disabled: {}", disabledSet);
 
         manager.listResources(Constants.EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
                 .forEach((location, resource) -> {
                     String path = location.getPath();
-                    Constants.LOG.debug("Checking event pack file: {}", path);
                     String[] seg = path.split("/");
                     if (seg.length < 4) return;
 
@@ -75,15 +73,15 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
                     }
 
                     try (Reader reader = new InputStreamReader(resource.open())) {
-                        Constants.LOG.info("Loading event pack: {}", fullEventPackId);
                         EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
                         eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPackData);
+                        Constants.LOG.info("Parsed pack metadata: {}", fullEventPackId);
                     } catch (Exception e) {
-                        Constants.LOG.error("Failed to parse {}: {}", location, e.getMessage());
+                        Constants.LOG.error("Failed to parse event pack {}: {}", location, e.getMessage());
                     }
                 });
 
-        Constants.LOG.info("Loaded event groups: {}", eventPacksMap.keySet());
+        Constants.LOG.info("Parsed event groups: {}", eventPacksMap.keySet());
         return eventPacksMap;
     }
 
