@@ -11,15 +11,15 @@
     "random_events": [
         {
             "id": 1,
-            "spawn_mobs": [
+            "drop_items": [
                 {
-                    "id": "minecraft:item",
+                    "id": "minecraft:diamond_spear",
                     "name": "name.myluckyblock.lunge_spear",
                     "name_visible": true,
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Item:{id:diamond_spear,count:1,components:{rarity:epic,enchantments:{lunge:16},repair_cost:32767}}}"
+                    "nbt": "{rarity:epic,enchantments:{lunge:16},repair_cost:32767}"
                 }
             ]
         }
