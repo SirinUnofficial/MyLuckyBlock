@@ -607,8 +607,10 @@ public class RandomEventDataReader {
         protected int max;
 
         public RandomNum(int min, int max) {
-            this.min = Mth.clamp(min, 0, max);
-            this.max = Mth.clamp(max, min, 64);
+            int actualMin = Math.min(min, max);
+            int actualMax = Math.max(min, max);
+            this.min = Mth.clamp(actualMin, 0, max);
+            this.max = Mth.clamp(actualMax, min, 64);
         }
 
         // Getters
