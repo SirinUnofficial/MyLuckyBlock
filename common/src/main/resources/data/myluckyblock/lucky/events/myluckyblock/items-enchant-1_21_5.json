@@ -202,6 +202,34 @@
                     "nbt": "{stored_enchantments:{aqua_affinity:1,bane_of_arthropods:5,blast_protection:4,channeling:1,depth_strider:3,efficiency:5,feather_falling:4,fire_aspect:2,fire_protection:4,flame:1,fortune:3,frost_walker:2,impaling:5,infinity:1,knockback:2,looting:3,loyalty:3,luck_of_the_sea:3,lure:3,mending:1,multishot:1,piercing:4,power:5,projectile_protection:4,protection:4,punch:2,quick_charge:3,respiration:3,riptide:3,sharpness:5,silk_touch:1,smite:5,soul_speed:3,sweeping_edge:3,swift_sneak:3,thorns:3,unbreaking:3,breach:4,density:5,wind_burst:3},custom_name:[\"\",{\"text\":\"name.myluckyblock.omnipotent_enchantment_book\",\"italic\":false}]}"
                 }
             ]
+        },
+        {
+            "id": 12,
+            "drop_items": [
+                {
+                    "id": "minecraft:netherite_pickaxe",
+                    "name": "name.myluckyblock.demolition_supervisor",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{enchantments:{efficiency:100},repair_cost:32767}"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "drop_items": [
+                {
+                    "id": "minecraft:golden_pickaxe",
+                    "name": "name.myluckyblock.fortunes_favorite",
+                    "name_visible": true,
+                    "use_random": false,
+                    "num": 1,
+                    "pos_src": 0,
+                    "nbt": "{enchantments:{fortune:255},repair_cost:32767}"
+                }
+            ]
         }
     ]
 }
