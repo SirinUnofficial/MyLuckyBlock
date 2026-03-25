@@ -213,7 +213,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{enchantments:{efficiency:100},repair_cost:32767}"
+                    "nbt": "{enchantments:{efficiency:10},repair_cost:32767}"
                 }
             ]
         },
@@ -227,7 +227,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{enchantments:{fortune:255},repair_cost:32767}"
+                    "nbt": "{enchantments:{fortune:10},repair_cost:32767}"
                 }
             ]
         }
