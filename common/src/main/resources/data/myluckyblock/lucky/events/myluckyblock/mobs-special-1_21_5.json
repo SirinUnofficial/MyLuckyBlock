@@ -174,7 +174,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{Glowing:1b,equipment:{mainhand:{id:crossbow,components:{enchantments:{multishot:20},unbreakable:{},repair_cost:32767}},drop_chances:{mainhand:0.1f}}}"
+                    "nbt": "{Glowing:1b,equipment:{mainhand:{id:crossbow,components:{enchantments:{multishot:20},unbreakable:{},repair_cost:32767}}},drop_chances:{mainhand:0.01f}}"
                 }
             ]
         },
