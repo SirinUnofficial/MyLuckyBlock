@@ -37,6 +37,7 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
             prepProfilerFiller.endTick();
             return eventsMap;
         }, bgExecutor).thenCompose(preparationBarrier::wait).thenAcceptAsync(res -> packData = res, gameExecutor);
+
     }
 
     private Set<String> loadDisabled(ResourceManager manager) {

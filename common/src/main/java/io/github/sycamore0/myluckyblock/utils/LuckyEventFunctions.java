@@ -172,11 +172,11 @@ public class LuckyEventFunctions {
     }
 
     public static void sendMessage(Player player, String message) {
-        player.displayClientMessage(Component.translatableEscape(message), false);
+        player.sendSystemMessage(Component.translatableEscape(message));
     }
 
     public static void displayClientMessage(Player player, String message, boolean overlay) {
-        player.displayClientMessage(Component.translatableEscape(message), overlay);
+        player.sendOverlayMessage(Component.translatableEscape(message));
     }
 
     public static void givePotionEffect(Player player, String effectId, int duration, int amplifier) {
