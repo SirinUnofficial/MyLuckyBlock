@@ -6,7 +6,7 @@ import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
@@ -66,7 +66,7 @@ public class LuckyEventExecutor {
         // Fall Blocks
         if (function.hasFallBlocks()) {
             for (RandomEventDataReader.FallBlock fallBlock : function.getFallBlocks()) {
-                Optional<Holder.Reference<Block>> blockIdOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
+                Optional<Holder.Reference<Block>> blockIdOptional = BuiltInRegistries.BLOCK.get(Identifier.parse(fallBlock.getId()));
                 if (blockIdOptional.isPresent()) {
                     Block blockId = blockIdOptional.get().value();
                     Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, fallBlock.getOffset(), "FallBlocks");
