@@ -46,7 +46,7 @@ public class LuckyBlock extends Block {
     @Override
     protected void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block block, @Nullable Orientation orientation, boolean bl) {
         if (level.hasNeighborSignal(blockPos)) {
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
                 BreakLuckyBlock.breakLuckyBlock(level, null, blockPos, blockState);
             }

@@ -3,7 +3,7 @@ package io.github.sycamore0.myluckyblock.block;
 import io.github.sycamore0.myluckyblock.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -19,7 +19,7 @@ public class ModBlocks {
     }
 
     public static Block register(String path, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, String modId) {
-        final ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(modId, path);
+        final Identifier identifier = Identifier.fromNamespaceAndPath(modId, path);
         final ResourceKey<Block> registryKey = ResourceKey.create(Registries.BLOCK, identifier);
 
         final Block block = Blocks.register(registryKey, factory, settings);

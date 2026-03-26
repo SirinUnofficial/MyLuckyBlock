@@ -8,7 +8,7 @@ import io.github.sycamore0.myluckyblock.utils.reader.DisabledDataReader;
 import io.github.sycamore0.myluckyblock.utils.reader.EventPackDataReader;
 import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 
@@ -20,7 +20,7 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
     private volatile Map<String, List<EventPackDataReader>> packData = Collections.emptyMap();
 
     @Override
-    public ResourceLocation getFabricId() {
+    public Identifier getFabricId() {
         return Constants.DATA_LOADER_ID;
     }
 
@@ -33,7 +33,7 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
 
     private Set<String> loadDisabled(ResourceManager manager) {
         Set<String> disabledPackSet = new HashSet<>();
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, Constants.DISABLED_DATA_PATH);
+        Identifier location = Identifier.fromNamespaceAndPath(Constants.MOD_ID, Constants.DISABLED_DATA_PATH);
 
         List<Resource> resources = manager.getResourceStack(location);
 
