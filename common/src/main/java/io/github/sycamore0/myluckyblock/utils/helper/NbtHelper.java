@@ -10,18 +10,21 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.RegistryOps;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.level.storage.TagValueInput;
+import net.minecraft.world.level.storage.ValueInput;
 import org.jetbrains.annotations.Nullable;
 
 public class NbtHelper {
     // generate NBT from string
-    public static CompoundTag generateNbt(@Nullable String nbtStr) {
+    public static ValueInput generateNbt(@Nullable String nbtStr, ServerLevel serverLevel) {
         try {
             if (nbtStr != null) {
                 CompoundTag nbt = TagParser.parseCompoundFully(nbtStr);
                 if (nbt instanceof CompoundTag) {
-                    return nbt;
+                    return TagValueInput.create(Constants.problemreporter$scopedcollector, serverLevel.registryAccess(), nbt);
                 } else {
                     throw new IllegalArgumentException("Parsed NBT data is not a compound tag");
                 }
@@ -33,7 +36,7 @@ public class NbtHelper {
     }
 
     @Deprecated
-    public static CompoundTag generateItemEntityNbt(String itemId, int count, @Nullable String itemNbtStr) {
+    public static ValueInput generateItemEntityNbt(String itemId, int count, @Nullable String itemNbtStr, ServerLevel serverLevel) {
         if (itemNbtStr != null) {
             String nbtStr = "{Item:"
                     + "{id:\""
@@ -44,7 +47,7 @@ public class NbtHelper {
                     + "components:{"
                     + itemNbtStr
                     + "}}}";
-            return generateNbt(nbtStr);
+            return generateNbt(nbtStr, serverLevel);
         }
         return null;
     }

@@ -2,6 +2,7 @@ package io.github.sycamore0.myluckyblock;
 
 import com.google.gson.Gson;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ProblemReporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +13,7 @@ public class Constants {
     public static final String MOD_NAME = "MyLuckyBlock";
 
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+    public static final ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(LOG);
     public static final Gson GSON = new Gson();
 
     public static final String EVENT_PACK_GROUP_NAME = "myluckyblock";
