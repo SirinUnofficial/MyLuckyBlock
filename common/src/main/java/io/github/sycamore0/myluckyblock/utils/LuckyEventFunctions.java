@@ -19,9 +19,9 @@ import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -47,29 +47,32 @@ import java.util.Optional;
 
 public class LuckyEventFunctions {
     public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
-        Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
-        if (item.equals(Items.AIR)) return;
-        ItemStack itemStack = new ItemStack(item, count);
+        Optional<Holder.Reference<Item>> itemOptional = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
+        if (itemOptional.isPresent()) {
+            Item item = itemOptional.get().value();
+            if (item.equals(Items.AIR)) return;
+            ItemStack itemStack = new ItemStack(item, count);
 
-        if (nbtString != null) {
-            itemStack = NbtHelper.createItemStackWithNBT(itemStack, nbtString, serverLevel.registryAccess());
+            if (nbtString != null) {
+                itemStack = NbtHelper.createItemStackWithNBT(itemStack, nbtString, serverLevel.registryAccess());
+            }
+
+            ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
+
+            if (name != null) {
+                itemEntity.setCustomName(Component.translatable(name));
+                itemEntity.setCustomNameVisible(nameVisible);
+                itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(name));
+            }
+
+            if (desc != null) {
+                ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
+                itemStack.set(DataComponents.LORE, itemLore);
+            }
+
+            itemEntity.setPos(pos);
+            serverLevel.addFreshEntity(itemEntity);
         }
-
-        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
-
-        if (name != null) {
-            itemEntity.setCustomName(Component.translatable(name));
-            itemEntity.setCustomNameVisible(nameVisible);
-            itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(name));
-        }
-
-        if (desc != null) {
-            ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
-            itemStack.set(DataComponents.LORE, itemLore);
-        }
-
-        itemEntity.setPos(pos);
-        serverLevel.addFreshEntity(itemEntity);
     }
 
     // use in spawn mob
@@ -99,19 +102,25 @@ public class LuckyEventFunctions {
     }
 
     public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
-        BlockState blockState = block.defaultBlockState();
-        BlockPos blockPos = PosHelper.parseVec3d(pos);
-        serverLevel.setBlockAndUpdate(blockPos, blockState);
+        Optional<Holder.Reference<Block>> blockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
+        if (blockOptional.isPresent()) {
+            Block block = blockOptional.get().value();
+            BlockState blockState = block.defaultBlockState();
+            BlockPos blockPos = PosHelper.parseVec3d(pos);
+            serverLevel.setBlockAndUpdate(blockPos, blockState);
+        }
     }
 
     public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, ResourceKey<LootTable> lootTableId) {
-        Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
-        BlockState chestBlockState = chestBlock.defaultBlockState();
-        serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
-        BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
-        if (blockEntity instanceof RandomizableContainer lootableInventory) {
-            lootableInventory.setLootTable(lootTableId);
+        Optional<Holder.Reference<Block>> chestBlockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
+        if (chestBlockOptional.isPresent()) {
+            Block chestBlock = chestBlockOptional.get().value();
+            BlockState chestBlockState = chestBlock.defaultBlockState();
+            serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
+            BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
+            if (blockEntity instanceof RandomizableContainer lootableInventory) {
+                lootableInventory.setLootTable(lootTableId);
+            }
         }
     }
 
@@ -122,11 +131,11 @@ public class LuckyEventFunctions {
     }
 
     public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, Vec3 velocity, @Nullable String nbtString) {
-        Entity entity = entityType.create(serverLevel);
+        Entity entity = entityType.create(serverLevel, EntitySpawnReason.MOB_SUMMONED);
         if (entity == null) return;
 
         if (randomize && entity instanceof Mob mobEntity) {
-            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), EntitySpawnReason.NATURAL, null);
         }
 
         CompoundTag nbt = NbtHelper.generateNbt(nbtString);
@@ -145,11 +154,11 @@ public class LuckyEventFunctions {
     }
 
     public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity) {
-        Entity entity = entityType.create(serverLevel);
+        Entity entity = entityType.create(serverLevel, EntitySpawnReason.MOB_SUMMONED);
         if (entity == null) return;
 
         if (randomize && entity instanceof Mob mobEntity) {
-            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), EntitySpawnReason.NATURAL, null);
         }
 
         if (name != null) {
@@ -171,7 +180,7 @@ public class LuckyEventFunctions {
     }
 
     public static void sendMessage(Player player, String message) {
-        player.sendSystemMessage(Component.translatableEscape(message));
+        player.displayClientMessage(Component.translatableEscape(message), false);
     }
 
     public static void displayClientMessage(Player player, String message, boolean overlay) {
@@ -217,7 +226,7 @@ public class LuckyEventFunctions {
     }
 
     public static void executeCommand(ServerLevel serverLevel, Vec3 pos, String command) {
-        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
+        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(EntityType.COMMAND_BLOCK_MINECART, serverLevel);
         cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
         cBMinecart.getCommandBlock().setCommand(command);
         cBMinecart.setPos(pos.x(), pos.y(), pos.z());

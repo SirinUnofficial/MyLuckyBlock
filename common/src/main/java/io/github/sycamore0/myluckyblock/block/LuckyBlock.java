@@ -9,7 +9,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.redstone.Orientation;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class LuckyBlock extends Block {
     private String eventPackGroupName = Constants.EVENT_PACK_GROUP_NAME;
@@ -42,7 +44,7 @@ public class LuckyBlock extends Block {
     }
 
     @Override
-    protected void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block sourceBlock, @NotNull BlockPos sourceBlockPos, boolean notify) {
+    protected void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block block, @Nullable Orientation orientation, boolean bl) {
         if (level.hasNeighborSignal(blockPos)) {
             level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
             BreakLuckyBlock.breakLuckyBlock(level, null, blockPos, blockState);

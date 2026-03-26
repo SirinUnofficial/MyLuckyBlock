@@ -17,15 +17,11 @@ public class ModItemGroups {
     public static final CreativeModeTab MYLUCKYBLOCK_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModBlocks.MY_LUCKY_BLOCK))
             .title(Component.translatableEscape("itemGroup.myluckyblock.myluckyblock_group"))
-            .displayItems((context, entries) -> {
-                entries.accept(ModBlocks.MY_LUCKY_BLOCK);
-            })
+            .displayItems((context, entries) -> entries.accept(ModBlocks.MY_LUCKY_BLOCK))
             .build();
 
     public static void addBlockToGroup(ItemStack itemStack) {
-        ItemGroupEvents.modifyEntriesEvent(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "myluckyblock_group"))).register(entries -> {
-            entries.accept(itemStack);
-        });
+        ItemGroupEvents.modifyEntriesEvent(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "myluckyblock_group"))).register(entries -> entries.accept(itemStack));
     }
 
     public static void onInitialize() {
