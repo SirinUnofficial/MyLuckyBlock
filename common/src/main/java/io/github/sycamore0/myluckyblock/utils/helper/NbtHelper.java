@@ -19,7 +19,7 @@ public class NbtHelper {
     public static CompoundTag generateNbt(@Nullable String nbtStr) {
         try {
             if (nbtStr != null) {
-                CompoundTag nbt = TagParser.parseTag(nbtStr);
+                CompoundTag nbt = TagParser.parseCompoundFully(nbtStr);
                 if (nbt instanceof CompoundTag) {
                     return nbt;
                 } else {
@@ -55,7 +55,7 @@ public class NbtHelper {
         }
 
         try {
-            CompoundTag nbt = TagParser.parseTag(nbtStr);
+            CompoundTag nbt = TagParser.parseCompoundFully(nbtStr);
             RegistryOps<Tag> registryOps = RegistryOps.create(NbtOps.INSTANCE, registryAccess);
             DataComponentPatch patch = DataComponentPatch.CODEC
                     .parse(registryOps, nbt)
