@@ -78,7 +78,7 @@ public class LuckyEventDataManager {
             String currentDependencyVersion;
             try {
                 if (neededDependency.getModId().equals("minecraft")) {
-                    currentDependencyVersion = SharedConstants.getCurrentVersion().getName();
+                    currentDependencyVersion = SharedConstants.getCurrentVersion().name();
                 } else {
                     currentDependencyVersion = Services.PLATFORM.getModVersion(neededDependency.getModId());
                 }

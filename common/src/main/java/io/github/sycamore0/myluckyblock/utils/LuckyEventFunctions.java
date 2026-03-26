@@ -41,6 +41,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -85,7 +86,7 @@ public class LuckyEventFunctions {
         ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
 
         if (nbtString != null) {
-            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
+            ValueInput nbt = NbtHelper.generateNbt(nbtString, serverLevel);
             if (nbt == null) return;
             itemEntity.load(nbt);
         }
@@ -147,10 +148,10 @@ public class LuckyEventFunctions {
                 mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), EntitySpawnReason.NATURAL, null);
             }
 
-            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
-            if (nbt != null) {
-                entity.load(nbt);
-            }
+        ValueInput nbt = NbtHelper.generateNbt(nbtString, serverLevel);
+        if (nbt != null) {
+            entity.load(nbt);
+        }
 
             if (entity instanceof Mob mobEntity) {
                 mobEntity.setBaby(isBaby);
