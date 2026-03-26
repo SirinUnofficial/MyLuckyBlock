@@ -11,7 +11,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -41,6 +40,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -88,7 +88,7 @@ public class LuckyEventFunctions {
         ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
 
         if (nbtString != null) {
-            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
+            ValueInput nbt = NbtHelper.generateNbt(nbtString, serverLevel);
             if (nbt == null) return;
             itemEntity.load(nbt);
         }
@@ -169,7 +169,7 @@ public class LuckyEventFunctions {
                 mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), EntitySpawnReason.NATURAL, null);
             }
 
-            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
+            ValueInput nbt = NbtHelper.generateNbt(nbtString, serverLevel);
             if (nbt != null) {
                 entity.load(nbt);
             }
@@ -200,7 +200,7 @@ public class LuckyEventFunctions {
                 mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), EntitySpawnReason.NATURAL, null);
             }
 
-            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
+            ValueInput nbt = NbtHelper.generateNbt(nbtString, serverLevel);
             if (nbt != null) {
                 entity.load(nbt);
             }
@@ -223,7 +223,7 @@ public class LuckyEventFunctions {
                     EntityType<?> vehicleEntityType = vehicleEntityTypeOptional.get().value();
                     Entity vehicle = vehicleEntityType.create(serverLevel, EntitySpawnReason.NATURAL);
                     if (vehicle != null) {
-                        CompoundTag vehicleNbt = NbtHelper.generateNbt(vehicleNbtString);
+                        ValueInput vehicleNbt = NbtHelper.generateNbt(vehicleNbtString, serverLevel);
                         if (vehicleNbt != null) {
                             vehicle.load(vehicleNbt);
                         }
