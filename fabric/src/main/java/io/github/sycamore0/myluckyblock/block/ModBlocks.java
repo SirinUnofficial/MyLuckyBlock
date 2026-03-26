@@ -1,14 +1,18 @@
 package io.github.sycamore0.myluckyblock.block;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ModBlocks {
@@ -23,7 +27,7 @@ public class ModBlocks {
         final ResourceKey<Block> registryKey = ResourceKey.create(Registries.BLOCK, identifier);
 
         final Block block = Blocks.register(registryKey, factory, settings);
-        Items.registerBlock(block);
+        registerBlock(block, null, null);
         return block;
     }
 
@@ -32,6 +36,23 @@ public class ModBlocks {
                 (settings) -> new LuckyBlock(settings, eventPackGroupName, includeBuiltIn),
                 BlockBehaviour.Properties.of().mapColor(mapColor).strength(strength).explosionResistance(explosionResistance),
                 modId);
+    }
+
+    private static void registerBlock(Block block, BiFunction<Block, Item.Properties, Item> itemFactory, Item.Properties properties) {
+        if (itemFactory == null) itemFactory = BlockItem::new;
+        if (properties == null) properties = new Item.Properties();
+
+        ResourceKey<Item> itemKey = ResourceKey.create(
+                Registries.ITEM,
+                block.builtInRegistryHolder().key().identifier()
+        );
+        Item.Properties finalProps = properties.useBlockDescriptionPrefix().setId(itemKey);
+        Item item = itemFactory.apply(block, finalProps);
+        if (item instanceof BlockItem blockItem) {
+            blockItem.registerBlocks(Item.BY_BLOCK, item);
+        }
+
+        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
     }
 
     public static void onInitialize() {
