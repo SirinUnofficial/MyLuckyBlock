@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +25,8 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
     }
 
     @Override
-    public @NotNull CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, @NotNull ResourceManager resourceManager, @NotNull ProfilerFiller prepProfilerFiller, @NotNull ProfilerFiller reloadProfilerFiller, @NotNull Executor bgExecutor, @NotNull Executor gameExecutor) {
+    public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor bgExecutor, Executor gameExecutor) {
+        ProfilerFiller prepProfilerFiller = Profiler.get();
         return CompletableFuture.supplyAsync(() -> {
             prepProfilerFiller.startTick();
 

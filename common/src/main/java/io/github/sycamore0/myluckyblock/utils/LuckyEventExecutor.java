@@ -4,6 +4,7 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
 import java.util.Objects;
 import java.util.Random;
 
@@ -64,14 +66,16 @@ public class LuckyEventExecutor {
         // Fall Blocks
         if (function.hasFallBlocks()) {
             for (RandomEventDataReader.FallBlock fallBlock : function.getFallBlocks()) {
-                Block blockId = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
+                Optional<Holder.Reference<Block>> blockIdOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
+                if (blockIdOptional.isPresent()) {
+                    Block blockId = blockIdOptional.get().value();
+                    Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, fallBlock.getOffset(), "FallBlocks");
+                    if (player != null && fallBlock.getPosSrc() != PosSrc.BLOCK) {
+                        fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), fallBlock.getPosSrc(), fallBlock.getOffset(), "FallBlocks");
+                    }
 
-                Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, fallBlock.getOffset(), "FallBlocks");
-                if (player != null && fallBlock.getPosSrc() != PosSrc.BLOCK) {
-                    fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), fallBlock.getPosSrc(), fallBlock.getOffset(), "FallBlocks");
+                    LuckyEventFunctions.fallBlock(serverLevel, PosHelper.parseVec3d(fallBlockPos), blockId, fallBlock.getVelocity());
                 }
-
-                LuckyEventFunctions.fallBlock(serverLevel, PosHelper.parseVec3d(fallBlockPos), blockId, fallBlock.getVelocity());
             }
         }
 
@@ -87,6 +91,7 @@ public class LuckyEventExecutor {
         // Spawn Mobs
         if (function.hasSpawnMobs()) {
             for (RandomEventDataReader.SpawnMob spawnMob : function.getSpawnMobs()) {
+
                 boolean isUseRandom = spawnMob.isUseRandom();
                 int count;
                 if (isUseRandom) {
@@ -162,9 +167,7 @@ public class LuckyEventExecutor {
         // Play Sounds
         if (function.hasPlaySounds()) {
             for (RandomEventDataReader.PlaySound playSound : function.getPlaySounds()) {
-                if (player != null) {
-                    LuckyEventFunctions.playSound(player, serverLevel, PosHelper.parseBlockPos(blockPos), playSound.getId(), playSound.getVolume(), playSound.getPitch());
-                }
+                LuckyEventFunctions.playSound(player, serverLevel, PosHelper.parseBlockPos(blockPos), playSound.getId(), playSound.getVolume(), playSound.getPitch());
             }
         }
 

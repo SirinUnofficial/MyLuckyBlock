@@ -22,9 +22,9 @@ import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -50,29 +50,32 @@ import java.util.Optional;
 
 public class LuckyEventFunctions {
     public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
-        Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
-        if (item.equals(Items.AIR)) return;
-        ItemStack itemStack = new ItemStack(item, count);
+        Optional<Holder.Reference<Item>> itemOptional = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
+        if (itemOptional.isPresent()) {
+            Item item = itemOptional.get().value();
+            if (item.equals(Items.AIR)) return;
+            ItemStack itemStack = new ItemStack(item, count);
 
-        if (nbtString != null) {
-            itemStack = NbtHelper.createItemStackWithNBT(itemStack, nbtString, serverLevel.registryAccess());
+            if (nbtString != null) {
+                itemStack = NbtHelper.createItemStackWithNBT(itemStack, nbtString, serverLevel.registryAccess());
+            }
+
+            ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
+
+            if (name != null) {
+                itemEntity.setCustomName(Component.translatable(name));
+                itemEntity.setCustomNameVisible(nameVisible);
+                itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(name));
+            }
+
+            if (desc != null) {
+                ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
+                itemStack.set(DataComponents.LORE, itemLore);
+            }
+
+            itemEntity.setPos(pos);
+            serverLevel.addFreshEntity(itemEntity);
         }
-
-        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
-
-        if (name != null) {
-            itemEntity.setCustomName(Component.translatable(name));
-            itemEntity.setCustomNameVisible(nameVisible);
-            itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(name));
-        }
-
-        if (desc != null) {
-            ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
-            itemStack.set(DataComponents.LORE, itemLore);
-        }
-
-        itemEntity.setPos(pos);
-        serverLevel.addFreshEntity(itemEntity);
     }
 
     // use in spawn mob
@@ -103,20 +106,26 @@ public class LuckyEventFunctions {
     }
 
     public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
-        BlockState blockState = block.defaultBlockState();
-        BlockPos blockPos = PosHelper.parseVec3d(pos);
-        serverLevel.setBlockAndUpdate(blockPos, blockState);
+        Optional<Holder.Reference<Block>> blockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
+        if (blockOptional.isPresent()) {
+            Block block = blockOptional.get().value();
+            BlockState blockState = block.defaultBlockState();
+            BlockPos blockPos = PosHelper.parseVec3d(pos);
+            serverLevel.setBlockAndUpdate(blockPos, blockState);
+        }
     }
 
     public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, String lootTableId) {
-        Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
-        BlockState chestBlockState = chestBlock.defaultBlockState();
-        serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
-        BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
-        if (blockEntity instanceof RandomizableContainer lootableInventory) {
-            ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
-            lootableInventory.setLootTable(lootTable);
+        Optional<Holder.Reference<Block>> chestBlockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
+        if (chestBlockOptional.isPresent()) {
+            Block chestBlock = chestBlockOptional.get().value();
+            BlockState chestBlockState = chestBlock.defaultBlockState();
+            serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
+            BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
+            if (blockEntity instanceof RandomizableContainer lootableInventory) {
+                ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
+                lootableInventory.setLootTable(lootTable);
+            }
         }
     }
 
@@ -127,31 +136,35 @@ public class LuckyEventFunctions {
     }
 
     public static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString) {
-        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
-        Entity entity = entityType.create(serverLevel);
-        if (entity == null) return;
+        Optional<Holder.Reference<EntityType<?>>> entityTypeOptional = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
+        if (entityTypeOptional.isPresent()) {
+            EntityType<?> entityType = entityTypeOptional.get().value();
 
-        if (randomize && entity instanceof Mob mobEntity) {
-            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+            Entity entity = entityType.create(serverLevel, EntitySpawnReason.MOB_SUMMONED);
+            if (entity == null) return;
+
+            if (randomize && entity instanceof Mob mobEntity) {
+                mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), EntitySpawnReason.NATURAL, null);
+            }
+
+            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
+            if (nbt != null) {
+                entity.load(nbt);
+            }
+
+            if (entity instanceof Mob mobEntity) {
+                mobEntity.setBaby(isBaby);
+            }
+
+            if (name != null) {
+                entity.setCustomName(Component.translatableEscape(name));
+                entity.setCustomNameVisible(nameVisible);
+            }
+
+            entity.setPos(pos);
+            entity.push(velocity);
+            serverLevel.addFreshEntity(entity);
         }
-
-        CompoundTag nbt = NbtHelper.generateNbt(nbtString);
-        if (nbt != null) {
-            entity.load(nbt);
-        }
-
-        if (entity instanceof Mob mobEntity) {
-            mobEntity.setBaby(isBaby);
-        }
-
-        if (name != null) {
-            entity.setCustomName(Component.translatableEscape(name));
-            entity.setCustomNameVisible(nameVisible);
-        }
-
-        entity.setPos(pos);
-        entity.push(velocity);
-        serverLevel.addFreshEntity(entity);
     }
 
     public static void createExplosion(ServerLevel serverLevel, Vec3 pos, float power, boolean createFire) {
@@ -159,7 +172,7 @@ public class LuckyEventFunctions {
     }
 
     public static void sendMessage(Player player, String message) {
-        player.sendSystemMessage(Component.translatableEscape(message));
+        player.displayClientMessage(Component.translatableEscape(message), false);
     }
 
     public static void displayClientMessage(Player player, String message, boolean overlay) {
@@ -167,7 +180,7 @@ public class LuckyEventFunctions {
     }
 
     public static void givePotionEffect(Player player, String effectId, int duration, int amplifier) {
-        Optional<Holder.Reference<MobEffect>> effectOptional = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(effectId));
+        Optional<Holder.Reference<MobEffect>> effectOptional = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(effectId));
         if (effectOptional.isPresent()) {
             Holder.Reference<MobEffect> effect = effectOptional.get();
             if (player != null) {
@@ -177,26 +190,27 @@ public class LuckyEventFunctions {
     }
 
     public static void addParticles(ServerLevel serverLevel, String particleId, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
-        ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(particleId));
-        ParticleOptions particleOptions;
-        if (particleType instanceof SimpleParticleType simpleType) {
-            particleOptions = simpleType;
-            serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
-        }
-        else if (particleType instanceof ParticleOptions) {
-            particleOptions = (ParticleOptions) particleType;
-            serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
-        } else {
-            Constants.LOG.error("particleType is not SimpleParticleType or ParticleOptions! particleId: {}.", particleId);
+        Optional<Holder.Reference<ParticleType<?>>> particleTypeOptional = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(particleId));
+        if (particleTypeOptional.isPresent()) {
+            ParticleType<?> particleType = particleTypeOptional.get().value();
+            ParticleOptions particleOptions;
+            if (particleType instanceof SimpleParticleType simpleType) {
+                particleOptions = simpleType;
+                serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
+            } else if (particleType instanceof ParticleOptions) {
+                particleOptions = (ParticleOptions) particleType;
+                serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
+            } else {
+                Constants.LOG.error("particleType is not SimpleParticleType or ParticleOptions! particleId: {}.", particleId);
+            }
         }
     }
 
     public static void playSound(Entity entity, ServerLevel serverLevel, Vec3 pos, String soundId, float volume, float pitch) {
-        SoundEvent soundEvent = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(soundId));
-        if (soundEvent != null) {
+        Optional<Holder.Reference<SoundEvent>> soundEventOptional = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(soundId));
+        if (soundEventOptional.isPresent()) {
+            SoundEvent soundEvent = soundEventOptional.get().value();
             serverLevel.playSound(entity, PosHelper.parseVec3d(pos), soundEvent, SoundSource.BLOCKS, volume, pitch);
-        } else {
-            Constants.LOG.error("soundEvent is null! soundId: {}.", soundId);
         }
     }
 
@@ -225,7 +239,7 @@ public class LuckyEventFunctions {
     }
 
     public static void executeCommand(ServerLevel serverLevel, Vec3 pos, String command) {
-        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
+        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(EntityType.COMMAND_BLOCK_MINECART, serverLevel);
         cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
         cBMinecart.getCommandBlock().setCommand(command);
         cBMinecart.setPos(pos.x(), pos.y(), pos.z());
