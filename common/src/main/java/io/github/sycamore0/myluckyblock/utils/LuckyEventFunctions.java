@@ -189,7 +189,8 @@ public class LuckyEventFunctions {
         }
     }
 
-    public static void addParticles(ServerLevel serverLevel, String particleId, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
+    public static void addParticles(ServerLevel serverLevel, String particleId, Vec3 pos, int count,
+                                    double velocityX, double velocityY, double velocityZ, double speed) {
         Optional<Holder.Reference<ParticleType<?>>> particleTypeOptional = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(particleId));
         if (particleTypeOptional.isPresent()) {
             ParticleType<?> particleType = particleTypeOptional.get().value();
@@ -206,7 +207,8 @@ public class LuckyEventFunctions {
         }
     }
 
-    public static void playSound(Entity entity, ServerLevel serverLevel, Vec3 pos, String soundId, float volume, float pitch) {
+    public static void playSound(Entity entity, ServerLevel serverLevel, Vec3 pos, String soundId, float volume,
+                                 float pitch) {
         Optional<Holder.Reference<SoundEvent>> soundEventOptional = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(soundId));
         if (soundEventOptional.isPresent()) {
             SoundEvent soundEvent = soundEventOptional.get().value();
