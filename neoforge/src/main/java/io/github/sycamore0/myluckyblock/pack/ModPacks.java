@@ -3,7 +3,7 @@ package io.github.sycamore0.myluckyblock.pack;
 import io.github.sycamore0.myluckyblock.Constants;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.*;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
@@ -24,7 +24,7 @@ public class ModPacks {
 
     public static void addBuiltInDataPack(AddPackFindersEvent event, String packName) {
         event.addPackFinders(
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "datapacks/" + packName),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, "datapacks/" + packName),
                 PackType.SERVER_DATA,
                 Component.translatable("pack.name." + packName),
                 PackSource.create(decorateWithSource("pack.source.builtin"), false),

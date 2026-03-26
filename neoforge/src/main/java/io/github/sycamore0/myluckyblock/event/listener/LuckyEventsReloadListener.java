@@ -3,7 +3,7 @@ package io.github.sycamore0.myluckyblock.event.listener;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.reader.DisabledDataReader;
 import io.github.sycamore0.myluckyblock.utils.reader.EventPackDataReader;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -25,7 +25,8 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
     }
 
     @Override
-    public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor bgExecutor, Executor gameExecutor) {
+    public CompletableFuture<Void> reload(SharedState sharedState, Executor bgExecutor, PreparationBarrier preparationBarrier, Executor gameExecutor) {
+        ResourceManager resourceManager = sharedState.resourceManager();
         ProfilerFiller prepProfilerFiller = Profiler.get();
         return CompletableFuture.supplyAsync(() -> {
             prepProfilerFiller.startTick();
@@ -40,7 +41,7 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
 
     private Set<String> loadDisabled(ResourceManager manager) {
         Set<String> disabledPackSet = new HashSet<>();
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, Constants.DISABLED_DATA_PATH);
+        Identifier location = Identifier.fromNamespaceAndPath(Constants.MOD_ID, Constants.DISABLED_DATA_PATH);
 
         List<Resource> resources = manager.getResourceStack(location);
 

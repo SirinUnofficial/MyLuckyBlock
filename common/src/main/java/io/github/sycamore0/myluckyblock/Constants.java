@@ -1,7 +1,7 @@
 package io.github.sycamore0.myluckyblock;
 
 import com.google.gson.Gson;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ProblemReporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,5 +22,5 @@ public class Constants {
     public static final String EVENTS_PATH = "lucky/events";
     public static final String DISABLED_DATA_PATH = "lucky/disabled.json";
 
-    public static final ResourceLocation DATA_LOADER_ID = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lucky_events_loader");
+    public static final Identifier DATA_LOADER_ID = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "lucky_events_loader");
 }

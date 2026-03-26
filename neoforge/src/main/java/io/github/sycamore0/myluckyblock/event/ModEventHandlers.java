@@ -4,7 +4,7 @@ import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.event.listener.LuckyEventsReloadListener;
 import io.github.sycamore0.myluckyblock.utils.LuckyEventDataManager;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
@@ -44,7 +44,7 @@ public class ModEventHandlers {
     @SubscribeEvent
     public static void onAddReloadListeners(AddServerReloadListenersEvent event) {
         LuckyEventsReloadListener listener = new LuckyEventsReloadListener();
-        event.addListener(ResourceLocation.parse("lucky_loader"), listener);
+        event.addListener(Identifier.parse("lucky_loader"), listener);
         BreakLuckyBlock.manager = new LuckyEventDataManager(listener);
     }
 }

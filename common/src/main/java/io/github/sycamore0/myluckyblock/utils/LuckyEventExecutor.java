@@ -10,7 +10,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -63,7 +63,7 @@ public class LuckyEventExecutor {
         // Place Chests
         if (function.hasPlaceChests()) {
             for (RandomEventDataReader.PlaceChest placeChest : function.getPlaceChests()) {
-                ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(placeChest.getId()));
+                ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(placeChest.getId()));
 
                 Vec3 placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeChest.getOffset(), "PlaceChests");
                 if (player != null && placeChest.getPosSrc() != PosSrc.BLOCK) {
@@ -77,7 +77,7 @@ public class LuckyEventExecutor {
         // Fall Blocks
         if (function.hasFallBlocks()) {
             for (RandomEventDataReader.FallBlock fallBlock : function.getFallBlocks()) {
-                Optional<Holder.Reference<Block>> blockIdOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
+                Optional<Holder.Reference<Block>> blockIdOptional = BuiltInRegistries.BLOCK.get(Identifier.parse(fallBlock.getId()));
                 if (blockIdOptional.isPresent()) {
                     Block blockId = blockIdOptional.get().value();
                     Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, fallBlock.getOffset(), "FallBlocks");
@@ -94,7 +94,7 @@ public class LuckyEventExecutor {
         if (function.hasGivePotionEffects()) {
             for (RandomEventDataReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
                 if (player != null) {
-                    Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(givePotionEffect.getId())).orElseThrow();
+                    Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.get(Identifier.parse(givePotionEffect.getId())).orElseThrow();
                     LuckyEventFunctions.givePotionEffect(player, effect, givePotionEffect.getDuration(), givePotionEffect.getAmplifier());
                 }
             }
@@ -103,7 +103,7 @@ public class LuckyEventExecutor {
         // Spawn Mobs
         if (function.hasSpawnMobs()) {
             for (RandomEventDataReader.SpawnMob spawnMob : function.getSpawnMobs()) {
-                Optional<Holder.Reference<EntityType<?>>> entityTypeOptional = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(spawnMob.getId()));
+                Optional<Holder.Reference<EntityType<?>>> entityTypeOptional = BuiltInRegistries.ENTITY_TYPE.get(Identifier.parse(spawnMob.getId()));
                 if (entityTypeOptional.isPresent()) {
                     EntityType<?> entityType = entityTypeOptional.get().value();
 
@@ -170,7 +170,7 @@ public class LuckyEventExecutor {
         // Add Particles
         if (function.hasAddParticles()) {
             for (RandomEventDataReader.AddParticle addParticle : function.getAddParticles()) {
-                Optional<Holder.Reference<ParticleType<?>>> particleTypeOptional = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(addParticle.getId()));
+                Optional<Holder.Reference<ParticleType<?>>> particleTypeOptional = BuiltInRegistries.PARTICLE_TYPE.get(Identifier.parse(addParticle.getId()));
                 if (particleTypeOptional.isPresent()) {
                     ParticleType<?> particleType = particleTypeOptional.get().value();
                     ParticleOptions particleOptions;
@@ -199,7 +199,7 @@ public class LuckyEventExecutor {
         if (function.hasPlaySounds()) {
             for (RandomEventDataReader.PlaySound playSound : function.getPlaySounds()) {
                 if (player != null) {
-                    Optional<Holder.Reference<SoundEvent>> soundEventOptional = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(playSound.getId()));
+                    Optional<Holder.Reference<SoundEvent>> soundEventOptional = BuiltInRegistries.SOUND_EVENT.get(Identifier.parse(playSound.getId()));
                     if (soundEventOptional.isPresent()) {
                         SoundEvent soundEvent = soundEventOptional.get().value();
 

@@ -10,7 +10,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -24,7 +24,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.MinecartCommandBlock;
+import net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -47,7 +47,7 @@ import java.util.Optional;
 
 public class LuckyEventFunctions {
     public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
-        Optional<Holder.Reference<Item>> itemOptional = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
+        Optional<Holder.Reference<Item>> itemOptional = BuiltInRegistries.ITEM.get(Identifier.parse(itemId));
         if (itemOptional.isPresent()) {
             Item item = itemOptional.get().value();
             if (item.equals(Items.AIR)) return;
@@ -102,7 +102,7 @@ public class LuckyEventFunctions {
     }
 
     public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
-        Optional<Holder.Reference<Block>> blockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
+        Optional<Holder.Reference<Block>> blockOptional = BuiltInRegistries.BLOCK.get(Identifier.parse(blockId));
         if (blockOptional.isPresent()) {
             Block block = blockOptional.get().value();
             BlockState blockState = block.defaultBlockState();
@@ -112,7 +112,7 @@ public class LuckyEventFunctions {
     }
 
     public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, ResourceKey<LootTable> lootTableId) {
-        Optional<Holder.Reference<Block>> chestBlockOptional = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
+        Optional<Holder.Reference<Block>> chestBlockOptional = BuiltInRegistries.BLOCK.get(Identifier.parse(chestBlockId));
         if (chestBlockOptional.isPresent()) {
             Block chestBlock = chestBlockOptional.get().value();
             BlockState chestBlockState = chestBlock.defaultBlockState();
@@ -203,7 +203,7 @@ public class LuckyEventFunctions {
 
     public static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
         StructureTemplateManager manager = serverLevel.getStructureManager();
-        ResourceLocation structureId = ResourceLocation.fromNamespaceAndPath(modId, structureName);
+        Identifier structureId = Identifier.fromNamespaceAndPath(modId, structureName);
 
         try {
             Optional<StructureTemplate> template = manager.get(structureId);
