@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -164,14 +165,22 @@ public class LuckyEventExecutor {
         if (function.hasAddParticles()) {
             for (RandomEventDataReader.AddParticle addParticle : function.getAddParticles()) {
                 ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(addParticle.getId()));
-                ParticleOptions particle = (ParticleOptions) particleType;
+                ParticleOptions particleOptions;
+                if (particleType instanceof SimpleParticleType simpleType) {
+                    particleOptions = simpleType;
+                }
+                else if (particleType instanceof ParticleOptions) {
+                    particleOptions = (ParticleOptions) particleType;
+                } else {
+                    continue;
+                }
 
                 Vec3 addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, addParticle.getOffset(), "AddParticles");
                 if (player != null && addParticle.getPosSrc() != PosSrc.BLOCK) {
                     addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), addParticle.getPosSrc(), addParticle.getOffset(), "AddParticles");
                 }
 
-                LuckyEventFunctions.addParticles(serverLevel, particle, addParticlePos, addParticle.getCount(), addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), addParticle.getSpeed());
+                LuckyEventFunctions.addParticles(serverLevel, particleOptions, addParticlePos, addParticle.getCount(), addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), addParticle.getSpeed());
             }
         }
 
