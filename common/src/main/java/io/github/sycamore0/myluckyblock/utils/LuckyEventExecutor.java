@@ -3,24 +3,15 @@ package io.github.sycamore0.myluckyblock.utils;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class LuckyEventExecutor {
@@ -31,9 +22,7 @@ public class LuckyEventExecutor {
                 boolean isUseRandom = dropItem.isUseRandom();
                 int count;
                 if (isUseRandom) {
-                    int min = dropItem.getRandomNum().getMin();
-                    int max = dropItem.getRandomNum().getMax();
-                    count = getRandomNumber(min, max);
+                    count = getRandomNumber(dropItem.getRandomNum().getMin(), dropItem.getRandomNum().getMax());
                 } else {
                     count = dropItem.getNum();
                 }
@@ -62,14 +51,12 @@ public class LuckyEventExecutor {
         // Place Chests
         if (function.hasPlaceChests()) {
             for (RandomEventDataReader.PlaceChest placeChest : function.getPlaceChests()) {
-                ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(placeChest.getId()));
-
                 Vec3 placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeChest.getOffset(), "PlaceChests");
                 if (player != null && placeChest.getPosSrc() != PosSrc.BLOCK) {
                     placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeChest.getPosSrc(), placeChest.getOffset(), "PlaceChests");
                 }
 
-                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), placeChest.getChestId(), lootTable);
+                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), placeChest.getChestId(), placeChest.getId());
             }
         }
 
@@ -91,8 +78,7 @@ public class LuckyEventExecutor {
         if (function.hasGivePotionEffects()) {
             for (RandomEventDataReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
                 if (player != null) {
-                    Holder.Reference<MobEffect> effect = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(givePotionEffect.getId())).orElseThrow();
-                    LuckyEventFunctions.givePotionEffect(player, effect, givePotionEffect.getDuration(), givePotionEffect.getAmplifier());
+                    LuckyEventFunctions.givePotionEffect(player, givePotionEffect.getId(), givePotionEffect.getDuration(), givePotionEffect.getAmplifier());
                 }
             }
         }
@@ -100,8 +86,6 @@ public class LuckyEventExecutor {
         // Spawn Mobs
         if (function.hasSpawnMobs()) {
             for (RandomEventDataReader.SpawnMob spawnMob : function.getSpawnMobs()) {
-                EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(spawnMob.getId()));
-
                 boolean isUseRandom = spawnMob.isUseRandom();
                 int count;
                 if (isUseRandom) {
@@ -118,14 +102,10 @@ public class LuckyEventExecutor {
                 String nbtString = spawnMob.getNbt();
 
                 for (int i = 0; i < count; i++) {
-                    if (entityType == EntityType.ITEM) {
+                    if (Objects.equals(spawnMob.getId(), "minecraft:item")) {
                         LuckyEventFunctions.dropItemsByNbt(serverLevel, spawnMobPos, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
                     } else {
-                        if (nbtString != null) {
-                            LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, entityType, spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getVelocity(), nbtString);
-                        } else {
-                            LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, entityType, spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity());
-                        }
+                        LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString);
                     }
                 }
             }
@@ -164,23 +144,12 @@ public class LuckyEventExecutor {
         // Add Particles
         if (function.hasAddParticles()) {
             for (RandomEventDataReader.AddParticle addParticle : function.getAddParticles()) {
-                ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(addParticle.getId()));
-                ParticleOptions particleOptions;
-                if (particleType instanceof SimpleParticleType simpleType) {
-                    particleOptions = simpleType;
-                }
-                else if (particleType instanceof ParticleOptions) {
-                    particleOptions = (ParticleOptions) particleType;
-                } else {
-                    continue;
-                }
-
                 Vec3 addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, addParticle.getOffset(), "AddParticles");
                 if (player != null && addParticle.getPosSrc() != PosSrc.BLOCK) {
                     addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), addParticle.getPosSrc(), addParticle.getOffset(), "AddParticles");
                 }
 
-                LuckyEventFunctions.addParticles(serverLevel, particleOptions, addParticlePos, addParticle.getCount(), addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), addParticle.getSpeed());
+                LuckyEventFunctions.addParticles(serverLevel, addParticle.getId(), addParticlePos, addParticle.getCount(), addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), addParticle.getSpeed());
             }
         }
 
@@ -188,8 +157,7 @@ public class LuckyEventExecutor {
         if (function.hasPlaySounds()) {
             for (RandomEventDataReader.PlaySound playSound : function.getPlaySounds()) {
                 if (player != null) {
-                    SoundEvent soundEvent = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(playSound.getId()));
-                    LuckyEventFunctions.playSound(player, serverLevel, PosHelper.parseBlockPos(blockPos), soundEvent, playSound.getVolume(), playSound.getPitch());
+                    LuckyEventFunctions.playSound(player, serverLevel, PosHelper.parseBlockPos(blockPos), playSound.getId(), playSound.getVolume(), playSound.getPitch());
                 }
             }
         }

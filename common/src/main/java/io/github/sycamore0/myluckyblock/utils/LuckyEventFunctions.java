@@ -7,7 +7,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -105,13 +108,14 @@ public class LuckyEventFunctions {
         serverLevel.setBlockAndUpdate(blockPos, blockState);
     }
 
-    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, ResourceKey<LootTable> lootTableId) {
+    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, String lootTableId) {
         Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
         BlockState chestBlockState = chestBlock.defaultBlockState();
         serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
         BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
         if (blockEntity instanceof RandomizableContainer lootableInventory) {
-            lootableInventory.setLootTable(lootTableId);
+            ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
+            lootableInventory.setLootTable(lootTable);
         }
     }
 
@@ -121,7 +125,8 @@ public class LuckyEventFunctions {
         fallingBlockEntity.push(velocity);
     }
 
-    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, Vec3 velocity, @Nullable String nbtString) {
+    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString) {
+        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
         Entity entity = entityType.create(serverLevel);
         if (entity == null) return;
 
@@ -134,31 +139,13 @@ public class LuckyEventFunctions {
             entity.load(nbt);
         }
 
-        if (name != null) {
-            entity.setCustomName(Component.translatableEscape(name));
-            entity.setCustomNameVisible(nameVisible);
-        }
-
-        entity.setPos(pos);
-        entity.push(velocity);
-        serverLevel.addFreshEntity(entity);
-    }
-
-    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, EntityType<?> entityType, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity) {
-        Entity entity = entityType.create(serverLevel);
-        if (entity == null) return;
-
-        if (randomize && entity instanceof Mob mobEntity) {
-            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
-        }
-
-        if (name != null) {
-            entity.setCustomName(Component.translatableEscape(name));
-            entity.setCustomNameVisible(nameVisible);
-        }
-
         if (entity instanceof Mob mobEntity) {
             mobEntity.setBaby(isBaby);
+        }
+
+        if (name != null) {
+            entity.setCustomName(Component.translatableEscape(name));
+            entity.setCustomNameVisible(nameVisible);
         }
 
         entity.setPos(pos);
@@ -178,18 +165,38 @@ public class LuckyEventFunctions {
         player.displayClientMessage(Component.translatableEscape(message), overlay);
     }
 
-    public static void givePotionEffect(Player player, Holder<MobEffect> effect, int duration, int amplifier) {
-        if (player != null) {
-            player.addEffect(new MobEffectInstance(effect, duration, amplifier, false, true));
+    public static void givePotionEffect(Player player, String effectId, int duration, int amplifier) {
+        Optional<Holder.Reference<MobEffect>> effectOptional = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(effectId));
+        if (effectOptional.isPresent()) {
+            Holder.Reference<MobEffect> effect = effectOptional.get();
+            if (player != null) {
+                player.addEffect(new MobEffectInstance(effect, duration, amplifier, false, true));
+            }
         }
     }
 
-    public static void addParticles(ServerLevel serverLevel, ParticleOptions particleEffect, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
-        serverLevel.sendParticles(particleEffect, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
+    public static void addParticles(ServerLevel serverLevel, String particleId, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
+        ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(particleId));
+        ParticleOptions particleOptions;
+        if (particleType instanceof SimpleParticleType simpleType) {
+            particleOptions = simpleType;
+            serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
+        }
+        else if (particleType instanceof ParticleOptions) {
+            particleOptions = (ParticleOptions) particleType;
+            serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
+        } else {
+            Constants.LOG.error("particleType is not SimpleParticleType or ParticleOptions! particleId: {}.", particleId);
+        }
     }
 
-    public static void playSound(Entity entity, ServerLevel serverLevel, Vec3 pos, SoundEvent soundEvent, float volume, float pitch) {
-        serverLevel.playSound(entity, PosHelper.parseVec3d(pos), soundEvent, SoundSource.BLOCKS, volume, pitch);
+    public static void playSound(Entity entity, ServerLevel serverLevel, Vec3 pos, String soundId, float volume, float pitch) {
+        SoundEvent soundEvent = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(soundId));
+        if (soundEvent != null) {
+            serverLevel.playSound(entity, PosHelper.parseVec3d(pos), soundEvent, SoundSource.BLOCKS, volume, pitch);
+        } else {
+            Constants.LOG.error("soundEvent is null! soundId: {}.", soundId);
+        }
     }
 
     public static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
