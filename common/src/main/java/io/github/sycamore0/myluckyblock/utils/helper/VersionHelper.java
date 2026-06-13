@@ -49,14 +49,41 @@ public final class VersionHelper {
             versionStr = versionStr.substring(0, spacePos);
         }
 
-        /* Auto-complete missing parts */
+        /* Extract pre-release and build metadata before auto-completion */
+        String preRelease = null;
+        String build = null;
+
+        // Extract build metadata (+build)
+        int plusPos = versionStr.indexOf('+');
+        if (plusPos != -1) {
+            build = versionStr.substring(plusPos + 1);
+            versionStr = versionStr.substring(0, plusPos);
+        }
+
+        // Extract pre-release version (-pre)
+        int dashPos = versionStr.indexOf('-');
+        if (dashPos != -1) {
+            preRelease = versionStr.substring(dashPos + 1);
+            versionStr = versionStr.substring(0, dashPos);
+        }
+
+        /* Auto-complete missing parts for the numeric version */
         if (versionStr.matches("^\\d+$")) {
             versionStr += ".0.0";
         } else if (versionStr.matches("^\\d+\\.\\d+$")) {
             versionStr += ".0";
         }
 
-        Matcher matcher = VERSION_PATTERN.matcher(versionStr);
+        /* Reconstruct full version string */
+        StringBuilder fullVersion = new StringBuilder(versionStr);
+        if (preRelease != null) {
+            fullVersion.append('-').append(preRelease);
+        }
+        if (build != null) {
+            fullVersion.append('+').append(build);
+        }
+
+        Matcher matcher = VERSION_PATTERN.matcher(fullVersion.toString());
         if (!matcher.matches()) {
             throw new IllegalArgumentException("Invalid Version String: " + versionStr);
         }
@@ -64,10 +91,10 @@ public final class VersionHelper {
         int major = Integer.parseInt(matcher.group(1));
         int minor = Integer.parseInt(matcher.group(2));
         int patch = Integer.parseInt(matcher.group(3));
-        String preRelease = matcher.group(4);
-        String build = matcher.group(5);
+        String parsedPreRelease = matcher.group(4);
+        String parsedBuild = matcher.group(5);
 
-        return new Version(major, minor, patch, preRelease, build);
+        return new Version(major, minor, patch, parsedPreRelease, parsedBuild);
     }
 
     /**
