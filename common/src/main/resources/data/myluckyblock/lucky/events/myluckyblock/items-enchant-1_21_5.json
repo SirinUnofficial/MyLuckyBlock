@@ -157,7 +157,7 @@
                     "use_random": false,
                     "num": 1,
                     "pos_src": 0,
-                    "nbt": "{custom_name:[\"\",{\"text\":\"name.myluckyblock.quick_firing_crossbow\",\"italic\":false}],lore:[[\"\",{\"text\":\"desc.myluckyblock.quick_firing_crossbow\",\"italic\":false}]],rarity:rare,enchantment_glint_override:true,enchantments:{quick_charge:255},show_in_tooltip:false}"
+                    "nbt": "{custom_name:[\"\",{\"text\":\"name.myluckyblock.quick_firing_crossbow\",\"italic\":false}],lore:[[\"\",{\"text\":\"desc.myluckyblock.quick_firing_crossbow\",\"italic\":false}]],rarity:rare,enchantment_glint_override:true,enchantments:{quick_charge:255}}"
                 }
             ]
         },
