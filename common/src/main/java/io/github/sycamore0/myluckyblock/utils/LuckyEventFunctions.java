@@ -76,6 +76,7 @@ public class LuckyEventFunctions {
     }
 
     // use in spawn mob
+    @Deprecated(forRemoval = true)
     public static void dropItemsByNbt(ServerLevel serverLevel, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
         ItemStack itemStack = new ItemStack(Items.AIR);
         ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
