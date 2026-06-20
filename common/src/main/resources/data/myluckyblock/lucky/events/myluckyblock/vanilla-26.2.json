@@ -1,0 +1,155 @@
+{
+    "name": "Random Events Pack for 26.2",
+    "version": "2.0",
+    "info": "Random events for Vanilla Minecraft 26.2+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(26.1,99.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:sulfur",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                },
+                {
+                    "id": "minecraft:potent_sulfur",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:cinnabar",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:sulfur_spike",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:sulfur",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:potent_sulfur",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:polished_sulfur",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:sulfur_bricks",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:chiseled_sulfur",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:cinnabar",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:polished_cinnabar",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:cinnabar_bricks",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 32
+                    }
+                },
+                {
+                    "id": "minecraft:chiseled_cinnabar",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 32
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:music_disc_bounce",
+                    "use_random": false,
+                    "num": 1
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:sulfur_cube",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 3
+                    }
+                }
+            ]
+        }
+    ]
+}
