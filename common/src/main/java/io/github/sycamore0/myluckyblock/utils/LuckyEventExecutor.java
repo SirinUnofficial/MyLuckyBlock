@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.utils;
 
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
@@ -103,7 +104,12 @@ public class LuckyEventExecutor {
 
                 for (int i = 0; i < count; i++) {
                     if (Objects.equals(spawnMob.getId(), "minecraft:item")) {
-                        LuckyEventFunctions.dropItemsByNbt(serverLevel, spawnMobPos, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
+                        Constants.LOG.warn("dropItemsByNbt is depreciated! Please use drop_items! nbt: {}", nbtString);
+                        try {
+                            LuckyEventFunctions.dropItems(serverLevel, spawnMobPos, spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
+                        } catch (Exception e) {
+                            Constants.LOG.error("nbt: {}, e: {}", nbtString, e.toString());
+                        }
                     } else {
                         LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString);
                     }
