@@ -7,7 +7,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class PosHelper {
     public static Vec3 parseBlockPos(BlockPos blockPos) {
-        return blockPos.getBottomCenter();
+        return getBottomCenter(blockPos);
     }
 
     public static BlockPos parseVec3d(Vec3 vec3) {
@@ -33,5 +33,14 @@ public class PosHelper {
                 break;
         }
         return targetPos;
+    }
+
+    // for 26.2+
+    public static Vec3 getCenter(BlockPos blockPos) {
+        return Vec3.atCenterOf(blockPos);
+    }
+
+    public static Vec3 getBottomCenter(BlockPos blockPos) {
+        return Vec3.atBottomCenterOf(blockPos);
     }
 }

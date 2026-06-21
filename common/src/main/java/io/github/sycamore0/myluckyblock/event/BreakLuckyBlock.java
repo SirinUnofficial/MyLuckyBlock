@@ -43,6 +43,6 @@ public class BreakLuckyBlock {
     }
 
     private static void dropSelf(ServerLevel serverLevel, BlockPos pos, LuckyBlock luckyBlock) {
-        serverLevel.addFreshEntity(new ItemEntity(serverLevel, pos.getCenter().x, pos.getY(), pos.getCenter().z, new ItemStack(luckyBlock)));
+        serverLevel.addFreshEntity(new ItemEntity(serverLevel, PosHelper.getCenter(pos).x, pos.getY(), PosHelper.getCenter(pos).z, new ItemStack(luckyBlock)));
     }
 }
