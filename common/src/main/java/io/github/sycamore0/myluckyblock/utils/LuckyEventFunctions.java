@@ -20,10 +20,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -312,7 +309,7 @@ public class LuckyEventFunctions {
     }
 
     public static void executeCommand(ServerLevel serverLevel, Vec3 pos, String command) {
-        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(EntityType.COMMAND_BLOCK_MINECART, serverLevel);
+        MinecartCommandBlock cBMinecart = new MinecartCommandBlock(EntityTypes.COMMAND_BLOCK_MINECART, serverLevel);
         cBMinecart.setCustomName(Component.translatable(Constants.MOD_ID));
         cBMinecart.getCommandBlock().setCommand(command);
         cBMinecart.setPos(pos.x(), pos.y(), pos.z());
