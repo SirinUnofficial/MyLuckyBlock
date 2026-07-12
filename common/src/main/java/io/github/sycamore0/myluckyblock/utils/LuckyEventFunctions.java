@@ -3,6 +3,7 @@ package io.github.sycamore0.myluckyblock.utils;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -41,7 +42,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -109,7 +113,7 @@ public class LuckyEventFunctions {
         serverLevel.setBlockAndUpdate(blockPos, blockState);
     }
 
-    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, String lootTableId) {
+    public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, String lootTableId, long seed) {
         Block chestBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(chestBlockId));
         BlockState chestBlockState = chestBlock.defaultBlockState();
         serverLevel.setBlockAndUpdate(blockPos, chestBlockState);
@@ -117,6 +121,20 @@ public class LuckyEventFunctions {
         if (blockEntity instanceof RandomizableContainer lootableInventory) {
             ResourceKey<LootTable> lootTable = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
             lootableInventory.setLootTable(lootTable);
+            lootableInventory.setLootTableSeed(seed);
+        }
+    }
+
+    public static void dropLoots(ServerLevel serverLevel, Vec3 pos, String lootTableId, long seed) {
+        ResourceKey<LootTable> lootTableResourceKey = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
+        LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(lootTableResourceKey);
+        LootParams.Builder lootparams$builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, pos);
+        ObjectArrayList<ItemStack> itemStacks = lootTable.getRandomItems(lootparams$builder.create(LootContextParamSets.COMMAND), seed);
+
+        for (ItemStack itemStack : itemStacks) {
+            ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
+            itemEntity.setPos(pos);
+            serverLevel.addFreshEntity(itemEntity);
         }
     }
 

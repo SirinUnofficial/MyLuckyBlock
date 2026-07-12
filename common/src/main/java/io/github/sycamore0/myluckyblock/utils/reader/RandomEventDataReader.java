@@ -21,6 +21,9 @@ public class RandomEventDataReader {
     @SerializedName("place_chests")
     protected List<PlaceChest> placeChests;
 
+    @SerializedName("drop_loots")
+    protected List<DropLoots> dropLoots;
+
     @SerializedName("fall_blocks")
     protected List<FallBlock> fallBlocks;
 
@@ -59,6 +62,9 @@ public class RandomEventDataReader {
     }
     public boolean hasPlaceChests() {
         return placeChests != null && !placeChests.isEmpty();
+    }
+    public boolean hasDropLoots() {
+        return dropLoots != null && !dropLoots.isEmpty();
     }
     public boolean hasFallBlocks() {
         return fallBlocks != null && !fallBlocks.isEmpty();
@@ -99,6 +105,9 @@ public class RandomEventDataReader {
     }
     public List<PlaceChest> getPlaceChests() {
         return placeChests;
+    }
+    public List<DropLoots> getDropLoots() {
+        return dropLoots;
     }
     public List<FallBlock> getFallBlocks() {
         return fallBlocks;
@@ -241,6 +250,9 @@ public class RandomEventDataReader {
         @SerializedName("id")
         protected String id = "empty";
 
+        @SerializedName("seed")
+        protected long seed = 0L;
+
         @SerializedName("chest_id")
         protected String chestId = "minecraft:chest";
 
@@ -265,6 +277,41 @@ public class RandomEventDataReader {
 
         public String getChestId() {
             return chestId;
+        }
+
+        public long getSeed() {
+            return seed;
+        }
+    }
+
+    public static class DropLoots {
+        @SerializedName("id")
+        protected String id = "empty";
+
+        @SerializedName("seed")
+        protected long seed = 0L;
+
+        @SerializedName("pos_src")
+        protected int posSrc = 0;
+
+        @SerializedName("offset")
+        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+
+        // Getters
+        public PosSrc getPosSrc() {
+            return PosSrc.fromValue(posSrc);
+        }
+
+        public Vec3 getOffset() {
+            return new Vec3(offset.getX(), offset.getY(), offset.getZ());
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public long getSeed() {
+            return seed;
         }
     }
 

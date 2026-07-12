@@ -57,7 +57,19 @@ public class LuckyEventExecutor {
                     placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeChest.getPosSrc(), placeChest.getOffset(), "PlaceChests");
                 }
 
-                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), placeChest.getChestId(), placeChest.getId());
+                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), placeChest.getChestId(), placeChest.getId(), placeChest.getSeed());
+            }
+        }
+
+        // Drop Loots
+        if (function.hasDropLoots()) {
+            for (RandomEventDataReader.DropLoots dropLoots : function.getDropLoots()) {
+                Vec3 dropLootsPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, dropLoots.getOffset(), "PlaceChests");
+                if (player != null && dropLoots.getPosSrc() != PosSrc.BLOCK) {
+                    dropLootsPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), dropLoots.getPosSrc(), dropLoots.getOffset(), "PlaceChests");
+                }
+
+                LuckyEventFunctions.dropLoots(serverLevel, dropLootsPos, dropLoots.getId(), dropLoots.getSeed());
             }
         }
 
