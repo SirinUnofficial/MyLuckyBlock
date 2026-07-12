@@ -7,6 +7,7 @@
 
     "pack.name.disable_lucky_block_worldgen":"Disable LB WorldGen",
     "pack.name.disable_lucky_block_structure":"Disable LB Structure Events",
+    "pack.name.disable_lucky_block_boss":"Disable LB Vanilla BOSS(wither) Events",
 
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
 

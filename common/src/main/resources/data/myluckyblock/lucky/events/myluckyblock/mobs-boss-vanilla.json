@@ -1,0 +1,16 @@
+{
+    "name": "Boss Mobs/Entity Event Pack",
+    "version": "2.0",
+    "info": "Vanilla boss mobs.",
+    "random_events": [
+        {
+            "id": 1,
+            "spawn_mobs": [
+                {
+                    "id": "minecraft:wither",
+                    "num": 1
+                }
+            ]
+        }
+    ]
+}
