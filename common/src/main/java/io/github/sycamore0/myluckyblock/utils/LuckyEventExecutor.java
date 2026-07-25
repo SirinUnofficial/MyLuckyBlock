@@ -123,7 +123,8 @@ public class LuckyEventExecutor {
                             Constants.LOG.error("nbt: {}, e: {}", nbtString, e.toString());
                         }
                     } else {
-                        LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString);
+                        // LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString);
+                        LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
                     }
                 }
             }

@@ -410,6 +410,12 @@ public class RandomEventDataReader {
         @SerializedName("nbt")
         protected String nbt = null;
 
+        @SerializedName("vehicle_id")
+        protected String vehicleId = null;
+
+        @SerializedName("vehicle_nbt")
+        protected String vehicleNbt = null;
+
         // Getters
         public PosSrc getPosSrc() {
             return PosSrc.fromValue(posSrc);
@@ -461,6 +467,14 @@ public class RandomEventDataReader {
 
         public String getNbt() {
             return nbt;
+        }
+
+        public String getVehicleId() {
+            return vehicleId;
+        }
+
+        public String getVehicleNbt() {
+            return vehicleNbt;
         }
     }
 

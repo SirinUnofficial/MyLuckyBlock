@@ -172,6 +172,56 @@ public class LuckyEventFunctions {
         serverLevel.addFreshEntity(entity);
     }
 
+    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString, @Nullable String vehicleId, @Nullable String vehicleNbtString) {
+        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
+        Entity entity = entityType.create(serverLevel);
+        if (entity == null) return;
+
+        if (randomize && entity instanceof Mob mobEntity) {
+            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+        }
+
+        CompoundTag nbt = NbtHelper.generateNbt(nbtString);
+        if (nbt != null) {
+            entity.load(nbt);
+        }
+
+        if (entity instanceof Mob mobEntity) {
+            mobEntity.setBaby(isBaby);
+        }
+
+        if (name != null) {
+            entity.setCustomName(Component.translatableEscape(name));
+            entity.setCustomNameVisible(nameVisible);
+        }
+
+        entity.setPos(pos);
+        entity.push(velocity);
+
+        if (vehicleId != null) {
+            EntityType<?> vehicleEntityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(vehicleId));
+            Entity vehicle = vehicleEntityType.create(serverLevel);
+            if (vehicle != null) {
+                CompoundTag vehicleNbt = NbtHelper.generateNbt(vehicleNbtString);
+                if (vehicleNbt != null) {
+                    vehicle.load(vehicleNbt);
+                }
+
+                if (randomize && vehicle instanceof Mob mobVehicleEntity) {
+                    mobVehicleEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+                }
+
+                vehicle.setPos(pos);
+                vehicle.push(velocity);
+
+                serverLevel.addFreshEntity(vehicle);
+                entity.startRiding(vehicle, true);
+            }
+        }
+
+        serverLevel.addFreshEntity(entity);
+    }
+
     public static void createExplosion(ServerLevel serverLevel, Vec3 pos, float power, boolean createFire) {
         serverLevel.explode(null, pos.x(), pos.y(), pos.z(), power, createFire, ServerLevel.ExplosionInteraction.BLOCK);
     }
