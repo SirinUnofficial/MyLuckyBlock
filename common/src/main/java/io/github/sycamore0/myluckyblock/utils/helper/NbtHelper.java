@@ -3,20 +3,17 @@ package io.github.sycamore0.myluckyblock.utils.helper;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.sycamore0.myluckyblock.Constants;
+import net.minecraft.commands.arguments.ParticleArgument;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import org.jetbrains.annotations.Nullable;
@@ -84,28 +81,6 @@ public class NbtHelper {
 
     public static ParticleOptions parseParticleOptions(HolderLookup.Provider registries, String particleSpec) throws CommandSyntaxException {
         StringReader reader = new StringReader(particleSpec);
-        ResourceLocation resourceLocation = ResourceLocation.read(reader);
-        CompoundTag nbt;
-        if (reader.canRead() && reader.peek() == '{') {
-            nbt = new TagParser(reader).readStruct();
-        } else {
-            nbt = new CompoundTag();
-        }
-
-        ParticleType<?> particleType = registries.lookupOrThrow(Registries.PARTICLE_TYPE)
-                .get(ResourceKey.create(Registries.PARTICLE_TYPE, resourceLocation))
-                .orElseThrow(() -> new IllegalArgumentException("Unknown particle: " + resourceLocation))
-                .value();
-
-        if (particleType instanceof ParticleOptions direct) {
-            return direct;
-        } else {
-            return particleType.codec()
-                    .codec()
-                    .parse(registries.createSerializationContext(NbtOps.INSTANCE), nbt)
-                    .getOrThrow(err -> new IllegalArgumentException(
-                            "Invalid NBT for particle " + resourceLocation + ": " + err
-                    ));
-        }
+        return ParticleArgument.readParticle(reader, registries);
     }
 }
