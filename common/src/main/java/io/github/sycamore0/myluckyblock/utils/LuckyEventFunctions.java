@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.utils;
 
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
@@ -8,8 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -144,6 +143,7 @@ public class LuckyEventFunctions {
         fallingBlockEntity.push(velocity);
     }
 
+    @Deprecated(forRemoval = true)
     public static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString) {
         EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
         Entity entity = entityType.create(serverLevel);
@@ -244,18 +244,15 @@ public class LuckyEventFunctions {
         }
     }
 
-    public static void addParticles(ServerLevel serverLevel, String particleId, Vec3 pos, int count, double velocityX, double velocityY, double velocityZ, double speed) {
-        ParticleType<?> particleType = BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(particleId));
-        ParticleOptions particleOptions;
-        if (particleType instanceof SimpleParticleType simpleType) {
-            particleOptions = simpleType;
-            serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
-        }
-        else if (particleType instanceof ParticleOptions) {
-            particleOptions = (ParticleOptions) particleType;
-            serverLevel.sendParticles(particleOptions, pos.x(), pos.y(), pos.z(), count, velocityX, velocityY, velocityZ, speed);
-        } else {
-            Constants.LOG.error("particleType is not SimpleParticleType or ParticleOptions! particleId: {}.", particleId);
+    public static void addParticles(ServerLevel serverLevel, String particleSpec, Vec3 pos, int count, double deltaX, double deltaY, double deltaZ, double speed) {
+        try {
+            String formattedParticleSpec = particleSpec.replace("%pos_x%", Double.toString(pos.x())).replace("%pos_y%", Double.toString(pos.y())).replace("%pos_z%", Double.toString(pos.z()));
+            ParticleOptions particleOptions = NbtHelper.parseParticleOptions(serverLevel.registryAccess(), formattedParticleSpec);
+            serverLevel.sendParticles(particleOptions, pos.x, pos.y, pos.z, count, deltaX, deltaY, deltaZ, speed);
+        } catch (CommandSyntaxException e) {
+            Constants.LOG.error("Invalid particle specification '{}': {}", particleSpec, e.getMessage());
+        } catch (Exception e) {
+            Constants.LOG.error("Failed to send particles: {}", e.getMessage());
         }
     }
 

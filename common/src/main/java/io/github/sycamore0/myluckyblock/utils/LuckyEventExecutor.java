@@ -168,7 +168,7 @@ public class LuckyEventExecutor {
                     addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), addParticle.getPosSrc(), addParticle.getOffset(), "AddParticles");
                 }
 
-                LuckyEventFunctions.addParticles(serverLevel, addParticle.getId(), addParticlePos, addParticle.getCount(), addParticle.getVelocity().getX(), addParticle.getVelocity().getY(), addParticle.getVelocity().getZ(), addParticle.getSpeed());
+                LuckyEventFunctions.addParticles(serverLevel, addParticle.getId(), addParticlePos, addParticle.getCount(), addParticle.getDelta().getX(), addParticle.getDelta().getY(), addParticle.getDelta().getZ(), addParticle.getSpeed());
             }
         }
 

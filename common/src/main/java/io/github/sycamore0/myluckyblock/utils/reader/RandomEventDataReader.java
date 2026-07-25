@@ -166,7 +166,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         @SerializedName("name")
         protected String name = null;
@@ -230,7 +230,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -260,7 +260,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         // Getters
         public PosSrc getPosSrc() {
@@ -295,7 +295,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         // Getters
         public PosSrc getPosSrc() {
@@ -323,7 +323,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         @SerializedName("velocity")
         protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
@@ -378,7 +378,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         @SerializedName("velocity")
         protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
@@ -510,7 +510,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         @SerializedName("power")
         protected int power = 1;
@@ -567,8 +567,8 @@ public class RandomEventDataReader {
         @SerializedName("count")
         protected int count = 1;
 
-        @SerializedName("velocity")
-        protected Velocity velocity = new Velocity(1.0, 1.0, 1.0);
+        @SerializedName("delta")
+        protected Vector3 delta = new Vector3(1.0, 1.0, 1.0);
 
         @SerializedName("speed")
         protected double speed = 0.0;
@@ -577,7 +577,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -588,8 +588,8 @@ public class RandomEventDataReader {
             return count;
         }
 
-        public Velocity getVelocity() {
-            return velocity;
+        public Vector3 getDelta() {
+            return delta;
         }
 
         public double getSpeed() {
@@ -616,7 +616,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         // Getters
         public String getId() {
@@ -644,7 +644,7 @@ public class RandomEventDataReader {
         protected int posSrc = 0;
 
         @SerializedName("offset")
-        protected Offset offset = new Offset(0.0, 0.0, 0.0);
+        protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
         // Getters
         public String getCommand() {
@@ -684,7 +684,7 @@ public class RandomEventDataReader {
         }
     }
 
-    public static class Velocity {
+    public static class Vector3 {
         @SerializedName("x")
         protected double x;
 
@@ -694,37 +694,7 @@ public class RandomEventDataReader {
         @SerializedName("z")
         protected double z;
 
-        public Velocity(double x, double y, double z) {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
-
-        // Getters
-        public double getX() {
-            return x;
-        }
-
-        public double getY() {
-            return y;
-        }
-
-        public double getZ() {
-            return z;
-        }
-    }
-
-    public static class Offset {
-        @SerializedName("x")
-        protected double x;
-
-        @SerializedName("y")
-        protected double y;
-
-        @SerializedName("z")
-        protected double z;
-
-        public Offset(double x, double y, double z) {
+        public Vector3(double x, double y, double z) {
             this.x = x;
             this.y = y;
             this.z = z;
