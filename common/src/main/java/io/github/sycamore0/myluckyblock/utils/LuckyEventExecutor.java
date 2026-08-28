@@ -4,20 +4,38 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LuckyEventExecutor {
     public static void executeLuckyFunction(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        // Drop Items
+        try {
+            handleDropItems(serverLevel, player, blockPos, function);
+            handlePlaceBlocks(serverLevel, player, blockPos, function);
+            handlePlaceChests(serverLevel, player, blockPos, function);
+            handleDropLoots(serverLevel, player, blockPos, function);
+            handleFallBlocks(serverLevel, player, blockPos, function);
+            handleGivePotionEffects(serverLevel, player, blockPos, function);
+            handleSpawnMobs(serverLevel, player, blockPos, function);
+            handleSendMessages(serverLevel, player, blockPos, function);
+            handleDisplayMessages(serverLevel, player, blockPos, function);
+            handleCreateExplosions(serverLevel, player, blockPos, function);
+            handleAddParticles(serverLevel, player, blockPos, function);
+            handlePlaySounds(serverLevel, player, blockPos, function);
+            handleLoadStructures(serverLevel, player, blockPos, function);
+            handleExecuteCommands(serverLevel, player, blockPos, function);
+        } catch (
+                Exception e) {
+            Constants.LOG.error("Event {} execution aborted due to fatal error", function.getId(), e);
+        }
+    }
+
+    private static void handleDropItems(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasDropItems()) {
             for (RandomEventDataReader.DropItem dropItem : function.getDropItems()) {
                 boolean isUseRandom = dropItem.isUseRandom();
@@ -28,66 +46,44 @@ public class LuckyEventExecutor {
                     count = dropItem.getNum();
                 }
 
-                Vec3 dropItemPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, dropItem.getOffset(), "DropItems");
-                if (player != null && dropItem.getPosSrc() != PosSrc.BLOCK) {
-                    dropItemPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), dropItem.getPosSrc(), dropItem.getOffset(), "DropItems");
-                }
-
-                LuckyEventFunctions.dropItems(serverLevel, dropItemPos, dropItem.getId(), count, dropItem.getName(), dropItem.isNameVisible(), dropItem.getDesc(), dropItem.getNbt());
+                LuckyEventFunctions.dropItems(serverLevel, resolvePosition(blockPos, player, dropItem.getPosSrc(), dropItem.getOffset()), dropItem.getId(), count, dropItem.getName(), dropItem.isNameVisible(), dropItem.getDesc(), dropItem.getNbt());
             }
         }
+    }
 
-        // Place Blocks
+    private static void handlePlaceBlocks(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasPlaceBlocks()) {
             for (RandomEventDataReader.PlaceBlock placeBlock : function.getPlaceBlocks()) {
-                Vec3 placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeBlock.getOffset(), "PlaceBlocks");
-                if (player != null && placeBlock.getPosSrc() != PosSrc.BLOCK) {
-                    placeBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeBlock.getPosSrc(), placeBlock.getOffset(), "PlaceBlocks");
-                }
-
-                LuckyEventFunctions.placeBlock(serverLevel, placeBlockPos, placeBlock.getId());
+                LuckyEventFunctions.placeBlock(serverLevel, resolvePosition(blockPos, player, placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId());
             }
         }
+    }
 
-        // Place Chests
+    private static void handlePlaceChests(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasPlaceChests()) {
             for (RandomEventDataReader.PlaceChest placeChest : function.getPlaceChests()) {
-                Vec3 placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, placeChest.getOffset(), "PlaceChests");
-                if (player != null && placeChest.getPosSrc() != PosSrc.BLOCK) {
-                    placeChestPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), placeChest.getPosSrc(), placeChest.getOffset(), "PlaceChests");
-                }
-
-                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(placeChestPos), placeChest.getChestId(), placeChest.getId(), placeChest.getSeed());
+                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(resolvePosition(blockPos, player, placeChest.getPosSrc(), placeChest.getOffset())), placeChest.getChestId(), placeChest.getId(), placeChest.getSeed());
             }
         }
+    }
 
-        // Drop Loots
+    private static void handleDropLoots(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasDropLoots()) {
             for (RandomEventDataReader.DropLoots dropLoots : function.getDropLoots()) {
-                Vec3 dropLootsPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, dropLoots.getOffset(), "PlaceChests");
-                if (player != null && dropLoots.getPosSrc() != PosSrc.BLOCK) {
-                    dropLootsPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), dropLoots.getPosSrc(), dropLoots.getOffset(), "PlaceChests");
-                }
-
-                LuckyEventFunctions.dropLoots(serverLevel, dropLootsPos, dropLoots.getId(), dropLoots.getSeed());
+                LuckyEventFunctions.dropLoots(serverLevel, resolvePosition(blockPos, player, dropLoots.getPosSrc(), dropLoots.getOffset()), dropLoots.getId(), dropLoots.getSeed());
             }
         }
+    }
 
-        // Fall Blocks
+    private static void handleFallBlocks(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasFallBlocks()) {
             for (RandomEventDataReader.FallBlock fallBlock : function.getFallBlocks()) {
-                Block blockId = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(fallBlock.getId()));
-
-                Vec3 fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, fallBlock.getOffset(), "FallBlocks");
-                if (player != null && fallBlock.getPosSrc() != PosSrc.BLOCK) {
-                    fallBlockPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), fallBlock.getPosSrc(), fallBlock.getOffset(), "FallBlocks");
-                }
-
-                LuckyEventFunctions.fallBlock(serverLevel, PosHelper.parseVec3d(fallBlockPos), blockId, fallBlock.getVelocity());
+                LuckyEventFunctions.fallBlock(serverLevel, PosHelper.parseVec3d(resolvePosition(blockPos, player, fallBlock.getPosSrc(), fallBlock.getOffset())), fallBlock.getId(), fallBlock.getVelocity());
             }
         }
+    }
 
-        // Give Potion Effects
+    private static void handleGivePotionEffects(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasGivePotionEffects()) {
             for (RandomEventDataReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
                 if (player != null) {
@@ -95,8 +91,9 @@ public class LuckyEventExecutor {
                 }
             }
         }
+    }
 
-        // Spawn Mobs
+    private static void handleSpawnMobs(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasSpawnMobs()) {
             for (RandomEventDataReader.SpawnMob spawnMob : function.getSpawnMobs()) {
                 boolean isUseRandom = spawnMob.isUseRandom();
@@ -106,31 +103,25 @@ public class LuckyEventExecutor {
                 } else {
                     count = spawnMob.getNum();
                 }
-
-                Vec3 spawnMobPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, spawnMob.getOffset(), "SpawnMobs");
-                if (player != null && spawnMob.getPosSrc() != PosSrc.BLOCK) {
-                    spawnMobPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), spawnMob.getPosSrc(), spawnMob.getOffset(), "SpawnMobs");
-                }
-
                 String nbtString = spawnMob.getNbt();
 
                 for (int i = 0; i < count; i++) {
-                    if (Objects.equals(spawnMob.getId(), "minecraft:item")) {
+                    if (Objects.equals(spawnMob.getId(), "minecraft:item") || Objects.equals(spawnMob.getId(), "item")) {
                         Constants.LOG.warn("dropItemsByNbt is depreciated! Please use drop_items! nbt: {}", nbtString);
                         try {
-                            LuckyEventFunctions.dropItems(serverLevel, spawnMobPos, spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
+                            LuckyEventFunctions.dropItems(serverLevel, resolvePosition(blockPos, player, spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
                         } catch (Exception e) {
                             Constants.LOG.error("nbt: {}, e: {}", nbtString, e.toString());
                         }
                     } else {
-                        // LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString);
-                        LuckyEventFunctions.spawnMob(serverLevel, spawnMobPos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
+                        LuckyEventFunctions.spawnMob(serverLevel, resolvePosition(blockPos, player, spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
                     }
                 }
             }
         }
+    }
 
-        // Send Messages
+    private static void handleSendMessages(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasSendMessages()) {
             for (RandomEventDataReader.SendMessage sendMessage : function.getSendMessages()) {
                 if (player != null) {
@@ -138,8 +129,9 @@ public class LuckyEventExecutor {
                 }
             }
         }
+    }
 
-        // Display Messages
+    private static void handleDisplayMessages(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasDisplayMessages()) {
             for (RandomEventDataReader.DisplayMessage sendMessage : function.getDisplayMessages()) {
                 if (player != null) {
@@ -147,32 +139,25 @@ public class LuckyEventExecutor {
                 }
             }
         }
+    }
 
-        // Create Explosions
+    private static void handleCreateExplosions(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasCreateExplosions()) {
             for (RandomEventDataReader.CreateExplosion createExplosion : function.getCreateExplosions()) {
-                Vec3 createExplosionPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, createExplosion.getOffset(), "CreateExplosions");
-                if (player != null && createExplosion.getPosSrc() != PosSrc.BLOCK) {
-                    createExplosionPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), createExplosion.getPosSrc(), createExplosion.getOffset(), "CreateExplosions");
-                }
-
-                LuckyEventFunctions.createExplosion(serverLevel, createExplosionPos, createExplosion.getPower(), createExplosion.isCreateFire());
+                LuckyEventFunctions.createExplosion(serverLevel, resolvePosition(blockPos, player, createExplosion.getPosSrc(), createExplosion.getOffset()), createExplosion.getPower(), createExplosion.isCreateFire());
             }
         }
+    }
 
-        // Add Particles
+    private static void handleAddParticles(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasAddParticles()) {
             for (RandomEventDataReader.AddParticle addParticle : function.getAddParticles()) {
-                Vec3 addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, addParticle.getOffset(), "AddParticles");
-                if (player != null && addParticle.getPosSrc() != PosSrc.BLOCK) {
-                    addParticlePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), addParticle.getPosSrc(), addParticle.getOffset(), "AddParticles");
-                }
-
-                LuckyEventFunctions.addParticles(serverLevel, addParticle.getId(), addParticlePos, addParticle.getCount(), addParticle.getDelta().getX(), addParticle.getDelta().getY(), addParticle.getDelta().getZ(), addParticle.getSpeed());
+                LuckyEventFunctions.addParticles(serverLevel, addParticle.getId(), resolvePosition(blockPos, player, addParticle.getPosSrc(), addParticle.getOffset()), addParticle.getCount(), addParticle.getDelta().getX(), addParticle.getDelta().getY(), addParticle.getDelta().getZ(), addParticle.getSpeed());
             }
         }
+    }
 
-        // Play Sounds
+    private static void handlePlaySounds(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasPlaySounds()) {
             for (RandomEventDataReader.PlaySound playSound : function.getPlaySounds()) {
                 if (player != null) {
@@ -180,33 +165,35 @@ public class LuckyEventExecutor {
                 }
             }
         }
+    }
 
-        // Load Structures
+    private static void handleLoadStructures(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
         if (function.hasLoadStructures()) {
             for (RandomEventDataReader.LoadStructure loadStructure : function.getLoadStructures()) {
-                Vec3 loadStructurePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, loadStructure.getOffset(), "LoadStructures");
-                if (player != null && loadStructure.getPosSrc() != PosSrc.BLOCK) {
-                    loadStructurePos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), loadStructure.getPosSrc(), loadStructure.getOffset(), "LoadStructures");
-                }
-
-                LuckyEventFunctions.loadStructure(serverLevel, PosHelper.parseVec3d(loadStructurePos), loadStructure.getModId(), loadStructure.getId());
-            }
-        }
-
-        // Execute Commands
-        if (function.hasExecuteCommands()) {
-            for (RandomEventDataReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
-                Vec3 executeCommandPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(blockPos), PosSrc.BLOCK, executeCommand.getOffset(), "ExecuteCommands");
-                if (player != null && executeCommand.getPosSrc() != PosSrc.BLOCK) {
-                    executeCommandPos = PosHelper.calcPos(PosHelper.parseBlockPos(blockPos), PosHelper.parseBlockPos(player.blockPosition()), executeCommand.getPosSrc(), executeCommand.getOffset(), "ExecuteCommands");
-                }
-
-                LuckyEventFunctions.executeCommand(serverLevel, executeCommandPos, executeCommand.getCommand());
+                LuckyEventFunctions.loadStructure(serverLevel, PosHelper.parseVec3d(resolvePosition(blockPos, player, loadStructure.getPosSrc(), loadStructure.getOffset())), loadStructure.getModId(), loadStructure.getId());
             }
         }
     }
 
-    private static int getRandomNumber(int min, int max) {
-        return min + new Random().nextInt(max - min + 1);
+    private static void handleExecuteCommands(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
+        if (function.hasExecuteCommands()) {
+            for (RandomEventDataReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
+                LuckyEventFunctions.executeCommand(serverLevel, resolvePosition(blockPos, player, executeCommand.getPosSrc(), executeCommand.getOffset()), executeCommand.getCommand());
+            }
+        }
+    }
+
+    public static int getRandomNumber(int min, int max) {
+        return min + ThreadLocalRandom.current().nextInt(max - min + 1);
+    }
+
+    public static Vec3 resolvePosition(BlockPos blockPos, Player player, PosSrc posSrc, Vec3 offset) {
+        Vec3 basePos;
+        if (posSrc == PosSrc.PLAYER && player != null) {
+            basePos = player.position();
+        } else {
+            basePos = PosHelper.parseBlockPos(blockPos);
+        }
+        return PosHelper.calcOffset(basePos, offset);
     }
 }

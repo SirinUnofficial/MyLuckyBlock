@@ -137,7 +137,8 @@ public class LuckyEventFunctions {
         }
     }
 
-    public static void fallBlock(ServerLevel serverLevel, BlockPos blockPos, Block block, Vec3 velocity) {
+    public static void fallBlock(ServerLevel serverLevel, BlockPos blockPos, String blockId, Vec3 velocity) {
+        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
         BlockState blockState = block.defaultBlockState();
         FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(serverLevel, blockPos, blockState);
         fallingBlockEntity.push(velocity);
@@ -291,7 +292,7 @@ public class LuckyEventFunctions {
 
     public static void executeCommand(ServerLevel serverLevel, Vec3 pos, String command) {
         MinecartCommandBlock cBMinecart = new MinecartCommandBlock(serverLevel, pos.x(), pos.y(), pos.z());
-        cBMinecart.setCustomName(Component.translatableEscape(Constants.MOD_ID));
+        cBMinecart.setCustomName(Component.translatable(Constants.MOD_ID));
         cBMinecart.getCommandBlock().setCommand(command);
         cBMinecart.setPos(pos.x(), pos.y(), pos.z());
         serverLevel.addFreshEntity(cBMinecart);
