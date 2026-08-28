@@ -1,6 +1,6 @@
 {
     "name": "Loot Chests Event Pack",
-    "version": "2.0",
+    "version": "2.9",
     "info": "Loot table chests.",
     "random_events": [
         {

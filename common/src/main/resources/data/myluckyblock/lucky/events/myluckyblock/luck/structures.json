@@ -1,0 +1,30 @@
+{
+    "name": "Structures Event Pack",
+    "version": "2.9",
+    "info": "Some structures.",
+    "random_events": [
+        {
+            "id": 1,
+            "load_structures": [
+                {
+                    "id": "cherry_house",
+                    "pos_src": 0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "load_structures": [
+                {
+                    "id": "cherry_tree",
+                    "pos_src": 0,
+                    "offset": {
+                        "x": -7,
+                        "y": 0,
+                        "z": -7
+                    }
+                }
+            ]
+        }
+    ]
+}

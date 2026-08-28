@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "myluckyblock:mobs-boss-vanilla"
+        "myluckyblock:unluck/mobs-boss-vanilla"
     ]
 }

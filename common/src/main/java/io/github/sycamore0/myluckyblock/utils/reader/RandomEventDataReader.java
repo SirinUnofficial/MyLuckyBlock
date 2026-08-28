@@ -2,6 +2,7 @@ package io.github.sycamore0.myluckyblock.utils.reader;
 
 import com.google.gson.annotations.SerializedName;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.utils.EventType;
 import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -9,6 +10,8 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 
 public class RandomEventDataReader {
+    private EventType type;
+
     @SerializedName("id")
     protected int id;
 
@@ -53,6 +56,9 @@ public class RandomEventDataReader {
 
     @SerializedName("execute_commands")
     protected List<ExecuteCommand> executeCommands;
+
+    public EventType getType() { return type; }
+    public void setType(EventType type) { this.type = type; }
 
     public boolean hasDropItems() {
         return dropItems != null && !dropItems.isEmpty();

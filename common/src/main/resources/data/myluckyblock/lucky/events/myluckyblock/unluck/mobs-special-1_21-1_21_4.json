@@ -1,6 +1,6 @@
 {
-    "name": "Special Mobs/Entity Event Pack",
-    "version": "2.0",
+    "name": "Special Mobs/Entity Event Pack for 1.21~1.21.4",
+    "version": "2.9",
     "info": "Special Mobs and Entitys(nbt for 1.21~1.21.4).",
     "dependencies": [
         {
@@ -29,38 +29,6 @@
             "id": 2,
             "spawn_mobs": [
                 {
-                    "id": "minecraft:villager",
-                    "randomize": false,
-                    "name": "name.myluckyblock.great_villager",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{VillagerData:{type:plains,profession:farmer,level:5},Offers:{Recipes:[{maxUses:12,buy:{id:dirt,count:16},sell:{id:emerald,count:1}},{maxUses:12,buy:{id:cobblestone,count:16},sell:{id:emerald,count:1}}]}}"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:villager",
-                    "randomize": false,
-                    "name": "name.myluckyblock.hero_blacksmith",
-                    "name_visible": true,
-                    "is_baby": false,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{VillagerData:{type:plains,profession:armorer,level:5},Offers:{Recipes:[{maxUses:6,buy:{id:diamond,count:20},sell:{id:diamond_helmet,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:32},sell:{id:diamond_chestplate,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:28},sell:{id:diamond_leggings,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}},{maxUses:6,buy:{id:diamond,count:16},sell:{id:diamond_boots,count:1,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}}}}]}}"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "spawn_mobs": [
-                {
                     "id": "minecraft:zombie",
                     "randomize": false,
                     "name": "name.myluckyblock.super_zombie",
@@ -74,7 +42,7 @@
             ]
         },
         {
-            "id": 5,
+            "id": 3,
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
@@ -90,7 +58,7 @@
             ]
         },
         {
-            "id": 6,
+            "id": 4,
             "spawn_mobs": [
                 {
                     "id": "minecraft:creeper",
@@ -106,7 +74,7 @@
             ]
         },
         {
-            "id": 7,
+            "id": 5,
             "spawn_mobs": [
                 {
                     "id": "minecraft:slime",
@@ -122,7 +90,7 @@
             ]
         },
         {
-            "id": 8,
+            "id": 6,
             "spawn_mobs": [
                 {
                     "id": "minecraft:magma_cube",
@@ -138,7 +106,7 @@
             ]
         },
         {
-            "id": 9,
+            "id": 7,
             "spawn_mobs": [
                 {
                     "id": "minecraft:horse",
@@ -154,7 +122,7 @@
             ]
         },
         {
-            "id": 10,
+            "id": 8,
             "execute_commands": [
                 {
                     "command": "summon minecraft:bat ~ ~ ~ {Passengers:[{id:skeleton_horse,SaddleItem:{id:saddle,Count:1},Tame:1,Passengers:[{id:skeleton,Glowing:1b,HandItems:[{id:bow,components:{enchantments:{levels:{infinity:1,mending:1,power:2,punch:2,unbreaking:3}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:chainmail_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:chainmail_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}]}]}]}",
@@ -163,7 +131,7 @@
             ]
         },
         {
-            "id": 11,
+            "id": 9,
             "spawn_mobs": [
                 {
                     "id": "minecraft:pillager",
@@ -179,19 +147,7 @@
             ]
         },
         {
-            "id": 12,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:fox",
-                    "randomize": false,
-                    "name": "NeoForge",
-                    "name_visible": true,
-                    "nbt": "{Type:red,Sitting:1,HandItems:[{id:mojang_banner_pattern},{}],HandDropChances:[1f,0f]}"
-                }
-            ]
-        },
-        {
-            "id": 13,
+            "id": 10,
             "spawn_mobs": [
                 {
                     "id": "minecraft:rabbit",

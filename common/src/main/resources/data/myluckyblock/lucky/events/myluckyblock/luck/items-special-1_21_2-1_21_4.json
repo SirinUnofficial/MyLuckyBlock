@@ -1,6 +1,6 @@
 {
-    "name": "Special Items Event Pack",
-    "version": "2.0",
+    "name": "Special Items Event Pack for 1.21.2~1.21.4",
+    "version": "2.9",
     "info": "Items with special attribute data(nbt for 1.21.2~1.21.4).",
     "dependencies": [
         {

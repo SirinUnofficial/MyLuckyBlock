@@ -1,6 +1,6 @@
 {
-    "name": "Enchanted Items Event Pack",
-    "version": "2.0",
+    "name": "Enchanted Items Event Pack for 1.21~1.21.4",
+    "version": "2.9",
     "info": "Enchanted Items(nbt for 1.21~1.21.4).",
     "dependencies": [
         {

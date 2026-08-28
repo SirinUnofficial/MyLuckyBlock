@@ -29,8 +29,7 @@ public class LuckyEventExecutor {
             handlePlaySounds(serverLevel, player, blockPos, function);
             handleLoadStructures(serverLevel, player, blockPos, function);
             handleExecuteCommands(serverLevel, player, blockPos, function);
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             Constants.LOG.error("Event {} execution aborted due to fatal error", function.getId(), e);
         }
     }

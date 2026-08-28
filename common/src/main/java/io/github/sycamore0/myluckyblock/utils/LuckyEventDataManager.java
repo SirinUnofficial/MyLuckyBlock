@@ -11,10 +11,12 @@ import net.minecraft.SharedConstants;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LuckyEventDataManager {
     private final ILuckyEventsReloadListener LISTENER;
     private final Map<String, List<RandomEventDataReader>> EVENTS_BY_GROUP = new ConcurrentHashMap<>();
+    private final Map<String, Map<EventType, List<RandomEventDataReader>>> EVENTS_BY_GROUP_AND_TYPE = new ConcurrentHashMap<>();
 
     public LuckyEventDataManager(ILuckyEventsReloadListener listener) {
         this.LISTENER = listener;
@@ -28,34 +30,58 @@ public class LuckyEventDataManager {
             eventPackList.addAll(all.getOrDefault(Constants.EVENT_PACK_GROUP_NAME, List.of()));
         }
 
-        List<RandomEventDataReader> eventDataList = new ArrayList<>();
+        Map<EventType, List<RandomEventDataReader>> typeMap = new EnumMap<>(EventType.class);
+        for (EventType type : EventType.values()) {
+            typeMap.put(type, new ArrayList<>());
+        }
+
         int eventId = 1;
         for (EventPackDataReader packData : eventPackList) {
             if (!checkDependencies(packData)) {
-                packData.getDependencies().forEach(dependency -> {
-                    Constants.LOG.warn("Skipping event pack {}: missing dependency {} {}", packData.getName(), dependency.getModId(), dependency.getVersionRange());
-                });
+                packData.getDependencies().forEach(dep ->
+                        Constants.LOG.warn("Skipping pack {}: missing dependency {} {}", packData.getName(), dep.getModId(), dep.getVersionRange()));
                 continue;
             }
-            for (RandomEventDataReader eventData : packData.getRandomEvents()) {
-                eventData.setId(eventId++);
-                eventDataList.add(eventData);
+            for (RandomEventDataReader event : packData.getRandomEvents()) {
+                event.setId(eventId++);
+                EventType type = event.getType();
+                if (type == null) type = EventType.COMMON;
+                typeMap.get(type).add(event);
             }
         }
-        EVENTS_BY_GROUP.put(eventPackGroupName, eventDataList);
-        Constants.LOG.info("Loaded {} random events from event pack group {}", eventDataList.size(), eventPackGroupName);
+
+        EVENTS_BY_GROUP_AND_TYPE.put(eventPackGroupName, typeMap);
+
+        List<RandomEventDataReader> allEvents = new ArrayList<>();
+        typeMap.values().forEach(allEvents::addAll);
+        EVENTS_BY_GROUP.put(eventPackGroupName, allEvents);
+
+        Constants.LOG.info("Loaded {} events from group {} (lucky={}, unlucky={}, common={})",
+                allEvents.size(), eventPackGroupName,
+                typeMap.get(EventType.LUCKY).size(),
+                typeMap.get(EventType.UNLUCKY).size(),
+                typeMap.get(EventType.COMMON).size());
     }
 
     public boolean isLoaded(String eventPackGroupName) {
-        return EVENTS_BY_GROUP.containsKey(eventPackGroupName);
+        return EVENTS_BY_GROUP_AND_TYPE.containsKey(eventPackGroupName);
     }
 
     public RandomEventDataReader getRandomEvent(String eventPackGroupName) {
         List<RandomEventDataReader> list = EVENTS_BY_GROUP.get(eventPackGroupName);
+        if (list == null || list.isEmpty()) return null;
+        return list.get(ThreadLocalRandom.current().nextInt(list.size()));
+    }
+
+    public RandomEventDataReader getRandomEvent(String eventPackGroupName, EventType type) {
+        Map<EventType, List<RandomEventDataReader>> typeMap = EVENTS_BY_GROUP_AND_TYPE.get(eventPackGroupName);
+        if (typeMap == null) return null;
+        List<RandomEventDataReader> list = typeMap.get(type);
         if (list == null || list.isEmpty()) {
-            return null;
+            list = typeMap.get(EventType.COMMON);
         }
-        return list.get(new Random().nextInt(list.size()));
+        if (list == null || list.isEmpty()) return null;
+        return list.get(ThreadLocalRandom.current().nextInt(list.size()));
     }
 
     private boolean checkDependencies(EventPackDataReader packData) {

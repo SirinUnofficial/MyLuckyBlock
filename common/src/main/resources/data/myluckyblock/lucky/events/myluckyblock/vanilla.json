@@ -1,6 +1,6 @@
 {
     "name": "Random Events Pack",
-    "version": "2.0",
+    "version": "2.9",
     "info": "Random events for Vanilla Minecraft 1.20+",
     "random_events": [
         {
@@ -6057,72 +6057,6 @@
                 {
                     "id": "minecraft:redstone_block"
                 }
-            ],
-            "fall_blocks": [
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                }
             ]
         },
         {
@@ -6201,7 +6135,7 @@
             "id": 219,
             "create_explosions": [
                 {
-                    "power": 100
+                    "power": 4
                 }
             ]
         },

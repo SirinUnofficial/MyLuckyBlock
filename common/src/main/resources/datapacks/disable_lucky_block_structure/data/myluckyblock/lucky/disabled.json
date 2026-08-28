@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "myluckyblock:structures"
+        "myluckyblock:luck/structures",
+        "myluckyblock:unluck/structures"
     ]
 }

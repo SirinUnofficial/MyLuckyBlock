@@ -1,7 +1,7 @@
 {
-    "name": "Special Mobs/Entity Event Pack",
-    "version": "2.0",
-    "info": "Items with special attribute data(for 1.21.11).",
+    "name": "Special Mobs/Entity Event Pack for 1.21.11+",
+    "version": "2.9",
+    "info": "Items with special attribute data(for 1.21.11+).",
     "dependencies": [
         {
             "mod_id": "minecraft",

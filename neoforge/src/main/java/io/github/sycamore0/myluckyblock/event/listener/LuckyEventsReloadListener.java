@@ -1,8 +1,10 @@
 package io.github.sycamore0.myluckyblock.event.listener;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.utils.EventType;
 import io.github.sycamore0.myluckyblock.utils.reader.DisabledDataReader;
 import io.github.sycamore0.myluckyblock.utils.reader.EventPackDataReader;
+import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.Resource;
@@ -72,8 +74,19 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
                     if (seg.length < 4) return;
 
                     String eventPackGroup = seg[2];
+                    EventType type = EventType.COMMON;
+                    if (seg.length >= 5) {
+                        String subDir = seg[3];
+                        if ("luck".equalsIgnoreCase(subDir)) {
+                            type = EventType.LUCKY;
+                        } else if ("unluck".equalsIgnoreCase(subDir)) {
+                            type = EventType.UNLUCKY;
+                        }
+                    }
+
                     String eventPackId = seg[seg.length - 1].replace(".json", "");
-                    String fullEventPackId = eventPackGroup + ":" + eventPackId;
+                    String subDir = seg.length >= 5 ? seg[3] : "";
+                    String fullEventPackId = eventPackGroup + ":" + (subDir.isEmpty() ? "" : subDir + "/") + eventPackId;
 
                     if (disabledSet.contains(fullEventPackId)) {
                         Constants.LOG.info("Skipping disabled event pack: {}", fullEventPackId);
@@ -82,8 +95,13 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
 
                     try (Reader reader = resource.openAsReader()) {
                         EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
+                        if (eventPackData.getRandomEvents() != null) {
+                            for (RandomEventDataReader event : eventPackData.getRandomEvents()) {
+                                event.setType(type);
+                            }
+                        }
                         eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPackData);
-                        Constants.LOG.info("Parsed pack metadata: {}", fullEventPackId);
+                        Constants.LOG.info("Parsed pack: {} with type {}", fullEventPackId, type);
                     } catch (Exception e) {
                         Constants.LOG.error("Failed to parse event pack {}: {}", location, e.getMessage());
                     }
