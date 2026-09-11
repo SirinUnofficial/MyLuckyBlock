@@ -5,6 +5,7 @@ import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -104,7 +105,7 @@ public class LuckyEventExecutor {
                 }
                 String nbtString = spawnMob.getNbt();
 
-                for (int i = 0; i < count; i++) {
+                for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
                     if (Objects.equals(spawnMob.getId(), "minecraft:item") || Objects.equals(spawnMob.getId(), "item")) {
                         Constants.LOG.warn("dropItemsByNbt is depreciated! Please use drop_items! nbt: {}", nbtString);
                         try {
@@ -183,7 +184,13 @@ public class LuckyEventExecutor {
     }
 
     public static int getRandomNumber(int min, int max) {
-        return min + ThreadLocalRandom.current().nextInt(max - min + 1);
+        try {
+            return min + ThreadLocalRandom.current().nextInt(max - min + 1);
+        } catch (IllegalArgumentException e) {
+            // wtf?
+            Constants.LOG.error(e.getMessage());
+            return 1;
+        }
     }
 
     public static Vec3 resolvePosition(BlockPos blockPos, Player player, PosSrc posSrc, Vec3 offset) {

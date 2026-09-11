@@ -676,8 +676,8 @@ public class RandomEventDataReader {
         public RandomNum(int min, int max) {
             int actualMin = Math.min(min, max);
             int actualMax = Math.max(min, max);
-            this.min = Mth.clamp(actualMin, 0, max);
-            this.max = Mth.clamp(actualMax, min, 64);
+            this.min = Mth.clamp(actualMin, 0, 64);
+            this.max = Mth.clamp(actualMax, this.min, 64);
         }
 
         // Getters
