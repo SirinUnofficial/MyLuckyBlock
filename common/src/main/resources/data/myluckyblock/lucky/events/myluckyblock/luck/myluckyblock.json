@@ -1,0 +1,44 @@
+{
+    "name": "Luck Event for MyLuckyBlock",
+    "version": "2.9",
+    "info": "Luck Event for MyLuckyBlock",
+    "random_events": [
+        {
+            "id": 1,
+            "fall_blocks": [
+                {
+                    "id": "myluckyblock:my_lucky_block",
+                    "offset": {
+                        "x": 1,
+                        "y": 8,
+                        "z": 0
+                    }
+                },
+                {
+                    "id": "myluckyblock:my_lucky_block",
+                    "offset": {
+                        "x": -1,
+                        "y": 8,
+                        "z": 0
+                    }
+                },
+                {
+                    "id": "myluckyblock:my_lucky_block",
+                    "offset": {
+                        "x": 0,
+                        "y": 8,
+                        "z": 1
+                    }
+                },
+                {
+                    "id": "myluckyblock:my_lucky_block",
+                    "offset": {
+                        "x": 0,
+                        "y": 8,
+                        "z": -1
+                    }
+                }
+            ]
+        }
+    ]
+}

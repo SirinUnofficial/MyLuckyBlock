@@ -1,0 +1,592 @@
+{
+    "name": "Random Events Pack for 26.3",
+    "version": "2.9",
+    "info": "Random events for Vanilla Minecraft 26.3+",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(26.2,99.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "drop_items": [
+                {
+                    "id": "minecraft:poplar_log",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                },
+                {
+                    "id": "minecraft:poplar_planks",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 64
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "drop_items": [
+                {
+                    "id": "minecraft:poplar_sapling",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 64
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "drop_items": [
+                {
+                    "id": "minecraft:straw_bed",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 1,
+                        "max": 4
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "drop_items": [
+                {
+                    "id": "minecraft:black_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:red_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:green_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:brown_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:blue_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:purple_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:cyan_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_gray_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:gray_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pink_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:lime_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:yellow_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_blue_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:magenta_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:orange_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:white_wool_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "drop_items": [
+                {
+                    "id": "minecraft:black_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:red_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:green_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:brown_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:blue_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:purple_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:cyan_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_gray_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:gray_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pink_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:lime_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:yellow_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_blue_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:magenta_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:orange_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:white_wool_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "drop_items": [
+                {
+                    "id": "minecraft:black_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:red_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:green_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:brown_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:blue_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:purple_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:cyan_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_gray_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:gray_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pink_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:lime_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:yellow_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_blue_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:magenta_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:orange_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:white_concrete_stairs",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "drop_items": [
+                {
+                    "id": "minecraft:black_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:red_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:green_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:brown_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:blue_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:purple_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:cyan_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_gray_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:gray_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:pink_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:lime_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:yellow_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:light_blue_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:magenta_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:orange_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                },
+                {
+                    "id": "minecraft:white_concrete_slab",
+                    "use_random": true,
+                    "random_num": {
+                        "min": 0,
+                        "max": 16
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -6135,7 +6135,7 @@
             "id": 219,
             "create_explosions": [
                 {
-                    "power": 4
+                    "power": 3
                 }
             ]
         },
@@ -7343,61 +7343,6 @@
                     "is_baby": false,
                     "use_random": false,
                     "num": 1
-                }
-            ]
-        },
-        {
-            "id": 302,
-            "fall_blocks": [
-                {
-                    "id": "myluckyblock:my_lucky_block",
-                    "offset": {
-                        "x": 1,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "myluckyblock:my_lucky_block",
-                    "offset": {
-                        "x": -1,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "myluckyblock:my_lucky_block",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 1
-                    }
-                },
-                {
-                    "id": "myluckyblock:my_lucky_block",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": -1
-                    }
-                }
-            ]
-        },
-        {
-            "id": 303,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:zombie",
-                    "num": 20
-                }
-            ]
-        },
-        {
-            "id": 304,
-            "spawn_mobs": [
-                {
-                    "id": "minecraft:slime",
-                    "num": 10
                 }
             ]
         }
