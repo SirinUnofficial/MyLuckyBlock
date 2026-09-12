@@ -2,7 +2,7 @@ package io.github.sycamore0.myluckyblock.event;
 
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.event.listener.LuckyEventsReloadListener;
-import io.github.sycamore0.myluckyblock.utils.LuckyEventDataManager;
+import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;

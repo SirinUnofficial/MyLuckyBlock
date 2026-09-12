@@ -10,7 +10,12 @@
     "pack.name.disable_lucky_block_structure":"Disable LB Structure Events",
     "pack.name.disable_lucky_block_boss":"Disable LB Vanilla BOSS(wither) Events",
 
-    "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
+    "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][DEBUG]§rLuckyEventManager is not loaded yet",
+    "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][DEBUG]§rNo such event",
+    "commands.myluckyblock.triggered": "§6[MyLuckyBlock][DEBUG]§rTriggered event %s#%s",
+    "commands.myluckyblock.list": "§6[MyLuckyBlock]§r %s event pack(s) loaded",
+
+    "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock][Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
 
     "name.myluckyblock.great_villager": "Great Villager",
     "name.myluckyblock.hero_blacksmith": "Hero's Blacksmith",

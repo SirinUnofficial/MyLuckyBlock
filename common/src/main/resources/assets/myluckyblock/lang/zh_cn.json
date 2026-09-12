@@ -10,7 +10,12 @@
     "pack.name.disable_lucky_block_structure":"禁用幸运方块建筑事件",
     "pack.name.disable_lucky_block_boss":"禁用幸运方块原版BOSS(凋灵)事件",
 
-    "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock|警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
+    "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][调试]§rLuckyEventManager 未被加载",
+    "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][调试]§r指定事件不存在",
+    "commands.myluckyblock.triggered": "§6[MyLuckyBlock][调试]§r触发事件 %s#%s",
+    "commands.myluckyblock.list": "§6[MyLuckyBlock]§r %s 事件包已加载",
+
+    "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock][警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
 
     "name.myluckyblock.great_villager": "良心商人",
     "name.myluckyblock.hero_blacksmith": "英雄盔甲匠",

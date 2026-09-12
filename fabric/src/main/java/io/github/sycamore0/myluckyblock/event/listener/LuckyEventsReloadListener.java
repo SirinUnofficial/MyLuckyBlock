@@ -2,11 +2,11 @@ package io.github.sycamore0.myluckyblock.event.listener;
 
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
-import io.github.sycamore0.myluckyblock.utils.EventType;
-import io.github.sycamore0.myluckyblock.utils.LuckyEventDataManager;
-import io.github.sycamore0.myluckyblock.utils.reader.DisabledDataReader;
-import io.github.sycamore0.myluckyblock.utils.reader.EventPackDataReader;
-import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.EventType;
+import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
+import io.github.sycamore0.myluckyblock.lucky.reader.DisabledDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
@@ -18,6 +18,7 @@ import java.util.*;
 
 public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloadListener, ILuckyEventsReloadListener {
     private volatile Map<String, List<EventPackDataReader>> packData = Collections.emptyMap();
+    private volatile Runnable onReload = () -> {};
 
     @Override
     public ResourceLocation getFabricId() {
@@ -25,9 +26,15 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
     }
 
     @Override
+    public void setOnReload(Runnable callback) {
+        this.onReload = callback != null ? callback : () -> {};
+    }
+
+    @Override
     public void onResourceManagerReload(ResourceManager manager) {
         Set<String> disabled = loadDisabled(manager);
         packData = loadEvents(manager, disabled);
+        onReload.run();
         BreakLuckyBlock.manager = new LuckyEventDataManager(this);
     }
 
@@ -87,6 +94,7 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
 
                     try (Reader reader = new InputStreamReader(resource.open())) {
                         EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
+                        eventPackData.setEventPackId(fullEventPackId);
                         if (eventPackData.getRandomEvents() != null) {
                             for (RandomEventDataReader event : eventPackData.getRandomEvents()) {
                                 event.setType(type);

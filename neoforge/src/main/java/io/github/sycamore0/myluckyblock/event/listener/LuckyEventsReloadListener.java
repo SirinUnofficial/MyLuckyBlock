@@ -1,10 +1,10 @@
 package io.github.sycamore0.myluckyblock.event.listener;
 
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.utils.EventType;
-import io.github.sycamore0.myluckyblock.utils.reader.DisabledDataReader;
-import io.github.sycamore0.myluckyblock.utils.reader.EventPackDataReader;
-import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.EventType;
+import io.github.sycamore0.myluckyblock.lucky.reader.DisabledDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.Resource;
@@ -19,10 +19,16 @@ import java.util.concurrent.Executor;
 
 public class LuckyEventsReloadListener implements PreparableReloadListener, ILuckyEventsReloadListener {
     private volatile Map<String, List<EventPackDataReader>> packData = Map.of();
+    private volatile Runnable onReload = () -> {};
 
     @Override
     public @NotNull String getName() {
         return Constants.DATA_LOADER_ID.toString();
+    }
+
+    @Override
+    public void setOnReload(Runnable callback) {
+        this.onReload = callback != null ? callback : () -> {};
     }
 
     @Override
@@ -35,7 +41,10 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
 
             prepProfilerFiller.endTick();
             return eventsMap;
-        }, bgExecutor).thenCompose(preparationBarrier::wait).thenAcceptAsync(res -> packData = res, gameExecutor);
+        }, bgExecutor).thenCompose(preparationBarrier::wait).thenAcceptAsync(res -> {
+            packData = res;
+            onReload.run();
+        }, gameExecutor);
     }
 
     private Set<String> loadDisabled(ResourceManager manager) {
@@ -95,6 +104,7 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
 
                     try (Reader reader = resource.openAsReader()) {
                         EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
+                        eventPackData.setEventPackId(fullEventPackId);
                         if (eventPackData.getRandomEvents() != null) {
                             for (RandomEventDataReader event : eventPackData.getRandomEvents()) {
                                 event.setType(type);

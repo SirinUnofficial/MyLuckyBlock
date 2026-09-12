@@ -1,4 +1,4 @@
-package io.github.sycamore0.myluckyblock.utils.reader;
+package io.github.sycamore0.myluckyblock.lucky.reader;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
