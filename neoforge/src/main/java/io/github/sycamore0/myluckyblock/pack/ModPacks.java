@@ -20,6 +20,7 @@ public class ModPacks {
             addBuiltInDataPack(event, "disable_lucky_block_worldgen");
             addBuiltInDataPack(event, "disable_lucky_block_structure");
             addBuiltInDataPack(event, "disable_lucky_block_boss");
+            addBuiltInDataPack(event, "disable_lucky_block_explosions");
         }
     }
 

@@ -25,5 +25,6 @@ public class ModPacks {
         addBuiltInDataPack("disable_lucky_block_worldgen");
         addBuiltInDataPack("disable_lucky_block_structure");
         addBuiltInDataPack("disable_lucky_block_boss");
+        addBuiltInDataPack("disable_lucky_block_explosions");
     }
 }
