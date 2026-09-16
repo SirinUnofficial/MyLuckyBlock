@@ -285,7 +285,7 @@ public class LuckyEventFunctions {
     }
 
     public static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
-        StructureTemplateManager manager = serverLevel.getStructureManager();
+        StructureTemplateManager manager = serverLevel.getStructureTemplateManager();
         Identifier structureId = Identifier.fromNamespaceAndPath(modId, structureName);
 
         try {
