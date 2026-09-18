@@ -1,6 +1,7 @@
-package io.github.sycamore0.myluckyblock.utils.reader;
+package io.github.sycamore0.myluckyblock.lucky.reader;
 
 import com.google.gson.annotations.SerializedName;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,8 @@ public class EventPackDataReader {
 
     @SerializedName("random_events")
     protected List<RandomEventDataReader> randomEvents;
+
+    private transient String eventPackId;
 
     public EventPackDataReader() {
         this.name = "unknown";
@@ -48,5 +51,14 @@ public class EventPackDataReader {
 
     public List<RandomEventDataReader> getRandomEvents() {
         return randomEvents;
+    }
+
+    @Nullable
+    public String getEventPackId() {
+        return eventPackId;
+    }
+
+    public void setEventPackId(String eventPackId) {
+        this.eventPackId = eventPackId;
     }
 }

@@ -1,8 +1,8 @@
-package io.github.sycamore0.myluckyblock.utils.reader;
+package io.github.sycamore0.myluckyblock.lucky.reader;
 
 import com.google.gson.annotations.SerializedName;
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.utils.EventType;
+import io.github.sycamore0.myluckyblock.lucky.EventType;
 import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -146,12 +146,12 @@ public class RandomEventDataReader {
         return executeCommands;
     }
 
-    // Getters and Setters for id
-    public int getId() {
+    // Getters and Setters for eventId
+    public int getEventId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setEventId(int id) {
         this.id = id;
     }
 

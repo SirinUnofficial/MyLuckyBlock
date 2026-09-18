@@ -1,4 +1,4 @@
-package io.github.sycamore0.myluckyblock.utils;
+package io.github.sycamore0.myluckyblock.lucky;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.sycamore0.myluckyblock.Constants;

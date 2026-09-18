@@ -1,8 +1,9 @@
-package io.github.sycamore0.myluckyblock.utils;
+package io.github.sycamore0.myluckyblock.lucky;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
-import io.github.sycamore0.myluckyblock.utils.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -31,7 +32,7 @@ public class LuckyEventExecutor {
             handleLoadStructures(serverLevel, player, blockPos, function);
             handleExecuteCommands(serverLevel, player, blockPos, function);
         } catch (Exception e) {
-            Constants.LOG.error("Event {} execution aborted due to fatal error", function.getId(), e);
+            Constants.LOG.error("Event {} execution aborted due to fatal error {}", function.getEventId(), e);
         }
     }
 
@@ -187,7 +188,6 @@ public class LuckyEventExecutor {
         try {
             return min + ThreadLocalRandom.current().nextInt(max - min + 1);
         } catch (IllegalArgumentException e) {
-            // wtf?
             Constants.LOG.error(e.getMessage());
             return 1;
         }
