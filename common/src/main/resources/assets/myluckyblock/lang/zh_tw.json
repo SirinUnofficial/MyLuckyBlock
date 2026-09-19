@@ -15,6 +15,13 @@
     "commands.myluckyblock.triggered": "§6[MyLuckyBlock][調試]§r觸發事件 %s#%s",
     "commands.myluckyblock.list": "§6[MyLuckyBlock]§r %s 事件包已加載",
 
+    "tooltip.myluckyblock.lucky_value": "幸運值: %s",
+    "tooltip.myluckyblock.hold_shift": "按住 <Shift> 查看事件概率",
+    "tooltip.myluckyblock.prob.common": "普通: %s",
+    "tooltip.myluckyblock.prob.lucky": "幸運: %s",
+    "tooltip.myluckyblock.prob.unlucky": "不幸: %s",
+    "tooltip.myluckyblock.limited_outcomes": "限定結果集: ",
+
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock][警告]§e你正在遊玩一個快照版本，這可能會導致一些功能無法正常使用。§r",
 
     "name.myluckyblock.great_villager": "良心商人",

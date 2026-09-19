@@ -15,6 +15,13 @@
     "commands.myluckyblock.triggered": "§6[MyLuckyBlock][DEBUG]§rTriggered event %s#%s",
     "commands.myluckyblock.list": "§6[MyLuckyBlock]§r %s event pack(s) loaded",
 
+    "tooltip.myluckyblock.lucky_value": "Lucky Value: %s",
+    "tooltip.myluckyblock.hold_shift": "Hold <Shift> to see event probabilities",
+    "tooltip.myluckyblock.prob.common": "Common: %s",
+    "tooltip.myluckyblock.prob.lucky": "Lucky: %s",
+    "tooltip.myluckyblock.prob.unlucky": "Unlucky: %s",
+    "tooltip.myluckyblock.limited_outcomes": "Limited Outcomes: ",
+
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock][Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
 
     "name.myluckyblock.great_villager": "Great Villager",

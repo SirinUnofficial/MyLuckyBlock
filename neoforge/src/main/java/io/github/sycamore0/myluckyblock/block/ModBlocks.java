@@ -1,7 +1,7 @@
 package io.github.sycamore0.myluckyblock.block;
 
 import io.github.sycamore0.myluckyblock.Constants;
-import net.minecraft.world.item.BlockItem;
+import io.github.sycamore0.myluckyblock.item.LuckyBlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -22,7 +22,7 @@ public class ModBlocks {
         MY_LUCKY_BLOCK = BLOCKS.register(MY_LUCKY_BLOCK_ID,
                 () -> new LuckyBlock((BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f))));
         ITEMS.register(MY_LUCKY_BLOCK_ID,
-                () -> new BlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()));
+                () -> new LuckyBlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()));
     }
 
     public static void onInitialize(IEventBus eventBus) {

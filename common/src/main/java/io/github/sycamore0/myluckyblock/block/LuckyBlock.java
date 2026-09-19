@@ -6,12 +6,13 @@ import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public class LuckyBlock extends Block {
+public class LuckyBlock extends Block implements EntityBlock {
     private String eventPackGroupName = Constants.EVENT_PACK_GROUP_NAME;
     private boolean includeBuiltin = false;
 
@@ -42,12 +43,14 @@ public class LuckyBlock extends Block {
     }
 
     @Override
+    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+        return new LuckyBlockEntity(blockPos, blockState);
+    }
+
+    @Override
     protected void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block sourceBlock, @NotNull BlockPos sourceBlockPos, boolean notify) {
-        if (level.hasNeighborSignal(blockPos)) {
-            if (!level.isClientSide) {
-                level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
-                BreakLuckyBlock.breakLuckyBlock(level, null, blockPos, blockState);
-            }
+        if (!level.isClientSide && level.hasNeighborSignal(blockPos)) {
+            BreakLuckyBlock.breakLuckyBlock(level, null, blockPos, blockState);
         }
     }
 }
