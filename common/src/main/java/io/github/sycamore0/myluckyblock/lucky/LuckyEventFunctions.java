@@ -1,7 +1,9 @@
 package io.github.sycamore0.myluckyblock.lucky;
 
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.utils.helper.DataComponentsHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -53,6 +55,10 @@ import java.util.Optional;
 
 public class LuckyEventFunctions {
     public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
+        dropItems(serverLevel, pos, itemId, count, name, nameVisible, desc, nbtString, null);
+    }
+
+    public static void dropItems(ServerLevel serverLevel, Vec3 pos, String itemId, int count, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString, @Nullable JsonObject dataComponents) {
         Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
         if (item.equals(Items.AIR)) return;
         ItemStack itemStack = new ItemStack(item, count);
@@ -74,31 +80,8 @@ public class LuckyEventFunctions {
             itemStack.set(DataComponents.LORE, itemLore);
         }
 
-        itemEntity.setPos(pos);
-        serverLevel.addFreshEntity(itemEntity);
-    }
-
-    // use in spawn mob
-    @Deprecated(forRemoval = true)
-    public static void dropItemsByNbt(ServerLevel serverLevel, Vec3 pos, @Nullable String name, boolean nameVisible, @Nullable String desc, @Nullable String nbtString) {
-        ItemStack itemStack = new ItemStack(Items.AIR);
-        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
-
-        if (nbtString != null) {
-            CompoundTag nbt = NbtHelper.generateNbt(nbtString);
-            if (nbt == null) return;
-            itemEntity.load(nbt);
-        }
-
-        if (name != null) {
-            itemEntity.setCustomName(Component.translatable(name));
-            itemEntity.setCustomNameVisible(nameVisible);
-            itemEntity.getItem().set(DataComponents.CUSTOM_NAME, Component.translatable(name));
-        }
-
-        if (desc != null) {
-            ItemLore itemLore = new ItemLore(List.of(Component.translatable(desc)));
-            itemEntity.getItem().set(DataComponents.LORE, itemLore);
+        if (dataComponents != null && !dataComponents.isEmpty()) {
+            DataComponentsHelper.applyDataComponents(itemStack, dataComponents, serverLevel.registryAccess());
         }
 
         itemEntity.setPos(pos);
@@ -142,35 +125,6 @@ public class LuckyEventFunctions {
         BlockState blockState = block.defaultBlockState();
         FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(serverLevel, blockPos, blockState);
         fallingBlockEntity.push(velocity);
-    }
-
-    @Deprecated(forRemoval = true)
-    public static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString) {
-        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
-        Entity entity = entityType.create(serverLevel);
-        if (entity == null) return;
-
-        if (randomize && entity instanceof Mob mobEntity) {
-            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
-        }
-
-        CompoundTag nbt = NbtHelper.generateNbt(nbtString);
-        if (nbt != null) {
-            entity.load(nbt);
-        }
-
-        if (entity instanceof Mob mobEntity) {
-            mobEntity.setBaby(isBaby);
-        }
-
-        if (name != null) {
-            entity.setCustomName(Component.translatableEscape(name));
-            entity.setCustomNameVisible(nameVisible);
-        }
-
-        entity.setPos(pos);
-        entity.push(velocity);
-        serverLevel.addFreshEntity(entity);
     }
 
     public static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString, @Nullable String vehicleId, @Nullable String vehicleNbtString) {

@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.lucky.reader;
 
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
@@ -186,6 +187,9 @@ public class RandomEventDataReader {
         @SerializedName("nbt")
         protected String nbt = null;
 
+        @SerializedName("data_components")
+        protected JsonObject dataComponents = null;
+
         // Getters
         public String getId() {
             return id;
@@ -225,6 +229,10 @@ public class RandomEventDataReader {
 
         public String getNbt() {
             return nbt;
+        }
+
+        public JsonObject getDataComponents() {
+            return dataComponents;
         }
     }
 
