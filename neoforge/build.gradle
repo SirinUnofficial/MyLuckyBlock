@@ -37,3 +37,12 @@ neoForge {
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven { url "https://maven.architectury.dev/" }
+}
+
+dependencies {
+    compileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+}

@@ -1,5 +1,8 @@
 {
-    "myluckyblock": "我的幸运方块",
+    "myluckyblock": "MyLuckyBlock",
+    "modmenu.nameTranslation.myluckyblock": "MyLuckyBlock",
+    "modmenu.summaryTranslation.myluckyblock": "A simple lucky block mod.",
+    "modmenu.descriptionTranslation.myluckyblock": "Add a lucky block to Minecraft 1.21+ that players can break to trigger random events.",
     "itemGroup.myluckyblock.myluckyblock_group": "My Lucky Block",
     "item.myluckyblock.my_lucky_block": "Lucky Block",
     "block.myluckyblock.my_lucky_block": "Lucky Block",
@@ -9,6 +12,7 @@
     "pack.name.disable_lucky_block_worldgen":"Disable LB WorldGen",
     "pack.name.disable_lucky_block_structure":"Disable LB Structure Events",
     "pack.name.disable_lucky_block_boss":"Disable LB Vanilla BOSS(wither) Events",
+    "pack.name.disable_lucky_block_explosions":"Disable LB Huge Explosion Events",
 
     "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][DEBUG]§rLuckyEventManager is not loaded yet",
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][DEBUG]§rNo such event",

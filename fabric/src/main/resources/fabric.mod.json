@@ -18,6 +18,12 @@
     "entrypoints": {
         "main": [
             "io.github.sycamore0.myluckyblock.MyLuckyBlock"
+        ],
+        "client": [
+            "io.github.sycamore0.myluckyblock.client.MyLuckyBlockClient"
+        ],
+        "modmenu": [
+            "io.github.sycamore0.myluckyblock.client.ModMenuIntegration"
         ]
     },
     "mixins": [
@@ -30,5 +36,7 @@
         "minecraft": ">=1.21 <1.21.2",
         "java": ">=${java_version}"
     },
-    "suggests": {}
+    "suggests": {
+        "cloth-config": "*"
+    }
 }

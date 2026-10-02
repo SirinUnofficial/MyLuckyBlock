@@ -1,5 +1,8 @@
 {
     "myluckyblock": "我的幸运方块",
+    "modmenu.nameTranslation.myluckyblock": "我的幸运方块",
+    "modmenu.summaryTranslation.myluckyblock": "一个简易的幸运方块模组。",
+    "modmenu.descriptionTranslation.myluckyblock": "为1.21+添加了一个幸运方块，破坏以触发随机事件。",
     "itemGroup.myluckyblock.myluckyblock_group": "我的幸运方块",
     "item.myluckyblock.my_lucky_block": "幸运方块",
     "block.myluckyblock.my_lucky_block": "幸运方块",
@@ -9,6 +12,7 @@
     "pack.name.disable_lucky_block_worldgen":"禁用幸运方块自然生成",
     "pack.name.disable_lucky_block_structure":"禁用幸运方块建筑事件",
     "pack.name.disable_lucky_block_boss":"禁用幸运方块原版BOSS(凋灵)事件",
+    "pack.name.disable_lucky_block_explosions":"禁用幸运方块大爆炸事件",
 
     "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][调试]§rLuckyEventManager 未被加载",
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][调试]§r指定事件不存在",

@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.pack;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -17,19 +18,19 @@ public class ModPacks {
     @SubscribeEvent
     private static void setupDataPack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.SERVER_DATA) {
-            addBuiltInDataPack(event, "disable_lucky_block_worldgen");
-            addBuiltInDataPack(event, "disable_lucky_block_structure");
-            addBuiltInDataPack(event, "disable_lucky_block_boss");
-            addBuiltInDataPack(event, "disable_lucky_block_explosions");
+            addBuiltInDataPack(event, "disable_lucky_block_worldgen", ConfigManager.get().autoDisableLuckyBlockWorldgen);
+            addBuiltInDataPack(event, "disable_lucky_block_structure", ConfigManager.get().autoDisableLuckyBlockStructure);
+            addBuiltInDataPack(event, "disable_lucky_block_boss", ConfigManager.get().autoDisableLuckyBlockBoss);
+            addBuiltInDataPack(event, "disable_lucky_block_explosions", ConfigManager.get().autoDisableLuckyBlockExplosions);
         }
     }
 
-    public static void addBuiltInDataPack(AddPackFindersEvent event, String packName) {
+    private static void addBuiltInDataPack(AddPackFindersEvent event, String packName, boolean defaultEnabled) {
         event.addPackFinders(
                 ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "datapacks/" + packName),
                 PackType.SERVER_DATA,
                 Component.translatable("pack.name." + packName),
-                PackSource.create(decorateWithSource("pack.source.builtin"), false),
+                PackSource.create(decorateWithSource("pack.source.builtin"), defaultEnabled),
                 false,
                 Pack.Position.TOP
         );

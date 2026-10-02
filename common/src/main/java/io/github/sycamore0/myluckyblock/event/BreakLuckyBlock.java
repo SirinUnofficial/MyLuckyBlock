@@ -1,6 +1,6 @@
 package io.github.sycamore0.myluckyblock.event;
 
-import io.github.sycamore0.myluckyblock.Config;
+import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.block.LuckyBlockData;
@@ -50,7 +50,7 @@ public class BreakLuckyBlock {
             serverLevel.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
         }
 
-        if (!Config.ENABLE_CREATIVE_TRIGGER && player != null && player.isCreative()) {
+        if (!ConfigManager.get().enableCreativeTrigger && player != null && player.isCreative()) {
             return;
         }
 
