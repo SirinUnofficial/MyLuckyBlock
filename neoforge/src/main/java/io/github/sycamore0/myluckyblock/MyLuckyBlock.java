@@ -9,6 +9,7 @@ import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
 import io.github.sycamore0.myluckyblock.item.ModItemGroups;
 import io.github.sycamore0.myluckyblock.pack.ModPacks;
 import io.github.sycamore0.myluckyblock.platform.Services;
+import io.github.sycamore0.myluckyblock.recipe.ModRecipes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -23,6 +24,7 @@ public class MyLuckyBlock {
         ModBlocks.onInitialize(eventBus);
         ModBlockEntities.onInitialize(eventBus);
         ModItemGroups.onInitialize(eventBus);
+        ModRecipes.onInitialize(eventBus);
         NeoForge.EVENT_BUS.register(ModEventHandlers.class);
         ModPacks.onInitialize(eventBus);
 

@@ -15,16 +15,13 @@ public class ModBlocks {
 
     static {
         MY_LUCKY_BLOCK = register("my_lucky_block", new LuckyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f)), Constants.EVENT_PACK_GROUP_NAME);
+        ModBlocksCommon.setLuckyBlock(() -> MY_LUCKY_BLOCK);
     }
 
     public static <T extends Block> T register(String path, T block, String modId) {
         Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(modId, path), block);
         Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modId, path), new LuckyBlockItem(block, new Item.Properties()));
         return block;
-    }
-
-    public static LuckyBlock createNewLuckyBlock(String blockId, String modId, String eventPackGroupName, boolean includeBuiltIn, MapColor mapColor, float strength, float explosionResistance) {
-        return register(blockId, new LuckyBlock(BlockBehaviour.Properties.of().mapColor(mapColor).strength(strength).explosionResistance(explosionResistance), eventPackGroupName, includeBuiltIn), modId);
     }
 
     public static void onInitialize() {

@@ -1,0 +1,7 @@
+{
+    "type": "myluckyblock:lucky_block_modifier",
+    "modifier": {
+        "item": "minecraft:diamond"
+    },
+    "delta": 8
+}

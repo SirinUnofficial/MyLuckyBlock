@@ -1,0 +1,7 @@
+{
+    "type": "myluckyblock:lucky_block_modifier",
+    "modifier": {
+        "item": "minecraft:ominous_bottle"
+    },
+    "delta": -32
+}

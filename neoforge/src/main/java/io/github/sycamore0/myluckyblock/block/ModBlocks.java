@@ -21,6 +21,7 @@ public class ModBlocks {
     static {
         MY_LUCKY_BLOCK = BLOCKS.register(MY_LUCKY_BLOCK_ID,
                 () -> new LuckyBlock((BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5f).explosionResistance(5000000.0f))));
+        ModBlocksCommon.setLuckyBlock(MY_LUCKY_BLOCK);
         ITEMS.register(MY_LUCKY_BLOCK_ID,
                 () -> new LuckyBlockItem(MY_LUCKY_BLOCK.get(), new Item.Properties()));
     }
