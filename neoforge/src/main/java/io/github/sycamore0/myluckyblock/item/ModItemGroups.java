@@ -4,10 +4,13 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.block.LuckyBlockData;
 import io.github.sycamore0.myluckyblock.block.ModBlocks;
 import io.github.sycamore0.myluckyblock.component.ModDataComponents;
+import io.github.sycamore0.myluckyblock.lucky.addon.NeoForgeAddonLoader;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -17,6 +20,7 @@ import java.util.List;
 
 public class ModItemGroups {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
+
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MYLUCKYBLOCK_GROUP;
 
     static {
@@ -30,6 +34,9 @@ public class ModItemGroups {
     public static void buildCreativeTabContent(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == MYLUCKYBLOCK_GROUP.get()) {
             event.accept(ModBlocks.MY_LUCKY_BLOCK.get());
+            for (Holder<Block> blockHolder : NeoForgeAddonLoader.getAddonBlocks()) {
+                event.accept(blockHolder.value());
+            }
             event.accept(luckyBlockWith(50));
             event.accept(luckyBlockWith(100));
             event.accept(luckyBlockWith(-50));

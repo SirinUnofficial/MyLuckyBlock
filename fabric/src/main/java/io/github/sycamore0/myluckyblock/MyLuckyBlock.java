@@ -7,6 +7,7 @@ import io.github.sycamore0.myluckyblock.component.ModDataComponents;
 import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.item.ModItemGroups;
 import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
+import io.github.sycamore0.myluckyblock.lucky.addon.FabricAddonLoader;
 import io.github.sycamore0.myluckyblock.pack.ModPacks;
 import io.github.sycamore0.myluckyblock.recipe.ModRecipes;
 import io.github.sycamore0.myluckyblock.worldgen.ModFeatures;
@@ -15,6 +16,7 @@ import net.fabricmc.api.ModInitializer;
 public class MyLuckyBlock implements ModInitializer {
     @Override
     public void onInitialize() {
+        FabricAddonLoader.load();
         CommonClass.init();
         ConfigManager.init();
         ModDataComponents.onInitialize();

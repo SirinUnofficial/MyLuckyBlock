@@ -3,7 +3,10 @@
     "minVersion": "0.8",
     "package": "io.github.sycamore0.myluckyblock.mixin",
     "compatibilityLevel": "JAVA_21",
-    "mixins": [],
+    "mixins": [
+        "BuiltInPackSourceAccessor",
+        "MixinPackRepository"
+    ],
     "client": [],
     "server": [],
     "injectors": {

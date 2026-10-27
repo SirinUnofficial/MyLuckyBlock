@@ -7,6 +7,7 @@ import io.github.sycamore0.myluckyblock.component.ModDataComponents;
 import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
 import io.github.sycamore0.myluckyblock.item.ModItemGroups;
+import io.github.sycamore0.myluckyblock.lucky.addon.NeoForgeAddonLoader;
 import io.github.sycamore0.myluckyblock.pack.ModPacks;
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.recipe.ModRecipes;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.common.NeoForge;
 @Mod(Constants.MOD_ID)
 public class MyLuckyBlock {
     public MyLuckyBlock(IEventBus eventBus, ModContainer container) {
+        NeoForgeAddonLoader.load();
         CommonClass.init();
         ConfigManager.init();
         ModDataComponents.onInitialize(eventBus);
