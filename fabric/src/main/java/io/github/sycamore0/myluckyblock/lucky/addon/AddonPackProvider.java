@@ -31,13 +31,13 @@ public record AddonPackProvider(PackType type) implements RepositorySource {
         try {
             FolderRepositorySource.discoverPacks(addonsDir, validator, (path, factory) -> {
                 String fileName = path.getFileName().toString();
-                PackLocationInfo loc = new PackLocationInfo(
+                PackLocationInfo location = new PackLocationInfo(
                         "myluckyblock_addon/" + fileName,
                         Component.literal(fileName),
                         SOURCE,
                         Optional.empty()
                 );
-                Pack pack = Pack.readMetaAndCreate(loc, factory, this.type, SELECTION_CONFIG);
+                Pack pack = Pack.readMetaAndCreate(location, factory, this.type, SELECTION_CONFIG);
                 if (pack != null) {
                     packAdder.accept(pack);
                     Constants.LOG.info("[Addon] Registered {} as {} pack", fileName, this.type);
