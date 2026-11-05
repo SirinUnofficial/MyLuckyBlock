@@ -21,7 +21,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public String getModVersion(String modId) {
-        return ModList.get().getModContainerById(modId).get().getModInfo().getVersion().getQualifier();
+        return ModList.get().getModContainerById(modId)
+                .map(container -> container.getModInfo().getVersion().toString())
+                .orElse("");
     }
 
     @Override

@@ -43,6 +43,8 @@ public final class VersionHelper {
      * @return Version Object
      */
     private static Version parseVersion(String versionStr) {
+        versionStr = stripChannelSuffix(versionStr);
+
         /* Strip everything after the first space (if any) */
         int spacePos = versionStr.indexOf(' ');
         if (spacePos != -1) {
@@ -121,6 +123,18 @@ public final class VersionHelper {
         Version maxVersion = parseVersion(maxVersionStr);
 
         return new VersionRange(minVersion, minInclusive, maxVersion, maxInclusive);
+    }
+
+    private static String stripChannelSuffix(String versionStr) {
+        if (versionStr == null) {
+            return "";
+        }
+        int cut = versionStr.length();
+        int dash = versionStr.indexOf('-');
+        int plus = versionStr.indexOf('+');
+        if (dash >= 0) cut = Math.min(cut, dash);
+        if (plus >= 0) cut = Math.min(cut, plus);
+        return versionStr.substring(0, cut);
     }
 
     private record Version(int major, int minor, int patch, String preRelease, String build) implements Comparable<Version> {
