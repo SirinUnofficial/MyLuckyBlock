@@ -17,11 +17,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -41,52 +36,15 @@ public final class NeoForgeAddonLoader {
         if (scanned) return;
         scanned = true;
 
-        Path dir = FMLPaths.CONFIGDIR.get().resolve("myluckyblock/addons");
-        if (!Files.isDirectory(dir)) {
-            Constants.LOG.info("[Addon] No addons directory at {}, skipping.", dir);
-            return;
-        }
-
-        try (DirectoryStream<Path> ds = Files.newDirectoryStream(dir)) {
-            for (Path addonDir : ds) {
-                if (!Files.isDirectory(addonDir)) continue;
-                String name = addonDir.getFileName().toString();
-                if (name.startsWith(".")) continue;
-                scanAddonDir(addonDir);
+        Path addonsDir = FMLPaths.CONFIGDIR.get().resolve(Constants.ADDONS_PATH);
+        for (AddonSource source : AddonSource.scan(addonsDir)) {
+            for (AddonLuckyBlockDefinition definition : source.definitions()) {
+                PENDING_DEFINITIONS.add(definition);
+                Constants.LOG.info("[Addon] Queued block {} from {}", definition.id(), source.fileName());
             }
-        } catch (IOException e) {
-            Constants.LOG.error("[Addon] Failed to scan {}", dir, e);
         }
 
-        Constants.LOG.info("[Addon] Parsed {} lucky block definition(s)", PENDING_DEFINITIONS.size());
-    }
-
-    private static void scanAddonDir(Path addonDir) {
-        Path luckyDir = addonDir.resolve("lucky");
-        if (!Files.isDirectory(luckyDir)) return;
-
-        try (DirectoryStream<Path> ds = Files.newDirectoryStream(luckyDir, "*.json")) {
-            for (Path jsonFile : ds) {
-                try (Reader reader = Files.newBufferedReader(jsonFile, StandardCharsets.UTF_8)) {
-                    AddonLuckyBlockDefinition def = Constants.GSON.fromJson(reader, AddonLuckyBlockDefinition.class);
-                    if (def == null || def.id() == null || def.id().isBlank()) {
-                        Constants.LOG.warn("[Addon] Skip invalid definition: {}", jsonFile);
-                        continue;
-                    }
-                    ResourceLocation id = ResourceLocation.tryParse(def.id());
-                    if (id == null) {
-                        Constants.LOG.warn("[Addon] Invalid ResourceLocation in {}: {}", jsonFile, def.id());
-                        continue;
-                    }
-                    PENDING_DEFINITIONS.add(def);
-                    Constants.LOG.info("[Addon] Parsed block {} from {}/{}", def.id(), addonDir.getFileName(), jsonFile.getFileName());
-                } catch (Exception e) {
-                    Constants.LOG.error("[Addon] Failed to parse {}", jsonFile, e);
-                }
-            }
-        } catch (IOException e) {
-            Constants.LOG.error("[Addon] Failed to list {}", luckyDir, e);
-        }
+        Constants.LOG.info("[Addon] Parsed {} lucky block definition(s) from addon archives", PENDING_DEFINITIONS.size());
     }
 
     @SubscribeEvent

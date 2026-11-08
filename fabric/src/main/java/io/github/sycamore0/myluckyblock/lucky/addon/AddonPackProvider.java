@@ -1,19 +1,16 @@
 package io.github.sycamore0.myluckyblock.lucky.addon;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.pack.ZipPackResources;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackLocationInfo;
 import net.minecraft.server.packs.PackSelectionConfig;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.repository.FolderRepositorySource;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.server.packs.repository.RepositorySource;
-import net.minecraft.world.level.validation.DirectoryValidator;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -24,29 +21,36 @@ public record AddonPackProvider(PackType type) implements RepositorySource {
 
     @Override
     public void loadPacks(Consumer<Pack> packAdder) {
-        Path addonsDir = FabricLoader.getInstance().getConfigDir().resolve("myluckyblock/addons");
-        if (!Files.isDirectory(addonsDir)) return;
+        Path addonsDir = FabricLoader.getInstance().getConfigDir().resolve(Constants.ADDONS_PATH);
 
-        DirectoryValidator validator = new DirectoryValidator(p -> true);
-        try {
-            FolderRepositorySource.discoverPacks(addonsDir, validator, (path, factory) -> {
-                String fileName = path.getFileName().toString();
-                PackLocationInfo location = new PackLocationInfo(
-                        "myluckyblock_addon/" + fileName,
-                        Component.literal(fileName),
-                        SOURCE,
-                        Optional.empty()
+        for (AddonSource addon : AddonSource.scan(addonsDir)) {
+            if (!addon.hasPackMeta()) {
+                Constants.LOG.info("[Addon] {} has no pack.mcmeta, not registered as {} pack", addon.fileName(), type);
+                continue;
+            }
+
+            PackLocationInfo location = new PackLocationInfo(
+                    "myluckyblock_addon/" + addon.baseName(),
+                    Component.literal(addon.baseName()),
+                    SOURCE,
+                    Optional.empty()
+            );
+            try {
+                Pack pack = Pack.readMetaAndCreate(
+                        location,
+                        new ZipPackResources.Supplier(addon.path(), addon.rootPrefix()),
+                        this.type,
+                        SELECTION_CONFIG
                 );
-                Pack pack = Pack.readMetaAndCreate(location, factory, this.type, SELECTION_CONFIG);
-                if (pack != null) {
-                    packAdder.accept(pack);
-                    Constants.LOG.info("[Addon] Registered {} as {} pack", fileName, this.type);
-                } else {
-                    Constants.LOG.warn("[Addon] Failed to read pack.mcmeta in {}", fileName);
+                if (pack == null) {
+                    Constants.LOG.warn("[Addon] Failed to read pack.mcmeta in {}", addon.fileName());
+                    continue;
                 }
-            });
-        } catch (IOException e) {
-            Constants.LOG.error("[Addon] Failed to scan addons directory", e);
+                packAdder.accept(pack);
+                Constants.LOG.info("[Addon] Registered {} as {} pack", addon.fileName(), this.type);
+            } catch (RuntimeException e) {
+                Constants.LOG.error("[Addon] Failed to open {} as {} pack: {}", addon.fileName(), this.type, e.getMessage());
+            }
         }
     }
 }

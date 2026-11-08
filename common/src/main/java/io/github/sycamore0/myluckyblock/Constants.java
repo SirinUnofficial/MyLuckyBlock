@@ -20,5 +20,7 @@ public class Constants {
     public static final String EVENTS_PATH = "lucky/events";
     public static final String DISABLED_DATA_PATH = "lucky/disabled.json";
 
+    public static final String ADDONS_PATH = "myluckyblock/addons";
+
     public static final ResourceLocation DATA_LOADER_ID = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "lucky_events_loader");
 }
