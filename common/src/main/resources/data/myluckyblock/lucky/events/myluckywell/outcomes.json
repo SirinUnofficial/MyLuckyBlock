@@ -1,0 +1,291 @@
+{
+    "name": "Lucky Well Outcomes",
+    "version": "1.0",
+    "info": "Lucky well outcomes",
+    "random_events": [
+        {
+            "id": 1,
+            "actions": [
+                {
+                    "type": "place_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:beacon"
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 0,
+                                "y": -1,
+                                "z": -1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 0,
+                                "y": -1,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 0,
+                                "y": -1,
+                                "z": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 1,
+                                "y": -1,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 1,
+                                "y": -1,
+                                "z": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "spawn_mobs",
+                    "data": [
+                        {
+                            "id": "minecraft:tnt",
+                            "num": 32,
+                            "offset": {
+                                "x": 0,
+                                "y": 12,
+                                "z": 0
+                            },
+                            "spread": {
+                                "x": 3,
+                                "y": 0,
+                                "z": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "actions": [
+                {
+                    "type": "place_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:beacon"
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 0,
+                                "y": -1,
+                                "z": -1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 0,
+                                "y": -1,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 0,
+                                "y": -1,
+                                "z": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 1,
+                                "y": -1,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "offset": {
+                                "x": 1,
+                                "y": -1,
+                                "z": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:diamond",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            },
+                            "offset": {
+                                "x": 0,
+                                "y": 12,
+                                "z": 0
+                            },
+                            "spread": {
+                                "x": 3,
+                                "y": 0,
+                                "z": 3
+                            }
+                        },
+                        {
+                            "id": "minecraft:emerald",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            },
+                            "offset": {
+                                "x": 0,
+                                "y": 12,
+                                "z": 0
+                            },
+                            "spread": {
+                                "x": 3,
+                                "y": 0,
+                                "z": 3
+                            }
+                        },
+                        {
+                            "id": "minecraft:gold_ingot",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            },
+                            "offset": {
+                                "x": 0,
+                                "y": 12,
+                                "z": 0
+                            },
+                            "spread": {
+                                "x": 3,
+                                "y": 0,
+                                "z": 3
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_ingot",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            },
+                            "offset": {
+                                "x": 0,
+                                "y": 12,
+                                "z": 0
+                            },
+                            "spread": {
+                                "x": 3,
+                                "y": 0,
+                                "z": 3
+                            }
+                        },
+                        {
+                            "id": "minecraft:lapis_lazuli",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            },
+                            "offset": {
+                                "x": 0,
+                                "y": 12,
+                                "z": 0
+                            },
+                            "spread": {
+                                "x": 3,
+                                "y": 0,
+                                "z": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

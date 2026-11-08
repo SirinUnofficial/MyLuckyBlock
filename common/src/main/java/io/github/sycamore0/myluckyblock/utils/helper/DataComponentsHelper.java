@@ -3,16 +3,17 @@ package io.github.sycamore0.myluckyblock.utils.helper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
 import io.github.sycamore0.myluckyblock.Constants;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.nbt.TagParser;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.RegistryOps;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.Item;
@@ -31,20 +32,62 @@ public class DataComponentsHelper {
         if (dataComponents == null || dataComponents.isEmpty()) {
             return;
         }
-        try {
-            String snbt = jsonObjectToSnbt(dataComponents);
-            CompoundTag nbt = TagParser.parseTag(snbt);
-            RegistryOps<Tag> registryOps = RegistryOps.create(NbtOps.INSTANCE, registryAccess);
-            DataComponentPatch patch = DataComponentPatch.CODEC
-                    .parse(registryOps, nbt)
-                    .result()
-                    .orElse(DataComponentPatch.EMPTY);
-            if (!patch.equals(DataComponentPatch.EMPTY)) {
-                itemStack.applyComponents(patch);
-            }
-        } catch (Exception e) {
-            Constants.LOG.error("Failed to apply data components {}: {}", dataComponents, e.getMessage());
+
+        RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, registryAccess);
+        for (Map.Entry<String, JsonElement> entry : dataComponents.entrySet()) {
+            applyComponent(itemStack, entry.getKey(), entry.getValue(), ops);
         }
+    }
+
+    private static void applyComponent(ItemStack itemStack, String key, JsonElement value, RegistryOps<JsonElement> ops) {
+        boolean remove = key.startsWith("!");
+        String idString = remove ? key.substring(1) : key;
+        ResourceLocation id = ResourceLocation.tryParse(idString);
+        DataComponentType<?> type = id == null ? null : BuiltInRegistries.DATA_COMPONENT_TYPE.get(id);
+        if (type == null) {
+            Constants.LOG.warn("Unknown data component '{}', ignoring", key);
+            return;
+        }
+
+        if (remove) {
+            itemStack.remove((DataComponentType) type);
+            return;
+        }
+
+        Codec codec = type.codecOrThrow();
+        DataResult<?> result = codec.parse(ops, value);
+
+        if (result.result().isEmpty()) {
+            JsonElement legacy = stringifyComponents(value);
+            if (!legacy.equals(value)) {
+                DataResult<?> asLegacy = codec.parse(ops, legacy);
+                if (asLegacy.result().isPresent()) {
+                    result = asLegacy;
+                }
+            }
+        }
+
+        if (result.result().isEmpty()) {
+            String error = result.error().map(DataResult.Error::message).orElse("unknown error");
+            Constants.LOG.error("Failed to parse data component '{}' from {}: {}", key, value, error);
+            return;
+        }
+
+        itemStack.set((DataComponentType) type, (Object) result.result().orElseThrow());
+    }
+
+    private static JsonElement stringifyComponents(JsonElement element) {
+        if (element == null || element.isJsonNull() || element.isJsonPrimitive()) {
+            return element;
+        }
+        if (element.isJsonArray()) {
+            var array = new com.google.gson.JsonArray();
+            for (JsonElement child : element.getAsJsonArray()) {
+                array.add(stringifyComponents(child));
+            }
+            return array;
+        }
+        return new JsonPrimitive(element.toString());
     }
 
     public static void applyBlockEntityComponents(ServerLevel serverLevel, BlockEntity blockEntity, Block block, String blockId, JsonObject dataComponents) {
@@ -70,74 +113,5 @@ public class DataComponentsHelper {
                 container.setItem(i, items.get(i));
             }
         }
-    }
-
-    private static String jsonObjectToSnbt(JsonObject jsonObject) {
-        StringBuilder sb = new StringBuilder("{");
-        boolean first = true;
-        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-            if (!first) sb.append(',');
-            first = false;
-            sb.append(quoteSnbtString(entry.getKey()))
-                    .append(':')
-                    .append(jsonElementToSnbt(entry.getValue()));
-        }
-        sb.append('}');
-        return sb.toString();
-    }
-
-    private static String jsonElementToSnbt(JsonElement element) {
-        if (element == null || element.isJsonNull()) {
-            return "null";
-        }
-        if (element.isJsonPrimitive()) {
-            JsonPrimitive prim = element.getAsJsonPrimitive();
-            if (prim.isBoolean() || prim.isNumber()) {
-                return prim.getAsString();
-            }
-            String s = prim.getAsString();
-            if (s.isEmpty()) {
-                return "\"\"";
-            }
-            if (s.startsWith("{") || s.startsWith("[")) {
-                return s;
-            }
-            if (s.equals("true") || s.equals("false")) {
-                return s;
-            }
-            if (s.matches("-?\\d+[bBsSlL]?") || s.matches("-?\\d+\\.\\d+[fFdD]?")) {
-                return s;
-            }
-            return quoteSnbtString(s);
-        }
-        if (element.isJsonArray()) {
-            StringBuilder sb = new StringBuilder("[");
-            boolean first = true;
-            for (JsonElement e : element.getAsJsonArray()) {
-                if (!first) sb.append(',');
-                first = false;
-                sb.append(jsonElementToSnbt(e));
-            }
-            sb.append(']');
-            return sb.toString();
-        }
-        if (element.isJsonObject()) {
-            return jsonObjectToSnbt(element.getAsJsonObject());
-        }
-        return "null";
-    }
-
-    private static String quoteSnbtString(String s) {
-        StringBuilder sb = new StringBuilder(s.length() + 2);
-        sb.append('"');
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '"' || c == '\\') {
-                sb.append('\\');
-            }
-            sb.append(c);
-        }
-        sb.append('"');
-        return sb.toString();
     }
 }

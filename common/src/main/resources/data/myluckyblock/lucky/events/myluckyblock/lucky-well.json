@@ -1,0 +1,54 @@
+{
+    "name": "Lucky Well",
+    "version": "1.0",
+    "info": "Build a lucky well",
+    "random_events": [
+        {
+            "id": 1,
+            "actions": [
+                {
+                    "type": "lucky_well",
+                    "data": {
+                        "lucky_block": {
+                            "id": "myluckyblock:my_lucky_block",
+                            "data_components": {
+                                "minecraft:block_entity_data": {
+                                    "id": "myluckyblock:my_lucky_block",
+                                    "tag": {
+                                        "is_limited_outcomes": true,
+                                        "outcomes": [
+                                            "myluckywell:outcomes#1",
+                                            "myluckywell:outcomes#2"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "wall_block": "minecraft:cobblestone",
+                        "fence_block": "minecraft:cherry_fence",
+                        "lid_block": "minecraft:cherry_stairs",
+                        "glass_block": "minecraft:pink_stained_glass",
+                        "plate_block": "minecraft:oak_pressure_plate",
+                        "water_block": "minecraft:water"
+                    }
+                },
+                {
+                    "type": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:gold_nugget",
+                            "num": 1,
+                            "pos_src": 1,
+                            "data_components": {
+                                "minecraft:custom_name": {
+                                    "text": "Coin",
+                                    "italic": false
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

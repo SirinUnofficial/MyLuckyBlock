@@ -83,14 +83,15 @@ public class LuckyEventExecutor {
                 count = dropItem.getNum();
             }
 
-            LuckyEventFunctions.dropItems(context.level(), context.resolve(dropItem.getPosSrc(), dropItem.getOffset()), dropItem.getId(), count, dropItem.getName(), dropItem.isNameVisible(), dropItem.getDesc(), dropItem.getNbt());
+            Vec3 pos = withSpread(context.level(), context.resolve(dropItem.getPosSrc(), dropItem.getOffset()), dropItem.getSpread());
+            LuckyEventFunctions.dropItems(context.level(), pos, dropItem.getId(), count, dropItem.getName(), dropItem.isNameVisible(), dropItem.getDesc(), dropItem.getNbt(), dropItem.getDataComponents());
         }
     }
 
     public static void runPlaceBlocks(ActionContext context, @Nullable List<RandomEventDataReader.PlaceBlock> blocks) {
         if (blocks == null || blocks.isEmpty()) return;
         for (RandomEventDataReader.PlaceBlock placeBlock : blocks) {
-            LuckyEventFunctions.placeBlock(context.level(), context.resolve(placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId(), placeBlock.getNbt(), placeBlock.getDataComponents());
+            LuckyEventFunctions.placeBlock(context.level(), context.resolve(placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId(), placeBlock.getState(), placeBlock.getNbt(), placeBlock.getDataComponents());
         }
     }
 
@@ -135,15 +136,16 @@ public class LuckyEventExecutor {
             String nbtString = spawnMob.getNbt();
 
             for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
+                Vec3 pos = withSpread(context.level(), context.resolve(spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getSpread());
                 if (Objects.equals(spawnMob.getId(), "minecraft:item") || Objects.equals(spawnMob.getId(), "item")) {
                     Constants.LOG.warn("dropItemsByNbt is depreciated! Please use drop_items! nbt: {}", nbtString);
                     try {
-                        LuckyEventFunctions.dropItems(context.level(), context.resolve(spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
+                        LuckyEventFunctions.dropItems(context.level(), pos, spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
                     } catch (Exception e) {
                         Constants.LOG.error("nbt: {}, e: {}", nbtString, e.toString());
                     }
                 } else {
-                    LuckyEventFunctions.spawnMob(context.level(), context.resolve(spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
+                    LuckyEventFunctions.spawnMob(context.level(), pos, spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
                 }
             }
         }
@@ -215,5 +217,18 @@ public class LuckyEventExecutor {
             basePos = PosHelper.parseBlockPos(blockPos);
         }
         return PosHelper.calcOffset(basePos, offset);
+    }
+
+    private static Vec3 withSpread(ServerLevel level, Vec3 pos, RandomEventDataReader.Vector3 spread) {
+        double x = Math.abs(spread.getX());
+        double y = Math.abs(spread.getY());
+        double z = Math.abs(spread.getZ());
+        if (x == 0.0 && y == 0.0 && z == 0.0) {
+            return pos;
+        }
+        return pos.add(
+                Mth.randomBetween(level.getRandom(), (float) -x, (float) x),
+                Mth.randomBetween(level.getRandom(), (float) -y, (float) y),
+                Mth.randomBetween(level.getRandom(), (float) -z, (float) z));
     }
 }

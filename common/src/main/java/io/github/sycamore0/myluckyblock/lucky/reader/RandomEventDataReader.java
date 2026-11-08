@@ -194,6 +194,9 @@ public class RandomEventDataReader {
         @SerializedName("offset")
         protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
+        @SerializedName("spread")
+        protected Vector3 spread = new Vector3(0.0, 0.0, 0.0);
+
         @SerializedName("name")
         protected String name = null;
 
@@ -253,6 +256,10 @@ public class RandomEventDataReader {
         public JsonObject getDataComponents() {
             return dataComponents;
         }
+
+        public Vector3 getSpread() {
+            return spread;
+        }
     }
 
     public static class PlaceBlock {
@@ -270,6 +277,9 @@ public class RandomEventDataReader {
 
         @SerializedName("data_components")
         protected JsonObject dataComponents = null;
+
+        @SerializedName("state")
+        protected JsonObject state = null;
 
         // Getters
         public String getId() {
@@ -290,6 +300,10 @@ public class RandomEventDataReader {
 
         public JsonObject getDataComponents() {
             return dataComponents;
+        }
+
+        public JsonObject getState() {
+            return state;
         }
     }
 
@@ -463,6 +477,9 @@ public class RandomEventDataReader {
         @SerializedName("vehicle_nbt")
         protected String vehicleNbt = null;
 
+        @SerializedName("spread")
+        protected Vector3 spread = new Vector3(0.0, 0.0, 0.0);
+
         // Getters
         public PosSrc getPosSrc() {
             return PosSrc.fromValue(posSrc);
@@ -522,6 +539,10 @@ public class RandomEventDataReader {
 
         public String getVehicleNbt() {
             return vehicleNbt;
+        }
+
+        public Vector3 getSpread() {
+            return spread;
         }
     }
 

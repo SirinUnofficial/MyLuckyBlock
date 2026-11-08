@@ -72,5 +72,7 @@ final class BuiltinActions {
         LuckyActions.register("execute_commands", (context, step) ->
                 LuckyEventExecutor.runExecuteCommands(context,
                         LuckyActions.payload(step, RandomEventDataReader.ExecuteCommand.class)));
+
+        LuckyActions.register("lucky_well", WellAction::execute);
     }
 }

@@ -71,4 +71,16 @@ public final class LuckyActions {
         }
         return parsed == null ? List.of() : parsed;
     }
+
+    @Nullable
+    public static <T> T payloadObject(JsonObject step, Class<T> type) {
+        if (step == null) {
+            return null;
+        }
+        JsonElement element = step.get("data");
+        if (element == null || element.isJsonNull() || !element.isJsonObject()) {
+            return null;
+        }
+        return Constants.GSON.fromJson(element, type);
+    }
 }

@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.lucky;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.sycamore0.myluckyblock.Constants;
@@ -36,10 +37,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
@@ -51,6 +54,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class LuckyEventFunctions {
@@ -67,11 +71,8 @@ public class LuckyEventFunctions {
             itemStack = NbtHelper.createItemStackWithNBT(itemStack, nbtString, serverLevel.registryAccess());
         }
 
-        ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
-
+        ItemEntity itemEntity;
         if (name != null) {
-            itemEntity.setCustomName(Component.translatable(name));
-            itemEntity.setCustomNameVisible(nameVisible);
             itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(name));
         }
 
@@ -84,16 +85,109 @@ public class LuckyEventFunctions {
             DataComponentsHelper.applyItemComponents(itemStack, dataComponents, serverLevel.registryAccess());
         }
 
+        itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);
+        if (name != null) {
+            itemEntity.setCustomName(Component.translatable(name));
+            itemEntity.setCustomNameVisible(nameVisible);
+        }
+
         itemEntity.setPos(pos);
         serverLevel.addFreshEntity(itemEntity);
     }
 
-    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId, @Nullable String nbtString, @Nullable JsonObject dataComponents) {
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
-        BlockState blockState = block.defaultBlockState();
+    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId, @Nullable JsonObject state, @Nullable String nbtString, @Nullable JsonObject dataComponents) {
+        BlockState blockState = resolveBlockState(blockId, state);
+        if (blockState == null) {
+            return;
+        }
         BlockPos blockPos = PosHelper.parseVec3d(pos);
         serverLevel.setBlockAndUpdate(blockPos, blockState);
+        applyBlockEntityData(serverLevel, blockPos, blockId, nbtString, dataComponents);
+    }
 
+    @Nullable
+    public static BlockState resolveBlockState(String blockId, @Nullable JsonObject state) {
+        String id = blockId;
+        JsonObject inline = null;
+        int bracket = blockId.indexOf('[');
+        if (bracket >= 0) {
+            int end = blockId.lastIndexOf(']');
+            if (end > bracket) {
+                id = blockId.substring(0, bracket);
+                inline = parseInlineState(blockId.substring(bracket + 1, end));
+            }
+        }
+
+        ResourceLocation location;
+        try {
+            location = ResourceLocation.parse(id.trim());
+        } catch (Exception e) {
+            Constants.LOG.warn("Invalid block id '{}': {}", blockId, e.getMessage());
+            return null;
+        }
+
+        Block block = BuiltInRegistries.BLOCK.get(location);
+        if (block == Blocks.AIR && !"minecraft:air".equals(location.toString())) {
+            Constants.LOG.warn("Unknown block id '{}', skipping placement", blockId);
+            return null;
+        }
+
+        BlockState blockState = block.defaultBlockState();
+        blockState = applyState(blockState, inline);
+        return applyState(blockState, state);
+    }
+
+    private static BlockState applyState(BlockState blockState, @Nullable JsonObject properties) {
+        if (properties == null || properties.isEmpty()) {
+            return blockState;
+        }
+        for (Map.Entry<String, JsonElement> entry : properties.entrySet()) {
+            JsonElement value = entry.getValue();
+            if (value == null || !value.isJsonPrimitive()) {
+                Constants.LOG.warn("Ignoring block state property '{}': expected a plain value, got {}", entry.getKey(), value);
+                continue;
+            }
+            blockState = applyProperty(blockState, entry.getKey(), value.getAsString());
+        }
+        return blockState;
+    }
+
+    private static BlockState applyProperty(BlockState blockState, String name, String value) {
+        Property<?> property = blockState.getBlock().getStateDefinition().getProperty(name);
+        if (property == null) {
+            Constants.LOG.warn("Block {} has no block state property '{}', ignoring", blockState.getBlock(), name);
+            return blockState;
+        }
+        return applyPropertyValue(blockState, property, value);
+    }
+
+    private static BlockState applyPropertyValue(BlockState blockState, Property property, String value) {
+        Optional parsed = property.getValue(value);
+        if (parsed.isEmpty()) {
+            Constants.LOG.warn("Invalid value '{}' for block state property '{}' (allowed: {}), ignoring",
+                    value, property.getName(), property.getPossibleValues());
+            return blockState;
+        }
+        return blockState.setValue(property, (Comparable) parsed.get());
+    }
+
+    @Nullable
+    private static JsonObject parseInlineState(String text) {
+        JsonObject properties = new JsonObject();
+        for (String pair : text.split(",")) {
+            int split = pair.indexOf('=');
+            if (split <= 0) {
+                if (!pair.isBlank()) {
+                    Constants.LOG.warn("Ignoring malformed block state entry '{}'", pair.trim());
+                }
+                continue;
+            }
+            properties.addProperty(pair.substring(0, split).trim(), pair.substring(split + 1).trim());
+        }
+        return properties.isEmpty() ? null : properties;
+    }
+
+    public static void applyBlockEntityData(ServerLevel serverLevel, BlockPos blockPos, String blockId, @Nullable String nbtString, @Nullable JsonObject dataComponents) {
         boolean hasComponents = dataComponents != null && !dataComponents.isEmpty();
         boolean hasNbt = nbtString != null && !nbtString.isBlank();
         if (!hasComponents && !hasNbt) {
@@ -120,10 +214,12 @@ public class LuckyEventFunctions {
         }
 
         if (hasComponents) {
+            Block block = serverLevel.getBlockState(blockPos).getBlock();
             DataComponentsHelper.applyBlockEntityComponents(serverLevel, blockEntity, block, blockId, dataComponents);
         }
 
         blockEntity.setChanged();
+        BlockState blockState = serverLevel.getBlockState(blockPos);
         serverLevel.sendBlockUpdated(blockPos, blockState, blockState, Block.UPDATE_ALL);
     }
 
