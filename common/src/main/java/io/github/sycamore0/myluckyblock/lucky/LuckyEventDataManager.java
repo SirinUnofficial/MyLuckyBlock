@@ -25,6 +25,10 @@ public class LuckyEventDataManager {
 
     public void loadEvents(String group, boolean includeBuiltIn) {
         Map<String, List<EventPackDataReader>> all = listener.getPackData();
+        if (all == null) {
+            Constants.LOG.warn("Event pack data is not loaded yet, cannot load group {}", group);
+            return;
+        }
 
         List<EventPackDataReader> rawPacks = new ArrayList<>(all.getOrDefault(group, List.of()));
         if (includeBuiltIn && !group.equals(Constants.EVENT_PACK_GROUP_NAME)) {
@@ -50,7 +54,11 @@ public class LuckyEventDataManager {
     }
 
     public void ensureAllGroupsLoaded() {
-        for (String group : listener.getPackData().keySet()) {
+        Map<String, List<EventPackDataReader>> all = listener.getPackData();
+        if (all == null) {
+            return;
+        }
+        for (String group : all.keySet()) {
             if (!isLoaded(group)) {
                 loadEvents(group, false);
             }
@@ -169,6 +177,10 @@ public class LuckyEventDataManager {
             }
         }
         return true;
+    }
+
+    public boolean isDataReady() {
+        return listener.getPackData() != null;
     }
 
     public record LoadedPack(

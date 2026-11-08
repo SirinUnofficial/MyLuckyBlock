@@ -4,6 +4,7 @@ import io.github.sycamore0.myluckyblock.block.LuckyBlock;
 import io.github.sycamore0.myluckyblock.block.LuckyBlockData;
 import io.github.sycamore0.myluckyblock.block.LuckyBlockEntity;
 import io.github.sycamore0.myluckyblock.event.listener.LuckyEventsReloadListener;
+import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.core.BlockPos;
@@ -33,5 +34,6 @@ public class ModEventHandlers {
 
         LuckyEventsReloadListener reloadListener = new LuckyEventsReloadListener();
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(reloadListener);
+        BreakLuckyBlock.manager = new LuckyEventDataManager(reloadListener);
     }
 }

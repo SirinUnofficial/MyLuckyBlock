@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BreakLuckyBlock {
-    public static LuckyEventDataManager manager;
+    public static volatile LuckyEventDataManager manager;
 
     public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos blockPos, BlockState blockState) {
         breakLuckyBlock(level, player, blockPos, blockState, null);
@@ -34,6 +34,11 @@ public class BreakLuckyBlock {
 
     public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos blockPos, BlockState blockState, @Nullable LuckyBlockData prefetchedData) {
         if (!(level instanceof ServerLevel serverLevel && blockState.getBlock() instanceof LuckyBlock luckyBlock)) {
+            return;
+        }
+
+        if (manager == null || !manager.isDataReady()) {
+            Constants.LOG.warn("Lucky event data is not ready yet, ignoring break at {}", blockPos);
             return;
         }
 

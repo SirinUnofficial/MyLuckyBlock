@@ -1,9 +1,7 @@
 package io.github.sycamore0.myluckyblock.event.listener;
 
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
-import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
 import io.github.sycamore0.myluckyblock.lucky.reader.DisabledDataReader;
 import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
 import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
@@ -35,7 +33,6 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
         Set<String> disabled = loadDisabled(manager);
         packData = loadEvents(manager, disabled);
         onReload.run();
-        BreakLuckyBlock.manager = new LuckyEventDataManager(this);
     }
 
     private Set<String> loadDisabled(ResourceManager manager) {
