@@ -18,6 +18,7 @@
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][調試]§r指定事件不存在",
     "commands.myluckyblock.triggered": "§6[MyLuckyBlock][調試]§r觸發事件 %s#%s",
     "commands.myluckyblock.list": "§6[MyLuckyBlock]§r %s 事件包已加載",
+    "commands.myluckyblock.addons": "§6[MyLuckyBlock]§r 已載入 %s 個附加包（%s）",
 
     "tooltip.myluckyblock.lucky_value": "幸運值: %s",
     "tooltip.myluckyblock.hold_shift": "按住 <Shift> 查看事件概率",

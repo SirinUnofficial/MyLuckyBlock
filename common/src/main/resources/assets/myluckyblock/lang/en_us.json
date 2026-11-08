@@ -18,6 +18,7 @@
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][DEBUG]§rNo such event",
     "commands.myluckyblock.triggered": "§6[MyLuckyBlock][DEBUG]§rTriggered event %s#%s",
     "commands.myluckyblock.list": "§6[MyLuckyBlock]§r %s event pack(s) loaded",
+    "commands.myluckyblock.addons": "§6[MyLuckyBlock]§r %s addon archive(s) loaded from %s",
 
     "tooltip.myluckyblock.lucky_value": "Lucky Value: %s",
     "tooltip.myluckyblock.hold_shift": "Hold <Shift> to see event probabilities",

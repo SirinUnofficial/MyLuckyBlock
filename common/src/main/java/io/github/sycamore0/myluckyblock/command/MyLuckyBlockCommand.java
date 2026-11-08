@@ -11,20 +11,27 @@ import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
 import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
 import io.github.sycamore0.myluckyblock.lucky.LuckyEventExecutor;
+import io.github.sycamore0.myluckyblock.lucky.addon.AddonLuckyBlockDefinition;
+import io.github.sycamore0.myluckyblock.lucky.addon.AddonSource;
 import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
+import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.StringHelper;
 import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MyLuckyBlockCommand {
     private static final SimpleCommandExceptionType ERR_NOT_LOADED = new SimpleCommandExceptionType(Component.translatable("commands.myluckyblock.not_loaded"));
@@ -64,6 +71,10 @@ public class MyLuckyBlockCommand {
                         .then(Commands.literal("list")
                                 .requires(src -> src.hasPermission(1))
                                 .executes(MyLuckyBlockCommand::executeList))
+
+                        .then(Commands.literal("addons")
+                                .requires(src -> src.hasPermission(1))
+                                .executes(MyLuckyBlockCommand::executeAddons))
         );
     }
 
@@ -128,6 +139,54 @@ public class MyLuckyBlockCommand {
             }
         }
         return loadedPacks.size();
+    }
+
+    private static int executeAddons(CommandContext<CommandSourceStack> ctx) {
+        CommandSourceStack source = ctx.getSource();
+        Path addonsDir = Services.PLATFORM.getConfigDir().resolve(Constants.ADDONS_PATH);
+        List<AddonSource> addons = AddonSource.scan(addonsDir);
+
+        Component header = Component.translatable("commands.myluckyblock.addons", addons.size(), addonsDir.toString());
+        source.sendSuccess(() -> header, false);
+
+        if (addons.isEmpty()) {
+            source.sendSuccess(
+                    () -> Component.literal("  (none)").withStyle(ChatFormatting.GRAY),
+                    false
+            );
+            return 0;
+        }
+
+        for (AddonSource addon : addons) {
+            for (Component line : buildAddonLines(addon)) {
+                source.sendSuccess(() -> line, false);
+            }
+        }
+        return addons.size();
+    }
+
+    private static List<Component> buildAddonLines(AddonSource addon) {
+        String kind = addon.hasPackMeta() ? "resource pack" : "blocks only";
+        List<Component> lines = new ArrayList<>(1 + addon.definitions().size());
+        lines.add(Component.literal(addon.fileName() + " (" + addon.definitions().size() + " block(s), " + kind + ")")
+                .withStyle(ChatFormatting.AQUA));
+        for (AddonLuckyBlockDefinition definition : addon.definitions()) {
+            AddonLuckyBlockDefinition.Properties properties = definition.propertiesOrDefault();
+            String suffix = isBlockRegistered(definition.id()) ? "" : " (not registered)";
+            lines.add(Component.literal(String.format(Locale.ROOT, "  - %s -> group=%s, strength=%.2f, resistance=%.1f%s",
+                            definition.id(),
+                            definition.eventPackGroupNameOrDefault(Constants.EVENT_PACK_GROUP_NAME),
+                            properties.strengthOrDefault(),
+                            properties.explosionResistanceOrDefault(),
+                            suffix))
+                    .withStyle(ChatFormatting.GRAY));
+        }
+        return lines;
+    }
+
+    private static boolean isBlockRegistered(String id) {
+        ResourceLocation location = ResourceLocation.tryParse(id);
+        return location != null && BuiltInRegistries.BLOCK.containsKey(location);
     }
 
     private static List<Component> buildPackLines(LuckyEventDataManager.LoadedPack pack) {
