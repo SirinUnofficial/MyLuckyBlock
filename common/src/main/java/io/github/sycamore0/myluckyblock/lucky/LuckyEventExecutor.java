@@ -90,7 +90,7 @@ public class LuckyEventExecutor {
     public static void runPlaceBlocks(ActionContext context, @Nullable List<RandomEventDataReader.PlaceBlock> blocks) {
         if (blocks == null || blocks.isEmpty()) return;
         for (RandomEventDataReader.PlaceBlock placeBlock : blocks) {
-            LuckyEventFunctions.placeBlock(context.level(), context.resolve(placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId());
+            LuckyEventFunctions.placeBlock(context.level(), context.resolve(placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId(), placeBlock.getNbt(), placeBlock.getDataComponents());
         }
     }
 

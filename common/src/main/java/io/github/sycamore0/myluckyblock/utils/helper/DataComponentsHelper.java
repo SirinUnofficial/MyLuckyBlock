@@ -4,20 +4,30 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import io.github.sycamore0.myluckyblock.Constants;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.RegistryOps;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemContainerContents;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
 public class DataComponentsHelper {
-    public static void applyDataComponents(ItemStack itemStack, @Nullable JsonObject dataComponents, RegistryAccess registryAccess) {
+    public static void applyItemComponents(ItemStack itemStack, @Nullable JsonObject dataComponents, RegistryAccess registryAccess) {
         if (dataComponents == null || dataComponents.isEmpty()) {
             return;
         }
@@ -34,6 +44,31 @@ public class DataComponentsHelper {
             }
         } catch (Exception e) {
             Constants.LOG.error("Failed to apply data components {}: {}", dataComponents, e.getMessage());
+        }
+    }
+
+    public static void applyBlockEntityComponents(ServerLevel serverLevel, BlockEntity blockEntity, Block block, String blockId, JsonObject dataComponents) {
+        Item item = block.asItem();
+        if (item == Items.AIR) {
+            Constants.LOG.warn("Block {} has no item form, ignoring 'data_components'", blockId);
+            return;
+        }
+
+        ItemStack stack = new ItemStack(item);
+        DataComponentsHelper.applyItemComponents(stack, dataComponents, serverLevel.registryAccess());
+
+        CustomData blockEntityData = stack.get(DataComponents.BLOCK_ENTITY_DATA);
+        if (blockEntityData != null) {
+            blockEntityData.loadInto(blockEntity, serverLevel.registryAccess());
+        }
+
+        ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
+        if (contents != null && blockEntity instanceof Container container) {
+            NonNullList<ItemStack> items = NonNullList.withSize(container.getContainerSize(), ItemStack.EMPTY);
+            contents.copyInto(items);
+            for (int i = 0; i < items.size(); i++) {
+                container.setItem(i, items.get(i));
+            }
         }
     }
 

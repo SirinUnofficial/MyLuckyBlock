@@ -81,18 +81,50 @@ public class LuckyEventFunctions {
         }
 
         if (dataComponents != null && !dataComponents.isEmpty()) {
-            DataComponentsHelper.applyDataComponents(itemStack, dataComponents, serverLevel.registryAccess());
+            DataComponentsHelper.applyItemComponents(itemStack, dataComponents, serverLevel.registryAccess());
         }
 
         itemEntity.setPos(pos);
         serverLevel.addFreshEntity(itemEntity);
     }
 
-    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId) {
+    public static void placeBlock(ServerLevel serverLevel, Vec3 pos, String blockId, @Nullable String nbtString, @Nullable JsonObject dataComponents) {
         Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId));
         BlockState blockState = block.defaultBlockState();
         BlockPos blockPos = PosHelper.parseVec3d(pos);
         serverLevel.setBlockAndUpdate(blockPos, blockState);
+
+        boolean hasComponents = dataComponents != null && !dataComponents.isEmpty();
+        boolean hasNbt = nbtString != null && !nbtString.isBlank();
+        if (!hasComponents && !hasNbt) {
+            return;
+        }
+
+        BlockEntity blockEntity = serverLevel.getBlockEntity(blockPos);
+        if (blockEntity == null) {
+            Constants.LOG.warn("Block {} has no block entity, ignoring 'nbt' and 'data_components'", blockId);
+            return;
+        }
+
+        if (hasNbt) {
+            CompoundTag nbt;
+            try {
+                nbt = NbtHelper.generateNbt(nbtString);
+            } catch (IllegalArgumentException e) {
+                Constants.LOG.warn("Failed to parse 'nbt' for block {}: {}", blockId, e.getMessage());
+                nbt = null;
+            }
+            if (nbt != null) {
+                blockEntity.loadWithComponents(nbt, serverLevel.registryAccess());
+            }
+        }
+
+        if (hasComponents) {
+            DataComponentsHelper.applyBlockEntityComponents(serverLevel, blockEntity, block, blockId, dataComponents);
+        }
+
+        blockEntity.setChanged();
+        serverLevel.sendBlockUpdated(blockPos, blockState, blockState, Block.UPDATE_ALL);
     }
 
     public static void placeChest(ServerLevel serverLevel, BlockPos blockPos, String chestBlockId, String lootTableId, long seed) {

@@ -265,6 +265,12 @@ public class RandomEventDataReader {
         @SerializedName("offset")
         protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
 
+        @SerializedName("nbt")
+        protected String nbt = null;
+
+        @SerializedName("data_components")
+        protected JsonObject dataComponents = null;
+
         // Getters
         public String getId() {
             return id;
@@ -276,6 +282,14 @@ public class RandomEventDataReader {
 
         public Vec3 getOffset() {
             return new Vec3(offset.getX(), offset.getY(), offset.getZ());
+        }
+
+        public String getNbt() {
+            return nbt;
+        }
+
+        public JsonObject getDataComponents() {
+            return dataComponents;
         }
     }
 
