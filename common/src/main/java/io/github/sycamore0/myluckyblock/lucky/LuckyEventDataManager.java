@@ -1,7 +1,10 @@
 package io.github.sycamore0.myluckyblock.lucky;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.event.listener.ILuckyEventsReloadListener;
+import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
 import io.github.sycamore0.myluckyblock.lucky.reader.DependenciesDataReader;
@@ -42,6 +45,7 @@ public class LuckyEventDataManager {
                 continue;
             }
             LoadedPack loadedPack = LoadedPack.from(packData);
+            validateActions(packData.getName(), loadedPack);
             if (loaded.putIfAbsent(loadedPack.eventPackId(), loadedPack) != null) {
                 Constants.LOG.warn("Duplicate pack eventPackId {} in group {}, keeping first", loadedPack.eventPackId(), group);
             }
@@ -51,6 +55,29 @@ public class LuckyEventDataManager {
 
         int totalEvents = loaded.values().stream().mapToInt(LoadedPack::eventCount).sum();
         Constants.LOG.info("Loaded group {}: {} packs, {} events", group, loaded.size(), totalEvents);
+    }
+
+    private static void validateActions(String packName, LoadedPack pack) {
+        for (RandomEventDataReader event : pack.allEvents()) {
+            if (event.hasActions() && event.hasLegacyActions()) {
+                Constants.LOG.warn("Pack {}: event {} mixes 'actions' with the legacy action fields, 'actions' runs first", packName, event.getEventId());
+            }
+            List<JsonObject> steps = event.getActions();
+            for (int i = 0; i < steps.size(); i++) {
+                JsonObject step = steps.get(i);
+                if (step == null) continue;
+
+                JsonElement typeElement = step.get("type");
+                if (typeElement == null || !typeElement.isJsonPrimitive()) {
+                    Constants.LOG.warn("Pack {}: event {} action #{} has no 'type'", packName, event.getEventId(), i + 1);
+                    continue;
+                }
+                String type = typeElement.getAsString();
+                if (!LuckyActions.isRegistered(type)) {
+                    Constants.LOG.warn("Pack {}: event {} action #{} uses unknown type '{}'", packName, event.getEventId(), i + 1, type);
+                }
+            }
+        }
     }
 
     public void ensureAllGroupsLoaded() {

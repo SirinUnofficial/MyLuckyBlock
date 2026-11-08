@@ -58,6 +58,9 @@ public class RandomEventDataReader {
     @SerializedName("execute_commands")
     protected List<ExecuteCommand> executeCommands;
 
+    @SerializedName("actions")
+    protected List<JsonObject> actions;
+
     public EventType getType() { return type; }
     public void setType(EventType type) { this.type = type; }
 
@@ -102,6 +105,22 @@ public class RandomEventDataReader {
     }
     public boolean hasExecuteCommands() {
         return executeCommands != null && !executeCommands.isEmpty();
+    }
+
+    public boolean hasActions() {
+        return actions != null && !actions.isEmpty();
+    }
+
+    public List<JsonObject> getActions() {
+        return actions == null ? List.of() : actions;
+    }
+
+    public boolean hasLegacyActions() {
+        return hasDropItems() || hasPlaceBlocks() || hasPlaceChests() || hasDropLoots()
+                || hasFallBlocks() || hasGivePotionEffects() || hasSpawnMobs()
+                || hasSendMessages() || hasDisplayMessages() || hasCreateExplosions()
+                || hasAddParticles() || hasPlaySounds() || hasLoadStructures()
+                || hasExecuteCommands();
     }
 
     public List<DropItem> getDropItems() {

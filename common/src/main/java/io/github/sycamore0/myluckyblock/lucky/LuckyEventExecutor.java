@@ -1,6 +1,11 @@
 package io.github.sycamore0.myluckyblock.lucky;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
+import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
+import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
 import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
@@ -11,176 +16,185 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LuckyEventExecutor {
     public static void executeLuckyFunction(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
+        ActionContext context = new ActionContext(serverLevel, player, blockPos);
         try {
-            handleDropItems(serverLevel, player, blockPos, function);
-            handlePlaceBlocks(serverLevel, player, blockPos, function);
-            handlePlaceChests(serverLevel, player, blockPos, function);
-            handleDropLoots(serverLevel, player, blockPos, function);
-            handleFallBlocks(serverLevel, player, blockPos, function);
-            handleGivePotionEffects(serverLevel, player, blockPos, function);
-            handleSpawnMobs(serverLevel, player, blockPos, function);
-            handleSendMessages(serverLevel, player, blockPos, function);
-            handleDisplayMessages(serverLevel, player, blockPos, function);
-            handleCreateExplosions(serverLevel, player, blockPos, function);
-            handleAddParticles(serverLevel, player, blockPos, function);
-            handlePlaySounds(serverLevel, player, blockPos, function);
-            handleLoadStructures(serverLevel, player, blockPos, function);
-            handleExecuteCommands(serverLevel, player, blockPos, function);
+            runActions(context, function);
+
+            runDropItems(context, function.getDropItems());
+            runPlaceBlocks(context, function.getPlaceBlocks());
+            runPlaceChests(context, function.getPlaceChests());
+            runDropLoots(context, function.getDropLoots());
+            runFallBlocks(context, function.getFallBlocks());
+            runGivePotionEffects(context, function.getGivePotionEffects());
+            runSpawnMobs(context, function.getSpawnMobs());
+            runSendMessages(context, function.getSendMessages());
+            runDisplayMessages(context, function.getDisplayMessages());
+            runCreateExplosions(context, function.getCreateExplosions());
+            runAddParticles(context, function.getAddParticles());
+            runPlaySounds(context, function.getPlaySounds());
+            runLoadStructures(context, function.getLoadStructures());
+            runExecuteCommands(context, function.getExecuteCommands());
         } catch (Exception e) {
             Constants.LOG.error("Event {} execution aborted due to fatal error {}", function.getEventId(), e);
         }
     }
 
-    private static void handleDropItems(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasDropItems()) {
-            for (RandomEventDataReader.DropItem dropItem : function.getDropItems()) {
-                boolean isUseRandom = dropItem.isUseRandom();
-                int count;
-                if (isUseRandom) {
-                    count = getRandomNumber(dropItem.getRandomNum().getMin(), dropItem.getRandomNum().getMax());
-                } else {
-                    count = dropItem.getNum();
-                }
+    private static void runActions(ActionContext context, RandomEventDataReader function) {
+        List<JsonObject> steps = function.getActions();
+        for (int i = 0; i < steps.size(); i++) {
+            JsonObject step = steps.get(i);
+            if (step == null) continue;
 
-                LuckyEventFunctions.dropItems(serverLevel, resolvePosition(blockPos, player, dropItem.getPosSrc(), dropItem.getOffset()), dropItem.getId(), count, dropItem.getName(), dropItem.isNameVisible(), dropItem.getDesc(), dropItem.getNbt());
+            JsonElement typeElement = step.get("type");
+            if (typeElement == null || !typeElement.isJsonPrimitive()) {
+                Constants.LOG.warn("Event {} action #{} has no 'type', skipping", function.getEventId(), i + 1);
+                continue;
+            }
+
+            String type = typeElement.getAsString();
+            LuckyAction action = LuckyActions.get(type);
+            if (action == null) {
+                Constants.LOG.warn("Event {} action #{} uses unknown type '{}', skipping", function.getEventId(), i + 1, type);
+                continue;
+            }
+
+            try {
+                action.execute(context, step);
+            } catch (Exception e) {
+                Constants.LOG.error("Event {} action #{} ('{}') failed: {}", function.getEventId(), i + 1, type, e.toString());
             }
         }
     }
 
-    private static void handlePlaceBlocks(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasPlaceBlocks()) {
-            for (RandomEventDataReader.PlaceBlock placeBlock : function.getPlaceBlocks()) {
-                LuckyEventFunctions.placeBlock(serverLevel, resolvePosition(blockPos, player, placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId());
+    public static void runDropItems(ActionContext context, @Nullable List<RandomEventDataReader.DropItem> items) {
+        if (items == null || items.isEmpty()) return;
+        for (RandomEventDataReader.DropItem dropItem : items) {
+            boolean isUseRandom = dropItem.isUseRandom();
+            int count;
+            if (isUseRandom) {
+                count = getRandomNumber(dropItem.getRandomNum().getMin(), dropItem.getRandomNum().getMax());
+            } else {
+                count = dropItem.getNum();
             }
+
+            LuckyEventFunctions.dropItems(context.level(), context.resolve(dropItem.getPosSrc(), dropItem.getOffset()), dropItem.getId(), count, dropItem.getName(), dropItem.isNameVisible(), dropItem.getDesc(), dropItem.getNbt());
         }
     }
 
-    private static void handlePlaceChests(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasPlaceChests()) {
-            for (RandomEventDataReader.PlaceChest placeChest : function.getPlaceChests()) {
-                LuckyEventFunctions.placeChest(serverLevel, PosHelper.parseVec3d(resolvePosition(blockPos, player, placeChest.getPosSrc(), placeChest.getOffset())), placeChest.getChestId(), placeChest.getId(), placeChest.getSeed());
-            }
+    public static void runPlaceBlocks(ActionContext context, @Nullable List<RandomEventDataReader.PlaceBlock> blocks) {
+        if (blocks == null || blocks.isEmpty()) return;
+        for (RandomEventDataReader.PlaceBlock placeBlock : blocks) {
+            LuckyEventFunctions.placeBlock(context.level(), context.resolve(placeBlock.getPosSrc(), placeBlock.getOffset()), placeBlock.getId());
         }
     }
 
-    private static void handleDropLoots(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasDropLoots()) {
-            for (RandomEventDataReader.DropLoots dropLoots : function.getDropLoots()) {
-                LuckyEventFunctions.dropLoots(serverLevel, resolvePosition(blockPos, player, dropLoots.getPosSrc(), dropLoots.getOffset()), dropLoots.getId(), dropLoots.getSeed());
-            }
+    public static void runPlaceChests(ActionContext context, @Nullable List<RandomEventDataReader.PlaceChest> chests) {
+        if (chests == null || chests.isEmpty()) return;
+        for (RandomEventDataReader.PlaceChest placeChest : chests) {
+            LuckyEventFunctions.placeChest(context.level(), PosHelper.parseVec3d(context.resolve(placeChest.getPosSrc(), placeChest.getOffset())), placeChest.getChestId(), placeChest.getId(), placeChest.getSeed());
         }
     }
 
-    private static void handleFallBlocks(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasFallBlocks()) {
-            for (RandomEventDataReader.FallBlock fallBlock : function.getFallBlocks()) {
-                LuckyEventFunctions.fallBlock(serverLevel, PosHelper.parseVec3d(resolvePosition(blockPos, player, fallBlock.getPosSrc(), fallBlock.getOffset())), fallBlock.getId(), fallBlock.getVelocity());
-            }
+    public static void runDropLoots(ActionContext context, @Nullable List<RandomEventDataReader.DropLoots> loots) {
+        if (loots == null || loots.isEmpty()) return;
+        for (RandomEventDataReader.DropLoots dropLoots : loots) {
+            LuckyEventFunctions.dropLoots(context.level(), context.resolve(dropLoots.getPosSrc(), dropLoots.getOffset()), dropLoots.getId(), dropLoots.getSeed());
         }
     }
 
-    private static void handleGivePotionEffects(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasGivePotionEffects()) {
-            for (RandomEventDataReader.GivePotionEffect givePotionEffect : function.getGivePotionEffects()) {
-                if (player != null) {
-                    LuckyEventFunctions.givePotionEffect(player, givePotionEffect.getId(), givePotionEffect.getDuration(), givePotionEffect.getAmplifier());
-                }
-            }
+    public static void runFallBlocks(ActionContext context, @Nullable List<RandomEventDataReader.FallBlock> blocks) {
+        if (blocks == null || blocks.isEmpty()) return;
+        for (RandomEventDataReader.FallBlock fallBlock : blocks) {
+            LuckyEventFunctions.fallBlock(context.level(), PosHelper.parseVec3d(context.resolve(fallBlock.getPosSrc(), fallBlock.getOffset())), fallBlock.getId(), fallBlock.getVelocity());
         }
     }
 
-    private static void handleSpawnMobs(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasSpawnMobs()) {
-            for (RandomEventDataReader.SpawnMob spawnMob : function.getSpawnMobs()) {
-                boolean isUseRandom = spawnMob.isUseRandom();
-                int count;
-                if (isUseRandom) {
-                    count = getRandomNumber(spawnMob.getRandomNum().getMin(), spawnMob.getRandomNum().getMax());
-                } else {
-                    count = spawnMob.getNum();
-                }
-                String nbtString = spawnMob.getNbt();
+    public static void runGivePotionEffects(ActionContext context, @Nullable List<RandomEventDataReader.GivePotionEffect> effects) {
+        if (effects == null || effects.isEmpty() || context.player() == null) return;
+        for (RandomEventDataReader.GivePotionEffect givePotionEffect : effects) {
+            LuckyEventFunctions.givePotionEffect(context.player(), givePotionEffect.getId(), givePotionEffect.getDuration(), givePotionEffect.getAmplifier());
+        }
+    }
 
-                for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
-                    if (Objects.equals(spawnMob.getId(), "minecraft:item") || Objects.equals(spawnMob.getId(), "item")) {
-                        Constants.LOG.warn("dropItemsByNbt is depreciated! Please use drop_items! nbt: {}", nbtString);
-                        try {
-                            LuckyEventFunctions.dropItems(serverLevel, resolvePosition(blockPos, player, spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
-                        } catch (Exception e) {
-                            Constants.LOG.error("nbt: {}, e: {}", nbtString, e.toString());
-                        }
-                    } else {
-                        LuckyEventFunctions.spawnMob(serverLevel, resolvePosition(blockPos, player, spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
+    public static void runSpawnMobs(ActionContext context, @Nullable List<RandomEventDataReader.SpawnMob> mobs) {
+        if (mobs == null || mobs.isEmpty()) return;
+        for (RandomEventDataReader.SpawnMob spawnMob : mobs) {
+            boolean isUseRandom = spawnMob.isUseRandom();
+            int count;
+            if (isUseRandom) {
+                count = getRandomNumber(spawnMob.getRandomNum().getMin(), spawnMob.getRandomNum().getMax());
+            } else {
+                count = spawnMob.getNum();
+            }
+            String nbtString = spawnMob.getNbt();
+
+            for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
+                if (Objects.equals(spawnMob.getId(), "minecraft:item") || Objects.equals(spawnMob.getId(), "item")) {
+                    Constants.LOG.warn("dropItemsByNbt is depreciated! Please use drop_items! nbt: {}", nbtString);
+                    try {
+                        LuckyEventFunctions.dropItems(context.level(), context.resolve(spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), count, spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.getDesc(), nbtString);
+                    } catch (Exception e) {
+                        Constants.LOG.error("nbt: {}, e: {}", nbtString, e.toString());
                     }
+                } else {
+                    LuckyEventFunctions.spawnMob(context.level(), context.resolve(spawnMob.getPosSrc(), spawnMob.getOffset()), spawnMob.getId(), spawnMob.getRandomize(), spawnMob.getName(), spawnMob.isNameVisible(), spawnMob.isBaby(), spawnMob.getVelocity(), nbtString, spawnMob.getVehicleId(), spawnMob.getVehicleNbt());
                 }
             }
         }
     }
 
-    private static void handleSendMessages(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasSendMessages()) {
-            for (RandomEventDataReader.SendMessage sendMessage : function.getSendMessages()) {
-                if (player != null) {
-                    LuckyEventFunctions.sendMessage(player, sendMessage.getMsg());
-                }
-            }
+    public static void runSendMessages(ActionContext context, @Nullable List<RandomEventDataReader.SendMessage> messages) {
+        if (messages == null || messages.isEmpty() || context.player() == null) return;
+        for (RandomEventDataReader.SendMessage sendMessage : messages) {
+            LuckyEventFunctions.sendMessage(context.player(), sendMessage.getMsg());
         }
     }
 
-    private static void handleDisplayMessages(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasDisplayMessages()) {
-            for (RandomEventDataReader.DisplayMessage sendMessage : function.getDisplayMessages()) {
-                if (player != null) {
-                    LuckyEventFunctions.displayClientMessage(player, sendMessage.getMsg(), sendMessage.getOverlay());
-                }
-            }
+    public static void runDisplayMessages(ActionContext context, @Nullable List<RandomEventDataReader.DisplayMessage> messages) {
+        if (messages == null || messages.isEmpty() || context.player() == null) return;
+        for (RandomEventDataReader.DisplayMessage sendMessage : messages) {
+            LuckyEventFunctions.displayClientMessage(context.player(), sendMessage.getMsg(), sendMessage.getOverlay());
         }
     }
 
-    private static void handleCreateExplosions(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasCreateExplosions()) {
-            for (RandomEventDataReader.CreateExplosion createExplosion : function.getCreateExplosions()) {
-                LuckyEventFunctions.createExplosion(serverLevel, resolvePosition(blockPos, player, createExplosion.getPosSrc(), createExplosion.getOffset()), createExplosion.getPower(), createExplosion.isCreateFire());
-            }
+    public static void runCreateExplosions(ActionContext context, @Nullable List<RandomEventDataReader.CreateExplosion> explosions) {
+        if (explosions == null || explosions.isEmpty()) return;
+        for (RandomEventDataReader.CreateExplosion createExplosion : explosions) {
+            LuckyEventFunctions.createExplosion(context.level(), context.resolve(createExplosion.getPosSrc(), createExplosion.getOffset()), createExplosion.getPower(), createExplosion.isCreateFire());
         }
     }
 
-    private static void handleAddParticles(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasAddParticles()) {
-            for (RandomEventDataReader.AddParticle addParticle : function.getAddParticles()) {
-                LuckyEventFunctions.addParticles(serverLevel, addParticle.getId(), resolvePosition(blockPos, player, addParticle.getPosSrc(), addParticle.getOffset()), addParticle.getCount(), addParticle.getDelta().getX(), addParticle.getDelta().getY(), addParticle.getDelta().getZ(), addParticle.getSpeed());
-            }
+    public static void runAddParticles(ActionContext context, @Nullable List<RandomEventDataReader.AddParticle> particles) {
+        if (particles == null || particles.isEmpty()) return;
+        for (RandomEventDataReader.AddParticle addParticle : particles) {
+            LuckyEventFunctions.addParticles(context.level(), addParticle.getId(), context.resolve(addParticle.getPosSrc(), addParticle.getOffset()), addParticle.getCount(), addParticle.getDelta().getX(), addParticle.getDelta().getY(), addParticle.getDelta().getZ(), addParticle.getSpeed());
         }
     }
 
-    private static void handlePlaySounds(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasPlaySounds()) {
-            for (RandomEventDataReader.PlaySound playSound : function.getPlaySounds()) {
-                if (player != null) {
-                    LuckyEventFunctions.playSound(player, serverLevel, PosHelper.parseBlockPos(blockPos), playSound.getId(), playSound.getVolume(), playSound.getPitch());
-                }
-            }
+    public static void runPlaySounds(ActionContext context, @Nullable List<RandomEventDataReader.PlaySound> sounds) {
+        if (sounds == null || sounds.isEmpty() || context.player() == null) return;
+        for (RandomEventDataReader.PlaySound playSound : sounds) {
+            LuckyEventFunctions.playSound(context.player(), context.level(), PosHelper.parseBlockPos(context.pos()), playSound.getId(), playSound.getVolume(), playSound.getPitch());
         }
     }
 
-    private static void handleLoadStructures(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasLoadStructures()) {
-            for (RandomEventDataReader.LoadStructure loadStructure : function.getLoadStructures()) {
-                LuckyEventFunctions.loadStructure(serverLevel, PosHelper.parseVec3d(resolvePosition(blockPos, player, loadStructure.getPosSrc(), loadStructure.getOffset())), loadStructure.getModId(), loadStructure.getId());
-            }
+    public static void runLoadStructures(ActionContext context, @Nullable List<RandomEventDataReader.LoadStructure> structures) {
+        if (structures == null || structures.isEmpty()) return;
+        for (RandomEventDataReader.LoadStructure loadStructure : structures) {
+            LuckyEventFunctions.loadStructure(context.level(), PosHelper.parseVec3d(context.resolve(loadStructure.getPosSrc(), loadStructure.getOffset())), loadStructure.getModId(), loadStructure.getId());
         }
     }
 
-    private static void handleExecuteCommands(ServerLevel serverLevel, @Nullable Player player, BlockPos blockPos, RandomEventDataReader function) {
-        if (function.hasExecuteCommands()) {
-            for (RandomEventDataReader.ExecuteCommand executeCommand : function.getExecuteCommands()) {
-                LuckyEventFunctions.executeCommand(serverLevel, resolvePosition(blockPos, player, executeCommand.getPosSrc(), executeCommand.getOffset()), executeCommand.getCommand());
-            }
+    public static void runExecuteCommands(ActionContext context, @Nullable List<RandomEventDataReader.ExecuteCommand> commands) {
+        if (commands == null || commands.isEmpty()) return;
+        for (RandomEventDataReader.ExecuteCommand executeCommand : commands) {
+            LuckyEventFunctions.executeCommand(context.level(), context.resolve(executeCommand.getPosSrc(), executeCommand.getOffset()), executeCommand.getCommand());
         }
     }
 
@@ -193,7 +207,7 @@ public class LuckyEventExecutor {
         }
     }
 
-    public static Vec3 resolvePosition(BlockPos blockPos, Player player, PosSrc posSrc, Vec3 offset) {
+    public static Vec3 resolvePosition(BlockPos blockPos, @Nullable Player player, PosSrc posSrc, Vec3 offset) {
         Vec3 basePos;
         if (posSrc == PosSrc.PLAYER && player != null) {
             basePos = player.position();
