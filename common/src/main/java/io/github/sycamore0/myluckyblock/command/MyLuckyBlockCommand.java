@@ -146,7 +146,7 @@ public class MyLuckyBlockCommand {
         Path addonsDir = Services.PLATFORM.getConfigDir().resolve(Constants.ADDONS_PATH);
         List<AddonSource> addons = AddonSource.scan(addonsDir);
 
-        Component header = Component.translatable("commands.myluckyblock.addons", addons.size(), addonsDir.toString());
+        Component header = Component.translatable("commands.myluckyblock.addons", addons.size());
         source.sendSuccess(() -> header, false);
 
         if (addons.isEmpty()) {

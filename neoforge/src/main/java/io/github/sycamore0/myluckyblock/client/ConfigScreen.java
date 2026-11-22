@@ -5,6 +5,7 @@ import io.github.sycamore0.myluckyblock.config.ModConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
@@ -16,54 +17,62 @@ public final class ConfigScreen {
 
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
-                .setTitle(Component.literal("MyLuckyBlock"))
+                .setTitle(Component.translatable("config.myluckyblock.title"))
                 .setSavingRunnable(ConfigManager::save);
 
         ConfigEntryBuilder entry = builder.entryBuilder();
-        ConfigCategory general = builder.getOrCreateCategory(Component.literal("General"));
+        ConfigCategory general = builder.getOrCreateCategory(Component.translatable("config.myluckyblock.category.general"));
 
         general.addEntry(entry
-                .startBooleanToggle(Component.literal("Enable Creative Trigger"), config.enableCreativeTrigger)
+                .startBooleanToggle(Component.translatable("config.myluckyblock.enable_creative_trigger"), config.enableCreativeTrigger)
                 .setDefaultValue(true)
-                .setTooltip(Component.literal("Enable creative player to trigger events."))
+                .setTooltip(tooltip("config.myluckyblock.enable_creative_trigger.tooltip", "enableCreativeTrigger"))
                 .setSaveConsumer(v -> config.enableCreativeTrigger = v)
                 .build());
 
         general.addEntry(entry
-                .startBooleanToggle(Component.literal("Auto Disable Lucky Block Worldgen"), config.autoDisableLuckyBlockWorldgen)
+                .startBooleanToggle(Component.translatable("config.myluckyblock.auto_disable_lucky_block_worldgen"), config.autoDisableLuckyBlockWorldgen)
                 .setDefaultValue(false)
-                .setTooltip(Component.literal("Auto add a built-in datapack to disable myluckyblock worldgen for new world."))
+                .setTooltip(tooltip("config.myluckyblock.auto_disable_lucky_block_worldgen.tooltip", "autoDisableLuckyBlockWorldgen"))
                 .setSaveConsumer(v -> config.autoDisableLuckyBlockWorldgen = v)
                 .build());
 
         general.addEntry(entry
-                .startBooleanToggle(Component.literal("Auto Disable Lucky Block Structure"), config.autoDisableLuckyBlockStructure)
+                .startBooleanToggle(Component.translatable("config.myluckyblock.auto_disable_lucky_block_structure"), config.autoDisableLuckyBlockStructure)
                 .setDefaultValue(false)
-                .setTooltip(Component.literal("Auto add a built-in datapack to disable myluckyblock structure events for new world."))
+                .setTooltip(tooltip("config.myluckyblock.auto_disable_lucky_block_structure.tooltip", "autoDisableLuckyBlockStructure"))
                 .setSaveConsumer(v -> config.autoDisableLuckyBlockStructure = v)
                 .build());
 
         general.addEntry(entry
-                .startBooleanToggle(Component.literal("Auto Disable Lucky Block Boss"), config.autoDisableLuckyBlockBoss)
+                .startBooleanToggle(Component.translatable("config.myluckyblock.auto_disable_lucky_block_boss"), config.autoDisableLuckyBlockBoss)
                 .setDefaultValue(false)
-                .setTooltip(Component.literal("Auto add a built-in datapack to disable myluckyblock boss events for new world."))
+                .setTooltip(tooltip("config.myluckyblock.auto_disable_lucky_block_boss.tooltip", "autoDisableLuckyBlockBoss"))
                 .setSaveConsumer(v -> config.autoDisableLuckyBlockBoss = v)
                 .build());
 
         general.addEntry(entry
-                .startBooleanToggle(Component.literal("Auto Disable Lucky Block Explosions"), config.autoDisableLuckyBlockExplosions)
+                .startBooleanToggle(Component.translatable("config.myluckyblock.auto_disable_lucky_block_explosions"), config.autoDisableLuckyBlockExplosions)
                 .setDefaultValue(false)
-                .setTooltip(Component.literal("Auto add a built-in datapack to disable myluckyblock huge explosion events for new world."))
+                .setTooltip(tooltip("config.myluckyblock.auto_disable_lucky_block_explosions.tooltip", "autoDisableLuckyBlockExplosions"))
                 .setSaveConsumer(v -> config.autoDisableLuckyBlockExplosions = v)
                 .build());
 
         general.addEntry(entry
-                .startBooleanToggle(Component.literal("Silence Minecraft Version Skips"), config.silenceMinecraftVersionSkipWarnings)
+                .startBooleanToggle(Component.translatable("config.myluckyblock.silence_minecraft_version_skips"), config.silenceMinecraftVersionSkipWarnings)
                 .setDefaultValue(true)
-                .setTooltip(Component.literal("Do not log a warning when an event pack is skipped because it targets a different Minecraft version."))
+                .setTooltip(tooltip("config.myluckyblock.silence_minecraft_version_skips.tooltip", "silenceMinecraftVersionSkipWarnings"))
                 .setSaveConsumer(v -> config.silenceMinecraftVersionSkipWarnings = v)
                 .build());
 
         return builder.build();
+    }
+
+    /** Tooltip: description on the first line, the config field name on the second. */
+    private static Component[] tooltip(String key, String field) {
+        return new Component[]{
+                Component.translatable(key),
+                Component.literal(field).withStyle(ChatFormatting.DARK_GRAY)
+        };
     }
 }
