@@ -7,7 +7,6 @@ import io.github.sycamore0.myluckyblock.event.listener.LuckyEventsReloadListener
 import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,11 +31,7 @@ public class ModEventHandlers {
         event.setCanceled(true);
 
         ItemStack tool = player.getMainHandItem();
-        if (tool.isDamageableItem()) {
-            int damage = blockState.getDestroySpeed(serverLevel, blockPos) > 0 ? 1 : 0;
-            tool.hurtAndBreak(damage, player, player.getEquipmentSlotForItem(tool));
-        }
-        player.awardStat(Stats.BLOCK_MINED.get(blockState.getBlock()));
+        tool.mineBlock(serverLevel, blockState, blockPos, player);
     }
 
     @SubscribeEvent
