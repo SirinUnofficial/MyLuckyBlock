@@ -1,6 +1,6 @@
 {
     "name": "Random Events Pack for 1.21.6",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Random events for Vanilla Minecraft 1.21.6+",
     "dependencies": [
         {
@@ -11,158 +11,173 @@
     "random_events": [
         {
             "id": 1,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:dried_ghast",
-                    "use_random": false,
-                    "num":  1
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:dried_ghast",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 2,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:white_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:light_gray_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:gray_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:black_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:brown_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:red_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:orange_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:yellow_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:lime_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:green_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:cyan_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:light_blue_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:blue_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:purple_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:magenta_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
-                },
-                {
-                    "id": "minecraft:pink_harness",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 0,
-                        "max": 1
-                    }
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:white_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:light_gray_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:gray_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:black_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:brown_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:red_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:orange_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:yellow_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:lime_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:green_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:cyan_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:light_blue_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:blue_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:purple_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:magenta_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:pink_harness",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 3,
-            "spawn_mobs": [
+            "steps": [
                 {
-                    "id": "minecraft:happy_ghast",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 3
-                    },
-                    "pos_src": 0
+                    "action": "spawn_mobs",
+                    "data": [
+                        {
+                            "id": "minecraft:happy_ghast",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            },
+                            "pos_src": 0
+                        }
+                    ]
                 }
             ]
         }

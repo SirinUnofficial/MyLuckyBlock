@@ -1,6 +1,6 @@
 {
     "name": "Random Events Pack for 1.21.5",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Random events for Vanilla Minecraft 1.21.5+",
     "dependencies": [
         {
@@ -11,93 +11,113 @@
     "random_events": [
         {
             "id": 1,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:short_dry_grass",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 32
-                    }
-                },
-                {
-                    "id": "minecraft:tall_dry_grass",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 32
-                    }
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:short_dry_grass",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:tall_dry_grass",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 2,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:wildflowers",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 32
-                    }
-                },
-                {
-                    "id": "minecraft:leaf_litter",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 32
-                    }
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:wildflowers",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:leaf_litter",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 3,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:firefly_bush",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 16
-                    }
-                },
-                {
-                    "id": "minecraft:bush",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 32
-                    }
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:firefly_bush",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 16
+                            }
+                        },
+                        {
+                            "id": "minecraft:bush",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 4,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:egg",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 16,
-                        "max": 32
-                    }
-                },
-                {
-                    "id": "minecraft:blue_egg",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 4,
-                        "max": 32
-                    }
-                },
-                {
-                    "id": "minecraft:brown_egg",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 4,
-                        "max": 32
-                    }
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:egg",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 16,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:blue_egg",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 4,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:brown_egg",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 4,
+                                "max": 32
+                            }
+                        }
+                    ]
                 }
             ]
         }

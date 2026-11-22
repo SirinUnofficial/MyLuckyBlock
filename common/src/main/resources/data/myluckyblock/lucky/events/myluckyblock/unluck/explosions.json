@@ -1,87 +1,100 @@
 {
     "name": "Explosions Event Pack",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Bad explosions.",
     "random_events": [
         {
             "id": 1,
-            "create_explosions": [
+            "steps": [
                 {
-                    "power": 100
+                    "action": "create_explosions",
+                    "data": [
+                        {
+                            "power": 100
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 2,
-            "place_blocks": [
+            "steps": [
                 {
-                    "id": "minecraft:redstone_block"
-                }
-            ],
-            "fall_blocks": [
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
+                    "action": "place_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:redstone_block"
+                        }
+                    ]
                 },
                 {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:tnt",
-                    "offset": {
-                        "x": 0,
-                        "y": 8,
-                        "z": 0
-                    }
+                    "action": "fall_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:tnt",
+                            "offset": {
+                                "x": 0,
+                                "y": 8,
+                                "z": 0
+                            }
+                        }
+                    ]
                 }
             ]
         }

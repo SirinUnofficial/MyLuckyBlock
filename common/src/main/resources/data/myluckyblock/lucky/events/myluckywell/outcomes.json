@@ -1,13 +1,13 @@
 {
     "name": "Lucky Well Outcomes",
-    "version": "1.0",
+    "version": "3.0",
     "info": "Lucky well outcomes",
     "random_events": [
         {
             "id": 1,
-            "actions": [
+            "steps": [
                 {
-                    "type": "place_blocks",
+                    "action": "place_blocks",
                     "data": [
                         {
                             "id": "minecraft:beacon"
@@ -87,7 +87,7 @@
                     ]
                 },
                 {
-                    "type": "spawn_mobs",
+                    "action": "spawn_mobs",
                     "data": [
                         {
                             "id": "minecraft:tnt",
@@ -109,9 +109,9 @@
         },
         {
             "id": 2,
-            "actions": [
+            "steps": [
                 {
-                    "type": "place_blocks",
+                    "action": "place_blocks",
                     "data": [
                         {
                             "id": "minecraft:beacon"
@@ -191,7 +191,7 @@
                     ]
                 },
                 {
-                    "type": "drop_items",
+                    "action": "drop_items",
                     "data": [
                         {
                             "id": "minecraft:diamond",

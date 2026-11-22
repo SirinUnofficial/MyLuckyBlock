@@ -1,13 +1,13 @@
 {
     "name": "Lucky Well",
-    "version": "1.0",
+    "version": "3.0",
     "info": "Build a lucky well",
     "random_events": [
         {
             "id": 1,
-            "actions": [
+            "steps": [
                 {
-                    "type": "lucky_well",
+                    "action": "lucky_well",
                     "data": {
                         "lucky_block": {
                             "id": "myluckyblock:my_lucky_block",
@@ -33,7 +33,7 @@
                     }
                 },
                 {
-                    "type": "drop_items",
+                    "action": "drop_items",
                     "data": [
                         {
                             "id": "minecraft:gold_nugget",

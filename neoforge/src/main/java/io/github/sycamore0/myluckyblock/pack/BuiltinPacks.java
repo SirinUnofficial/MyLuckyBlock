@@ -20,7 +20,7 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
 
-public class ModPacks {
+public class BuiltinPacks {
     private static final PackSelectionConfig ADDON_SELECTION_CONFIG =
             new PackSelectionConfig(true, Pack.Position.BOTTOM, false);
 
@@ -89,6 +89,6 @@ public class ModPacks {
     }
 
     public static void onInitialize(IEventBus eventBus) {
-        eventBus.addListener(ModPacks::setupDataPack);
+        eventBus.addListener(BuiltinPacks::setupDataPack);
     }
 }

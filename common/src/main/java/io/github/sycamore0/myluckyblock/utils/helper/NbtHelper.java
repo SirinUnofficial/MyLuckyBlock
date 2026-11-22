@@ -36,23 +36,6 @@ public class NbtHelper {
         return null;
     }
 
-    @Deprecated
-    public static CompoundTag generateItemEntityNbt(String itemId, int count, @Nullable String itemNbtStr) {
-        if (itemNbtStr != null) {
-            String nbtStr = "{Item:"
-                    + "{id:\""
-                    + itemId
-                    + "\",count:"
-                    + count
-                    + ","
-                    + "components:{"
-                    + itemNbtStr
-                    + "}}}";
-            return generateNbt(nbtStr);
-        }
-        return null;
-    }
-
     public static ItemStack createItemStackWithNBT(ItemStack itemStack, String nbtStr, RegistryAccess registryAccess) {
         if (nbtStr == null || nbtStr.isEmpty()) {
             return itemStack;

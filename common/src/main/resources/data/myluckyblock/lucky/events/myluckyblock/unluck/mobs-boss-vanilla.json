@@ -1,14 +1,19 @@
 {
     "name": "Boss Mobs/Entity Event Pack",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Vanilla boss mobs.",
     "random_events": [
         {
             "id": 1,
-            "spawn_mobs": [
+            "steps": [
                 {
-                    "id": "minecraft:wither",
-                    "num": 1
+                    "action": "spawn_mobs",
+                    "data": [
+                        {
+                            "id": "minecraft:wither",
+                            "num": 1
+                        }
+                    ]
                 }
             ]
         }

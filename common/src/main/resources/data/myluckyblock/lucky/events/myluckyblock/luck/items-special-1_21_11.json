@@ -1,6 +1,6 @@
 {
     "name": "Special Mobs/Entity Event Pack for 1.21.11+",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Items with special attribute data(for 1.21.11+).",
     "dependencies": [
         {
@@ -11,15 +11,20 @@
     "random_events": [
         {
             "id": 1,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:diamond_spear",
-                    "name": "name.myluckyblock.lunge_spear",
-                    "name_visible": true,
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "nbt": "{rarity:epic,enchantments:{lunge:16},repair_cost:32767}"
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:diamond_spear",
+                            "name": "name.myluckyblock.lunge_spear",
+                            "name_visible": true,
+                            "use_random": false,
+                            "num": 1,
+                            "pos_src": 0,
+                            "nbt": "{rarity:epic,enchantments:{lunge:16},repair_cost:32767}"
+                        }
+                    ]
                 }
             ]
         }

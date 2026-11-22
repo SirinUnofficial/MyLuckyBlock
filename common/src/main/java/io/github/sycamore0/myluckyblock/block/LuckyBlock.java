@@ -2,7 +2,7 @@ package io.github.sycamore0.myluckyblock.block;
 
 import io.github.sycamore0.myluckyblock.CommonClass;
 import io.github.sycamore0.myluckyblock.Constants;
-import io.github.sycamore0.myluckyblock.event.BreakLuckyBlock;
+import io.github.sycamore0.myluckyblock.event.LuckyBlockTrigger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -50,7 +50,7 @@ public class LuckyBlock extends Block implements EntityBlock {
     @Override
     protected void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block sourceBlock, @NotNull BlockPos sourceBlockPos, boolean notify) {
         if (!level.isClientSide && level.hasNeighborSignal(blockPos)) {
-            BreakLuckyBlock.breakLuckyBlock(level, null, blockPos, blockState);
+            LuckyBlockTrigger.breakLuckyBlock(level, null, blockPos, blockState);
         }
     }
 }

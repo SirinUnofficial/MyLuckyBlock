@@ -9,7 +9,7 @@ import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-public class ModPacks {
+public class BuiltinPacks {
     private static final ModContainer MOD_CONTAINER = FabricLoader.getInstance()
             .getModContainer(Constants.MOD_ID)
             .orElseThrow(() -> new RuntimeException("Mod " + Constants.MOD_ID + " not found"));

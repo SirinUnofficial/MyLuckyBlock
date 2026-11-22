@@ -8,8 +8,8 @@ import io.github.sycamore0.myluckyblock.block.LuckyBlockEntity;
 import io.github.sycamore0.myluckyblock.component.ModDataComponentsCommon;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
 import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
-import io.github.sycamore0.myluckyblock.lucky.LuckyEventExecutor;
-import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.LuckyEventDispatcher;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventDefinition;
 import io.github.sycamore0.myluckyblock.utils.helper.EnchantmentsHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class BreakLuckyBlock {
+public class LuckyBlockTrigger {
     public static volatile LuckyEventDataManager manager;
 
     public static void breakLuckyBlock(Level level, @Nullable Player player, BlockPos blockPos, BlockState blockState) {
@@ -70,26 +70,26 @@ public class BreakLuckyBlock {
             manager.loadEvents(eventPackGroupName, includeBuiltIn);
         }
 
-        RandomEventDataReader event = selectEvent(eventPackGroupName, data);
+        EventDefinition event = selectEvent(eventPackGroupName, data);
         if (event != null) {
-            LuckyEventExecutor.executeLuckyFunction(serverLevel, player, blockPos, event);
+            LuckyEventDispatcher.executeLuckyFunction(serverLevel, player, blockPos, event);
         }
     }
 
     @Nullable
-    private static RandomEventDataReader selectEvent(String group, LuckyBlockData luckyBlockData) {
+    private static EventDefinition selectEvent(String group, LuckyBlockData luckyBlockData) {
         if (luckyBlockData.isLimitedOutcomes() && !luckyBlockData.outcomes().isEmpty()) {
             List<String> pool = new ArrayList<>(luckyBlockData.outcomes());
             while (!pool.isEmpty()) {
                 String pick = pool.remove(ThreadLocalRandom.current().nextInt(pool.size()));
-                RandomEventDataReader event = resolveOutcome(pick);
+                EventDefinition event = resolveOutcome(pick);
                 if (event != null) return event;
             }
             Constants.LOG.warn("All limited outcomes invalid, fallback to random. group={}", group);
         }
 
         EventType chosenType = chooseTypeByLuckyValue(luckyBlockData.luckyValue());
-        RandomEventDataReader event = manager.getRandomEvent(group, chosenType);
+        EventDefinition event = manager.getRandomEvent(group, chosenType);
         if (event == null) {
             event = manager.getRandomEvent(group);
         }
@@ -97,14 +97,14 @@ public class BreakLuckyBlock {
     }
 
     @Nullable
-    private static RandomEventDataReader resolveOutcome(String entry) {
+    private static EventDefinition resolveOutcome(String entry) {
         if (entry == null) return null;
         int hashIdx = entry.indexOf('#');
         if (hashIdx <= 0 || hashIdx == entry.length() - 1) {
             Constants.LOG.warn("Invalid outcome entry (missing '#'): {}", entry);
             return null;
         }
-        String packId = entry.substring(0, hashIdx).trim();
+        String packKey = entry.substring(0, hashIdx).trim();
         int eventId;
         try {
             eventId = Integer.parseInt(entry.substring(hashIdx + 1).trim());
@@ -112,7 +112,7 @@ public class BreakLuckyBlock {
             Constants.LOG.warn("Invalid outcome entry (bad id): {}", entry);
             return null;
         }
-        RandomEventDataReader event = manager.getEventByFullId(packId, eventId);
+        EventDefinition event = manager.getEventByFullId(packKey, eventId);
         if (event == null) {
             Constants.LOG.warn("Outcome not found: {}", entry);
         }

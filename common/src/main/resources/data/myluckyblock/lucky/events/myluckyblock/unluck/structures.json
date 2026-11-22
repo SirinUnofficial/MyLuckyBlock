@@ -1,120 +1,154 @@
 {
     "name": "Structures Event Pack",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Some structures.",
     "random_events": [
         {
             "id": 1,
-            "load_structures": [
+            "steps": [
                 {
-                    "id": "xn",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": -2,
-                        "y": 12,
-                        "z": -2
-                    }
-                }
-            ],
-            "give_potion_effects": [
+                    "action": "give_potion_effects",
+                    "data": [
+                        {
+                            "id": "minecraft:levitation",
+                            "amplifier": 200,
+                            "duration": 1200
+                        }
+                    ]
+                },
                 {
-                    "id": "minecraft:levitation",
-                    "amplifier": 200,
-                    "duration": 1200
+                    "action": "load_structures",
+                    "data": [
+                        {
+                            "id": "xn",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": -2,
+                                "y": 12,
+                                "z": -2
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 2,
-            "load_structures": [
+            "steps": [
                 {
-                    "id": "longzi",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": -1,
-                        "y": -1,
-                        "z": -1
-                    }
-                }
-            ],
-            "fall_blocks": [
-                {
-                    "id": "minecraft:anvil",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": 0,
-                        "y": 30,
-                        "z": 0
-                    }
+                    "action": "fall_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:anvil",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": 0,
+                                "y": 30,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:anvil",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": 0,
+                                "y": 31,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "id": "minecraft:anvil",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": 0,
+                                "y": 32,
+                                "z": 0
+                            }
+                        }
+                    ]
                 },
                 {
-                    "id": "minecraft:anvil",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": 0,
-                        "y": 31,
-                        "z": 0
-                    }
-                },
-                {
-                    "id": "minecraft:anvil",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": 0,
-                        "y": 32,
-                        "z": 0
-                    }
+                    "action": "load_structures",
+                    "data": [
+                        {
+                            "id": "longzi",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 3,
-            "load_structures": [
+            "steps": [
                 {
-                    "id": "longzi",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": -1,
-                        "y": -1,
-                        "z": -1
-                    }
-                }
-            ],
-            "fall_blocks": [
+                    "action": "fall_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:lava",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": 0,
+                                "y": 5,
+                                "z": 0
+                            }
+                        }
+                    ]
+                },
                 {
-                    "id": "minecraft:lava",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": 0,
-                        "y": 5,
-                        "z": 0
-                    }
+                    "action": "load_structures",
+                    "data": [
+                        {
+                            "id": "longzi",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 4,
-            "load_structures": [
+            "steps": [
                 {
-                    "id": "fall_lava",
-                    "pos_src": 1,
-                    "offset": {
-                        "x": -1,
-                        "y": -10,
-                        "z": -1
-                    }
+                    "action": "load_structures",
+                    "data": [
+                        {
+                            "id": "fall_lava",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": -1,
+                                "y": -10,
+                                "z": -1
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             "id": 5,
-            "load_structures": [
+            "steps": [
                 {
-                    "id": "fall_dripstone",
-                    "pos_src": 1,
-                    "offset": {
-                        "y": -10
-                    }
+                    "action": "load_structures",
+                    "data": [
+                        {
+                            "id": "fall_dripstone",
+                            "pos_src": 1,
+                            "offset": {
+                                "y": -10
+                            }
+                        }
+                    ]
                 }
             ]
         }

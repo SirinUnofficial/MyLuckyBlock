@@ -6,7 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventPackDataReader {
+public class EventPack {
     @SerializedName("name")
     protected String name;
 
@@ -20,11 +20,11 @@ public class EventPackDataReader {
     protected List<DependenciesDataReader> dependencies;
 
     @SerializedName("random_events")
-    protected List<RandomEventDataReader> randomEvents;
+    protected List<EventDefinition> randomEvents;
 
-    private transient String eventPackId;
+    private transient String packKey;
 
-    public EventPackDataReader() {
+    public EventPack() {
         this.name = "unknown";
         this.version = "unknown";
         this.info = "unknown";
@@ -32,7 +32,6 @@ public class EventPackDataReader {
         this.randomEvents = new ArrayList<>();
     }
 
-    // Getters
     public String getName() {
         return name;
     }
@@ -49,16 +48,16 @@ public class EventPackDataReader {
         return dependencies;
     }
 
-    public List<RandomEventDataReader> getRandomEvents() {
+    public List<EventDefinition> getRandomEvents() {
         return randomEvents;
     }
 
     @Nullable
-    public String getEventPackId() {
-        return eventPackId;
+    public String getPackKey() {
+        return packKey;
     }
 
-    public void setEventPackId(String eventPackId) {
-        this.eventPackId = eventPackId;
+    public void setPackKey(String packKey) {
+        this.packKey = packKey;
     }
 }

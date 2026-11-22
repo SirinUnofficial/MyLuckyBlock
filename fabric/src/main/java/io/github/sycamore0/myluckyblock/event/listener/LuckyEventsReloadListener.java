@@ -3,8 +3,8 @@ package io.github.sycamore0.myluckyblock.event.listener;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
 import io.github.sycamore0.myluckyblock.lucky.reader.DisabledDataReader;
-import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
-import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventPack;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventDefinition;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
@@ -15,7 +15,7 @@ import java.io.Reader;
 import java.util.*;
 
 public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloadListener, ILuckyEventsReloadListener {
-    private volatile Map<String, List<EventPackDataReader>> packData = Collections.emptyMap();
+    private volatile Map<String, List<EventPack>> packsByGroup = Collections.emptyMap();
     private volatile Runnable onReload = () -> {};
 
     @Override
@@ -31,7 +31,7 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
     @Override
     public void onResourceManagerReload(ResourceManager manager) {
         Set<String> disabled = loadDisabled(manager);
-        packData = loadEvents(manager, disabled);
+        packsByGroup = loadEvents(manager, disabled);
         onReload.run();
     }
 
@@ -60,8 +60,8 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
         return disabledPackSet;
     }
 
-    private Map<String, List<EventPackDataReader>> loadEvents(ResourceManager manager, Set<String> disabledSet) {
-        Map<String, List<EventPackDataReader>> eventPacksMap = new HashMap<>();
+    private Map<String, List<EventPack>> loadEvents(ResourceManager manager, Set<String> disabledSet) {
+        Map<String, List<EventPack>> eventPacksMap = new HashMap<>();
 
         manager.listResources(Constants.EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
                 .forEach((location, resource) -> {
@@ -80,25 +80,25 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
                         }
                     }
 
-                    String eventPackId = seg[seg.length - 1].replace(".json", "");
+                    String packName = seg[seg.length - 1].replace(".json", "");
                     String subDir = seg.length >= 5 ? seg[3] : "";
-                    String fullEventPackId = eventPackGroup + ":" + (subDir.isEmpty() ? "" : subDir + "/") + eventPackId;
+                    String packKey = eventPackGroup + ":" + (subDir.isEmpty() ? "" : subDir + "/") + packName;
 
-                    if (disabledSet.contains(fullEventPackId)) {
-                        Constants.LOG.info("Skipping disabled event pack: {}", fullEventPackId);
+                    if (disabledSet.contains(packKey)) {
+                        Constants.LOG.info("Skipping disabled event pack: {}", packKey);
                         return;
                     }
 
                     try (Reader reader = new InputStreamReader(resource.open())) {
-                        EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
-                        eventPackData.setEventPackId(fullEventPackId);
-                        if (eventPackData.getRandomEvents() != null) {
-                            for (RandomEventDataReader event : eventPackData.getRandomEvents()) {
+                        EventPack eventPack = Constants.GSON.fromJson(reader, EventPack.class);
+                        eventPack.setPackKey(packKey);
+                        if (eventPack.getRandomEvents() != null) {
+                            for (EventDefinition event : eventPack.getRandomEvents()) {
                                 event.setType(type);
                             }
                         }
-                        eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPackData);
-                        Constants.LOG.info("Parsed pack: {} with type {}", fullEventPackId, type);
+                        eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPack);
+                        Constants.LOG.info("Parsed pack: {} with type {}", packKey, type);
                     } catch (Exception e) {
                         Constants.LOG.error("Failed to parse event pack {}: {}", location, e.getMessage());
                     }
@@ -108,7 +108,7 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
         return eventPacksMap;
     }
 
-    public Map<String, List<EventPackDataReader>> getPackData() {
-        return packData;
+    public Map<String, List<EventPack>> getPacksByGroup() {
+        return packsByGroup;
     }
 }

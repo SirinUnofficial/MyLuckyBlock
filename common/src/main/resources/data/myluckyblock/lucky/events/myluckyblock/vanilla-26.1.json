@@ -1,6 +1,6 @@
 {
     "name": "Random Events Pack for 26.1",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Random events for Vanilla Minecraft 26.1+",
     "dependencies": [
         {
@@ -11,14 +11,19 @@
     "random_events": [
         {
             "id": 1,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:golden_dandelion",
-                    "use_random": true,
-                    "random_num": {
-                        "min": 1,
-                        "max": 16
-                    }
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:golden_dandelion",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 16
+                            }
+                        }
+                    ]
                 }
             ]
         }

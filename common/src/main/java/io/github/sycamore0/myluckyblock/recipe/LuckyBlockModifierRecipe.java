@@ -23,13 +23,13 @@ public record LuckyBlockModifierRecipe(Ingredient modifier, int delta) implement
         boolean hasLuckyBlock = false;
         boolean hasModifier = false;
         for (int i = 0; i < input.size(); i++) {
-            ItemStack stack = input.getItem(i);
-            if (stack.isEmpty()) continue;
+            ItemStack itemStack = input.getItem(i);
+            if (itemStack.isEmpty()) continue;
 
-            if (stack.is(ModBlocksCommon.luckyBlock().asItem())) {
+            if (itemStack.is(ModBlocksCommon.luckyBlock().asItem())) {
                 if (hasLuckyBlock) return false;
                 hasLuckyBlock = true;
-            } else if (modifier.test(stack)) {
+            } else if (modifier.test(itemStack)) {
                 if (hasModifier) return false;
                 hasModifier = true;
             } else {
@@ -43,20 +43,16 @@ public record LuckyBlockModifierRecipe(Ingredient modifier, int delta) implement
     public @NotNull ItemStack assemble(@NotNull CraftingInput input, @NotNull HolderLookup.Provider registries) {
         ItemStack luckyStack = ItemStack.EMPTY;
         for (int i = 0; i < input.size(); i++) {
-            ItemStack s = input.getItem(i);
-            if (s.is(ModBlocksCommon.luckyBlock().asItem())) {
-                luckyStack = s;
+            ItemStack itemStack = input.getItem(i);
+            if (itemStack.is(ModBlocksCommon.luckyBlock().asItem())) {
+                luckyStack = itemStack;
                 break;
             }
         }
         if (luckyStack.isEmpty()) return ItemStack.EMPTY;
 
         LuckyBlockData oldData = LuckyBlockData.fromItemStack(luckyStack);
-        int newValue = Mth.clamp(
-                oldData.luckyValue() + delta,
-                LuckyBlockData.MIN_LUCKY_VALUE,
-                LuckyBlockData.MAX_LUCKY_VALUE
-        );
+        int newValue = Mth.clamp(oldData.luckyValue() + delta, LuckyBlockData.MIN_LUCKY_VALUE, LuckyBlockData.MAX_LUCKY_VALUE);
 
         ItemStack result = new ItemStack(ModBlocksCommon.luckyBlock().asItem());
         LuckyBlockData newData = new LuckyBlockData(newValue, oldData.isLimitedOutcomes(), oldData.outcomes());

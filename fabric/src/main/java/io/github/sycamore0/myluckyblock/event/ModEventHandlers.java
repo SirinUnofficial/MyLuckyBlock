@@ -26,7 +26,7 @@ public class ModEventHandlers {
 
         LuckyBlockData luckyBlockData = blockEntity instanceof LuckyBlockEntity luckyBlockEntity ? luckyBlockEntity.toData() : LuckyBlockData.DEFAULT;
 
-        BreakLuckyBlock.breakLuckyBlock(serverLevel, player, blockPos, blockState, luckyBlockData);
+        LuckyBlockTrigger.breakLuckyBlock(serverLevel, player, blockPos, blockState, luckyBlockData);
     }
 
     public static void onInitialize() {
@@ -34,6 +34,6 @@ public class ModEventHandlers {
 
         LuckyEventsReloadListener reloadListener = new LuckyEventsReloadListener();
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(reloadListener);
-        BreakLuckyBlock.manager = new LuckyEventDataManager(reloadListener);
+        LuckyBlockTrigger.manager = new LuckyEventDataManager(reloadListener);
     }
 }

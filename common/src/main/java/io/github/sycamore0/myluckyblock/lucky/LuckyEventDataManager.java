@@ -8,8 +8,8 @@ import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
 import io.github.sycamore0.myluckyblock.lucky.reader.DependenciesDataReader;
-import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
-import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventPack;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventDefinition;
 import net.minecraft.SharedConstants;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,27 +27,27 @@ public class LuckyEventDataManager {
     }
 
     public void loadEvents(String group, boolean includeBuiltIn) {
-        Map<String, List<EventPackDataReader>> all = listener.getPackData();
+        Map<String, List<EventPack>> all = listener.getPacksByGroup();
         if (all == null) {
             Constants.LOG.warn("Event pack data is not loaded yet, cannot load group {}", group);
             return;
         }
 
-        List<EventPackDataReader> rawPacks = new ArrayList<>(all.getOrDefault(group, List.of()));
+        List<EventPack> rawPacks = new ArrayList<>(all.getOrDefault(group, List.of()));
         if (includeBuiltIn && !group.equals(Constants.EVENT_PACK_GROUP_NAME)) {
             rawPacks.addAll(all.getOrDefault(Constants.EVENT_PACK_GROUP_NAME, List.of()));
         }
 
         Map<String, LoadedPack> loaded = new LinkedHashMap<>();
-        for (EventPackDataReader packData : rawPacks) {
-            if (!checkDependencies(packData)) {
-                packData.getDependencies().forEach(dep -> Constants.LOG.warn("Skipping pack {}: missing dependency {} {}", packData.getName(), dep.getModId(), dep.getVersionRange()));
+        for (EventPack eventPack : rawPacks) {
+            if (!checkDependencies(eventPack)) {
+                eventPack.getDependencies().forEach(dep -> Constants.LOG.warn("Skipping pack {}: missing dependency {} {}", eventPack.getName(), dep.getModId(), dep.getVersionRange()));
                 continue;
             }
-            LoadedPack loadedPack = LoadedPack.from(packData);
-            validateActions(packData.getName(), loadedPack);
-            if (loaded.putIfAbsent(loadedPack.eventPackId(), loadedPack) != null) {
-                Constants.LOG.warn("Duplicate pack eventPackId {} in group {}, keeping first", loadedPack.eventPackId(), group);
+            LoadedPack loadedPack = LoadedPack.from(eventPack);
+            validateSteps(eventPack.getName(), loadedPack);
+            if (loaded.putIfAbsent(loadedPack.packKey(), loadedPack) != null) {
+                Constants.LOG.warn("Duplicate pack '{}' in group {}, keeping first", loadedPack.packKey(), group);
             }
         }
 
@@ -57,31 +57,28 @@ public class LuckyEventDataManager {
         Constants.LOG.info("Loaded group {}: {} packs, {} events", group, loaded.size(), totalEvents);
     }
 
-    private static void validateActions(String packName, LoadedPack pack) {
-        for (RandomEventDataReader event : pack.allEvents()) {
-            if (event.hasActions() && event.hasLegacyActions()) {
-                Constants.LOG.warn("Pack {}: event {} mixes 'actions' with the legacy action fields, 'actions' runs first", packName, event.getEventId());
-            }
-            List<JsonObject> steps = event.getActions();
+    private static void validateSteps(String packName, LoadedPack pack) {
+        for (EventDefinition event : pack.allEvents()) {
+            List<JsonObject> steps = event.getSteps();
             for (int i = 0; i < steps.size(); i++) {
                 JsonObject step = steps.get(i);
                 if (step == null) continue;
 
-                JsonElement typeElement = step.get("type");
-                if (typeElement == null || !typeElement.isJsonPrimitive()) {
-                    Constants.LOG.warn("Pack {}: event {} action #{} has no 'type'", packName, event.getEventId(), i + 1);
+                JsonElement actionElement = step.get("action");
+                if (actionElement == null || !actionElement.isJsonPrimitive()) {
+                    Constants.LOG.warn("Pack {}: event {} step #{} has no 'action'", packName, event.getEventId(), i + 1);
                     continue;
                 }
-                String type = typeElement.getAsString();
+                String type = actionElement.getAsString();
                 if (!LuckyActions.isRegistered(type)) {
-                    Constants.LOG.warn("Pack {}: event {} action #{} uses unknown type '{}'", packName, event.getEventId(), i + 1, type);
+                    Constants.LOG.warn("Pack {}: event {} step #{} uses unknown action '{}'", packName, event.getEventId(), i + 1, type);
                 }
             }
         }
     }
 
     public void ensureAllGroupsLoaded() {
-        Map<String, List<EventPackDataReader>> all = listener.getPackData();
+        Map<String, List<EventPack>> all = listener.getPacksByGroup();
         if (all == null) {
             return;
         }
@@ -97,15 +94,15 @@ public class LuckyEventDataManager {
     }
 
     @Nullable
-    public RandomEventDataReader getRandomEvent(String group) {
-        List<RandomEventDataReader> all = collect(group, null);
+    public EventDefinition getRandomEvent(String group) {
+        List<EventDefinition> all = collect(group, null);
         if (all.isEmpty()) return null;
         return all.get(ThreadLocalRandom.current().nextInt(all.size()));
     }
 
     @Nullable
-    public RandomEventDataReader getRandomEvent(String group, EventType type) {
-        List<RandomEventDataReader> list = collect(group, type);
+    public EventDefinition getRandomEvent(String group, EventType type) {
+        List<EventDefinition> list = collect(group, type);
         if (list.isEmpty() && type != EventType.COMMON) {
             list = collect(group, EventType.COMMON);
         }
@@ -114,15 +111,15 @@ public class LuckyEventDataManager {
     }
 
     @Nullable
-    public RandomEventDataReader getEvent(String group, String packId, int eventId) {
-        LoadedPack pack = getPack(group, packId);
+    public EventDefinition getEvent(String group, String packKey, int eventId) {
+        LoadedPack pack = getEventPack(group, packKey);
         return pack == null ? null : pack.eventsById().get(eventId);
     }
 
     @Nullable
-    public LoadedPack getPack(String group, String packId) {
+    public LoadedPack getEventPack(String group, String packKey) {
         Map<String, LoadedPack> packs = packsByGroup.get(group);
-        return packs == null ? null : packs.get(packId);
+        return packs == null ? null : packs.get(packKey);
     }
 
     public List<LoadedPack> getAllLoadedPacks() {
@@ -134,42 +131,42 @@ public class LuckyEventDataManager {
                 .toList();
     }
 
-    public Set<String> getEventPackIds(String eventPackGroup) {
+    public Set<String> getPackKeys(String eventPackGroup) {
         Map<String, LoadedPack> loadedPacks = packsByGroup.get(eventPackGroup);
         return loadedPacks == null ? Set.of() : loadedPacks.keySet();
     }
 
-    public Set<Integer> getEventIds(String group, String packId) {
-        LoadedPack pack = getPack(group, packId);
+    public Set<Integer> getEventIds(String group, String packKey) {
+        LoadedPack pack = getEventPack(group, packKey);
         return pack == null ? Set.of() : pack.eventsById().keySet();
     }
 
-    private static String groupOf(String fullEventPackId) {
-        int colon = fullEventPackId.indexOf(':');
-        return colon < 0 ? fullEventPackId : fullEventPackId.substring(0, colon);
+    private static String groupOf(String packKey) {
+        int colon = packKey.indexOf(':');
+        return colon < 0 ? packKey : packKey.substring(0, colon);
     }
 
     @Nullable
-    public RandomEventDataReader getEventByFullId(String fullEventPackId, int eventId) {
-        return getEvent(groupOf(fullEventPackId), fullEventPackId, eventId);
+    public EventDefinition getEventByFullId(String packKey, int eventId) {
+        return getEvent(groupOf(packKey), packKey, eventId);
     }
 
-    public Set<Integer> getEventIdsByFullId(String fullEventPackId) {
-        return getEventIds(groupOf(fullEventPackId), fullEventPackId);
+    public Set<Integer> getEventIdsByFullId(String packKey) {
+        return getEventIds(groupOf(packKey), packKey);
     }
 
-    public Set<String> getAllPackIds() {
-        Set<String> allPackIds = new LinkedHashSet<>();
+    public Set<String> getAllPackKeys() {
+        Set<String> allPackKeys = new LinkedHashSet<>();
         for (Map<String, LoadedPack> loadedPacks : packsByGroup.values()) {
-            allPackIds.addAll(loadedPacks.keySet());
+            allPackKeys.addAll(loadedPacks.keySet());
         }
-        return allPackIds;
+        return allPackKeys;
     }
 
-    private List<RandomEventDataReader> collect(String group, @Nullable EventType type) {
+    private List<EventDefinition> collect(String group, @Nullable EventType type) {
         Map<String, LoadedPack> packs = packsByGroup.get(group);
         if (packs == null) return List.of();
-        List<RandomEventDataReader> result = new ArrayList<>();
+        List<EventDefinition> result = new ArrayList<>();
         for (LoadedPack pack : packs.values()) {
             result.addAll(type == null
                     ? pack.allEvents()
@@ -178,8 +175,8 @@ public class LuckyEventDataManager {
         return result;
     }
 
-    private boolean checkDependencies(EventPackDataReader packData) {
-        List<DependenciesDataReader> needed = packData.getDependencies();
+    private boolean checkDependencies(EventPack eventPack) {
+        List<DependenciesDataReader> needed = eventPack.getDependencies();
         if (needed == null) return true;
         for (DependenciesDataReader dep : needed) {
             String modId = dep.getModId();
@@ -207,31 +204,31 @@ public class LuckyEventDataManager {
     }
 
     public boolean isDataReady() {
-        return listener.getPackData() != null;
+        return listener.getPacksByGroup() != null;
     }
 
     public record LoadedPack(
-            String eventPackId,
-            EventPackDataReader eventPackData,
-            Map<Integer, RandomEventDataReader> eventsById,
-            Map<EventType, List<RandomEventDataReader>> eventsByType,
-            List<RandomEventDataReader> allEvents
+            String packKey,
+            EventPack eventPack,
+            Map<Integer, EventDefinition> eventsById,
+            Map<EventType, List<EventDefinition>> eventsByType,
+            List<EventDefinition> allEvents
     ) {
-        static LoadedPack from(EventPackDataReader eventPackData) {
-            String eventPackId = eventPackData.getEventPackId() != null ? eventPackData.getEventPackId() : eventPackData.getName();
-            List<RandomEventDataReader> rawEvents = eventPackData.getRandomEvents();
+        static LoadedPack from(EventPack eventPack) {
+            String packKey = eventPack.getPackKey() != null ? eventPack.getPackKey() : eventPack.getName();
+            List<EventDefinition> rawEvents = eventPack.getRandomEvents();
 
             Set<Integer> explicitIds = new HashSet<>();
-            for (RandomEventDataReader e : rawEvents) {
+            for (EventDefinition e : rawEvents) {
                 if (e.getEventId() > 0) explicitIds.add(e.getEventId());
             }
 
-            Map<Integer, RandomEventDataReader> byId = new LinkedHashMap<>();
-            Map<EventType, List<RandomEventDataReader>> byType = new EnumMap<>(EventType.class);
+            Map<Integer, EventDefinition> byId = new LinkedHashMap<>();
+            Map<EventType, List<EventDefinition>> byType = new EnumMap<>(EventType.class);
             for (EventType t : EventType.values()) byType.put(t, new ArrayList<>());
 
             int nextAutoId = 1;
-            for (RandomEventDataReader event : rawEvents) {
+            for (EventDefinition event : rawEvents) {
                 int id = event.getEventId();
                 if (id <= 0) {
                     while (explicitIds.contains(nextAutoId) || byId.containsKey(nextAutoId)) {
@@ -241,7 +238,7 @@ public class LuckyEventDataManager {
                     event.setEventId(id);
                 }
                 if (byId.containsKey(id)) {
-                    Constants.LOG.warn("Duplicate event eventPackId {} in pack {}, skipping later one", id, eventPackId);
+                    Constants.LOG.warn("Duplicate event id {} in pack '{}', skipping later one", id, packKey);
                     continue;
                 }
                 EventType type = event.getType() == null ? EventType.COMMON : event.getType();
@@ -252,8 +249,8 @@ public class LuckyEventDataManager {
             byType.replaceAll((k, v) -> List.copyOf(v));
 
             return new LoadedPack(
-                    eventPackId,
-                    eventPackData,
+                    packKey,
+                    eventPack,
                     Collections.unmodifiableMap(byId),
                     Collections.unmodifiableMap(byType),
                     List.copyOf(byId.values())

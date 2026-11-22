@@ -1,6 +1,6 @@
 {
     "name": "Random Events Pack for 1.21.7",
-    "version": "2.9",
+    "version": "3.0",
     "info": "Random events for Vanilla Minecraft 1.21.7+",
     "dependencies": [
         {
@@ -11,21 +11,29 @@
     "random_events": [
         {
             "id": 1,
-            "drop_items": [
+            "steps": [
                 {
-                    "id": "minecraft:music_disc_lava_chicken",
-                    "use_random": false,
-                    "num": 1,
-                    "pos_src": 0,
-                    "offset": {
-                        "y": 1
-                    }
-                }
-            ],
-            "place_blocks": [
+                    "action": "drop_items",
+                    "data": [
+                        {
+                            "id": "minecraft:music_disc_lava_chicken",
+                            "use_random": false,
+                            "num": 1,
+                            "pos_src": 0,
+                            "offset": {
+                                "y": 1
+                            }
+                        }
+                    ]
+                },
                 {
-                    "id": "minecraft:jukebox",
-                    "pos_src": 0
+                    "action": "place_blocks",
+                    "data": [
+                        {
+                            "id": "minecraft:jukebox",
+                            "pos_src": 0
+                        }
+                    ]
                 }
             ]
         }

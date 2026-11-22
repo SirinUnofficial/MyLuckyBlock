@@ -3,8 +3,8 @@ package io.github.sycamore0.myluckyblock.event.listener;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
 import io.github.sycamore0.myluckyblock.lucky.reader.DisabledDataReader;
-import io.github.sycamore0.myluckyblock.lucky.reader.EventPackDataReader;
-import io.github.sycamore0.myluckyblock.lucky.reader.RandomEventDataReader;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventPack;
+import io.github.sycamore0.myluckyblock.lucky.reader.EventDefinition;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.Resource;
@@ -18,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class LuckyEventsReloadListener implements PreparableReloadListener, ILuckyEventsReloadListener {
-    private volatile Map<String, List<EventPackDataReader>> packData = Map.of();
+    private volatile Map<String, List<EventPack>> packsByGroup = Map.of();
     private volatile Runnable onReload = () -> {};
 
     @Override
@@ -37,12 +37,12 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
             prepProfilerFiller.startTick();
 
             Set<String> disabled = loadDisabled(resourceManager);
-            Map<String, List<EventPackDataReader>> eventsMap = loadEvents(resourceManager, disabled);
+            Map<String, List<EventPack>> eventsMap = loadEvents(resourceManager, disabled);
 
             prepProfilerFiller.endTick();
             return eventsMap;
         }, bgExecutor).thenCompose(preparationBarrier::wait).thenAcceptAsync(res -> {
-            packData = res;
+            packsByGroup = res;
             onReload.run();
         }, gameExecutor);
     }
@@ -72,8 +72,8 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
         return disabledPackSet;
     }
 
-    private Map<String, List<EventPackDataReader>> loadEvents(ResourceManager manager, Set<String> disabledSet) {
-        Map<String, List<EventPackDataReader>> eventPacksMap = new HashMap<>();
+    private Map<String, List<EventPack>> loadEvents(ResourceManager manager, Set<String> disabledSet) {
+        Map<String, List<EventPack>> eventPacksMap = new HashMap<>();
         Constants.LOG.info("Loading events with disabled: {}", disabledSet);
 
         manager.listResources(Constants.EVENTS_PATH, loc -> loc.getPath().endsWith(".json"))
@@ -93,25 +93,25 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
                         }
                     }
 
-                    String eventPackId = seg[seg.length - 1].replace(".json", "");
+                    String packName = seg[seg.length - 1].replace(".json", "");
                     String subDir = seg.length >= 5 ? seg[3] : "";
-                    String fullEventPackId = eventPackGroup + ":" + (subDir.isEmpty() ? "" : subDir + "/") + eventPackId;
+                    String packKey = eventPackGroup + ":" + (subDir.isEmpty() ? "" : subDir + "/") + packName;
 
-                    if (disabledSet.contains(fullEventPackId)) {
-                        Constants.LOG.info("Skipping disabled event pack: {}", fullEventPackId);
+                    if (disabledSet.contains(packKey)) {
+                        Constants.LOG.info("Skipping disabled event pack: {}", packKey);
                         return;
                     }
 
                     try (Reader reader = resource.openAsReader()) {
-                        EventPackDataReader eventPackData = Constants.GSON.fromJson(reader, EventPackDataReader.class);
-                        eventPackData.setEventPackId(fullEventPackId);
-                        if (eventPackData.getRandomEvents() != null) {
-                            for (RandomEventDataReader event : eventPackData.getRandomEvents()) {
+                        EventPack eventPack = Constants.GSON.fromJson(reader, EventPack.class);
+                        eventPack.setPackKey(packKey);
+                        if (eventPack.getRandomEvents() != null) {
+                            for (EventDefinition event : eventPack.getRandomEvents()) {
                                 event.setType(type);
                             }
                         }
-                        eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPackData);
-                        Constants.LOG.info("Parsed pack: {} with type {}", fullEventPackId, type);
+                        eventPacksMap.computeIfAbsent(eventPackGroup, k -> new ArrayList<>()).add(eventPack);
+                        Constants.LOG.info("Parsed pack: {} with type {}", packKey, type);
                     } catch (Exception e) {
                         Constants.LOG.error("Failed to parse event pack {}: {}", location, e.getMessage());
                     }
@@ -121,7 +121,7 @@ public class LuckyEventsReloadListener implements PreparableReloadListener, ILuc
         return eventPacksMap;
     }
 
-    public Map<String, List<EventPackDataReader>> getPackData() {
-        return packData;
+    public Map<String, List<EventPack>> getPacksByGroup() {
+        return packsByGroup;
     }
 }
