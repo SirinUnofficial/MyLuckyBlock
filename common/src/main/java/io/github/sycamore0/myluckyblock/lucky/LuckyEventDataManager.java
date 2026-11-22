@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.lucky;
 
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.event.listener.ILuckyEventsReloadListener;
@@ -39,9 +40,16 @@ public class LuckyEventDataManager {
         }
 
         Map<String, LoadedPack> loaded = new LinkedHashMap<>();
+        int versionSkips = 0;
         for (EventPack eventPack : rawPacks) {
-            if (!checkDependencies(eventPack)) {
-                eventPack.getDependencies().forEach(dep -> Constants.LOG.warn("Skipping pack {}: missing dependency {} {}", eventPack.getName(), dep.getModId(), dep.getVersionRange()));
+            DependenciesDataReader unsatisfied = findUnsatisfiedDependency(eventPack);
+            if (unsatisfied != null) {
+                if (isOtherVersionSkip(unsatisfied)) {
+                    versionSkips++;
+                    Constants.LOG.debug("Skipping pack {}: it needs minecraft {}", eventPack.getName(), unsatisfied.getVersionRange());
+                } else {
+                    Constants.LOG.warn("Skipping pack {}: missing dependency {}", eventPack.getName(), describeDependency(unsatisfied));
+                }
                 continue;
             }
             LoadedPack loadedPack = LoadedPack.from(eventPack);
@@ -54,7 +62,12 @@ public class LuckyEventDataManager {
         packsByGroup.put(group, Collections.unmodifiableMap(loaded));
 
         int totalEvents = loaded.values().stream().mapToInt(LoadedPack::eventCount).sum();
-        Constants.LOG.info("Loaded group {}: {} packs, {} events", group, loaded.size(), totalEvents);
+        if (versionSkips > 0) {
+            Constants.LOG.info("Loaded group {}: {} packs, {} events ({} skipped for other Minecraft versions)",
+                    group, loaded.size(), totalEvents, versionSkips);
+        } else {
+            Constants.LOG.info("Loaded group {}: {} packs, {} events", group, loaded.size(), totalEvents);
+        }
     }
 
     private static void validateSteps(String packName, LoadedPack pack) {
@@ -175,13 +188,14 @@ public class LuckyEventDataManager {
         return result;
     }
 
-    private boolean checkDependencies(EventPack eventPack) {
+    @Nullable
+    private static DependenciesDataReader findUnsatisfiedDependency(EventPack eventPack) {
         List<DependenciesDataReader> needed = eventPack.getDependencies();
-        if (needed == null) return true;
+        if (needed == null) return null;
         for (DependenciesDataReader dep : needed) {
             String modId = dep.getModId();
             if (modId == null) continue;
-            if (!Services.PLATFORM.isModLoaded(modId)) return false;
+            if (!Services.PLATFORM.isModLoaded(modId)) return dep;
 
             String range = dep.getVersionRange();
             if (range == null) continue;
@@ -193,14 +207,30 @@ public class LuckyEventDataManager {
                         : Services.PLATFORM.getModVersion(modId);
             } catch (Exception e) {
                 Constants.LOG.error("Failed to get version for {}", modId, e);
-                return false;
+                return dep;
             }
 
             if (currentVersion == null || !VersionHelper.isVersionInRange(currentVersion, range)) {
-                return false;
+                return dep;
             }
         }
-        return true;
+        return null;
+    }
+
+    private static boolean isOtherVersionSkip(DependenciesDataReader dep) {
+        String modId = dep.getModId();
+        if (modId == null || !"minecraft".equals(modId) || dep.getVersionRange() == null) {
+            return false;
+        }
+        if (!ConfigManager.get().silenceMinecraftVersionSkipWarnings) {
+            return false;
+        }
+        return Services.PLATFORM.isModLoaded(modId);
+    }
+
+    private static String describeDependency(DependenciesDataReader dep) {
+        String range = dep.getVersionRange();
+        return range == null ? dep.getModId() : dep.getModId() + " " + range;
     }
 
     public boolean isDataReady() {

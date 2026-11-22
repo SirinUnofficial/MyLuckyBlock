@@ -6,4 +6,5 @@ public class ModConfig {
     public boolean autoDisableLuckyBlockStructure = false;
     public boolean autoDisableLuckyBlockBoss = false;
     public boolean autoDisableLuckyBlockExplosions = false;
+    public boolean silenceMinecraftVersionSkipWarnings = true;
 }

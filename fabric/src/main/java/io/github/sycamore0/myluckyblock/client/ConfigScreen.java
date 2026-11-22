@@ -57,6 +57,13 @@ public final class ConfigScreen {
                 .setSaveConsumer(v -> config.autoDisableLuckyBlockExplosions = v)
                 .build());
 
+        general.addEntry(entry
+                .startBooleanToggle(Component.literal("Silence Minecraft Version Skips"), config.silenceMinecraftVersionSkipWarnings)
+                .setDefaultValue(true)
+                .setTooltip(Component.literal("Do not log a warning when an event pack is skipped because it targets a different Minecraft version."))
+                .setSaveConsumer(v -> config.silenceMinecraftVersionSkipWarnings = v)
+                .build());
+
         return builder.build();
     }
 }
