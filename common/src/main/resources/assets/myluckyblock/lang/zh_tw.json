@@ -29,6 +29,9 @@
     "config.myluckyblock.auto_disable_lucky_block_explosions.tooltip": "為新世界自動加入內建資料包，關閉 myluckyblock 的大型爆炸事件。",
     "config.myluckyblock.silence_minecraft_version_skips": "靜默 Minecraft 版本略過提示",
     "config.myluckyblock.silence_minecraft_version_skips.tooltip": "當事件包因目標 Minecraft 版本不同而被略過時，不輸出警告日誌。",
+    "config.myluckyblock.enable_debug_command": "允許 debug 指令",
+    "config.myluckyblock.enable_debug_command.tooltip": "允許使用 /myluckyblock debug 依事件包與 id 觸發指定事件。",
+    "commands.myluckyblock.debug_disabled": "偵錯指令已在設定中關閉。",
 
     "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][調試]§rLuckyEventManager 未被加載",
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][調試]§r指定事件不存在",

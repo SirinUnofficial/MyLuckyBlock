@@ -7,6 +7,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.event.LuckyBlockTrigger;
 import io.github.sycamore0.myluckyblock.lucky.EventType;
 import io.github.sycamore0.myluckyblock.lucky.LuckyEventDataManager;
@@ -36,6 +37,7 @@ import java.util.Locale;
 public class MyLuckyBlockCommand {
     private static final SimpleCommandExceptionType ERR_NOT_LOADED = new SimpleCommandExceptionType(Component.translatable("commands.myluckyblock.not_loaded"));
     private static final SimpleCommandExceptionType ERR_NO_SUCH_EVENT = new SimpleCommandExceptionType(Component.translatable("commands.myluckyblock.no_such_event"));
+    private static final SimpleCommandExceptionType ERR_DEBUG_DISABLED = new SimpleCommandExceptionType(Component.translatable("commands.myluckyblock.debug_disabled"));
 
     private MyLuckyBlockCommand() {
     }
@@ -80,6 +82,10 @@ public class MyLuckyBlockCommand {
 
     private static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSourceStack source = ctx.getSource();
+
+        if (!ConfigManager.get().enableDebugCommand) {
+            throw ERR_DEBUG_DISABLED.create();
+        }
         ServerLevel level = source.getLevel();
 
         LuckyEventDataManager manager = LuckyBlockTrigger.manager;

@@ -29,6 +29,9 @@
     "config.myluckyblock.auto_disable_lucky_block_explosions.tooltip": "Auto add a built-in datapack to disable myluckyblock huge explosion events for new world.",
     "config.myluckyblock.silence_minecraft_version_skips": "Silence Minecraft Version Skips",
     "config.myluckyblock.silence_minecraft_version_skips.tooltip": "Do not log a warning when an event pack is skipped because it targets a different Minecraft version.",
+    "config.myluckyblock.enable_debug_command": "Enable Debug Command",
+    "config.myluckyblock.enable_debug_command.tooltip": "Allow /myluckyblock debug to trigger a specific event by event pack and id.",
+    "commands.myluckyblock.debug_disabled": "The debug command is disabled in the config.",
 
     "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][DEBUG]§rLuckyEventManager is not loaded yet",
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][DEBUG]§rNo such event",

@@ -65,6 +65,13 @@ public final class ConfigScreen {
                 .setSaveConsumer(v -> config.silenceMinecraftVersionSkipWarnings = v)
                 .build());
 
+        general.addEntry(entry
+                .startBooleanToggle(Component.translatable("config.myluckyblock.enable_debug_command"), config.enableDebugCommand)
+                .setDefaultValue(false)
+                .setTooltip(tooltip("config.myluckyblock.enable_debug_command.tooltip", "enableDebugCommand"))
+                .setSaveConsumer(v -> config.enableDebugCommand = v)
+                .build());
+
         return builder.build();
     }
 
