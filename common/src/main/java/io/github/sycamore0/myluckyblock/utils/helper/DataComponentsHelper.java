@@ -12,6 +12,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -28,6 +29,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 public class DataComponentsHelper {
+    private static final String BLOCK_ENTITY_DATA = "minecraft:block_entity_data";
+
     public static void applyItemComponents(ItemStack itemStack, @Nullable JsonObject dataComponents, RegistryAccess registryAccess) {
         if (dataComponents == null || dataComponents.isEmpty()) {
             return;
@@ -90,22 +93,22 @@ public class DataComponentsHelper {
         return new JsonPrimitive(element.toString());
     }
 
-    public static void applyBlockEntityComponents(ServerLevel serverLevel, BlockEntity blockEntity, Block block, String blockId, JsonObject dataComponents) {
+    public static void applyToBlockEntity(ServerLevel serverLevel, BlockEntity blockEntity, Block block, String blockId, JsonObject dataComponentsElement) {
         Item item = block.asItem();
         if (item == Items.AIR) {
             Constants.LOG.warn("Block {} has no item form, ignoring 'data_components'", blockId);
             return;
         }
 
-        ItemStack stack = new ItemStack(item);
-        DataComponentsHelper.applyItemComponents(stack, dataComponents, serverLevel.registryAccess());
+        ItemStack itemStack = new ItemStack(item);
+        applyItemComponents(itemStack, withBlockEntityId(dataComponentsElement, blockId), serverLevel.registryAccess());
 
-        CustomData blockEntityData = stack.get(DataComponents.BLOCK_ENTITY_DATA);
+        CustomData blockEntityData = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
         if (blockEntityData != null) {
             blockEntityData.loadInto(blockEntity, serverLevel.registryAccess());
         }
 
-        ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
+        ItemContainerContents contents = itemStack.get(DataComponents.CONTAINER);
         if (contents != null && blockEntity instanceof Container container) {
             NonNullList<ItemStack> items = NonNullList.withSize(container.getContainerSize(), ItemStack.EMPTY);
             contents.copyInto(items);
@@ -113,5 +116,56 @@ public class DataComponentsHelper {
                 container.setItem(i, items.get(i));
             }
         }
+    }
+
+    @Nullable
+    public static CompoundTag toBlockEntityTag(RegistryAccess registryAccess, Item item, String blockId, @Nullable String nbtString, @Nullable JsonObject dataComponentsElement) {
+        CompoundTag result = null;
+
+        if (dataComponentsElement != null && !dataComponentsElement.isEmpty() && item != Items.AIR) {
+            ItemStack itemStack = new ItemStack(item);
+            applyItemComponents(itemStack, withBlockEntityId(dataComponentsElement, blockId), registryAccess);
+            CustomData data = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
+            if (data != null && !data.isEmpty()) {
+                result = data.copyTag();
+            }
+        }
+
+        if (nbtString != null && !nbtString.isBlank()) {
+            CompoundTag nbt;
+            try {
+                nbt = NbtHelper.generateNbt(nbtString);
+            } catch (IllegalArgumentException e) {
+                Constants.LOG.warn("Failed to parse 'nbt' for block {}: {}", blockId, e.getMessage());
+                nbt = null;
+            }
+            if (nbt != null) {
+                if (result == null) {
+                    result = nbt;
+                } else {
+                    result.merge(nbt);
+                }
+            }
+        }
+
+        return result == null || result.isEmpty() ? null : result;
+    }
+
+    private static JsonObject withBlockEntityId(JsonObject dataComponentsElement, @Nullable String blockId) {
+        JsonElement element = dataComponentsElement.get(BLOCK_ENTITY_DATA);
+        if (element == null || !element.isJsonObject() || element.getAsJsonObject().has("id")) {
+            return dataComponentsElement;
+        }
+        JsonObject copy = dataComponentsElement.deepCopy();
+        copy.getAsJsonObject(BLOCK_ENTITY_DATA).addProperty("id", stripBlockState(blockId));
+        return copy;
+    }
+
+    private static String stripBlockState(@Nullable String blockId) {
+        if (blockId == null) {
+            return "";
+        }
+        int bracket = blockId.indexOf('[');
+        return (bracket < 0 ? blockId : blockId.substring(0, bracket)).trim();
     }
 }

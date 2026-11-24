@@ -5,7 +5,7 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.AddParticle;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.AddParticleSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -15,7 +15,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 public final class AddParticlesAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (AddParticle particle : LuckyActions.spec(step, AddParticle.class)) {
+        for (AddParticleSpec particle : LuckyActions.spec(step, AddParticleSpec.class)) {
             addParticles(context.level(), particle.getId(),
                     context.resolvePos(particle.getPosSrc(), particle.getOffset()),
                     particle.getCount(),

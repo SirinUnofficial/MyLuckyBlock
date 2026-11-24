@@ -22,7 +22,13 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{rarity:epic,enchantments:{lunge:16},repair_cost:32767}"
+                            "data_components": {
+                                "minecraft:rarity": "epic",
+                                "minecraft:enchantments": {
+                                    "lunge": 16
+                                },
+                                "minecraft:repair_cost": 32767
+                            }
                         }
                     ]
                 }

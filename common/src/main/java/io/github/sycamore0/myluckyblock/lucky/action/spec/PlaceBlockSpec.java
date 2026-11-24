@@ -1,11 +1,12 @@
 package io.github.sycamore0.myluckyblock.lucky.action.spec;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.world.phys.Vec3;
 
-public class PlaceBlock {
+public class PlaceBlockSpec {
     @SerializedName("id")
     protected String id;
 
@@ -21,8 +22,8 @@ public class PlaceBlock {
     @SerializedName("data_components")
     protected JsonObject dataComponents = null;
 
-    @SerializedName("state")
-    protected JsonObject state = null;
+    @SerializedName("block_state")
+    protected JsonElement blockState = null;
 
     public String getId() {
         return id;
@@ -44,7 +45,7 @@ public class PlaceBlock {
         return dataComponents;
     }
 
-    public JsonObject getState() {
-        return state;
+    public JsonElement getBlockState() {
+        return blockState;
     }
 }

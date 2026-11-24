@@ -239,7 +239,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward",
+                            "id": "minecraft:chests/trial_chambers/reward",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -254,7 +254,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_common",
+                            "id": "minecraft:chests/trial_chambers/reward_common",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -269,7 +269,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_rare",
+                            "id": "minecraft:chests/trial_chambers/reward_rare",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -284,7 +284,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_unique",
+                            "id": "minecraft:chests/trial_chambers/reward_unique",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -299,7 +299,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_ominous",
+                            "id": "minecraft:chests/trial_chambers/reward_ominous",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -314,7 +314,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_ominous_common",
+                            "id": "minecraft:chests/trial_chambers/reward_ominous_common",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -329,7 +329,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_ominous_rare",
+                            "id": "minecraft:chests/trial_chambers/reward_ominous_rare",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -344,7 +344,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/reward_ominous_unique",
+                            "id": "minecraft:chests/trial_chambers/reward_ominous_unique",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -359,7 +359,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/supply",
+                            "id": "minecraft:chests/trial_chambers/supply",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -374,7 +374,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/corridor",
+                            "id": "minecraft:chests/trial_chambers/corridor",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -389,7 +389,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/intersection",
+                            "id": "minecraft:chests/trial_chambers/intersection",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -404,7 +404,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/intersection_barrel",
+                            "id": "minecraft:chests/trial_chambers/intersection_barrel",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -419,7 +419,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/trial_chambers/entrance",
+                            "id": "minecraft:chests/trial_chambers/entrance",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -434,7 +434,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/spawn_bonus_chest",
+                            "id": "minecraft:chests/spawn_bonus_chest",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }

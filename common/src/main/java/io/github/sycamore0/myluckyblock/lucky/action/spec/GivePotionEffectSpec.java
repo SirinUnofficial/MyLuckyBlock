@@ -2,7 +2,7 @@ package io.github.sycamore0.myluckyblock.lucky.action.spec;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GivePotionEffect {
+public class GivePotionEffectSpec {
     @SerializedName("id")
     protected String id;
 

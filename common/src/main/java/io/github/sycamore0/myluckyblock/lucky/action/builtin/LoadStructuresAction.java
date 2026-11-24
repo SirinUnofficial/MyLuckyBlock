@@ -5,7 +5,7 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.LoadStructure;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.LoadStructureSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -21,14 +21,19 @@ import java.util.Optional;
 public final class LoadStructuresAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (LoadStructure structure : LuckyActions.spec(step, LoadStructure.class)) {
+        for (LoadStructureSpec structure : LuckyActions.spec(step, LoadStructureSpec.class)) {
             loadStructure(context.level(), PosHelper.parseVec3d(context.resolvePos(structure.getPosSrc(), structure.getOffset())), structure.getModId(), structure.getId());
         }
     }
 
     private static void loadStructure(ServerLevel serverLevel, BlockPos pos, String modId, String structureName) {
         StructureTemplateManager manager = serverLevel.getStructureManager();
-        ResourceLocation structureId = ResourceLocation.fromNamespaceAndPath(modId, structureName);
+        ResourceLocation structureId = structureName.indexOf(':') >= 0 ? ResourceLocation.tryParse(structureName) : ResourceLocation.tryBuild(modId, structureName);
+
+        if (structureId == null) {
+            Constants.LOG.error("Invalid structure id '{}' (mod_id '{}'), skipping", structureName, modId);
+            return;
+        }
 
         try {
             Optional<StructureTemplate> template = manager.get(structureId);

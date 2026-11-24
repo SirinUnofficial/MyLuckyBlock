@@ -40,10 +40,7 @@
                             "num": 1,
                             "pos_src": 1,
                             "data_components": {
-                                "minecraft:custom_name": {
-                                    "text": "Coin",
-                                    "italic": false
-                                }
+                                "minecraft:custom_name": "Coin"
                             }
                         }
                     ]

@@ -10,20 +10,6 @@
                     "action": "load_structures",
                     "spec": [
                         {
-                            "id": "cherry_house",
-                            "pos_src": 0
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "steps": [
-                {
-                    "action": "load_structures",
-                    "spec": [
-                        {
                             "id": "cherry_tree",
                             "pos_src": 0,
                             "offset": {

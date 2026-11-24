@@ -6,7 +6,7 @@ import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
-public class DropItem {
+public class DropItemSpec {
     @SerializedName("id")
     protected String id;
 

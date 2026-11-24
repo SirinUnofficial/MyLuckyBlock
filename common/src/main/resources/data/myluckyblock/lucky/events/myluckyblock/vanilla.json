@@ -6812,7 +6812,7 @@
                     "action": "add_particles",
                     "spec": [
                         {
-                            "id": "end_rod",
+                            "id": "minecraft:end_rod",
                             "count": 2,
                             "speed": 0,
                             "velocity": {
@@ -7174,7 +7174,7 @@
                     "action": "add_particles",
                     "spec": [
                         {
-                            "id": "landing_lava",
+                            "id": "minecraft:landing_lava",
                             "count": 16,
                             "speed": 0,
                             "velocity": {
@@ -7202,7 +7202,7 @@
                     "action": "add_particles",
                     "spec": [
                         {
-                            "id": "dripping_water",
+                            "id": "minecraft:dripping_water",
                             "count": 16,
                             "speed": 0,
                             "velocity": {

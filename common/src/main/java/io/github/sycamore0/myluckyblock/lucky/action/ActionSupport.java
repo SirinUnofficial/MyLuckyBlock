@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.lucky.action;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.action.spec.RandomNum;
@@ -7,15 +8,21 @@ import io.github.sycamore0.myluckyblock.lucky.action.spec.Vector3;
 import io.github.sycamore0.myluckyblock.utils.helper.DataComponentsHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class ActionSupport {
@@ -52,16 +59,10 @@ public final class ActionSupport {
                 Mth.randomBetween(level.getRandom(), (float) -z, (float) z));
     }
 
-    /**
-     * Applies {@code nbt} and {@code data_components} to the block entity already present at
-     * {@code blockPos}. Both are optional; {@code nbt} is applied first so it wins on conflicts.
-     */
-    public static void applyBlockEntityData(ServerLevel serverLevel, BlockPos blockPos, String blockId,
-                                            @Nullable String nbtString,
-                                            @Nullable JsonObject dataComponents) {
-        boolean hasComponents = dataComponents != null && !dataComponents.isEmpty();
+    public static void applyBlockEntityData(ServerLevel serverLevel, BlockPos blockPos, String blockId, @Nullable String nbtString, @Nullable JsonObject dataComponentsElement) {
         boolean hasNbt = nbtString != null && !nbtString.isBlank();
-        if (!hasComponents && !hasNbt) {
+        boolean hasDataComponents = dataComponentsElement != null && !dataComponentsElement.isEmpty();
+        if (!hasNbt && !hasDataComponents) {
             return;
         }
 
@@ -84,14 +85,118 @@ public final class ActionSupport {
             }
         }
 
-        if (hasComponents) {
+        if (hasDataComponents) {
             Block block = serverLevel.getBlockState(blockPos).getBlock();
-            DataComponentsHelper.applyBlockEntityComponents(serverLevel, blockEntity, block, blockId,
-                    dataComponents);
+            DataComponentsHelper.applyToBlockEntity(serverLevel, blockEntity, block, blockId, dataComponentsElement);
         }
 
         blockEntity.setChanged();
         BlockState blockState = serverLevel.getBlockState(blockPos);
         serverLevel.sendBlockUpdated(blockPos, blockState, blockState, Block.UPDATE_ALL);
+    }
+
+    @Nullable
+    public static BlockState resolveBlockState(@Nullable String blockId, @Nullable JsonElement blockStateElement) {
+        if (blockId == null || blockId.isBlank()) {
+            Constants.LOG.warn("Missing block id, skipping");
+            return null;
+        }
+
+        String id = blockId;
+        JsonObject inline = null;
+        int bracket = blockId.indexOf('[');
+        if (bracket >= 0) {
+            int end = blockId.lastIndexOf(']');
+            if (end > bracket) {
+                id = blockId.substring(0, bracket);
+                inline = parseInlineState(blockId.substring(bracket + 1, end));
+            }
+        }
+
+        ResourceLocation location;
+        try {
+            location = ResourceLocation.parse(id.trim());
+        } catch (Exception e) {
+            Constants.LOG.warn("Invalid block id '{}': {}", blockId, e.getMessage());
+            return null;
+        }
+
+        Block block = BuiltInRegistries.BLOCK.get(location);
+        if (block == Blocks.AIR && !"minecraft:air".equals(location.toString())) {
+            Constants.LOG.warn("Unknown block id '{}', skipping", blockId);
+            return null;
+        }
+
+        BlockState blockState = block.defaultBlockState();
+        blockState = applyState(blockState, inline);
+        return applyState(blockState, toProperties(blockStateElement));
+    }
+
+    @Nullable
+    private static JsonObject toProperties(@Nullable JsonElement blockState) {
+        if (blockState == null || blockState.isJsonNull()) {
+            return null;
+        }
+        if (blockState.isJsonObject()) {
+            return blockState.getAsJsonObject();
+        }
+        if (blockState.isJsonPrimitive() && blockState.getAsJsonPrimitive().isString()) {
+            String text = blockState.getAsString().trim();
+            if (text.startsWith("[") && text.endsWith("]")) {
+                text = text.substring(1, text.length() - 1);
+            }
+            return parseInlineState(text);
+        }
+        Constants.LOG.warn("Ignoring 'block_state': expected an object or a 'key=value,...' string, got {}", blockState);
+        return null;
+    }
+
+    private static BlockState applyState(BlockState blockState, @Nullable JsonObject properties) {
+        if (properties == null || properties.isEmpty()) {
+            return blockState;
+        }
+        for (Map.Entry<String, JsonElement> entry : properties.entrySet()) {
+            JsonElement value = entry.getValue();
+            if (value == null || !value.isJsonPrimitive()) {
+                Constants.LOG.warn("Ignoring block state property '{}': expected a plain value, got {}", entry.getKey(), value);
+                continue;
+            }
+            blockState = applyProperty(blockState, entry.getKey(), value.getAsString());
+        }
+        return blockState;
+    }
+
+    private static BlockState applyProperty(BlockState blockState, String name, String value) {
+        Property<?> property = blockState.getBlock().getStateDefinition().getProperty(name);
+        if (property == null) {
+            Constants.LOG.warn("Block {} has no block state property '{}', ignoring", blockState.getBlock(), name);
+            return blockState;
+        }
+        return applyPropertyValue(blockState, property, value);
+    }
+
+    private static BlockState applyPropertyValue(BlockState blockState, Property property, String value) {
+        Optional parsed = property.getValue(value);
+        if (parsed.isEmpty()) {
+            Constants.LOG.warn("Invalid value '{}' for block state property '{}' (allowed: {}), ignoring", value, property.getName(), property.getPossibleValues());
+            return blockState;
+        }
+        return blockState.setValue(property, (Comparable) parsed.get());
+    }
+
+    @Nullable
+    private static JsonObject parseInlineState(String text) {
+        JsonObject properties = new JsonObject();
+        for (String pair : text.split(",")) {
+            int split = pair.indexOf('=');
+            if (split <= 0) {
+                if (!pair.isBlank()) {
+                    Constants.LOG.warn("Ignoring malformed block state entry '{}'", pair.trim());
+                }
+                continue;
+            }
+            properties.addProperty(pair.substring(0, split).trim(), pair.substring(split + 1).trim());
+        }
+        return properties.isEmpty() ? null : properties;
     }
 }

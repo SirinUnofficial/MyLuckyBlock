@@ -5,7 +5,7 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.PlaySound;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.PlaySoundSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +23,7 @@ public final class PlaySoundsAction implements LuckyAction {
         if (player == null) {
             return;
         }
-        for (PlaySound sound : LuckyActions.spec(step, PlaySound.class)) {
+        for (PlaySoundSpec sound : LuckyActions.spec(step, PlaySoundSpec.class)) {
             playSound(player, context.level(), PosHelper.parseBlockPos(context.pos()), sound.getId(), sound.getVolume(), sound.getPitch());
         }
     }

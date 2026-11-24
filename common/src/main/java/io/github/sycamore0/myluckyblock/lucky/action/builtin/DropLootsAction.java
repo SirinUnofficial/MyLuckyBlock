@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.DropLoots;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.DropLootsSpec;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -21,7 +21,7 @@ import net.minecraft.world.phys.Vec3;
 public final class DropLootsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (DropLoots loot : LuckyActions.spec(step, DropLoots.class)) {
+        for (DropLootsSpec loot : LuckyActions.spec(step, DropLootsSpec.class)) {
             dropLoots(context.level(), context.resolvePos(loot.getPosSrc(), loot.getOffset()), loot.getId(), loot.getSeed());
         }
     }

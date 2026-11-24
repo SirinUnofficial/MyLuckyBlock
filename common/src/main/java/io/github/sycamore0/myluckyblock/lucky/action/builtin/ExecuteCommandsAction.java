@@ -5,7 +5,7 @@ import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.ExecuteCommand;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.ExecuteCommandSpec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.vehicle.MinecartCommandBlock;
@@ -14,7 +14,7 @@ import net.minecraft.world.phys.Vec3;
 public final class ExecuteCommandsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (ExecuteCommand command : LuckyActions.spec(step, ExecuteCommand.class)) {
+        for (ExecuteCommandSpec command : LuckyActions.spec(step, ExecuteCommandSpec.class)) {
             executeCommand(context.level(), context.resolvePos(command.getPosSrc(), command.getOffset()), command.getCommand());
         }
     }

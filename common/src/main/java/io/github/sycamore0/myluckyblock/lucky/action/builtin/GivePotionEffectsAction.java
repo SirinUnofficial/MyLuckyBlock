@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.GivePotionEffect;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.GivePotionEffectSpec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +21,7 @@ public final class GivePotionEffectsAction implements LuckyAction {
         if (player == null) {
             return;
         }
-        for (GivePotionEffect effect : LuckyActions.spec(step, GivePotionEffect.class)) {
+        for (GivePotionEffectSpec effect : LuckyActions.spec(step, GivePotionEffectSpec.class)) {
             givePotionEffect(player, effect.getId(), effect.getDuration(), effect.getAmplifier());
         }
     }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.world.phys.Vec3;
 
-public class SpawnMob {
+public class SpawnMobSpec {
     @SerializedName("id")
     protected String id;
 

@@ -23,7 +23,26 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.speed_boots\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.speed_boots\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:movement_speed,amount:0.5,slot:feet,operation:add_value,id:1737465163970}]},repair_cost:32767}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.speed_boots\", \"italic\": false, \"fallback\": \"name.myluckyblock.speed_boots\"}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"desc.myluckyblock.speed_boots\", \"italic\": false, \"fallback\": \"desc.myluckyblock.speed_boots\"}"
+                                ],
+                                "minecraft:rarity": "uncommon",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "movement_speed",
+                                            "amount": 0.5,
+                                            "slot": "feet",
+                                            "operation": "add_value",
+                                            "id": "1737465163970"
+                                        }
+                                    ]
+                                },
+                                "minecraft:repair_cost": 32767
+                            }
                         }
                     ]
                 }
@@ -43,7 +62,30 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.baguette\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.baguette\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:attack_damage,amount:4,slot:mainhand,operation:add_value,id:1737466659801}]},food:{eat_seconds:32767,nutrition:1,saturation:1}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.baguette\", \"italic\": false, \"fallback\": \"name.myluckyblock.baguette\"}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"desc.myluckyblock.baguette\", \"italic\": false, \"fallback\": \"desc.myluckyblock.baguette\"}"
+                                ],
+                                "minecraft:rarity": "uncommon",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "attack_damage",
+                                            "amount": 4,
+                                            "slot": "mainhand",
+                                            "operation": "add_value",
+                                            "id": "1737466659801"
+                                        }
+                                    ]
+                                },
+                                "minecraft:food": {
+                                    "eat_seconds": 32767,
+                                    "nutrition": 1,
+                                    "saturation": 1
+                                }
+                            }
                         }
                     ]
                 }
@@ -63,7 +105,25 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.fall_boots\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.fall_boots\",\"italic\":false}]'],rarity:uncommon,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:safe_fall_distance,amount:-24,slot:feet,operation:add_value,id:1737466090975}]}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.fall_boots\", \"italic\": false, \"fallback\": \"name.myluckyblock.fall_boots\"}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"desc.myluckyblock.fall_boots\", \"italic\": false, \"fallback\": \"desc.myluckyblock.fall_boots\"}"
+                                ],
+                                "minecraft:rarity": "uncommon",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "safe_fall_distance",
+                                            "amount": -24,
+                                            "slot": "feet",
+                                            "operation": "add_value",
+                                            "id": "1737466090975"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 }
@@ -82,7 +142,78 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.titan_chestplate\",\"italic\":false}]',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:armor,amount:-20,slot:chest,operation:add_value,id:1737470549391},{type:max_health,amount:40,slot:chest,operation:add_value,id:1737470549391},{type:block_interaction_range,amount:32,slot:chest,operation:add_value,id:1737470549391},{type:movement_speed,amount:1,slot:chest,operation:add_value,id:1737470549391},{type:step_height,amount:10,slot:chest,operation:add_value,id:1737470549391},{type:scale,amount:8,slot:chest,operation:add_value,id:1737470549391},{type:safe_fall_distance,amount:24,slot:chest,operation:add_value,id:1737470549391},{type:entity_interaction_range,amount:32,slot:chest,operation:add_value,id:1737470549391},{type:water_movement_efficiency,amount:0.5,slot:chest,operation:add_value,id:1737470549391}]},repair_cost:32767}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.titan_chestplate\", \"italic\": false, \"fallback\": \"name.myluckyblock.titan_chestplate\"}",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "armor",
+                                            "amount": -20,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "max_health",
+                                            "amount": 40,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "block_interaction_range",
+                                            "amount": 32,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "movement_speed",
+                                            "amount": 1,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "step_height",
+                                            "amount": 10,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "scale",
+                                            "amount": 8,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "safe_fall_distance",
+                                            "amount": 24,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "entity_interaction_range",
+                                            "amount": 32,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        },
+                                        {
+                                            "type": "water_movement_efficiency",
+                                            "amount": 0.5,
+                                            "slot": "chest",
+                                            "operation": "add_value",
+                                            "id": "1737470549391"
+                                        }
+                                    ]
+                                },
+                                "minecraft:repair_cost": 32767
+                            }
                         }
                     ]
                 }
@@ -101,7 +232,43 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.shrinking_leggings\",\"italic\":false}]',enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:scale,amount:-0.5,slot:legs,operation:add_value,id:1737525360562},{type:attack_speed,amount:1,slot:legs,operation:add_value,id:1737525360562},{type:armor,amount:-10,slot:legs,operation:add_value,id:1737525360562},{type:movement_speed,amount:-0.02,slot:legs,operation:add_value,id:1737465163970}]},repair_cost:32767}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.shrinking_leggings\", \"italic\": false, \"fallback\": \"name.myluckyblock.shrinking_leggings\"}",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "scale",
+                                            "amount": -0.5,
+                                            "slot": "legs",
+                                            "operation": "add_value",
+                                            "id": "1737525360562"
+                                        },
+                                        {
+                                            "type": "attack_speed",
+                                            "amount": 1,
+                                            "slot": "legs",
+                                            "operation": "add_value",
+                                            "id": "1737525360562"
+                                        },
+                                        {
+                                            "type": "armor",
+                                            "amount": -10,
+                                            "slot": "legs",
+                                            "operation": "add_value",
+                                            "id": "1737525360562"
+                                        },
+                                        {
+                                            "type": "movement_speed",
+                                            "amount": -0.02,
+                                            "slot": "legs",
+                                            "operation": "add_value",
+                                            "id": "1737465163970"
+                                        }
+                                    ]
+                                },
+                                "minecraft:repair_cost": 32767
+                            }
                         }
                     ]
                 }
@@ -120,7 +287,51 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.odd_helmet\",\"italic\":false}]',rarity:epic,enchantment_glint_override:true,attribute_modifiers:{modifiers:[{type:armor,amount:-100,slot:head,operation:add_value,id:1737528269338},{type:attack_damage,amount:20,slot:head,operation:add_value,id:1737528269338},{type:max_health,amount:-18,slot:head,operation:add_value,id:1737528269338},{type:movement_speed,amount:0.05,slot:head,operation:add_value,id:1737528269338},{type:attack_speed,amount:0.25,slot:head,operation:add_value,id:1737528269338}]},repair_cost:32767}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.odd_helmet\", \"italic\": false, \"fallback\": \"name.myluckyblock.odd_helmet\"}",
+                                "minecraft:rarity": "epic",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "armor",
+                                            "amount": -100,
+                                            "slot": "head",
+                                            "operation": "add_value",
+                                            "id": "1737528269338"
+                                        },
+                                        {
+                                            "type": "attack_damage",
+                                            "amount": 20,
+                                            "slot": "head",
+                                            "operation": "add_value",
+                                            "id": "1737528269338"
+                                        },
+                                        {
+                                            "type": "max_health",
+                                            "amount": -18,
+                                            "slot": "head",
+                                            "operation": "add_value",
+                                            "id": "1737528269338"
+                                        },
+                                        {
+                                            "type": "movement_speed",
+                                            "amount": 0.05,
+                                            "slot": "head",
+                                            "operation": "add_value",
+                                            "id": "1737528269338"
+                                        },
+                                        {
+                                            "type": "attack_speed",
+                                            "amount": 0.25,
+                                            "slot": "head",
+                                            "operation": "add_value",
+                                            "id": "1737528269338"
+                                        }
+                                    ]
+                                },
+                                "minecraft:repair_cost": 32767
+                            }
                         }
                     ]
                 }
@@ -139,7 +350,35 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.reach\",\"italic\":false}]',rarity:uncommon,enchantments:{levels:{binding_curse:1,vanishing_curse:1}},attribute_modifiers:{modifiers:[{type:entity_interaction_range,amount:64,slot:mainhand,operation:add_value,id:1737529090168},{type:block_interaction_range,amount:64,slot:mainhand,operation:add_value,id:1737529090168}]},unbreakable:{}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.reach\", \"italic\": false, \"fallback\": \"name.myluckyblock.reach\"}",
+                                "minecraft:rarity": "uncommon",
+                                "minecraft:enchantments": {
+                                    "levels": {
+                                        "binding_curse": 1,
+                                        "vanishing_curse": 1
+                                    }
+                                },
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "entity_interaction_range",
+                                            "amount": 64,
+                                            "slot": "mainhand",
+                                            "operation": "add_value",
+                                            "id": "1737529090168"
+                                        },
+                                        {
+                                            "type": "block_interaction_range",
+                                            "amount": 64,
+                                            "slot": "mainhand",
+                                            "operation": "add_value",
+                                            "id": "1737529090168"
+                                        }
+                                    ]
+                                },
+                                "minecraft:unbreakable": {}
+                            }
                         }
                     ]
                 }
@@ -158,7 +397,65 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.detnahcne_golden_apple\",\"italic\":false}]',rarity:epic,enchantment_glint_override:true,food:{nutrition:1,saturation:1,can_always_eat:1b},consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:blindness,duration:2000,amplifier:1},{id:darkness,duration:2000,amplifier:1},{id:hunger,duration:2000,amplifier:1},{id:mining_fatigue,duration:2000,amplifier:1},{id:nausea,duration:2000,amplifier:1},{id:poison,duration:2000,amplifier:1},{id:slowness,duration:2000,amplifier:1},{id:unluck,duration:2000,amplifier:1}]}]}}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.detnahcne_golden_apple\", \"italic\": false, \"fallback\": \"name.myluckyblock.detnahcne_golden_apple\"}",
+                                "minecraft:rarity": "epic",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:food": {
+                                    "nutrition": 1,
+                                    "saturation": 1,
+                                    "can_always_eat": true
+                                },
+                                "minecraft:consumable": {
+                                    "on_consume_effects": [
+                                        {
+                                            "type": "apply_effects",
+                                            "effects": [
+                                                {
+                                                    "id": "blindness",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "darkness",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "hunger",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "mining_fatigue",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "nausea",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "poison",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "slowness",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                },
+                                                {
+                                                    "id": "unluck",
+                                                    "duration": 2000,
+                                                    "amplifier": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 }
@@ -178,7 +475,24 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.weightlessness\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.weightlessness\",\"italic\":false}]'],rarity:uncommon,attribute_modifiers:{modifiers:[{type:gravity,amount:-1,slot:legs,operation:add_value,id:1738138856459}]}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.weightlessness\", \"italic\": false, \"fallback\": \"name.myluckyblock.weightlessness\"}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"desc.myluckyblock.weightlessness\", \"italic\": false, \"fallback\": \"desc.myluckyblock.weightlessness\"}"
+                                ],
+                                "minecraft:rarity": "uncommon",
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "gravity",
+                                            "amount": -1,
+                                            "slot": "legs",
+                                            "operation": "add_value",
+                                            "id": "1738138856459"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 }
@@ -198,7 +512,33 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.odd_iron_ingot\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.odd_iron_ingot\",\"italic\":false}]'],rarity:rare,enchantment_glint_override:true,food:{nutrition:1,saturation:1,can_always_eat:1b},consumable:{on_consume_effects:[{type:apply_effects,effects:[{id:instant_damage,duration:1,amplifier:0}]}]}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.odd_iron_ingot\", \"italic\": false, \"fallback\": \"name.myluckyblock.odd_iron_ingot\"}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"desc.myluckyblock.odd_iron_ingot\", \"italic\": false, \"fallback\": \"desc.myluckyblock.odd_iron_ingot\"}"
+                                ],
+                                "minecraft:rarity": "rare",
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:food": {
+                                    "nutrition": 1,
+                                    "saturation": 1,
+                                    "can_always_eat": true
+                                },
+                                "minecraft:consumable": {
+                                    "on_consume_effects": [
+                                        {
+                                            "type": "apply_effects",
+                                            "effects": [
+                                                {
+                                                    "id": "instant_damage",
+                                                    "duration": 1,
+                                                    "amplifier": 0
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 }
@@ -218,7 +558,29 @@
                             "use_random": false,
                             "num": 1,
                             "pos_src": 0,
-                            "nbt": "{custom_name:'[\"\",{\"text\":\"name.myluckyblock.shit\",\"italic\":false}]',lore:['[\"\",{\"text\":\"desc.myluckyblock.shit\",\"italic\":false}]'],enchantment_glint_override:true,food:{nutrition:4,saturation:0,can_always_eat:1b,effects:[{effect:{id:nausea,duration:400,amplifier:0},probability:1f}]},unbreakable:{}}"
+                            "data_components": {
+                                "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.shit\", \"italic\": false, \"fallback\": \"name.myluckyblock.shit\"}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"desc.myluckyblock.shit\", \"italic\": false, \"fallback\": \"desc.myluckyblock.shit\"}"
+                                ],
+                                "minecraft:enchantment_glint_override": true,
+                                "minecraft:food": {
+                                    "nutrition": 4,
+                                    "saturation": 0,
+                                    "can_always_eat": true,
+                                    "effects": [
+                                        {
+                                            "effect": {
+                                                "id": "nausea",
+                                                "duration": 400,
+                                                "amplifier": 0
+                                            },
+                                            "probability": 1.0
+                                        }
+                                    ]
+                                },
+                                "minecraft:unbreakable": {}
+                            }
                         }
                     ]
                 }

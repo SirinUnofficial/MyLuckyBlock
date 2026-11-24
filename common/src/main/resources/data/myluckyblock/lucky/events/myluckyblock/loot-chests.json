@@ -10,7 +10,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/end_city_treasure",
+                            "id": "minecraft:chests/end_city_treasure",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -25,7 +25,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/simple_dungeon",
+                            "id": "minecraft:chests/simple_dungeon",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -40,7 +40,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/abandoned_mineshaft",
+                            "id": "minecraft:chests/abandoned_mineshaft",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -55,7 +55,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/nether_bridge",
+                            "id": "minecraft:chests/nether_bridge",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -70,7 +70,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/stronghold_library",
+                            "id": "minecraft:chests/stronghold_library",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -85,7 +85,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/stronghold_crossing",
+                            "id": "minecraft:chests/stronghold_crossing",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -100,7 +100,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/stronghold_corridor",
+                            "id": "minecraft:chests/stronghold_corridor",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -115,7 +115,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/desert_pyramid",
+                            "id": "minecraft:chests/desert_pyramid",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -130,7 +130,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/jungle_temple",
+                            "id": "minecraft:chests/jungle_temple",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -145,7 +145,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/jungle_temple_dispenser",
+                            "id": "minecraft:chests/jungle_temple_dispenser",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -160,7 +160,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/igloo_chest",
+                            "id": "minecraft:chests/igloo_chest",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -175,7 +175,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/woodland_mansion",
+                            "id": "minecraft:chests/woodland_mansion",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -190,7 +190,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/underwater_ruin_small",
+                            "id": "minecraft:chests/underwater_ruin_small",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -205,7 +205,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/underwater_ruin_big",
+                            "id": "minecraft:chests/underwater_ruin_big",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -220,7 +220,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/buried_treasure",
+                            "id": "minecraft:chests/buried_treasure",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -235,7 +235,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/shipwreck_map",
+                            "id": "minecraft:chests/shipwreck_map",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -250,7 +250,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/shipwreck_supply",
+                            "id": "minecraft:chests/shipwreck_supply",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -265,7 +265,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/shipwreck_treasure",
+                            "id": "minecraft:chests/shipwreck_treasure",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -280,7 +280,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/pillager_outpost",
+                            "id": "minecraft:chests/pillager_outpost",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -295,7 +295,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/bastion_treasure",
+                            "id": "minecraft:chests/bastion_treasure",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -310,7 +310,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/bastion_other",
+                            "id": "minecraft:chests/bastion_other",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -325,7 +325,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/bastion_bridge",
+                            "id": "minecraft:chests/bastion_bridge",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -340,7 +340,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/bastion_hoglin_stable",
+                            "id": "minecraft:chests/bastion_hoglin_stable",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -355,7 +355,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/ancient_city",
+                            "id": "minecraft:chests/ancient_city",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -370,7 +370,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/ancient_city_ice_box",
+                            "id": "minecraft:chests/ancient_city_ice_box",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }
@@ -385,7 +385,7 @@
                     "action": "place_chests",
                     "spec": [
                         {
-                            "id": "chests/ruined_portal",
+                            "id": "minecraft:chests/ruined_portal",
                             "chest_id": "minecraft:chest",
                             "pos_src": 0
                         }

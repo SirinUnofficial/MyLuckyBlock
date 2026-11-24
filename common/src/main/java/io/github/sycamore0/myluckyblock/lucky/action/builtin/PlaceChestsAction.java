@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.PlaceChest;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.PlaceChestSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,7 +21,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 public final class PlaceChestsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (PlaceChest chest : LuckyActions.spec(step, PlaceChest.class)) {
+        for (PlaceChestSpec chest : LuckyActions.spec(step, PlaceChestSpec.class)) {
             placeChest(context.level(), PosHelper.parseVec3d(context.resolvePos(chest.getPosSrc(), chest.getOffset())), chest.getChestId(), chest.getId(), chest.getSeed());
         }
     }

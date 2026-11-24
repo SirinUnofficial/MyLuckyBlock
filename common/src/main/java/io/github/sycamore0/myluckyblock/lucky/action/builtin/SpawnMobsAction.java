@@ -5,7 +5,7 @@ import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionSupport;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.SpawnMob;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.SpawnMobSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 public final class SpawnMobsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (SpawnMob mob : LuckyActions.spec(step, SpawnMob.class)) {
+        for (SpawnMobSpec mob : LuckyActions.spec(step, SpawnMobSpec.class)) {
             int count = ActionSupport.roll(mob.isUseRandom(), mob.getRandomNum(), mob.getNum());
             for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
                 Vec3 pos = ActionSupport.spread(context.level(), context.resolvePos(mob.getPosSrc(), mob.getOffset()), mob.getSpread());

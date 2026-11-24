@@ -5,7 +5,7 @@ import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionSupport;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
-import io.github.sycamore0.myluckyblock.lucky.action.spec.DropItem;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.DropItemSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.DataComponentsHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import net.minecraft.core.component.DataComponents;
@@ -26,7 +26,7 @@ import java.util.List;
 public final class DropItemsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (DropItem item : LuckyActions.spec(step, DropItem.class)) {
+        for (DropItemSpec item : LuckyActions.spec(step, DropItemSpec.class)) {
             int count = ActionSupport.roll(item.isUseRandom(), item.getRandomNum(), item.getNum());
             Vec3 pos = ActionSupport.spread(context.level(), context.resolvePos(item.getPosSrc(), item.getOffset()), item.getSpread());
             dropItems(context.level(), pos, item.getId(), count, item.getName(), item.isNameVisible(), item.getDesc(), item.getNbt(), item.getDataComponents());
