@@ -1,10 +1,13 @@
 package io.github.sycamore0.myluckyblock.lucky.action.builtin;
 
 import com.google.gson.JsonObject;
+import io.github.sycamore0.myluckyblock.Constants;
+import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionSupport;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
+import io.github.sycamore0.myluckyblock.lucky.action.spec.EntityNode;
 import io.github.sycamore0.myluckyblock.lucky.action.spec.SpawnMobSpec;
 import io.github.sycamore0.myluckyblock.utils.helper.NbtHelper;
 import io.github.sycamore0.myluckyblock.utils.helper.PosHelper;
@@ -15,71 +18,162 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public final class SpawnMobsAction implements LuckyAction {
+
+    private static int maxPassengerDepth() {
+        return Mth.clamp(ConfigManager.get().maxPassengerDepth, 1, 64);
+    }
+
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (SpawnMobSpec mob : LuckyActions.spec(step, SpawnMobSpec.class)) {
             int count = ActionSupport.roll(mob.isUseRandom(), mob.getRandomNum(), mob.getNum());
-            for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
+            for (int i = 0; i < count; i++) {
                 Vec3 pos = ActionSupport.spread(context.level(), context.resolvePos(mob.getPosSrc(), mob.getOffset()), mob.getSpread());
-                spawnMob(context.level(), pos, mob.getId(), mob.getRandomize(), mob.getName(), mob.isNameVisible(), mob.isBaby(), mob.getVelocity(), mob.getNbt(), mob.getVehicleId(), mob.getVehicleNbt());
+                spawn(context.level(), mob, pos);
             }
         }
     }
 
-    private static void spawnMob(ServerLevel serverLevel, Vec3 pos, String entityId, boolean randomize, @Nullable String name, boolean nameVisible, boolean isBaby, Vec3 velocity, @Nullable String nbtString, @Nullable String vehicleId, @Nullable String vehicleNbtString) {
-        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entityId));
-        Entity entity = entityType.create(serverLevel);
-        if (entity == null) return;
+    @Override
+    public void validate(JsonObject step) {
+        for (SpawnMobSpec mob : LuckyActions.spec(step, SpawnMobSpec.class)) {
+            validateNode(mob.getId(), 0);
+            validatePassengers(mob.getPassengers(), 1);
+        }
+    }
 
-        if (randomize && entity instanceof Mob mobEntity) {
-            mobEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
+    private static void validateNode(@Nullable String entityId, int depth) {
+        if (entityId == null || entityId.isBlank()) {
+            return;
+        }
+        ResourceLocation id = ResourceLocation.tryParse(entityId);
+        if (id == null) {
+            Constants.LOG.warn("spawn_mobs: invalid entity id '{}' at depth {}", entityId, depth);
+        } else if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isEmpty()) {
+            Constants.LOG.warn("spawn_mobs: unknown entity id '{}' at depth {}", entityId, depth);
+        }
+    }
+
+    private static void validatePassengers(List<EntityNode> passengers, int depth) {
+        if (passengers.isEmpty()) {
+            return;
+        }
+        int maxDepth = maxPassengerDepth();
+        if (depth > maxDepth) {
+            Constants.LOG.warn("spawn_mobs: passenger chain deeper than {} levels, the extra levels will be ignored", maxDepth);
+            return;
+        }
+        for (EntityNode passenger : passengers) {
+            validateNode(passenger.getId(), depth);
+            validatePassengers(passenger.getPassengers(), depth + 1);
+        }
+    }
+
+    private static void spawn(ServerLevel serverLevel, SpawnMobSpec spec, Vec3 pos) {
+        Entity root = createEntity(spec.getId(), serverLevel);
+        if (root == null) {
+            return;
+        }
+        applyCommon(spec.getNbt(), spec.getName(), spec.isNameVisible(), spec.isBaby(), spec.getRandomize(), root, serverLevel, pos);
+        root.setPos(pos);
+        root.push(spec.getVelocity());
+
+        mountPassengers(root, spec.getPassengers(), serverLevel, pos, 1);
+
+        serverLevel.tryAddFreshEntityWithPassengers(root);
+    }
+
+    private static void mountPassengers(Entity vehicle, List<EntityNode> passengers, ServerLevel serverLevel, Vec3 pos, int depth) {
+        if (passengers.isEmpty()) {
+            return;
+        }
+        int maxDepth = maxPassengerDepth();
+        if (depth > maxDepth) {
+            Constants.LOG.warn("spawn_mobs: passenger chain deeper than {} levels, ignoring the rest", maxDepth);
+            return;
+        }
+        for (EntityNode node : passengers) {
+            Entity rider = createEntity(node.getId(), serverLevel);
+            if (rider == null) {
+                continue;
+            }
+            applyCommon(node.getNbt(), node.getName(), node.isNameVisible(), node.isBaby(), false, rider, serverLevel, pos);
+            rider.setPos(vehicle.position());
+
+            if (!rider.startRiding(vehicle, true)) {
+                Constants.LOG.warn("spawn_mobs: {} cannot ride {}", node.getId(), vehicle.getType());
+                rider.discard();
+                continue;
+            }
+            mountPassengers(rider, node.getPassengers(), serverLevel, pos, depth + 1);
+        }
+    }
+
+    @Nullable
+    private static Entity createEntity(@Nullable String entityId, ServerLevel serverLevel) {
+        if (entityId == null || entityId.isBlank()) {
+            Constants.LOG.warn("spawn_mobs: entry has no entity id, skipping");
+            return null;
+        }
+        ResourceLocation id = ResourceLocation.tryParse(entityId);
+        if (id == null) {
+            Constants.LOG.warn("spawn_mobs: invalid entity id '{}', skipping", entityId);
+            return null;
+        }
+        var type = BuiltInRegistries.ENTITY_TYPE.getOptional(id);
+        if (type.isEmpty()) {
+            Constants.LOG.warn("spawn_mobs: unknown entity id '{}', skipping", entityId);
+            return null;
+        }
+        Entity entity = type.get().create(serverLevel);
+        if (entity == null) {
+            Constants.LOG.warn("spawn_mobs: entity '{}' could not be created, skipping", entityId);
+        }
+        return entity;
+    }
+
+    private static void applyCommon(@Nullable String nbtString, @Nullable String name, boolean nameVisible, boolean isBaby, boolean randomize, Entity entity, ServerLevel serverLevel, Vec3 pos) {
+        if (randomize && entity instanceof Mob mob) {
+            mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
         }
 
-        CompoundTag nbt = NbtHelper.generateNbt(nbtString);
-        if (nbt != null) {
-            entity.load(nbt);
+        CompoundTag tag = parseNbt(nbtString);
+        if (tag != null) {
+            tag.remove("Passengers");
+            tag.remove("Pos");
+            tag.remove("Motion");
+            tag.remove("UUID");
+            entity.load(tag);
         }
 
-        if (entity instanceof Mob mobEntity) {
-            mobEntity.setBaby(isBaby);
+        if (entity instanceof Mob mob) {
+            mob.setBaby(isBaby);
         }
 
         if (name != null) {
             entity.setCustomName(Component.translatableEscape(name));
             entity.setCustomNameVisible(nameVisible);
         }
+    }
 
-        entity.setPos(pos);
-        entity.push(velocity);
-
-        if (vehicleId != null) {
-            EntityType<?> vehicleEntityType = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(vehicleId));
-            Entity vehicle = vehicleEntityType.create(serverLevel);
-            if (vehicle != null) {
-                CompoundTag vehicleNbt = NbtHelper.generateNbt(vehicleNbtString);
-                if (vehicleNbt != null) {
-                    vehicle.load(vehicleNbt);
-                }
-
-                if (randomize && vehicle instanceof Mob mobVehicleEntity) {
-                    mobVehicleEntity.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(PosHelper.parseVec3d(pos)), MobSpawnType.NATURAL, null);
-                }
-
-                vehicle.setPos(pos);
-                vehicle.push(velocity);
-
-                serverLevel.addFreshEntity(vehicle);
-                entity.startRiding(vehicle, true);
-            }
+    @Nullable
+    private static CompoundTag parseNbt(@Nullable String nbtString) {
+        if (nbtString == null || nbtString.isBlank()) {
+            return null;
         }
-
-        serverLevel.addFreshEntity(entity);
+        try {
+            return NbtHelper.generateNbt(nbtString);
+        } catch (IllegalArgumentException e) {
+            Constants.LOG.warn("spawn_mobs: invalid 'nbt' {}, ignoring it", nbtString);
+            return null;
+        }
     }
 }

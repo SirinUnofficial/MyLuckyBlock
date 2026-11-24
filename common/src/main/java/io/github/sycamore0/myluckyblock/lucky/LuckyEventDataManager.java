@@ -5,6 +5,7 @@ import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.github.sycamore0.myluckyblock.event.listener.ILuckyEventsReloadListener;
+import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyActions;
 import io.github.sycamore0.myluckyblock.platform.Services;
 import io.github.sycamore0.myluckyblock.utils.helper.VersionHelper;
@@ -83,8 +84,15 @@ public class LuckyEventDataManager {
                     continue;
                 }
                 String actionType = actionElement.getAsString();
-                if (!LuckyActions.isRegistered(actionType)) {
+                LuckyAction luckyAction = LuckyActions.get(actionType);
+                if (luckyAction == null) {
                     Constants.LOG.warn("Pack {}: event {} step #{} uses unknown action '{}'", packName, event.getEventId(), i + 1, actionType);
+                    continue;
+                }
+                try {
+                    luckyAction.validate(step);
+                } catch (RuntimeException e) {
+                    Constants.LOG.warn("Pack {}: event {} step #{} ('{}') has an invalid spec: {}", packName, event.getEventId(), i + 1, actionType, e.getMessage());
                 }
             }
         }

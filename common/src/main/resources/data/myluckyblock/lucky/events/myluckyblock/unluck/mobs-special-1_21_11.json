@@ -13,11 +13,22 @@
             "id": 1,
             "steps": [
                 {
-                    "action": "execute_commands",
+                    "action": "spawn_mobs",
                     "spec": [
                         {
-                            "command": "summon camel_husk ~ ~ ~ {Passengers:[{id:husk,equipment:{mainhand:{id:iron_spear}}},{id:parched,equipment:{mainhand:{id:bow}}}]}",
-                            "pos_src": 0
+                            "id": "camel_husk",
+                            "pos_src": 0,
+                            "randomize": false,
+                            "passengers": [
+                                {
+                                    "id": "husk",
+                                    "nbt": "{equipment:{mainhand:{id:iron_spear}}}"
+                                },
+                                {
+                                    "id": "parched",
+                                    "nbt": "{equipment:{mainhand:{id:bow}}}"
+                                }
+                            ]
                         }
                     ]
                 }

@@ -31,9 +31,23 @@ public final class ConfigScreen {
                 .build());
 
         general.addEntry(entry
+                .startBooleanToggle(Component.translatable("config.myluckyblock.enable_debug_command"), config.enableDebugCommand)
+                .setDefaultValue(false)
+                .setTooltip(tooltip("config.myluckyblock.enable_debug_command.tooltip", "enableDebugCommand"))
+                .setSaveConsumer(v -> config.enableDebugCommand = v)
+                .build());
+
+        general.addEntry(entry
+                .startBooleanToggle(Component.translatable("config.myluckyblock.silence_minecraft_version_skips"), config.silenceMinecraftVersionSkipWarnings)
+                .setDefaultValue(true)
+                .setTooltip(tooltip("config.myluckyblock.silence_minecraft_version_skips.tooltip", "silenceMinecraftVersionSkipWarnings"))
+                .setSaveConsumer(v -> config.silenceMinecraftVersionSkipWarnings = v)
+                .build());
+
+        general.addEntry(entry
                 .startBooleanToggle(Component.translatable("config.myluckyblock.auto_disable_lucky_block_worldgen"), config.autoDisableLuckyBlockWorldgen)
                 .setDefaultValue(false)
-                .setTooltip(restartTooltip("config.myluckyblock.auto_disable_lucky_block_worldgen.tooltip", "autoDisableLuckyBlockWorldgen")) // Require Restart in Fabric
+                .setTooltip(restartTooltip("config.myluckyblock.auto_disable_lucky_block_worldgen.tooltip", "autoDisableLuckyBlockWorldgen"))
                 .setSaveConsumer(v -> config.autoDisableLuckyBlockWorldgen = v)
                 .build());
 
@@ -59,17 +73,10 @@ public final class ConfigScreen {
                 .build());
 
         general.addEntry(entry
-                .startBooleanToggle(Component.translatable("config.myluckyblock.silence_minecraft_version_skips"), config.silenceMinecraftVersionSkipWarnings)
-                .setDefaultValue(true)
-                .setTooltip(tooltip("config.myluckyblock.silence_minecraft_version_skips.tooltip", "silenceMinecraftVersionSkipWarnings"))
-                .setSaveConsumer(v -> config.silenceMinecraftVersionSkipWarnings = v)
-                .build());
-
-        general.addEntry(entry
-                .startBooleanToggle(Component.translatable("config.myluckyblock.enable_debug_command"), config.enableDebugCommand)
-                .setDefaultValue(false)
-                .setTooltip(tooltip("config.myluckyblock.enable_debug_command.tooltip", "enableDebugCommand"))
-                .setSaveConsumer(v -> config.enableDebugCommand = v)
+                .startIntSlider(Component.translatable("config.myluckyblock.max_passenger_depth"), config.maxPassengerDepth, 1, 32)
+                .setDefaultValue(12)
+                .setTooltip(tooltip("config.myluckyblock.max_passenger_depth.tooltip", "maxPassengerDepth"))
+                .setSaveConsumer(v -> config.maxPassengerDepth = v)
                 .build());
 
         return builder.build();

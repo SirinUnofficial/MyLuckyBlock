@@ -5,4 +5,7 @@ import com.google.gson.JsonObject;
 @FunctionalInterface
 public interface LuckyAction {
     void execute(ActionContext context, JsonObject step) throws Exception;
+
+    default void validate(JsonObject step) {
+    }
 }

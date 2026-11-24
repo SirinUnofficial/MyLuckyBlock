@@ -101,14 +101,14 @@
                     ]
                 },
                 {
-                    "action": "fall_blocks",
+                    "action": "place_blocks",
                     "spec": [
                         {
                             "id": "minecraft:lava",
                             "pos_src": 1,
                             "offset": {
                                 "x": 0,
-                                "y": 5,
+                                "y": 2,
                                 "z": 0
                             }
                         }

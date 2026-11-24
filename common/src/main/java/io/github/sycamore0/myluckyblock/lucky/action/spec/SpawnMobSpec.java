@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.List;
+
 public class SpawnMobSpec {
     @SerializedName("id")
     protected String id;
@@ -44,14 +46,11 @@ public class SpawnMobSpec {
     @SerializedName("nbt")
     protected String nbt = null;
 
-    @SerializedName("vehicle_id")
-    protected String vehicleId = null;
-
-    @SerializedName("vehicle_nbt")
-    protected String vehicleNbt = null;
-
     @SerializedName("spread")
     protected Vector3 spread = new Vector3(0.0, 0.0, 0.0);
+
+    @SerializedName("passengers")
+    protected List<EntityNode> passengers = null;
 
     public PosSrc getPosSrc() {
         return PosSrc.fromValue(posSrc);
@@ -105,15 +104,11 @@ public class SpawnMobSpec {
         return nbt;
     }
 
-    public String getVehicleId() {
-        return vehicleId;
-    }
-
-    public String getVehicleNbt() {
-        return vehicleNbt;
-    }
-
     public Vector3 getSpread() {
         return spread;
+    }
+
+    public List<EntityNode> getPassengers() {
+        return passengers == null ? List.of() : passengers;
     }
 }

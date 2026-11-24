@@ -108,11 +108,12 @@ public class MyLuckyBlockCommand {
 
         LuckyEventDispatcher.executeLuckyFunction(level, player, pos, event);
 
+        Component triggered = Component.translatable("commands.myluckyblock.triggered", fullEventPackId, eventId);
+        source.sendSuccess(() -> triggered, true);
         if (player != null) {
-            player.displayClientMessage(
-                    Component.translatable("commands.myluckyblock.triggered", fullEventPackId, eventId),
-                    false
-            );
+            Constants.LOG.info("[DEBUG]Triggered event {}:{} at {} in {} by {}", fullEventPackId, eventId, pos, level.dimension().location(), player.getName());
+        } else {
+            Constants.LOG.info("[DEBUG]Triggered event {}:{} at {} in {}", fullEventPackId, eventId, pos, level.dimension().location());
         }
         return 1;
     }
