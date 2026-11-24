@@ -8,7 +8,7 @@
             "steps": [
                 {
                     "action": "place_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:beacon"
                         },
@@ -88,7 +88,7 @@
                 },
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:tnt",
                             "num": 32,
@@ -112,7 +112,7 @@
             "steps": [
                 {
                     "action": "place_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:beacon"
                         },
@@ -192,13 +192,13 @@
                 },
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:diamond",
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
-                                "max": 16
+                                "max": 64
                             },
                             "offset": {
                                 "x": 0,
@@ -216,7 +216,7 @@
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
-                                "max": 16
+                                "max": 64
                             },
                             "offset": {
                                 "x": 0,
@@ -234,7 +234,7 @@
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
-                                "max": 16
+                                "max": 64
                             },
                             "offset": {
                                 "x": 0,
@@ -252,7 +252,7 @@
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
-                                "max": 16
+                                "max": 64
                             },
                             "offset": {
                                 "x": 0,
@@ -270,7 +270,7 @@
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
-                                "max": 16
+                                "max": 64
                             },
                             "offset": {
                                 "x": 0,

@@ -8,7 +8,7 @@
             "steps": [
                 {
                     "action": "lucky_well",
-                    "data": {
+                    "spec": {
                         "lucky_block": {
                             "id": "myluckyblock:my_lucky_block",
                             "data_components": {
@@ -34,7 +34,7 @@
                 },
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:gold_nugget",
                             "num": 1,

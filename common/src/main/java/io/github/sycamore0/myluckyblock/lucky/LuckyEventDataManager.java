@@ -82,9 +82,9 @@ public class LuckyEventDataManager {
                     Constants.LOG.warn("Pack {}: event {} step #{} has no 'action'", packName, event.getEventId(), i + 1);
                     continue;
                 }
-                String type = actionElement.getAsString();
-                if (!LuckyActions.isRegistered(type)) {
-                    Constants.LOG.warn("Pack {}: event {} step #{} uses unknown action '{}'", packName, event.getEventId(), i + 1, type);
+                String actionType = actionElement.getAsString();
+                if (!LuckyActions.isRegistered(actionType)) {
+                    Constants.LOG.warn("Pack {}: event {} step #{} uses unknown action '{}'", packName, event.getEventId(), i + 1, actionType);
                 }
             }
         }

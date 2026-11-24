@@ -15,7 +15,7 @@ public final class SendMessagesAction implements LuckyAction {
         if (player == null) {
             return;
         }
-        for (SendMessage message : LuckyActions.payload(step, SendMessage.class)) {
+        for (SendMessage message : LuckyActions.spec(step, SendMessage.class)) {
             player.sendSystemMessage(Component.translatableEscape(message.getMsg()));
         }
     }

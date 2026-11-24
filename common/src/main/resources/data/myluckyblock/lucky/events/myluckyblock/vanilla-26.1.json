@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:golden_dandelion",
                             "use_random": true,

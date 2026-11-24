@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 public final class SpawnMobsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (SpawnMob mob : LuckyActions.payload(step, SpawnMob.class)) {
+        for (SpawnMob mob : LuckyActions.spec(step, SpawnMob.class)) {
             int count = ActionSupport.roll(mob.isUseRandom(), mob.getRandomNum(), mob.getNum());
             for (int i = 0; i < Mth.clamp(count, 0, 64); i++) {
                 Vec3 pos = ActionSupport.spread(context.level(), context.resolvePos(mob.getPosSrc(), mob.getOffset()), mob.getSpread());

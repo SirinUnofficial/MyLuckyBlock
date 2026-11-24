@@ -8,7 +8,7 @@
             "steps": [
                 {
                     "action": "create_explosions",
-                    "data": [
+                    "spec": [
                         {
                             "power": 100
                         }
@@ -21,7 +21,7 @@
             "steps": [
                 {
                     "action": "place_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:redstone_block"
                         }
@@ -29,7 +29,7 @@
                 },
                 {
                     "action": "fall_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:tnt",
                             "offset": {

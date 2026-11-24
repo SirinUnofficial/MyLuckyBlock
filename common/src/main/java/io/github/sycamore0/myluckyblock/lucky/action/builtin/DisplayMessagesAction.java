@@ -15,7 +15,7 @@ public final class DisplayMessagesAction implements LuckyAction {
         if (player == null) {
             return;
         }
-        for (DisplayMessage message : LuckyActions.payload(step, DisplayMessage.class)) {
+        for (DisplayMessage message : LuckyActions.spec(step, DisplayMessage.class)) {
             player.displayClientMessage(Component.translatableEscape(message.getMsg()), message.getOverlay());
         }
     }

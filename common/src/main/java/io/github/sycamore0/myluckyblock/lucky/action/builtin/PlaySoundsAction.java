@@ -23,7 +23,7 @@ public final class PlaySoundsAction implements LuckyAction {
         if (player == null) {
             return;
         }
-        for (PlaySound sound : LuckyActions.payload(step, PlaySound.class)) {
+        for (PlaySound sound : LuckyActions.spec(step, PlaySound.class)) {
             playSound(player, context.level(), PosHelper.parseBlockPos(context.pos()), sound.getId(), sound.getVolume(), sound.getPitch());
         }
     }

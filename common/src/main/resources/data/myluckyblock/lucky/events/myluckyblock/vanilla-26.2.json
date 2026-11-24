@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:sulfur",
                             "use_random": true,
@@ -56,7 +56,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:sulfur",
                             "use_random": true,
@@ -106,7 +106,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:cinnabar",
                             "use_random": true,
@@ -148,7 +148,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:music_disc_bounce",
                             "use_random": false,
@@ -163,7 +163,7 @@
             "steps": [
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:sulfur_cube",
                             "use_random": true,

@@ -51,7 +51,7 @@ public final class LuckyWellAction implements LuckyAction {
 
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        LuckyWellSpec spec = LuckyActions.payloadObject(step, LuckyWellSpec.class);
+        LuckyWellSpec spec = LuckyActions.specObject(step, LuckyWellSpec.class);
         if (spec == null) {
             spec = LuckyWellSpec.DEFAULT;
         }

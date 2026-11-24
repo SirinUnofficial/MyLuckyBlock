@@ -14,7 +14,7 @@ import net.minecraft.world.phys.Vec3;
 public final class ExecuteCommandsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (ExecuteCommand command : LuckyActions.payload(step, ExecuteCommand.class)) {
+        for (ExecuteCommand command : LuckyActions.spec(step, ExecuteCommand.class)) {
             executeCommand(context.level(), context.resolvePos(command.getPosSrc(), command.getOffset()), command.getCommand());
         }
     }

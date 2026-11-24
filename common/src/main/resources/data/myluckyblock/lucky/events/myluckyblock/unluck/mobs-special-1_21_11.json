@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "execute_commands",
-                    "data": [
+                    "spec": [
                         {
                             "command": "summon camel_husk ~ ~ ~ {Passengers:[{id:husk,equipment:{mainhand:{id:iron_spear}}},{id:parched,equipment:{mainhand:{id:bow}}}]}",
                             "pos_src": 0
@@ -28,7 +28,7 @@
             "steps": [
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:zombie",
                             "randomize": false,

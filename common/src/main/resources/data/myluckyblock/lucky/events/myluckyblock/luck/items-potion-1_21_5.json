@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:splash_potion",
                             "name": "name.myluckyblock.splash_potion_of_curse",
@@ -34,7 +34,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:potion",
                             "name": "name.myluckyblock.potion_of_curse",
@@ -54,7 +54,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:lingering_potion",
                             "name": "name.myluckyblock.lingering_potion_of_curse",
@@ -74,7 +74,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:splash_potion",
                             "name": "name.myluckyblock.splash_potion_of_bless",
@@ -94,7 +94,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:potion",
                             "name": "name.myluckyblock.potion_of_bless",
@@ -114,7 +114,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:lingering_potion",
                             "name": "name.myluckyblock.lingering_potion_of_bless",
@@ -134,7 +134,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:potion",
                             "name": "name.myluckyblock.furious_cocktail",

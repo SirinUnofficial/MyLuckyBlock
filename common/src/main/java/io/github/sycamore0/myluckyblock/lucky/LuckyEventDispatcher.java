@@ -39,17 +39,17 @@ public class LuckyEventDispatcher {
                 continue;
             }
 
-            String type = actionElement.getAsString();
-            LuckyAction action = LuckyActions.get(type);
-            if (action == null) {
-                Constants.LOG.warn("Event {} step #{} uses unknown action '{}', skipping", function.getEventId(), i + 1, type);
+            String actionType = actionElement.getAsString();
+            LuckyAction luckyAction = LuckyActions.get(actionType);
+            if (luckyAction == null) {
+                Constants.LOG.warn("Event {} step #{} uses unknown action '{}', skipping", function.getEventId(), i + 1, actionType);
                 continue;
             }
 
             try {
-                action.execute(context, step);
+                luckyAction.execute(context, step);
             } catch (Exception e) {
-                Constants.LOG.error("Event {} step #{} ('{}') failed: {}", function.getEventId(), i + 1, type, e.toString());
+                Constants.LOG.error("Event {} step #{} ('{}') failed: {}", function.getEventId(), i + 1, actionType, e.toString());
             }
         }
     }

@@ -21,7 +21,7 @@ public final class GivePotionEffectsAction implements LuckyAction {
         if (player == null) {
             return;
         }
-        for (GivePotionEffect effect : LuckyActions.payload(step, GivePotionEffect.class)) {
+        for (GivePotionEffect effect : LuckyActions.spec(step, GivePotionEffect.class)) {
             givePotionEffect(player, effect.getId(), effect.getDuration(), effect.getAmplifier());
         }
     }

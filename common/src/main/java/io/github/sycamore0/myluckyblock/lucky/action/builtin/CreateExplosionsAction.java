@@ -11,7 +11,7 @@ import net.minecraft.world.phys.Vec3;
 public final class CreateExplosionsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (CreateExplosion explosion : LuckyActions.payload(step, CreateExplosion.class)) {
+        for (CreateExplosion explosion : LuckyActions.spec(step, CreateExplosion.class)) {
             explode(context.level(), context.resolvePos(explosion.getPosSrc(), explosion.getOffset()), explosion.getPower(), explosion.isCreateFire());
         }
     }

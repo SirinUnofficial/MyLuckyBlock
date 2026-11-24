@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:diamond_sword",
                             "name": "name.myluckyblock.hero_sword",
@@ -28,7 +28,7 @@
                 },
                 {
                     "action": "add_particles",
-                    "data": [
+                    "spec": [
                         {
                             "id": "dragon_breath",
                             "count": 16,
@@ -49,7 +49,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:stick",
                             "name": "name.myluckyblock.knockback_stick",
@@ -68,7 +68,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:golden_axe",
                             "name": "name.myluckyblock.super_axe",
@@ -82,7 +82,7 @@
                 },
                 {
                     "action": "add_particles",
-                    "data": [
+                    "spec": [
                         {
                             "id": "dragon_breath",
                             "count": 16,
@@ -103,7 +103,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:bow",
                             "name": "name.myluckyblock.hero_bow",
@@ -117,7 +117,7 @@
                 },
                 {
                     "action": "add_particles",
-                    "data": [
+                    "spec": [
                         {
                             "id": "dragon_breath",
                             "count": 16,
@@ -138,7 +138,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:iron_chestplate",
                             "name": "name.myluckyblock.thorns_chestplate",
@@ -157,7 +157,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:crossbow",
                             "name": "name.myluckyblock.hero_crossbow",
@@ -176,7 +176,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:crossbow",
                             "name": "name.myluckyblock.odd_crossbow",
@@ -195,7 +195,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:crossbow",
                             "name": "name.myluckyblock.quick_firing_crossbow",
@@ -215,7 +215,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:mace",
                             "name": "name.myluckyblock.hero_mace",
@@ -234,7 +234,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:mace",
                             "name": "name.myluckyblock.wind_burst",
@@ -253,7 +253,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:enchanted_book",
                             "name": "name.myluckyblock.omnipotent_enchantment_book",
@@ -272,7 +272,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:netherite_pickaxe",
                             "name": "name.myluckyblock.demolition_supervisor",
@@ -291,7 +291,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:golden_pickaxe",
                             "name": "name.myluckyblock.fortunes_favorite",

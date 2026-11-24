@@ -18,7 +18,7 @@ import net.minecraft.world.phys.Vec3;
 public final class FallBlocksAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (FallBlock block : LuckyActions.payload(step, FallBlock.class)) {
+        for (FallBlock block : LuckyActions.spec(step, FallBlock.class)) {
             fallBlock(context.level(), PosHelper.parseVec3d(context.resolvePos(block.getPosSrc(), block.getOffset())), block.getId(), block.getVelocity());
         }
     }

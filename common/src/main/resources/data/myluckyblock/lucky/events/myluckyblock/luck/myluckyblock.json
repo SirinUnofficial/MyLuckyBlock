@@ -8,7 +8,7 @@
             "steps": [
                 {
                     "action": "fall_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "myluckyblock:my_lucky_block",
                             "offset": {

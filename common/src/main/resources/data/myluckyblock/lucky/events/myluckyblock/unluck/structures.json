@@ -8,7 +8,7 @@
             "steps": [
                 {
                     "action": "give_potion_effects",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:levitation",
                             "amplifier": 200,
@@ -18,7 +18,7 @@
                 },
                 {
                     "action": "load_structures",
-                    "data": [
+                    "spec": [
                         {
                             "id": "xn",
                             "pos_src": 1,
@@ -36,8 +36,22 @@
             "id": 2,
             "steps": [
                 {
+                    "action": "load_structures",
+                    "spec": [
+                        {
+                            "id": "longzi",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": -1,
+                                "y": -1,
+                                "z": -1
+                            }
+                        }
+                    ]
+                },
+                {
                     "action": "fall_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:anvil",
                             "pos_src": 1,
@@ -66,20 +80,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "action": "load_structures",
-                    "data": [
-                        {
-                            "id": "longzi",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": -1
-                            }
-                        }
-                    ]
                 }
             ]
         },
@@ -87,22 +87,8 @@
             "id": 3,
             "steps": [
                 {
-                    "action": "fall_blocks",
-                    "data": [
-                        {
-                            "id": "minecraft:lava",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 5,
-                                "z": 0
-                            }
-                        }
-                    ]
-                },
-                {
                     "action": "load_structures",
-                    "data": [
+                    "spec": [
                         {
                             "id": "longzi",
                             "pos_src": 1,
@@ -110,6 +96,20 @@
                                 "x": -1,
                                 "y": -1,
                                 "z": -1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "action": "fall_blocks",
+                    "spec": [
+                        {
+                            "id": "minecraft:lava",
+                            "pos_src": 1,
+                            "offset": {
+                                "x": 0,
+                                "y": 5,
+                                "z": 0
                             }
                         }
                     ]
@@ -121,7 +121,7 @@
             "steps": [
                 {
                     "action": "load_structures",
-                    "data": [
+                    "spec": [
                         {
                             "id": "fall_lava",
                             "pos_src": 1,
@@ -140,7 +140,7 @@
             "steps": [
                 {
                     "action": "load_structures",
-                    "data": [
+                    "spec": [
                         {
                             "id": "fall_dripstone",
                             "pos_src": 1,

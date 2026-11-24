@@ -21,7 +21,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 public final class PlaceChestsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (PlaceChest chest : LuckyActions.payload(step, PlaceChest.class)) {
+        for (PlaceChest chest : LuckyActions.spec(step, PlaceChest.class)) {
             placeChest(context.level(), PosHelper.parseVec3d(context.resolvePos(chest.getPosSrc(), chest.getOffset())), chest.getChestId(), chest.getId(), chest.getSeed());
         }
     }

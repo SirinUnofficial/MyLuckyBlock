@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_chest",
                             "use_random": true,
@@ -80,7 +80,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_golem_statue",
                             "use_random": true,
@@ -146,7 +146,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:lightning_rod",
                             "use_random": true,
@@ -212,7 +212,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_torch",
                             "use_random": true,
@@ -230,7 +230,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_bars",
                             "use_random": true,
@@ -296,7 +296,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_chain",
                             "use_random": true,
@@ -362,7 +362,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_lantern",
                             "use_random": true,
@@ -428,7 +428,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_lantern",
                             "use_random": true,
@@ -446,7 +446,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:oak_shelf",
                             "use_random": true,
@@ -520,7 +520,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:oak_shelf",
                             "use_random": true,
@@ -538,7 +538,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_helmet",
                             "use_random": true,
@@ -585,7 +585,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_sword",
                             "use_random": true,
@@ -635,7 +635,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_horse_armor",
                             "use_random": true,
@@ -650,7 +650,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_ingot",
                             "use_random": true,
@@ -676,7 +676,7 @@
             "steps": [
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_golem",
                             "use_random": true,
@@ -695,7 +695,7 @@
             "steps": [
                 {
                     "action": "place_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_chest"
                         }
@@ -708,7 +708,7 @@
             "steps": [
                 {
                     "action": "place_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:copper_block",
                             "pos_src": 0

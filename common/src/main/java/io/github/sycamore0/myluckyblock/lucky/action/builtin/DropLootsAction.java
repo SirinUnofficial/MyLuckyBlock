@@ -21,7 +21,7 @@ import net.minecraft.world.phys.Vec3;
 public final class DropLootsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (DropLoots loot : LuckyActions.payload(step, DropLoots.class)) {
+        for (DropLoots loot : LuckyActions.spec(step, DropLoots.class)) {
             dropLoots(context.level(), context.resolvePos(loot.getPosSrc(), loot.getOffset()), loot.getId(), loot.getSeed());
         }
     }

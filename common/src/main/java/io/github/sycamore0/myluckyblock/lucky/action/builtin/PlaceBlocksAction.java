@@ -26,7 +26,7 @@ import java.util.Optional;
 public final class PlaceBlocksAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (PlaceBlock block : LuckyActions.payload(step, PlaceBlock.class)) {
+        for (PlaceBlock block : LuckyActions.spec(step, PlaceBlock.class)) {
             placeBlock(context.level(), context.resolvePos(block.getPosSrc(), block.getOffset()), block.getId(), block.getState(), block.getNbt(), block.getDataComponents());
         }
     }

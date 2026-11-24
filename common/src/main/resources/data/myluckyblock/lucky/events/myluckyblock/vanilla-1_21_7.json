@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:music_disc_lava_chicken",
                             "use_random": false,
@@ -28,7 +28,7 @@
                 },
                 {
                     "action": "place_blocks",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:jukebox",
                             "pos_src": 0

@@ -8,7 +8,7 @@
             "steps": [
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:wither",
                             "num": 1

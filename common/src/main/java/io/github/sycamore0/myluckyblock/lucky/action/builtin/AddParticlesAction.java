@@ -15,7 +15,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 public final class AddParticlesAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (AddParticle particle : LuckyActions.payload(step, AddParticle.class)) {
+        for (AddParticle particle : LuckyActions.spec(step, AddParticle.class)) {
             addParticles(context.level(), particle.getId(),
                     context.resolvePos(particle.getPosSrc(), particle.getOffset()),
                     particle.getCount(),

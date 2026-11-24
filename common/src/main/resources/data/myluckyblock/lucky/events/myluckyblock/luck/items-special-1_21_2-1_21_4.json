@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:golden_boots",
                             "name": "name.myluckyblock.speed_boots",
@@ -34,7 +34,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:bread",
                             "name": "name.myluckyblock.baguette",
@@ -54,7 +54,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:leather_boots",
                             "name": "name.myluckyblock.fall_boots",
@@ -74,7 +74,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:iron_chestplate",
                             "name": "name.myluckyblock.titan_chestplate",
@@ -93,7 +93,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:netherite_leggings",
                             "name": "name.myluckyblock.shrinking_leggings",
@@ -112,7 +112,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:golden_helmet",
                             "name": "name.myluckyblock.odd_helmet",
@@ -131,7 +131,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:stick",
                             "name": "name.myluckyblock.reach",
@@ -150,7 +150,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:golden_apple",
                             "name": "name.myluckyblock.detnahcne_golden_apple",
@@ -169,7 +169,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:chainmail_leggings",
                             "name": "name.myluckyblock.weightlessness",
@@ -189,7 +189,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:iron_ingot",
                             "name": "name.myluckyblock.odd_iron_ingot",
@@ -209,7 +209,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:cocoa_beans",
                             "name": "name.myluckyblock.shit",

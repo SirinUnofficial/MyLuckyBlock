@@ -20,14 +20,14 @@ public final class LuckyActions {
     private LuckyActions() {
     }
 
-    public static void register(String type, LuckyAction action) {
-        if (type == null || type.isBlank() || action == null) {
-            Constants.LOG.warn("Ignoring invalid action registration: type={}, action={}", type, action);
+    public static void register(String actionType, LuckyAction luckyAction) {
+        if (actionType == null || actionType.isBlank() || luckyAction == null) {
+            Constants.LOG.warn("Ignoring invalid action registration: actionType={}, action={}", actionType, luckyAction);
             return;
         }
-        LuckyAction previous = REGISTRY.putIfAbsent(type, action);
+        LuckyAction previous = REGISTRY.putIfAbsent(actionType, luckyAction);
         if (previous != null) {
-            Constants.LOG.warn("Action type '{}' is already registered, keeping the existing one", type);
+            Constants.LOG.warn("Action '{}' is already registered, keeping the existing one", actionType);
         }
     }
 
@@ -36,23 +36,23 @@ public final class LuckyActions {
     }
 
     @Nullable
-    public static LuckyAction get(String type) {
-        return type == null ? null : REGISTRY.get(type);
+    public static LuckyAction get(String actionType) {
+        return actionType == null ? null : REGISTRY.get(actionType);
     }
 
-    public static boolean isRegistered(String type) {
-        return type != null && REGISTRY.containsKey(type);
+    public static boolean isRegistered(String actionType) {
+        return actionType != null && REGISTRY.containsKey(actionType);
     }
 
-    public static Set<String> types() {
+    public static Set<String> actionTypes() {
         return Collections.unmodifiableSet(new LinkedHashSet<>(REGISTRY.keySet()));
     }
 
-    public static <T> List<T> payload(JsonObject step, Class<T> elementType) {
-        return payload(step, "data", elementType);
+    public static <T> List<T> spec(JsonObject step, Class<T> elementType) {
+        return spec(step, "spec", elementType);
     }
 
-    public static <T> List<T> payload(JsonObject step, String key, Class<T> elementType) {
+    public static <T> List<T> spec(JsonObject step, String key, Class<T> elementType) {
         if (step == null) return List.of();
 
         JsonElement element = step.get(key);
@@ -66,21 +66,21 @@ public final class LuckyActions {
             T single = Constants.GSON.fromJson(element, elementType);
             parsed = single == null ? List.of() : List.of(single);
         } else {
-            Constants.LOG.warn("Action payload '{}' must be an array or an object, got {}", key, element);
+            Constants.LOG.warn("Step spec '{}' must be an array or an object, got {}", key, element);
             return List.of();
         }
         return parsed == null ? List.of() : parsed;
     }
 
     @Nullable
-    public static <T> T payloadObject(JsonObject step, Class<T> type) {
+    public static <T> T specObject(JsonObject step, Class<T> specType) {
         if (step == null) {
             return null;
         }
-        JsonElement element = step.get("data");
+        JsonElement element = step.get("spec");
         if (element == null || element.isJsonNull() || !element.isJsonObject()) {
             return null;
         }
-        return Constants.GSON.fromJson(element, type);
+        return Constants.GSON.fromJson(element, specType);
     }
 }

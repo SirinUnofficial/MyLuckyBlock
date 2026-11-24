@@ -26,7 +26,7 @@ import java.util.List;
 public final class DropItemsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
-        for (DropItem item : LuckyActions.payload(step, DropItem.class)) {
+        for (DropItem item : LuckyActions.spec(step, DropItem.class)) {
             int count = ActionSupport.roll(item.isUseRandom(), item.getRandomNum(), item.getNum());
             Vec3 pos = ActionSupport.spread(context.level(), context.resolvePos(item.getPosSrc(), item.getOffset()), item.getSpread());
             dropItems(context.level(), pos, item.getId(), count, item.getName(), item.isNameVisible(), item.getDesc(), item.getNbt(), item.getDataComponents());

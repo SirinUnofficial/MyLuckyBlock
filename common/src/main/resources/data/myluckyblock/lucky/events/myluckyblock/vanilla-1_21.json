@@ -14,7 +14,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:breeze_rod",
                             "use_random": true,
@@ -33,7 +33,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:ominous_bottle",
                             "use_random": false,
@@ -49,7 +49,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:ominous_trial_key",
                             "use_random": true,
@@ -77,7 +77,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:heavy_core",
                             "use_random": false,
@@ -93,7 +93,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:crafter",
                             "use_random": true,
@@ -112,7 +112,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:armadillo_scute",
                             "use_random": true,
@@ -131,7 +131,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:music_disc_precipice",
                             "use_random": true,
@@ -167,7 +167,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:wind_charge",
                             "use_random": true,
@@ -185,7 +185,7 @@
             "steps": [
                 {
                     "action": "drop_items",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:mace",
                             "use_random": false,
@@ -200,7 +200,7 @@
             "steps": [
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:breeze",
                             "use_random": true,
@@ -219,7 +219,7 @@
             "steps": [
                 {
                     "action": "spawn_mobs",
-                    "data": [
+                    "spec": [
                         {
                             "id": "minecraft:bogged",
                             "use_random": true,
@@ -237,7 +237,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward",
                             "chest_id": "minecraft:chest",
@@ -252,7 +252,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_common",
                             "chest_id": "minecraft:chest",
@@ -267,7 +267,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_rare",
                             "chest_id": "minecraft:chest",
@@ -282,7 +282,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_unique",
                             "chest_id": "minecraft:chest",
@@ -297,7 +297,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_ominous",
                             "chest_id": "minecraft:chest",
@@ -312,7 +312,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_ominous_common",
                             "chest_id": "minecraft:chest",
@@ -327,7 +327,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_ominous_rare",
                             "chest_id": "minecraft:chest",
@@ -342,7 +342,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/reward_ominous_unique",
                             "chest_id": "minecraft:chest",
@@ -357,7 +357,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/supply",
                             "chest_id": "minecraft:chest",
@@ -372,7 +372,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/corridor",
                             "chest_id": "minecraft:chest",
@@ -387,7 +387,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/intersection",
                             "chest_id": "minecraft:chest",
@@ -402,7 +402,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/intersection_barrel",
                             "chest_id": "minecraft:chest",
@@ -417,7 +417,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/trial_chambers/entrance",
                             "chest_id": "minecraft:chest",
@@ -432,7 +432,7 @@
             "steps": [
                 {
                     "action": "place_chests",
-                    "data": [
+                    "spec": [
                         {
                             "id": "chests/spawn_bonus_chest",
                             "chest_id": "minecraft:chest",
