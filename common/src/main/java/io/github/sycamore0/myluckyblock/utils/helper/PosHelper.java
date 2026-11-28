@@ -11,7 +11,7 @@ public class PosHelper {
     }
 
     public static BlockPos parseVec3d(Vec3 vec3) {
-        return new BlockPos((int) (vec3.x() - 0.5), (int) vec3.y(), (int) (vec3.z() - 0.5));
+        return BlockPos.containing(vec3);
     }
 
     public static Vec3 calcOffset(Vec3 pos, Vec3 offset) {

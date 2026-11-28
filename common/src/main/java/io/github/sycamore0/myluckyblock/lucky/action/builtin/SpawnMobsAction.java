@@ -26,6 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public final class SpawnMobsAction implements LuckyAction {
+    private static final int MAX_COUNT = 64;
 
     private static int maxPassengerDepth() {
         return Mth.clamp(ConfigManager.get().maxPassengerDepth, 1, 64);
@@ -34,7 +35,7 @@ public final class SpawnMobsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (SpawnMobSpec mob : LuckyActions.spec(step, SpawnMobSpec.class)) {
-            int count = ActionSupport.roll(mob.isUseRandom(), mob.getRandomNum(), mob.getNum());
+            int count = Mth.clamp(ActionSupport.roll(mob.isUseRandom(), mob.getRandomNum(), mob.getNum()), 0, MAX_COUNT);
             for (int i = 0; i < count; i++) {
                 Vec3 pos = context.resolve(mob.getPos());
                 spawn(context.level(), mob, pos);
@@ -45,6 +46,9 @@ public final class SpawnMobsAction implements LuckyAction {
     @Override
     public void validate(JsonObject step) {
         for (SpawnMobSpec mob : LuckyActions.spec(step, SpawnMobSpec.class)) {
+            if (mob.getNum() < 0 || mob.getNum() > MAX_COUNT) {
+                Constants.LOG.warn("spawn_mobs: 'num' {} is out of range 0..{}, it will be clamped", mob.getNum(), MAX_COUNT);
+            }
             validateNode(mob.getId(), 0);
             validatePassengers(mob.getPassengers(), 1);
         }

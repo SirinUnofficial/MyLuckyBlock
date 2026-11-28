@@ -25,7 +25,7 @@ public class FallBlockSpec {
     protected JsonObject dataComponents = null;
 
     public Vec3 getVelocity() {
-        return velocity;
+        return velocity == null ? Vec3.ZERO : velocity;
     }
 
     public String getId() {
@@ -33,7 +33,7 @@ public class FallBlockSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public JsonElement getBlockState() {

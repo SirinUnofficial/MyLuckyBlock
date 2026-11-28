@@ -162,9 +162,97 @@
                             "pos": {
                                 "src": 1,
                                 "offset": {
+                                    "x": -1,
+                                    "y": -10,
+                                    "z": -1
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -10,
+                                    "z": -1
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 1,
+                                    "y": -10,
+                                    "z": -1
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": -1,
+                                    "y": -10,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
                                     "x": 0,
                                     "y": -10,
                                     "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 1,
+                                    "y": -10,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": -1,
+                                    "y": -10,
+                                    "z": 1
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -10,
+                                    "z": 1
+                                }
+                            }
+                        },
+                        {
+                            "id": "fall_dripstone",
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 1,
+                                    "y": -10,
+                                    "z": 1
                                 }
                             }
                         }

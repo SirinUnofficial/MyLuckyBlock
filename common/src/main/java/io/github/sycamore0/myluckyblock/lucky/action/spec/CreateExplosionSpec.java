@@ -21,6 +21,6 @@ public class CreateExplosionSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 }

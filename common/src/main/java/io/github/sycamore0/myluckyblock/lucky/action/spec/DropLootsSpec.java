@@ -13,11 +13,11 @@ public class DropLootsSpec {
     protected PositionSpec pos = new PositionSpec();
 
     public String getId() {
-        return id;
+        return id == null ? "empty" : id;
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public long getSeed() {

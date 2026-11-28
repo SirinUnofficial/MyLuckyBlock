@@ -1,6 +1,7 @@
 package io.github.sycamore0.myluckyblock.lucky.action.builtin;
 
 import com.google.gson.JsonObject;
+import io.github.sycamore0.myluckyblock.Constants;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionContext;
 import io.github.sycamore0.myluckyblock.lucky.action.ActionSupport;
 import io.github.sycamore0.myluckyblock.lucky.action.LuckyAction;
@@ -13,6 +14,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,12 +26,26 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public final class DropItemsAction implements LuckyAction {
+    private static final int MAX_COUNT = 64;
+
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (DropItemSpec item : LuckyActions.spec(step, DropItemSpec.class)) {
-            int count = ActionSupport.roll(item.isUseRandom(), item.getRandomNum(), item.getNum());
+            int count = Mth.clamp(ActionSupport.roll(item.isUseRandom(), item.getRandomNum(), item.getNum()), 0, MAX_COUNT);
+            if (count <= 0) {
+                continue;
+            }
             Vec3 pos = context.resolve(item.getPos());
             dropItems(context.level(), pos, item.getId(), count, item.getName(), item.isNameVisible(), item.getDesc(), item.getNbt(), item.getDataComponents());
+        }
+    }
+
+    @Override
+    public void validate(JsonObject step) {
+        for (DropItemSpec item : LuckyActions.spec(step, DropItemSpec.class)) {
+            if (item.getNum() < 0 || item.getNum() > MAX_COUNT) {
+                Constants.LOG.warn("drop_items: 'num' {} is out of range 0..{}, it will be clamped", item.getNum(), MAX_COUNT);
+            }
         }
     }
 

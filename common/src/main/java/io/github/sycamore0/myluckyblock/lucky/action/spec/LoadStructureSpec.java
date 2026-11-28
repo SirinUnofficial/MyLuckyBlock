@@ -18,11 +18,11 @@ public class LoadStructureSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public String getModId() {
-        return modId;
+        return modId == null ? Constants.MOD_ID : modId;
     }
 
 }

@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import net.minecraft.util.Mth;
 
 public class RandomNum {
+    public static final RandomNum DEFAULT = new RandomNum(0, 1);
+
     @SerializedName("min")
     protected int min;
 

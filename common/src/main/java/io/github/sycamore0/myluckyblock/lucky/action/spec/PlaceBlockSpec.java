@@ -25,7 +25,7 @@ public class PlaceBlockSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public String getNbt() {

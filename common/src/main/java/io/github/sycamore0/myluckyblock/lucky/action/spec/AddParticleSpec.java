@@ -23,7 +23,7 @@ public class AddParticleSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public int getCount() {
@@ -31,7 +31,7 @@ public class AddParticleSpec {
     }
 
     public Vector3 getDelta() {
-        return delta;
+        return delta == null ? new Vector3(1.0, 1.0, 1.0) : delta;
     }
 
     public double getSpeed() {

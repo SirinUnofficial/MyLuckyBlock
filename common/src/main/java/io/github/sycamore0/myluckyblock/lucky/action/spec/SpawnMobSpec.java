@@ -50,10 +50,13 @@ public class SpawnMobSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public Vec3 getVelocity() {
+        if (velocity == null) {
+            return Vec3.ZERO;
+        }
         return new Vec3(velocity.getX(), velocity.getY(), velocity.getZ());
     }
 
@@ -82,7 +85,7 @@ public class SpawnMobSpec {
     }
 
     public RandomNum getRandomNum() {
-        return randomNum;
+        return randomNum == null ? RandomNum.DEFAULT : randomNum;
     }
 
     public int getNum() {

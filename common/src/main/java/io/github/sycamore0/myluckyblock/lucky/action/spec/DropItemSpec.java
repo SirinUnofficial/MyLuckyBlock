@@ -2,7 +2,6 @@ package io.github.sycamore0.myluckyblock.lucky.action.spec;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
-import net.minecraft.util.Mth;
 
 public class DropItemSpec {
     @SerializedName("id")
@@ -40,7 +39,7 @@ public class DropItemSpec {
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public boolean isUseRandom() {
@@ -48,11 +47,11 @@ public class DropItemSpec {
     }
 
     public RandomNum getRandomNum() {
-        return randomNum;
+        return randomNum == null ? RandomNum.DEFAULT : randomNum;
     }
 
     public int getNum() {
-        return Mth.clamp(num, 1, 64);
+        return num;
     }
 
     public String getName() {

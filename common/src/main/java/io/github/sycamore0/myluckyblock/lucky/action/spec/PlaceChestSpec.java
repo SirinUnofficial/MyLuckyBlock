@@ -16,15 +16,15 @@ public class PlaceChestSpec {
     protected PositionSpec pos = new PositionSpec();
 
     public String getId() {
-        return id;
+        return id == null ? "empty" : id;
     }
 
     public PositionSpec getPos() {
-        return pos;
+        return pos == null ? PositionSpec.DEFAULT : pos;
     }
 
     public String getChestId() {
-        return chestId;
+        return chestId == null ? "minecraft:chest" : chestId;
     }
 
     public long getSeed() {
