@@ -1,5 +1,6 @@
 package io.github.sycamore0.myluckyblock.client;
 
+import io.github.sycamore0.myluckyblock.config.AddonCheckPolicy;
 import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.config.ModConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -8,6 +9,8 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+
+import java.util.Locale;
 
 public final class ConfigScreen {
     private ConfigScreen() {}
@@ -79,10 +82,17 @@ public final class ConfigScreen {
                 .setSaveConsumer(v -> config.maxPassengerDepth = v)
                 .build());
 
+        general.addEntry(entry
+                .startEnumSelector(Component.translatable("config.myluckyblock.addon_check"), AddonCheckPolicy.class, config.addonCheck)
+                .setDefaultValue(AddonCheckPolicy.LOG)
+                .setEnumNameProvider(value -> Component.translatable("config.myluckyblock.addon_check." + value.name().toLowerCase(Locale.ROOT)))
+                .setTooltip(tooltip("config.myluckyblock.addon_check.tooltip", "addonCheck"))
+                .setSaveConsumer(v -> config.addonCheck = v)
+                .build());
+
         return builder.build();
     }
 
-    /** Tooltip: description on the first line, the config field name on the second. */
     private static Component[] tooltip(String key, String field) {
         return new Component[]{
                 Component.translatable(key),
@@ -90,7 +100,6 @@ public final class ConfigScreen {
         };
     }
 
-    /** Same as {@link #tooltip}, but prefixed with the restart hint (Fabric registers packs at startup). */
     private static Component[] restartTooltip(String key, String field) {
         return new Component[]{
                 Component.translatable("config.myluckyblock.restart_required").append(Component.translatable(key)),

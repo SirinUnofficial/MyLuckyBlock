@@ -9,4 +9,5 @@ public class ModConfig {
     public boolean autoDisableLuckyBlockBoss = false;
     public boolean autoDisableLuckyBlockExplosions = false;
     public int maxPassengerDepth = 16;
+    public AddonCheckPolicy addonCheck = AddonCheckPolicy.LOG;
 }

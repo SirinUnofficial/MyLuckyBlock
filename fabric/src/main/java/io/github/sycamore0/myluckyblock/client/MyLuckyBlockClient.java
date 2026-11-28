@@ -9,5 +9,6 @@ public class MyLuckyBlockClient implements ClientModInitializer {
         if (Services.PLATFORM.isModLoaded("cloth-config")) {
             ConfigScreenManager.setFactory(ConfigScreen::create);
         }
+        AddonClientReceiver.onInitializeClient();
     }
 }

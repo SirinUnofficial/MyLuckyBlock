@@ -2,6 +2,7 @@ package io.github.sycamore0.myluckyblock.item;
 
 import io.github.sycamore0.myluckyblock.block.LuckyBlockData;
 import io.github.sycamore0.myluckyblock.block.LuckyBlockEntity;
+import io.github.sycamore0.myluckyblock.lucky.addon.AddonClientState;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -24,6 +25,9 @@ public class LuckyBlockItem extends BlockItem {
 
     @Override
     public @NotNull InteractionResult place(@NotNull BlockPlaceContext context) {
+        if (context.getLevel().isClientSide && AddonClientState.isDisabled(getBlock())) {
+            return InteractionResult.FAIL;
+        }
         InteractionResult result = super.place(context);
         if (result.consumesAction() && !context.getLevel().isClientSide) {
             Level level = context.getLevel();
@@ -38,6 +42,10 @@ public class LuckyBlockItem extends BlockItem {
     @Override
     public void appendHoverText(@NotNull ItemStack itemStack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         super.appendHoverText(itemStack, context, tooltip, flag);
+
+        if (AddonClientState.isDisabled(getBlock())) {
+            tooltip.add(Component.translatable("tooltip.myluckyblock.addon_disabled").withStyle(ChatFormatting.RED));
+        }
 
         LuckyBlockData data = LuckyBlockData.fromItemStack(itemStack);
         LuckyBlockData.EventProbabilities p = LuckyBlockData.probabilitiesFor(data.luckyValue());

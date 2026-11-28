@@ -8,6 +8,10 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 public final class MyLuckyBlockClient {
     private MyLuckyBlockClient() {}
 
+    public static void registerClientHooks() {
+        AddonClientReceiver.onInitializeClient();
+    }
+
     public static void registerConfigScreen(ModContainer container) {
         if (!Services.PLATFORM.isModLoaded("cloth_config")) {
             Constants.LOG.warn("Cloth Config not found, skipping config screen registration.");

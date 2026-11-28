@@ -9,10 +9,10 @@
     "item.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
     "block.myluckyblock.debug_lucky_block": "(test)Debug Lucky Block",
 
-    "pack.name.disable_lucky_block_worldgen":"Disable LB WorldGen",
-    "pack.name.disable_lucky_block_structure":"Disable LB Structure Events",
-    "pack.name.disable_lucky_block_boss":"Disable LB Vanilla BOSS(wither) Events",
-    "pack.name.disable_lucky_block_explosions":"Disable LB Huge Explosion Events",
+    "pack.name.disable_lucky_block_worldgen": "Disable LB WorldGen",
+    "pack.name.disable_lucky_block_structure": "Disable LB Structure Events",
+    "pack.name.disable_lucky_block_boss": "Disable LB Vanilla BOSS(wither) Events",
+    "pack.name.disable_lucky_block_explosions": "Disable LB Huge Explosion Events",
 
     "config.myluckyblock.title": "MyLuckyBlock",
     "config.myluckyblock.category.general": "General",
@@ -33,6 +33,11 @@
     "config.myluckyblock.auto_disable_lucky_block_explosions.tooltip": "Auto add a built-in datapack to disable myluckyblock huge explosion events for new world.",
     "config.myluckyblock.max_passenger_depth": "Max Passenger Depth",
     "config.myluckyblock.max_passenger_depth.tooltip": "How deep a spawn_mobs passenger chain may nest.",
+    "config.myluckyblock.addon_check": "Addon Check",
+    "config.myluckyblock.addon_check.tooltip": "What to do when a client's addon archives do not match the server.",
+    "config.myluckyblock.addon_check.off": "Off",
+    "config.myluckyblock.addon_check.log": "Log Only",
+    "config.myluckyblock.addon_check.kick": "Disconnect Client",
 
     "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][DEBUG]§rLuckyEventManager is not loaded yet",
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][DEBUG]§rNo such event",
@@ -49,8 +54,12 @@
     "tooltip.myluckyblock.prob.ultra_unlucky": "Ultra Unlucky: %s",
     "tooltip.myluckyblock.prob.unlucky": "Unlucky: %s",
     "tooltip.myluckyblock.limited_outcomes": "Limited Outcomes: ",
+    "tooltip.myluckyblock.addon_disabled": "Disabled: not installed on the server",
 
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock][Warning]§eYou are playing a snapshot version, which may cause some features to not work properly.§r",
+    "message.myluckyblock.addon.missing": "This server needs addon archive(s) you do not have: %s",
+    "message.myluckyblock.addon.extra": "These addon archives are not installed on the server, so their blocks are disabled: %s",
+    "message.myluckyblock.addon.mismatch": "Addon archive(s) differ from the server: %s",
 
     "name.myluckyblock.great_villager": "Great Villager",
     "name.myluckyblock.hero_blacksmith": "Hero's Blacksmith",
@@ -58,7 +67,6 @@
     "name.myluckyblock.super_charged_creeper": "Super Charged Creeper",
     "name.myluckyblock.super_pillager": "Super Pillager",
     "name.myluckyblock.super_zombie_baby": "Super Zombie Baby",
-
     "name.myluckyblock.speed_boots": "Speed Boots",
     "desc.myluckyblock.speed_boots": "Speed Up!",
     "name.myluckyblock.baguette": "Baguette",
@@ -74,7 +82,6 @@
     "desc.myluckyblock.weightlessness": "Make you fly?",
     "name.myluckyblock.odd_iron_ingot": "Odd Iron Ingot",
     "desc.myluckyblock.odd_iron_ingot": "Food is the paramount necessity for the people",
-
     "name.myluckyblock.hero_sword": "Hero's Sword",
     "name.myluckyblock.knockback_stick": "Knockback Stick",
     "name.myluckyblock.super_axe": "Super AXE",

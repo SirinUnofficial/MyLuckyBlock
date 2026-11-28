@@ -9,10 +9,10 @@
     "item.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
     "block.myluckyblock.debug_lucky_block": "(test)调试幸运方块",
 
-    "pack.name.disable_lucky_block_worldgen":"禁用幸运方块自然生成",
-    "pack.name.disable_lucky_block_structure":"禁用幸运方块建筑事件",
-    "pack.name.disable_lucky_block_boss":"禁用幸运方块原版BOSS(凋灵)事件",
-    "pack.name.disable_lucky_block_explosions":"禁用幸运方块大爆炸事件",
+    "pack.name.disable_lucky_block_worldgen": "禁用幸运方块自然生成",
+    "pack.name.disable_lucky_block_structure": "禁用幸运方块建筑事件",
+    "pack.name.disable_lucky_block_boss": "禁用幸运方块原版BOSS(凋灵)事件",
+    "pack.name.disable_lucky_block_explosions": "禁用幸运方块大爆炸事件",
 
     "config.myluckyblock.title": "MyLuckyBlock 配置",
     "config.myluckyblock.category.general": "通用",
@@ -33,6 +33,11 @@
     "config.myluckyblock.auto_disable_lucky_block_explosions.tooltip": "为新世界自动添加内置数据包，关闭 myluckyblock 的大型爆炸事件。",
     "config.myluckyblock.max_passenger_depth": "乘客链最大深度",
     "config.myluckyblock.max_passenger_depth.tooltip": "spawn_mobs 乘客链最多嵌套多少层。",
+    "config.myluckyblock.addon_check": "附加包校验",
+    "config.myluckyblock.addon_check.tooltip": "客户端附加包与服务器不一致时的处理方式。",
+    "config.myluckyblock.addon_check.off": "关闭",
+    "config.myluckyblock.addon_check.log": "仅记录日志",
+    "config.myluckyblock.addon_check.kick": "断开客户端",
 
     "commands.myluckyblock.not_loaded": "§6[MyLuckyBlock][调试]§rLuckyEventManager 未被加载",
     "commands.myluckyblock.no_such_event": "§6[MyLuckyBlock][调试]§r指定事件不存在",
@@ -49,8 +54,12 @@
     "tooltip.myluckyblock.prob.ultra_unlucky": "超级不幸：%s",
     "tooltip.myluckyblock.prob.unlucky": "不幸: %s",
     "tooltip.myluckyblock.limited_outcomes": "限定结果集: ",
+    "tooltip.myluckyblock.addon_disabled": "已禁用：服务器未安装此附加包",
 
     "message.myluckyblock.snapshot_warning": "§6[MyLuckyBlock][警告]§e你正在游玩一个快照版本，这可能会导致一些功能无法正常使用。§r",
+    "message.myluckyblock.addon.missing": "服务器需要你未安装的附加包：%s",
+    "message.myluckyblock.addon.extra": "服务器未安装这些附加包，相关方块已禁用：%s",
+    "message.myluckyblock.addon.mismatch": "附加包与服务器不一致：%s",
 
     "name.myluckyblock.great_villager": "良心商人",
     "name.myluckyblock.hero_blacksmith": "英雄盔甲匠",
@@ -58,7 +67,6 @@
     "name.myluckyblock.super_charged_creeper": "超级高压爬行者",
     "name.myluckyblock.super_pillager": "超级掠夺者",
     "name.myluckyblock.super_zombie_baby": "超级小僵尸",
-
     "name.myluckyblock.speed_boots": "黄金切尔西",
     "desc.myluckyblock.speed_boots": "当你觉得你不行的时候就去人行道吧，这样你就成了行人。\n不用担心，你还是步行。",
     "name.myluckyblock.baguette": "法式面包",
@@ -74,7 +82,6 @@
     "desc.myluckyblock.weightlessness": "飞起来！",
     "name.myluckyblock.odd_iron_ingot": "奇怪的铁锭",
     "desc.myluckyblock.odd_iron_ingot": "民以食为天",
-
     "name.myluckyblock.hero_sword": "英雄之剑",
     "name.myluckyblock.knockback_stick": "击退棒",
     "name.myluckyblock.super_axe": "秒人斧",

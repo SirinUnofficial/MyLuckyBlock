@@ -7,6 +7,7 @@ import io.github.sycamore0.myluckyblock.component.ModDataComponents;
 import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.item.ModItemGroups;
 import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
+import io.github.sycamore0.myluckyblock.lucky.addon.FabricAddonHandshake;
 import io.github.sycamore0.myluckyblock.lucky.addon.FabricAddonLoader;
 import io.github.sycamore0.myluckyblock.pack.BuiltinPacks;
 import io.github.sycamore0.myluckyblock.recipe.ModRecipes;
@@ -28,5 +29,6 @@ public class MyLuckyBlock implements ModInitializer {
         ModFeatures.onInitialize();
         BuiltinPacks.onInitialize();
         ModCommands.onInitialize();
+        FabricAddonHandshake.onInitialize();
     }
 }

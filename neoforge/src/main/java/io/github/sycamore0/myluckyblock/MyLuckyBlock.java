@@ -7,6 +7,7 @@ import io.github.sycamore0.myluckyblock.component.ModDataComponents;
 import io.github.sycamore0.myluckyblock.config.ConfigManager;
 import io.github.sycamore0.myluckyblock.event.ModEventHandlers;
 import io.github.sycamore0.myluckyblock.item.ModItemGroups;
+import io.github.sycamore0.myluckyblock.lucky.addon.NeoForgeAddonHandshake;
 import io.github.sycamore0.myluckyblock.lucky.addon.NeoForgeAddonLoader;
 import io.github.sycamore0.myluckyblock.pack.BuiltinPacks;
 import io.github.sycamore0.myluckyblock.platform.Services;
@@ -28,9 +29,11 @@ public class MyLuckyBlock {
         ModItemGroups.onInitialize(eventBus);
         ModRecipes.onInitialize(eventBus);
         NeoForge.EVENT_BUS.register(ModEventHandlers.class);
+        NeoForge.EVENT_BUS.addListener(NeoForgeAddonHandshake::onPlayerJoin);
         BuiltinPacks.onInitialize(eventBus);
 
         if (Services.PLATFORM.isClient()) {
+            MyLuckyBlockClient.registerClientHooks();
             MyLuckyBlockClient.registerConfigScreen(container);
         }
     }
