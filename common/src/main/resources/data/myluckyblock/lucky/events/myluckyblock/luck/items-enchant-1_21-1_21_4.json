@@ -21,7 +21,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.hero_sword\", \"italic\": false, \"fallback\": \"name.myluckyblock.hero_sword\"}",
                                 "minecraft:rarity": "epic",
@@ -52,8 +51,7 @@
                                 "x": 4,
                                 "y": 4,
                                 "z": 4
-                            },
-                            "pos_src": 0
+                            }
                         }
                     ]
                 }
@@ -71,7 +69,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:item_name": "{\"translate\": \"name.myluckyblock.knockback_stick\", \"fallback\": \"name.myluckyblock.knockback_stick\"}",
                                 "minecraft:rarity": "epic",
@@ -98,7 +95,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:item_name": "{\"translate\": \"name.myluckyblock.super_axe\", \"fallback\": \"name.myluckyblock.super_axe\"}",
                                 "minecraft:rarity": "uncommon",
@@ -124,8 +120,7 @@
                                 "x": 4,
                                 "y": 4,
                                 "z": 4
-                            },
-                            "pos_src": 0
+                            }
                         }
                     ]
                 }
@@ -143,7 +138,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.hero_bow\", \"italic\": false, \"fallback\": \"name.myluckyblock.hero_bow\"}",
                                 "minecraft:rarity": "epic",
@@ -172,8 +166,7 @@
                                 "x": 4,
                                 "y": 4,
                                 "z": 4
-                            },
-                            "pos_src": 0
+                            }
                         }
                     ]
                 }
@@ -191,7 +184,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:trim": {
                                     "pattern": "raiser",
@@ -221,7 +213,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.hero_crossbow\", \"italic\": false, \"fallback\": \"name.myluckyblock.hero_crossbow\"}",
                                 "minecraft:rarity": "epic",
@@ -252,7 +243,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.odd_crossbow\", \"italic\": false, \"fallback\": \"name.myluckyblock.odd_crossbow\"}",
                                 "minecraft:rarity": "uncommon",
@@ -280,7 +270,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.quick_firing_crossbow\", \"italic\": false, \"fallback\": \"name.myluckyblock.quick_firing_crossbow\"}",
                                 "minecraft:lore": [
@@ -312,7 +301,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.hero_mace\", \"italic\": false, \"fallback\": \"name.myluckyblock.hero_mace\"}",
                                 "minecraft:rarity": "epic",
@@ -343,7 +331,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.wind_burst\", \"italic\": false, \"fallback\": \"name.myluckyblock.wind_burst\"}",
                                 "minecraft:rarity": "rare",
@@ -370,7 +357,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:stored_enchantments": {
                                     "levels": {
@@ -435,7 +421,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:enchantments": {
                                     "levels": {
@@ -461,7 +446,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:enchantments": {
                                     "levels": {

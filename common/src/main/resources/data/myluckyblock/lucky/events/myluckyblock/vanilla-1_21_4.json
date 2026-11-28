@@ -289,8 +289,7 @@
                     "action": "load_structures",
                     "spec": [
                         {
-                            "id": "creaking",
-                            "pos_src": 0
+                            "id": "creaking"
                         }
                     ]
                 }

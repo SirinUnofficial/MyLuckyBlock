@@ -12,7 +12,7 @@ public final class CreateExplosionsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (CreateExplosionSpec explosion : LuckyActions.spec(step, CreateExplosionSpec.class)) {
-            explode(context.level(), context.resolvePos(explosion.getPosSrc(), explosion.getOffset()), explosion.getPower(), explosion.isCreateFire());
+            explode(context.level(), context.resolve(explosion.getPos()), explosion.getPower(), explosion.isCreateFire());
         }
     }
 

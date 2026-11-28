@@ -22,7 +22,7 @@ public final class LoadStructuresAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (LoadStructureSpec structure : LuckyActions.spec(step, LoadStructureSpec.class)) {
-            loadStructure(context.level(), PosHelper.parseVec3d(context.resolvePos(structure.getPosSrc(), structure.getOffset())), structure.getModId(), structure.getId());
+            loadStructure(context.level(), PosHelper.parseVec3d(context.resolve(structure.getPos())), structure.getModId(), structure.getId());
         }
     }
 

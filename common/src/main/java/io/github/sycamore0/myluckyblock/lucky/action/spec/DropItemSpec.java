@@ -2,9 +2,7 @@ package io.github.sycamore0.myluckyblock.lucky.action.spec;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
-import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
 
 public class DropItemSpec {
     @SerializedName("id")
@@ -19,14 +17,8 @@ public class DropItemSpec {
     @SerializedName("num")
     protected int num = 1;
 
-    @SerializedName("pos_src")
-    protected int posSrc = 0;
-
-    @SerializedName("offset")
-    protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
-
-    @SerializedName("spread")
-    protected Vector3 spread = new Vector3(0.0, 0.0, 0.0);
+    @SerializedName("pos")
+    protected PositionSpec pos = new PositionSpec();
 
     @SerializedName("name")
     protected String name = null;
@@ -47,6 +39,10 @@ public class DropItemSpec {
         return id;
     }
 
+    public PositionSpec getPos() {
+        return pos;
+    }
+
     public boolean isUseRandom() {
         return useRandom;
     }
@@ -57,14 +53,6 @@ public class DropItemSpec {
 
     public int getNum() {
         return Mth.clamp(num, 1, 64);
-    }
-
-    public PosSrc getPosSrc() {
-        return PosSrc.fromValue(posSrc);
-    }
-
-    public Vec3 getOffset() {
-        return new Vec3(offset.getX(), offset.getY(), offset.getZ());
     }
 
     public String getName() {
@@ -87,7 +75,4 @@ public class DropItemSpec {
         return dataComponents;
     }
 
-    public Vector3 getSpread() {
-        return spread;
-    }
 }

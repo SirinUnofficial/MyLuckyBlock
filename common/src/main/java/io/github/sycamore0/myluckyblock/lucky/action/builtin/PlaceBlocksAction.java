@@ -18,7 +18,7 @@ public final class PlaceBlocksAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (PlaceBlockSpec block : LuckyActions.spec(step, PlaceBlockSpec.class)) {
-            placeBlock(context.level(), context.resolvePos(block.getPosSrc(), block.getOffset()), block.getId(), block.getBlockState(), block.getNbt(), block.getDataComponents());
+            placeBlock(context.level(), context.resolve(block.getPos()), block.getId(), block.getBlockState(), block.getNbt(), block.getDataComponents());
         }
     }
 

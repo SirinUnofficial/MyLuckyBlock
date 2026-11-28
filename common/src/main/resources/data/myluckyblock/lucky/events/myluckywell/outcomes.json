@@ -14,74 +14,92 @@
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": 1
+                            "pos": {
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": 1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 0,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 0,
-                                "y": -1,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": -1,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 0,
-                                "y": -1,
-                                "z": 1
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": -1,
+                                    "z": 1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 1,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "offset": {
+                                    "x": 1,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 1,
-                                "y": -1,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 1,
+                                    "y": -1,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 1,
-                                "y": -1,
-                                "z": 1
+                            "pos": {
+                                "offset": {
+                                    "x": 1,
+                                    "y": -1,
+                                    "z": 1
+                                }
                             }
                         }
                     ]
@@ -91,17 +109,19 @@
                     "spec": [
                         {
                             "id": "minecraft:tnt",
-                            "num": 32,
-                            "offset": {
-                                "x": 0,
-                                "y": 12,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 12,
+                                    "z": 0
+                                },
+                                "spread": {
+                                    "x": 3,
+                                    "y": 0,
+                                    "z": 3
+                                }
                             },
-                            "spread": {
-                                "x": 3,
-                                "y": 0,
-                                "z": 3
-                            }
+                            "num": 32
                         }
                     ]
                 }
@@ -118,74 +138,92 @@
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": 1
+                            "pos": {
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": 1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 0,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 0,
-                                "y": -1,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": -1,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 0,
-                                "y": -1,
-                                "z": 1
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": -1,
+                                    "z": 1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 1,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "offset": {
+                                    "x": 1,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 1,
-                                "y": -1,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 1,
+                                    "y": -1,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:iron_block",
-                            "offset": {
-                                "x": 1,
-                                "y": -1,
-                                "z": 1
+                            "pos": {
+                                "offset": {
+                                    "x": 1,
+                                    "y": -1,
+                                    "z": 1
+                                }
                             }
                         }
                     ]
@@ -195,92 +233,102 @@
                     "spec": [
                         {
                             "id": "minecraft:diamond",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 12,
+                                    "z": 0
+                                },
+                                "spread": {
+                                    "x": 3,
+                                    "y": 0,
+                                    "z": 3
+                                }
+                            },
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
                                 "max": 64
-                            },
-                            "offset": {
-                                "x": 0,
-                                "y": 12,
-                                "z": 0
-                            },
-                            "spread": {
-                                "x": 3,
-                                "y": 0,
-                                "z": 3
                             }
                         },
                         {
                             "id": "minecraft:emerald",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 12,
+                                    "z": 0
+                                },
+                                "spread": {
+                                    "x": 3,
+                                    "y": 0,
+                                    "z": 3
+                                }
+                            },
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
                                 "max": 64
-                            },
-                            "offset": {
-                                "x": 0,
-                                "y": 12,
-                                "z": 0
-                            },
-                            "spread": {
-                                "x": 3,
-                                "y": 0,
-                                "z": 3
                             }
                         },
                         {
                             "id": "minecraft:gold_ingot",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 12,
+                                    "z": 0
+                                },
+                                "spread": {
+                                    "x": 3,
+                                    "y": 0,
+                                    "z": 3
+                                }
+                            },
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
                                 "max": 64
-                            },
-                            "offset": {
-                                "x": 0,
-                                "y": 12,
-                                "z": 0
-                            },
-                            "spread": {
-                                "x": 3,
-                                "y": 0,
-                                "z": 3
                             }
                         },
                         {
                             "id": "minecraft:iron_ingot",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 12,
+                                    "z": 0
+                                },
+                                "spread": {
+                                    "x": 3,
+                                    "y": 0,
+                                    "z": 3
+                                }
+                            },
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
                                 "max": 64
-                            },
-                            "offset": {
-                                "x": 0,
-                                "y": 12,
-                                "z": 0
-                            },
-                            "spread": {
-                                "x": 3,
-                                "y": 0,
-                                "z": 3
                             }
                         },
                         {
                             "id": "minecraft:lapis_lazuli",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 12,
+                                    "z": 0
+                                },
+                                "spread": {
+                                    "x": 3,
+                                    "y": 0,
+                                    "z": 3
+                                }
+                            },
                             "use_random": true,
                             "random_num": {
                                 "min": 0,
                                 "max": 64
-                            },
-                            "offset": {
-                                "x": 0,
-                                "y": 12,
-                                "z": 0
-                            },
-                            "spread": {
-                                "x": 3,
-                                "y": 0,
-                                "z": 3
                             }
                         }
                     ]

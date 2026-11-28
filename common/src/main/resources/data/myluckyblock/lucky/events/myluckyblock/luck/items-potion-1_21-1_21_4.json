@@ -22,7 +22,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 1908001,
@@ -134,7 +133,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 1908001,
@@ -246,7 +244,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 1908001,
@@ -358,7 +355,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 16092074,
@@ -465,7 +461,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 16092074,
@@ -572,7 +567,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 16092074,
@@ -678,7 +672,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:potion_contents": {
                                     "custom_color": 0,

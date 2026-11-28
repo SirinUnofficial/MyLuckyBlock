@@ -11,11 +11,12 @@
                     "spec": [
                         {
                             "id": "cherry_tree",
-                            "pos_src": 0,
-                            "offset": {
-                                "x": -7,
-                                "y": 0,
-                                "z": -7
+                            "pos": {
+                                "offset": {
+                                    "x": -7,
+                                    "y": 0,
+                                    "z": -7
+                                }
                             }
                         }
                     ]

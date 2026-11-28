@@ -683,8 +683,7 @@
                             "random_num": {
                                 "min": 1,
                                 "max": 3
-                            },
-                            "pos_src": 0
+                            }
                         }
                     ]
                 }
@@ -710,14 +709,16 @@
                     "action": "place_blocks",
                     "spec": [
                         {
-                            "id": "minecraft:copper_block",
-                            "pos_src": 0
+                            "id": "minecraft:copper_block"
                         },
                         {
                             "id": "minecraft:carved_pumpkin",
-                            "pos_src": 0,
-                            "offset": {
-                                "y": 1
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 1,
+                                    "z": 0
+                                }
                             }
                         }
                     ]

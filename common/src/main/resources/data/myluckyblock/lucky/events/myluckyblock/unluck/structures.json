@@ -21,11 +21,13 @@
                     "spec": [
                         {
                             "id": "xn",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": -2,
-                                "y": 12,
-                                "z": -2
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": -2,
+                                    "y": 12,
+                                    "z": -2
+                                }
                             }
                         }
                     ]
@@ -40,11 +42,13 @@
                     "spec": [
                         {
                             "id": "longzi",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         }
                     ]
@@ -54,29 +58,35 @@
                     "spec": [
                         {
                             "id": "minecraft:anvil",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 30,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 30,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:anvil",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 31,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 31,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:anvil",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 32,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 32,
+                                    "z": 0
+                                }
                             }
                         }
                     ]
@@ -91,11 +101,13 @@
                     "spec": [
                         {
                             "id": "longzi",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": -1,
-                                "y": -1,
-                                "z": -1
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": -1,
+                                    "y": -1,
+                                    "z": -1
+                                }
                             }
                         }
                     ]
@@ -105,11 +117,13 @@
                     "spec": [
                         {
                             "id": "minecraft:lava",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 2,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 2,
+                                    "z": 0
+                                }
                             }
                         }
                     ]
@@ -124,11 +138,13 @@
                     "spec": [
                         {
                             "id": "fall_lava",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": -1,
-                                "y": -10,
-                                "z": -1
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": -1,
+                                    "y": -10,
+                                    "z": -1
+                                }
                             }
                         }
                     ]
@@ -143,9 +159,13 @@
                     "spec": [
                         {
                             "id": "fall_dripstone",
-                            "pos_src": 1,
-                            "offset": {
-                                "y": -10
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -10,
+                                    "z": 0
+                                }
                             }
                         }
                     ]

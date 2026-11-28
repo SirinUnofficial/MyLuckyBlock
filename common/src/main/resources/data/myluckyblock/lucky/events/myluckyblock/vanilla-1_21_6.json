@@ -174,8 +174,7 @@
                             "random_num": {
                                 "min": 1,
                                 "max": 3
-                            },
-                            "pos_src": 0
+                            }
                         }
                     ]
                 }

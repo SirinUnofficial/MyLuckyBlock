@@ -23,7 +23,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{ExplosionPower:127}"
                         }
                     ]
@@ -44,7 +43,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{HandItems:[{id:netherite_sword,components:{enchantments:{levels:{bane_of_arthropods:5,fire_aspect:2,knockback:2,looting:3,sharpness:5,silk_touch:1,smite:5,sweeping_edge:3,unbreaking:3,breach:4}}},count:1}],HandDropChances:[0.1f],ArmorItems:[{id:netherite_boots,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_leggings,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_chestplate,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1},{id:netherite_helmet,components:{enchantments:{levels:{aqua_affinity:1,blast_protection:4,depth_strider:3,feather_falling:4,fire_protection:4,mending:1,projectile_protection:4,protection:4,respiration:3,soul_speed:3,swift_sneak:3,thorns:3,unbreaking:3}}},count:1}],ArmorDropChances:[0.1f,0.1f,0.1f,0.1f]}"
                         }
                     ]
@@ -65,7 +63,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{powered:1}"
                         }
                     ]
@@ -86,7 +83,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{powered:1,ExplosionRadius:50,Glowing:1b}"
                         }
                     ]
@@ -107,7 +103,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{Size:32}"
                         }
                     ]
@@ -128,7 +123,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{Size:32}"
                         }
                     ]
@@ -149,7 +143,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{Variant:260,SaddleItem:{id:saddle,Count:1},Tame:1,body_armor_item:{id:diamond_horse_armor,Count:1}}"
                         }
                     ]
@@ -164,7 +157,6 @@
                     "spec": [
                         {
                             "id": "minecraft:bat",
-                            "pos_src": 0,
                             "randomize": false,
                             "passengers": [
                                 {
@@ -197,7 +189,6 @@
                             "is_baby": false,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "nbt": "{Glowing:1b,HandItems:[{id:crossbow,components:{enchantments:{levels:{multishot:20}},unbreakable:{},repair_cost:32767},count:1}],HandDropChances:[0.01f]}"
                         }
                     ]

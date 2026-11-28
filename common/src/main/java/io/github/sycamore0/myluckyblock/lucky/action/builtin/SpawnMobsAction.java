@@ -36,7 +36,7 @@ public final class SpawnMobsAction implements LuckyAction {
         for (SpawnMobSpec mob : LuckyActions.spec(step, SpawnMobSpec.class)) {
             int count = ActionSupport.roll(mob.isUseRandom(), mob.getRandomNum(), mob.getNum());
             for (int i = 0; i < count; i++) {
-                Vec3 pos = ActionSupport.spread(context.level(), context.resolvePos(mob.getPosSrc(), mob.getOffset()), mob.getSpread());
+                Vec3 pos = context.resolve(mob.getPos());
                 spawn(context.level(), mob, pos);
             }
         }

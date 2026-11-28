@@ -17,7 +17,7 @@ public final class AddParticlesAction implements LuckyAction {
     public void execute(ActionContext context, JsonObject step) {
         for (AddParticleSpec particle : LuckyActions.spec(step, AddParticleSpec.class)) {
             addParticles(context.level(), particle.getId(),
-                    context.resolvePos(particle.getPosSrc(), particle.getOffset()),
+                    context.resolve(particle.getPos()),
                     particle.getCount(),
                     particle.getDelta().getX(), particle.getDelta().getY(), particle.getDelta().getZ(),
                     particle.getSpeed());

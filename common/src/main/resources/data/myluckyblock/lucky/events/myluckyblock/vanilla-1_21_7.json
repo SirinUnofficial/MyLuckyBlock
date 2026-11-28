@@ -17,12 +17,15 @@
                     "spec": [
                         {
                             "id": "minecraft:music_disc_lava_chicken",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 1,
+                                    "z": 0
+                                }
+                            },
                             "use_random": false,
-                            "num": 1,
-                            "pos_src": 0,
-                            "offset": {
-                                "y": 1
-                            }
+                            "num": 1
                         }
                     ]
                 },
@@ -30,8 +33,7 @@
                     "action": "place_blocks",
                     "spec": [
                         {
-                            "id": "minecraft:jukebox",
-                            "pos_src": 0
+                            "id": "minecraft:jukebox"
                         }
                     ]
                 }

@@ -1,7 +1,6 @@
 package io.github.sycamore0.myluckyblock.lucky.action.spec;
 
 import com.google.gson.annotations.SerializedName;
-import io.github.sycamore0.myluckyblock.utils.PosSrc;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
@@ -10,14 +9,11 @@ public class SpawnMobSpec {
     @SerializedName("id")
     protected String id;
 
-    @SerializedName("pos_src")
-    protected int posSrc = 0;
-
-    @SerializedName("offset")
-    protected Vector3 offset = new Vector3(0.0, 0.0, 0.0);
+    @SerializedName("pos")
+    protected PositionSpec pos = new PositionSpec();
 
     @SerializedName("velocity")
-    protected Vec3 velocity = new Vec3(0.0, 0.0, 0.0);
+    protected Vector3 velocity = new Vector3(0.0, 0.0, 0.0);
 
     @SerializedName("randomize")
     protected boolean randomize = true;
@@ -46,34 +42,19 @@ public class SpawnMobSpec {
     @SerializedName("nbt")
     protected String nbt = null;
 
-    @SerializedName("spread")
-    protected Vector3 spread = new Vector3(0.0, 0.0, 0.0);
-
     @SerializedName("passengers")
     protected List<EntityNode> passengers = null;
-
-    public PosSrc getPosSrc() {
-        return PosSrc.fromValue(posSrc);
-    }
-
-    public Vec3 getOffset() {
-        return new Vec3(offset.getX(), offset.getY(), offset.getZ());
-    }
-
-    public Vec3 getVelocity() {
-        return velocity;
-    }
 
     public String getId() {
         return id;
     }
 
-    public boolean isUseRandom() {
-        return useRandom;
+    public PositionSpec getPos() {
+        return pos;
     }
 
-    public RandomNum getRandomNum() {
-        return randomNum;
+    public Vec3 getVelocity() {
+        return new Vec3(velocity.getX(), velocity.getY(), velocity.getZ());
     }
 
     public boolean getRandomize() {
@@ -88,12 +69,20 @@ public class SpawnMobSpec {
         return desc;
     }
 
-    public Boolean isNameVisible() {
+    public boolean isNameVisible() {
         return nameVisible;
     }
 
-    public Boolean isBaby() {
+    public boolean isBaby() {
         return isBaby;
+    }
+
+    public boolean isUseRandom() {
+        return useRandom;
+    }
+
+    public RandomNum getRandomNum() {
+        return randomNum;
     }
 
     public int getNum() {
@@ -102,10 +91,6 @@ public class SpawnMobSpec {
 
     public String getNbt() {
         return nbt;
-    }
-
-    public Vector3 getSpread() {
-        return spread;
     }
 
     public List<EntityNode> getPassengers() {

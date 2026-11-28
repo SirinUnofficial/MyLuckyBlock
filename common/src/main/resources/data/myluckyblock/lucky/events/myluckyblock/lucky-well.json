@@ -37,8 +37,10 @@
                     "spec": [
                         {
                             "id": "minecraft:gold_nugget",
+                            "pos": {
+                                "src": 1
+                            },
                             "num": 1,
-                            "pos_src": 1,
                             "data_components": {
                                 "minecraft:custom_name": "Coin"
                             }

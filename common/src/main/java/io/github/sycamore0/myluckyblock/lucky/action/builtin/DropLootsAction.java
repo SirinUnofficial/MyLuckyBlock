@@ -22,7 +22,7 @@ public final class DropLootsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (DropLootsSpec loot : LuckyActions.spec(step, DropLootsSpec.class)) {
-            dropLoots(context.level(), context.resolvePos(loot.getPosSrc(), loot.getOffset()), loot.getId(), loot.getSeed());
+            dropLoots(context.level(), context.resolve(loot.getPos()), loot.getId(), loot.getSeed());
         }
     }
 

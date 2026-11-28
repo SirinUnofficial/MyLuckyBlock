@@ -21,7 +21,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:rarity": "epic",
                                 "minecraft:enchantments": {

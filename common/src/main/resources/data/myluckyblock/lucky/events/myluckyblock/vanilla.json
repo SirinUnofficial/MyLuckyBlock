@@ -7130,29 +7130,35 @@
                     "spec": [
                         {
                             "id": "minecraft:anvil",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 30,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 30,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:anvil",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 31,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 31,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:anvil",
-                            "pos_src": 1,
-                            "offset": {
-                                "x": 0,
-                                "y": 32,
-                                "z": 0
+                            "pos": {
+                                "src": 1,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 32,
+                                    "z": 0
+                                }
                             }
                         }
                     ]
@@ -8798,6 +8804,9 @@
                     "spec": [
                         {
                             "id": "minecraft:lightning_bolt",
+                            "pos": {
+                                "src": 1
+                            },
                             "name": null,
                             "name_visible": false,
                             "is_baby": false,
@@ -8805,8 +8814,7 @@
                             "random_num": {
                                 "min": 1,
                                 "max": 5
-                            },
-                            "pos_src": 1
+                            }
                         }
                     ]
                 }
@@ -8820,10 +8828,12 @@
                     "spec": [
                         {
                             "id": "minecraft:diamond_block",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         }
                     ]

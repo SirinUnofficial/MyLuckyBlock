@@ -15,7 +15,7 @@ public final class ExecuteCommandsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (ExecuteCommandSpec command : LuckyActions.spec(step, ExecuteCommandSpec.class)) {
-            executeCommand(context.level(), context.resolvePos(command.getPosSrc(), command.getOffset()), command.getCommand());
+            executeCommand(context.level(), context.resolve(command.getPos()), command.getCommand());
         }
     }
 

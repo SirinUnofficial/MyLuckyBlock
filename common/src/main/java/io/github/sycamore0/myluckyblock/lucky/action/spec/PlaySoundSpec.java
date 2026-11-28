@@ -6,6 +6,9 @@ public class PlaySoundSpec {
     @SerializedName("id")
     protected String id;
 
+    @SerializedName("pos")
+    protected PositionSpec pos = new PositionSpec();
+
     @SerializedName("volume")
     protected float volume = 1.0f;
 
@@ -22,5 +25,9 @@ public class PlaySoundSpec {
 
     public float getPitch() {
         return pitch;
+    }
+
+    public PositionSpec getPos() {
+        return pos;
     }
 }

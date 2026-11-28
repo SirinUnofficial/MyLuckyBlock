@@ -21,7 +21,7 @@ public final class FallBlocksAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (FallBlockSpec block : LuckyActions.spec(step, FallBlockSpec.class)) {
-            fallBlock(context.level(), PosHelper.parseVec3d(context.resolvePos(block.getPosSrc(), block.getOffset())), block.getId(), block.getBlockState(), block.getNbt(), block.getDataComponents(), block.getVelocity());
+            fallBlock(context.level(), PosHelper.parseVec3d(context.resolve(block.getPos())), block.getId(), block.getBlockState(), block.getNbt(), block.getDataComponents(), block.getVelocity());
         }
     }
 

@@ -32,66 +32,82 @@
                     "spec": [
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         },
                         {
                             "id": "minecraft:tnt",
-                            "offset": {
-                                "x": 0,
-                                "y": 8,
-                                "z": 0
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
                             }
                         }
                     ]

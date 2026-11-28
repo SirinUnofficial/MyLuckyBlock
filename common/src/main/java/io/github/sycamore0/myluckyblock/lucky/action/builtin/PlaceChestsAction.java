@@ -22,7 +22,7 @@ public final class PlaceChestsAction implements LuckyAction {
     @Override
     public void execute(ActionContext context, JsonObject step) {
         for (PlaceChestSpec chest : LuckyActions.spec(step, PlaceChestSpec.class)) {
-            placeChest(context.level(), PosHelper.parseVec3d(context.resolvePos(chest.getPosSrc(), chest.getOffset())), chest.getChestId(), chest.getId(), chest.getSeed());
+            placeChest(context.level(), PosHelper.parseVec3d(context.resolve(chest.getPos())), chest.getChestId(), chest.getId(), chest.getSeed());
         }
     }
 

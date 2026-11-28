@@ -22,7 +22,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.speed_boots\", \"italic\": false, \"fallback\": \"name.myluckyblock.speed_boots\"}",
                                 "minecraft:lore": [
@@ -61,7 +60,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.baguette\", \"italic\": false, \"fallback\": \"name.myluckyblock.baguette\"}",
                                 "minecraft:lore": [
@@ -104,7 +102,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.fall_boots\", \"italic\": false, \"fallback\": \"name.myluckyblock.fall_boots\"}",
                                 "minecraft:lore": [
@@ -141,7 +138,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.titan_chestplate\", \"italic\": false, \"fallback\": \"name.myluckyblock.titan_chestplate\"}",
                                 "minecraft:enchantment_glint_override": true,
@@ -231,7 +227,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.shrinking_leggings\", \"italic\": false, \"fallback\": \"name.myluckyblock.shrinking_leggings\"}",
                                 "minecraft:enchantment_glint_override": true,
@@ -286,7 +281,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.odd_helmet\", \"italic\": false, \"fallback\": \"name.myluckyblock.odd_helmet\"}",
                                 "minecraft:rarity": "epic",
@@ -349,7 +343,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.reach\", \"italic\": false, \"fallback\": \"name.myluckyblock.reach\"}",
                                 "minecraft:rarity": "uncommon",
@@ -396,7 +389,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.detnahcne_golden_apple\", \"italic\": false, \"fallback\": \"name.myluckyblock.detnahcne_golden_apple\"}",
                                 "minecraft:rarity": "epic",
@@ -474,7 +466,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.weightlessness\", \"italic\": false, \"fallback\": \"name.myluckyblock.weightlessness\"}",
                                 "minecraft:lore": [
@@ -511,7 +502,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.odd_iron_ingot\", \"italic\": false, \"fallback\": \"name.myluckyblock.odd_iron_ingot\"}",
                                 "minecraft:lore": [
@@ -557,7 +547,6 @@
                             "name_visible": true,
                             "use_random": false,
                             "num": 1,
-                            "pos_src": 0,
                             "data_components": {
                                 "minecraft:custom_name": "{\"translate\": \"name.myluckyblock.shit\", \"italic\": false, \"fallback\": \"name.myluckyblock.shit\"}",
                                 "minecraft:lore": [
