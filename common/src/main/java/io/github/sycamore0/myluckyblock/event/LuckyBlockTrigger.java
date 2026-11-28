@@ -124,6 +124,8 @@ public class LuckyBlockTrigger {
         double rand = ThreadLocalRandom.current().nextDouble(100.0);
         if (rand < prob.lucky()) return EventType.LUCKY;
         if (rand < prob.lucky() + prob.unlucky()) return EventType.UNLUCKY;
+        if (rand < prob.lucky() + prob.unlucky() + prob.ultraLucky()) return EventType.ULTRA_LUCKY;
+        if (rand < prob.lucky() + prob.unlucky() + prob.ultraLucky() + prob.ultraUnlucky()) return EventType.ULTRA_UNLUCKY;
         return EventType.COMMON;
     }
 

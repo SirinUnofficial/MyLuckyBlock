@@ -1,0 +1,43 @@
+{
+    "name": "Vanilla Luck Event Pack for 1.21",
+    "version": "3.0",
+    "info": "Mace and heavy core, available since Minecraft 1.21.",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.20.6,99.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:heavy_core",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:mace",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

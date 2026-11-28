@@ -75,21 +75,6 @@
                     "action": "drop_items",
                     "spec": [
                         {
-                            "id": "minecraft:heavy_core",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
                             "id": "minecraft:crafter",
                             "use_random": true,
                             "random_num": {
@@ -102,7 +87,7 @@
             ]
         },
         {
-            "id": 6,
+            "id": 5,
             "steps": [
                 {
                     "action": "drop_items",
@@ -120,7 +105,7 @@
             ]
         },
         {
-            "id": 7,
+            "id": 6,
             "steps": [
                 {
                     "action": "drop_items",
@@ -154,7 +139,7 @@
             ]
         },
         {
-            "id": 8,
+            "id": 7,
             "steps": [
                 {
                     "action": "drop_items",
@@ -166,253 +151,6 @@
                                 "min": 1,
                                 "max": 16
                             }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:mace",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:breeze",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:bogged",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_common",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_rare",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_unique",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_ominous",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_ominous_common",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_ominous_rare",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/reward_ominous_unique",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 20,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/supply",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 21,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/corridor",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 22,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/intersection",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 23,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/intersection_barrel",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 24,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/trial_chambers/entrance",
-                            "chest_id": "minecraft:chest"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 25,
-            "steps": [
-                {
-                    "action": "place_chests",
-                    "spec": [
-                        {
-                            "id": "minecraft:chests/spawn_bonus_chest",
-                            "chest_id": "minecraft:chest"
                         }
                     ]
                 }

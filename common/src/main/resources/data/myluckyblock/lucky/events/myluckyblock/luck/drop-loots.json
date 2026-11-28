@@ -1,0 +1,345 @@
+{
+    "name": "Drop Loot Event Pack",
+    "version": "3.0",
+    "info": "Loot tables dropped as items.",
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/end_city_treasure"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/simple_dungeon"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/abandoned_mineshaft"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/nether_bridge"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/stronghold_library"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/stronghold_crossing"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/stronghold_corridor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/desert_pyramid"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/jungle_temple"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/jungle_temple_dispenser"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/igloo_chest"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/woodland_mansion"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/underwater_ruin_small"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/underwater_ruin_big"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/buried_treasure"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/shipwreck_map"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/shipwreck_supply"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/shipwreck_treasure"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/pillager_outpost"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/bastion_treasure"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/bastion_other"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/bastion_bridge"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/bastion_hoglin_stable"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/ancient_city"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/ancient_city_ice_box"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/ruined_portal"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

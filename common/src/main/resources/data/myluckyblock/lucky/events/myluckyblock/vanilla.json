@@ -110,198 +110,6 @@
                     "action": "drop_items",
                     "spec": [
                         {
-                            "id": "minecraft:golden_sword",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_shovel",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_pickaxe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_hoe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_axe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_sword",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_shovel",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_pickaxe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_hoe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_axe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:diamond_sword",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_shovel",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_pickaxe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_hoe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_axe",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:golden_horse_armor",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:leather_horse_armor",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_horse_armor",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_horse_armor",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
                             "id": "minecraft:wolf_armor",
                             "use_random": false,
                             "num": 1
@@ -311,7 +119,7 @@
             ]
         },
         {
-            "id": 8,
+            "id": 4,
             "steps": [
                 {
                     "action": "drop_items",
@@ -358,7 +166,7 @@
             ]
         },
         {
-            "id": 9,
+            "id": 5,
             "steps": [
                 {
                     "action": "drop_items",
@@ -405,163 +213,7 @@
             ]
         },
         {
-            "id": 10,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_helmet",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_chestplate",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_leggings",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_boots",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_sword",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:golden_helmet",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_chestplate",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_leggings",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_boots",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_sword",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:diamond_helmet",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_chestplate",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_leggings",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_boots",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 1
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_sword",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:elytra",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 14,
+            "id": 6,
             "steps": [
                 {
                     "action": "drop_items",
@@ -584,7 +236,7 @@
             ]
         },
         {
-            "id": 15,
+            "id": 7,
             "steps": [
                 {
                     "action": "drop_items",
@@ -610,7 +262,7 @@
             ]
         },
         {
-            "id": 16,
+            "id": 8,
             "steps": [
                 {
                     "action": "drop_items",
@@ -636,7 +288,7 @@
             ]
         },
         {
-            "id": 17,
+            "id": 9,
             "steps": [
                 {
                     "action": "drop_items",
@@ -666,27 +318,7 @@
             ]
         },
         {
-            "id": 18,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_sword",
-                            "use_random": false,
-                            "num": 1
-                        },
-                        {
-                            "id": "minecraft:shield",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 19,
+            "id": 10,
             "steps": [
                 {
                     "action": "drop_items",
@@ -701,7 +333,7 @@
             ]
         },
         {
-            "id": 20,
+            "id": 11,
             "steps": [
                 {
                     "action": "drop_items",
@@ -732,7 +364,7 @@
             ]
         },
         {
-            "id": 21,
+            "id": 12,
             "steps": [
                 {
                     "action": "drop_items",
@@ -750,7 +382,7 @@
             ]
         },
         {
-            "id": 22,
+            "id": 13,
             "steps": [
                 {
                     "action": "drop_items",
@@ -768,7 +400,7 @@
             ]
         },
         {
-            "id": 23,
+            "id": 14,
             "steps": [
                 {
                     "action": "drop_items",
@@ -786,25 +418,7 @@
             ]
         },
         {
-            "id": 24,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:totem_of_undying",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 2
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 25,
+            "id": 15,
             "steps": [
                 {
                     "action": "drop_items",
@@ -830,7 +444,7 @@
             ]
         },
         {
-            "id": 26,
+            "id": 16,
             "steps": [
                 {
                     "action": "drop_items",
@@ -848,7 +462,7 @@
             ]
         },
         {
-            "id": 27,
+            "id": 17,
             "steps": [
                 {
                     "action": "drop_items",
@@ -866,7 +480,7 @@
             ]
         },
         {
-            "id": 28,
+            "id": 18,
             "steps": [
                 {
                     "action": "drop_items",
@@ -884,7 +498,7 @@
             ]
         },
         {
-            "id": 29,
+            "id": 19,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1022,7 +636,7 @@
             ]
         },
         {
-            "id": 30,
+            "id": 20,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1160,7 +774,7 @@
             ]
         },
         {
-            "id": 31,
+            "id": 21,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1298,7 +912,7 @@
             ]
         },
         {
-            "id": 32,
+            "id": 22,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1436,7 +1050,7 @@
             ]
         },
         {
-            "id": 33,
+            "id": 23,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1574,7 +1188,7 @@
             ]
         },
         {
-            "id": 34,
+            "id": 24,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1712,7 +1326,7 @@
             ]
         },
         {
-            "id": 35,
+            "id": 25,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1850,7 +1464,7 @@
             ]
         },
         {
-            "id": 36,
+            "id": 26,
             "steps": [
                 {
                     "action": "drop_items",
@@ -1988,7 +1602,7 @@
             ]
         },
         {
-            "id": 37,
+            "id": 27,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2126,7 +1740,7 @@
             ]
         },
         {
-            "id": 38,
+            "id": 28,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2264,7 +1878,7 @@
             ]
         },
         {
-            "id": 39,
+            "id": 29,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2402,7 +2016,7 @@
             ]
         },
         {
-            "id": 40,
+            "id": 30,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2428,7 +2042,7 @@
             ]
         },
         {
-            "id": 41,
+            "id": 31,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2446,7 +2060,7 @@
             ]
         },
         {
-            "id": 42,
+            "id": 32,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2464,7 +2078,7 @@
             ]
         },
         {
-            "id": 43,
+            "id": 33,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2482,7 +2096,7 @@
             ]
         },
         {
-            "id": 44,
+            "id": 34,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2620,7 +2234,7 @@
             ]
         },
         {
-            "id": 45,
+            "id": 35,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2758,7 +2372,7 @@
             ]
         },
         {
-            "id": 46,
+            "id": 36,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2792,7 +2406,7 @@
             ]
         },
         {
-            "id": 47,
+            "id": 37,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2818,7 +2432,7 @@
             ]
         },
         {
-            "id": 48,
+            "id": 38,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2844,7 +2458,7 @@
             ]
         },
         {
-            "id": 49,
+            "id": 39,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2870,7 +2484,7 @@
             ]
         },
         {
-            "id": 50,
+            "id": 40,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2896,7 +2510,7 @@
             ]
         },
         {
-            "id": 51,
+            "id": 41,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2930,7 +2544,7 @@
             ]
         },
         {
-            "id": 52,
+            "id": 42,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2945,7 +2559,7 @@
             ]
         },
         {
-            "id": 53,
+            "id": 43,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2963,7 +2577,7 @@
             ]
         },
         {
-            "id": 54,
+            "id": 44,
             "steps": [
                 {
                     "action": "drop_items",
@@ -2981,7 +2595,7 @@
             ]
         },
         {
-            "id": 55,
+            "id": 45,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3007,7 +2621,7 @@
             ]
         },
         {
-            "id": 56,
+            "id": 46,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3033,7 +2647,7 @@
             ]
         },
         {
-            "id": 57,
+            "id": 47,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3051,7 +2665,7 @@
             ]
         },
         {
-            "id": 58,
+            "id": 48,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3069,7 +2683,7 @@
             ]
         },
         {
-            "id": 59,
+            "id": 49,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3087,7 +2701,7 @@
             ]
         },
         {
-            "id": 60,
+            "id": 50,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3105,7 +2719,7 @@
             ]
         },
         {
-            "id": 62,
+            "id": 51,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3123,7 +2737,7 @@
             ]
         },
         {
-            "id": 63,
+            "id": 52,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3149,7 +2763,7 @@
             ]
         },
         {
-            "id": 64,
+            "id": 53,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3175,7 +2789,7 @@
             ]
         },
         {
-            "id": 65,
+            "id": 54,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3201,7 +2815,7 @@
             ]
         },
         {
-            "id": 66,
+            "id": 55,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3219,7 +2833,7 @@
             ]
         },
         {
-            "id": 67,
+            "id": 56,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3269,7 +2883,7 @@
             ]
         },
         {
-            "id": 68,
+            "id": 57,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3287,7 +2901,7 @@
             ]
         },
         {
-            "id": 69,
+            "id": 58,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3305,7 +2919,7 @@
             ]
         },
         {
-            "id": 70,
+            "id": 59,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3323,7 +2937,7 @@
             ]
         },
         {
-            "id": 71,
+            "id": 60,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3349,7 +2963,7 @@
             ]
         },
         {
-            "id": 72,
+            "id": 61,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3367,7 +2981,7 @@
             ]
         },
         {
-            "id": 73,
+            "id": 62,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3393,7 +3007,7 @@
             ]
         },
         {
-            "id": 74,
+            "id": 63,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3411,7 +3025,7 @@
             ]
         },
         {
-            "id": 75,
+            "id": 64,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3429,7 +3043,7 @@
             ]
         },
         {
-            "id": 76,
+            "id": 65,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3455,7 +3069,7 @@
             ]
         },
         {
-            "id": 77,
+            "id": 66,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3481,7 +3095,7 @@
             ]
         },
         {
-            "id": 78,
+            "id": 67,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3507,7 +3121,7 @@
             ]
         },
         {
-            "id": 79,
+            "id": 68,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3533,7 +3147,7 @@
             ]
         },
         {
-            "id": 80,
+            "id": 69,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3559,7 +3173,7 @@
             ]
         },
         {
-            "id": 81,
+            "id": 70,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3585,7 +3199,7 @@
             ]
         },
         {
-            "id": 82,
+            "id": 71,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3619,7 +3233,7 @@
             ]
         },
         {
-            "id": 83,
+            "id": 72,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3653,7 +3267,7 @@
             ]
         },
         {
-            "id": 84,
+            "id": 73,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3671,7 +3285,7 @@
             ]
         },
         {
-            "id": 85,
+            "id": 74,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3689,7 +3303,7 @@
             ]
         },
         {
-            "id": 86,
+            "id": 75,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3715,7 +3329,7 @@
             ]
         },
         {
-            "id": 87,
+            "id": 76,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3741,7 +3355,7 @@
             ]
         },
         {
-            "id": 88,
+            "id": 77,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3759,7 +3373,7 @@
             ]
         },
         {
-            "id": 89,
+            "id": 78,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3777,7 +3391,7 @@
             ]
         },
         {
-            "id": 90,
+            "id": 79,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3819,43 +3433,7 @@
             ]
         },
         {
-            "id": 91,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:glistering_melon_slice",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 16
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 92,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:golden_carrot",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 12
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 93,
+            "id": 80,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3870,7 +3448,7 @@
             ]
         },
         {
-            "id": 94,
+            "id": 81,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3896,7 +3474,7 @@
             ]
         },
         {
-            "id": 95,
+            "id": 82,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3922,7 +3500,7 @@
             ]
         },
         {
-            "id": 96,
+            "id": 83,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3948,7 +3526,7 @@
             ]
         },
         {
-            "id": 97,
+            "id": 84,
             "steps": [
                 {
                     "action": "drop_items",
@@ -3974,7 +3552,7 @@
             ]
         },
         {
-            "id": 98,
+            "id": 85,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4000,59 +3578,7 @@
             ]
         },
         {
-            "id": 99,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_ingot",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 32
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_block",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 4
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 100,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:gold_ingot",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 32
-                            }
-                        },
-                        {
-                            "id": "minecraft:gold_block",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 4
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 101,
+            "id": 86,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4078,33 +3604,7 @@
             ]
         },
         {
-            "id": 102,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:diamond",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 32
-                            }
-                        },
-                        {
-                            "id": "minecraft:diamond_block",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 4
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 103,
+            "id": 87,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4178,7 +3678,7 @@
             ]
         },
         {
-            "id": 104,
+            "id": 88,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4252,7 +3752,7 @@
             ]
         },
         {
-            "id": 106,
+            "id": 89,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4326,7 +3826,7 @@
             ]
         },
         {
-            "id": 107,
+            "id": 90,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4400,7 +3900,7 @@
             ]
         },
         {
-            "id": 108,
+            "id": 91,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4474,7 +3974,7 @@
             ]
         },
         {
-            "id": 109,
+            "id": 92,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4548,7 +4048,7 @@
             ]
         },
         {
-            "id": 110,
+            "id": 93,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4622,7 +4122,7 @@
             ]
         },
         {
-            "id": 111,
+            "id": 94,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4760,22 +4260,7 @@
             ]
         },
         {
-            "id": 112,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:netherite_hoe",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 113,
+            "id": 95,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4801,7 +4286,7 @@
             ]
         },
         {
-            "id": 114,
+            "id": 96,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4819,41 +4304,7 @@
             ]
         },
         {
-            "id": 115,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:apple",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 64
-                            }
-                        },
-                        {
-                            "id": "minecraft:golden_apple",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 16
-                            }
-                        },
-                        {
-                            "id": "minecraft:enchanted_golden_apple",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 4
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 116,
+            "id": 97,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4887,7 +4338,7 @@
             ]
         },
         {
-            "id": 117,
+            "id": 98,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4913,7 +4364,7 @@
             ]
         },
         {
-            "id": 118,
+            "id": 99,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4931,7 +4382,7 @@
             ]
         },
         {
-            "id": 119,
+            "id": 100,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4949,7 +4400,7 @@
             ]
         },
         {
-            "id": 120,
+            "id": 101,
             "steps": [
                 {
                     "action": "drop_items",
@@ -4975,7 +4426,7 @@
             ]
         },
         {
-            "id": 121,
+            "id": 102,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5001,7 +4452,7 @@
             ]
         },
         {
-            "id": 122,
+            "id": 103,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5027,7 +4478,7 @@
             ]
         },
         {
-            "id": 123,
+            "id": 104,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5045,7 +4496,7 @@
             ]
         },
         {
-            "id": 124,
+            "id": 105,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5063,25 +4514,7 @@
             ]
         },
         {
-            "id": 125,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_door",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 4
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 126,
+            "id": 106,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5107,7 +4540,7 @@
             ]
         },
         {
-            "id": 127,
+            "id": 107,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5133,7 +4566,7 @@
             ]
         },
         {
-            "id": 128,
+            "id": 108,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5159,7 +4592,7 @@
             ]
         },
         {
-            "id": 129,
+            "id": 109,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5185,7 +4618,7 @@
             ]
         },
         {
-            "id": 130,
+            "id": 110,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5219,59 +4652,7 @@
             ]
         },
         {
-            "id": 131,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:raw_iron",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 32
-                            }
-                        },
-                        {
-                            "id": "minecraft:raw_iron_block",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 8
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 132,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:raw_gold",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 32
-                            }
-                        },
-                        {
-                            "id": "minecraft:raw_gold_block",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 8
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 133,
+            "id": 111,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5297,7 +4678,7 @@
             ]
         },
         {
-            "id": 134,
+            "id": 112,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5315,43 +4696,7 @@
             ]
         },
         {
-            "id": 135,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_nugget",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 64
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 136,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:gold_nugget",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 64
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 138,
+            "id": 113,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5377,7 +4722,7 @@
             ]
         },
         {
-            "id": 139,
+            "id": 114,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5411,7 +4756,7 @@
             ]
         },
         {
-            "id": 140,
+            "id": 115,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5429,7 +4774,7 @@
             ]
         },
         {
-            "id": 141,
+            "id": 116,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5455,7 +4800,7 @@
             ]
         },
         {
-            "id": 142,
+            "id": 117,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5473,7 +4818,7 @@
             ]
         },
         {
-            "id": 143,
+            "id": 118,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5507,7 +4852,7 @@
             ]
         },
         {
-            "id": 144,
+            "id": 119,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5525,7 +4870,7 @@
             ]
         },
         {
-            "id": 145,
+            "id": 120,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5543,7 +4888,7 @@
             ]
         },
         {
-            "id": 146,
+            "id": 121,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5561,7 +4906,7 @@
             ]
         },
         {
-            "id": 147,
+            "id": 122,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5587,7 +4932,7 @@
             ]
         },
         {
-            "id": 148,
+            "id": 123,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5605,7 +4950,7 @@
             ]
         },
         {
-            "id": 149,
+            "id": 124,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5623,7 +4968,7 @@
             ]
         },
         {
-            "id": 150,
+            "id": 125,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5641,7 +4986,7 @@
             ]
         },
         {
-            "id": 151,
+            "id": 126,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5659,7 +5004,7 @@
             ]
         },
         {
-            "id": 152,
+            "id": 127,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5677,7 +5022,7 @@
             ]
         },
         {
-            "id": 153,
+            "id": 128,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5703,7 +5048,7 @@
             ]
         },
         {
-            "id": 154,
+            "id": 129,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5737,7 +5082,7 @@
             ]
         },
         {
-            "id": 155,
+            "id": 130,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5752,7 +5097,7 @@
             ]
         },
         {
-            "id": 156,
+            "id": 131,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5767,7 +5112,7 @@
             ]
         },
         {
-            "id": 157,
+            "id": 132,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5785,7 +5130,7 @@
             ]
         },
         {
-            "id": 158,
+            "id": 133,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5803,7 +5148,7 @@
             ]
         },
         {
-            "id": 159,
+            "id": 134,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5818,7 +5163,7 @@
             ]
         },
         {
-            "id": 160,
+            "id": 135,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5844,7 +5189,7 @@
             ]
         },
         {
-            "id": 161,
+            "id": 136,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5870,7 +5215,7 @@
             ]
         },
         {
-            "id": 162,
+            "id": 137,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5896,7 +5241,7 @@
             ]
         },
         {
-            "id": 163,
+            "id": 138,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5946,7 +5291,7 @@
             ]
         },
         {
-            "id": 164,
+            "id": 139,
             "steps": [
                 {
                     "action": "drop_items",
@@ -5988,7 +5333,7 @@
             ]
         },
         {
-            "id": 165,
+            "id": 140,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6006,7 +5351,7 @@
             ]
         },
         {
-            "id": 166,
+            "id": 141,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6032,7 +5377,7 @@
             ]
         },
         {
-            "id": 167,
+            "id": 142,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6058,7 +5403,7 @@
             ]
         },
         {
-            "id": 168,
+            "id": 143,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6084,33 +5429,7 @@
             ]
         },
         {
-            "id": 169,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_door",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 16
-                            }
-                        },
-                        {
-                            "id": "minecraft:iron_trapdoor",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 0,
-                                "max": 16
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 170,
+            "id": 144,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6128,7 +5447,7 @@
             ]
         },
         {
-            "id": 171,
+            "id": 145,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6162,7 +5481,7 @@
             ]
         },
         {
-            "id": 172,
+            "id": 146,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6188,7 +5507,7 @@
             ]
         },
         {
-            "id": 173,
+            "id": 147,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6214,7 +5533,7 @@
             ]
         },
         {
-            "id": 174,
+            "id": 148,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6248,7 +5567,7 @@
             ]
         },
         {
-            "id": 175,
+            "id": 149,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6263,7 +5582,7 @@
             ]
         },
         {
-            "id": 176,
+            "id": 150,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6281,7 +5600,7 @@
             ]
         },
         {
-            "id": 177,
+            "id": 151,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6296,7 +5615,7 @@
             ]
         },
         {
-            "id": 178,
+            "id": 152,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6314,7 +5633,7 @@
             ]
         },
         {
-            "id": 179,
+            "id": 153,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6332,7 +5651,7 @@
             ]
         },
         {
-            "id": 180,
+            "id": 154,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6366,7 +5685,7 @@
             ]
         },
         {
-            "id": 181,
+            "id": 155,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6400,7 +5719,7 @@
             ]
         },
         {
-            "id": 182,
+            "id": 156,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6418,7 +5737,7 @@
             ]
         },
         {
-            "id": 183,
+            "id": 157,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6460,7 +5779,7 @@
             ]
         },
         {
-            "id": 184,
+            "id": 158,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6494,7 +5813,7 @@
             ]
         },
         {
-            "id": 185,
+            "id": 159,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6520,7 +5839,7 @@
             ]
         },
         {
-            "id": 186,
+            "id": 160,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6546,7 +5865,7 @@
             ]
         },
         {
-            "id": 187,
+            "id": 161,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6564,7 +5883,7 @@
             ]
         },
         {
-            "id": 188,
+            "id": 162,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6590,7 +5909,7 @@
             ]
         },
         {
-            "id": 189,
+            "id": 163,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6605,7 +5924,7 @@
             ]
         },
         {
-            "id": 190,
+            "id": 164,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6631,7 +5950,7 @@
             ]
         },
         {
-            "id": 191,
+            "id": 165,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6665,7 +5984,7 @@
             ]
         },
         {
-            "id": 192,
+            "id": 166,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6691,7 +6010,7 @@
             ]
         },
         {
-            "id": 193,
+            "id": 167,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6709,7 +6028,7 @@
             ]
         },
         {
-            "id": 194,
+            "id": 168,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6727,7 +6046,7 @@
             ]
         },
         {
-            "id": 195,
+            "id": 169,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6745,7 +6064,7 @@
             ]
         },
         {
-            "id": 196,
+            "id": 170,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6760,7 +6079,7 @@
             ]
         },
         {
-            "id": 197,
+            "id": 171,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6778,7 +6097,7 @@
             ]
         },
         {
-            "id": 198,
+            "id": 172,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6796,7 +6115,7 @@
             ]
         },
         {
-            "id": 199,
+            "id": 173,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6826,25 +6145,7 @@
             ]
         },
         {
-            "id": 200,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:ancient_debris",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 201,
+            "id": 174,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6894,7 +6195,7 @@
             ]
         },
         {
-            "id": 202,
+            "id": 175,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6944,25 +6245,7 @@
             ]
         },
         {
-            "id": 203,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:nether_gold_ore",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 64
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 204,
+            "id": 176,
             "steps": [
                 {
                     "action": "drop_items",
@@ -6980,7 +6263,7 @@
             ]
         },
         {
-            "id": 205,
+            "id": 177,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -6993,7 +6276,7 @@
             ]
         },
         {
-            "id": 206,
+            "id": 178,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7006,7 +6289,7 @@
             ]
         },
         {
-            "id": 207,
+            "id": 179,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7019,7 +6302,7 @@
             ]
         },
         {
-            "id": 208,
+            "id": 180,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7032,7 +6315,7 @@
             ]
         },
         {
-            "id": 209,
+            "id": 181,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7045,7 +6328,7 @@
             ]
         },
         {
-            "id": 210,
+            "id": 182,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7058,7 +6341,7 @@
             ]
         },
         {
-            "id": 211,
+            "id": 183,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7071,7 +6354,7 @@
             ]
         },
         {
-            "id": 212,
+            "id": 184,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7084,7 +6367,7 @@
             ]
         },
         {
-            "id": 213,
+            "id": 185,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7097,7 +6380,7 @@
             ]
         },
         {
-            "id": 214,
+            "id": 186,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7110,7 +6393,7 @@
             ]
         },
         {
-            "id": 215,
+            "id": 187,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7123,7 +6406,7 @@
             ]
         },
         {
-            "id": 216,
+            "id": 188,
             "steps": [
                 {
                     "action": "fall_blocks",
@@ -7166,7 +6449,7 @@
             ]
         },
         {
-            "id": 217,
+            "id": 189,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7194,7 +6477,7 @@
             ]
         },
         {
-            "id": 218,
+            "id": 190,
             "steps": [
                 {
                     "action": "place_blocks",
@@ -7222,7 +6505,7 @@
             ]
         },
         {
-            "id": 219,
+            "id": 191,
             "steps": [
                 {
                     "action": "create_explosions",
@@ -7235,7 +6518,7 @@
             ]
         },
         {
-            "id": 220,
+            "id": 192,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7253,7 +6536,7 @@
             ]
         },
         {
-            "id": 221,
+            "id": 193,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7271,7 +6554,7 @@
             ]
         },
         {
-            "id": 222,
+            "id": 194,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7289,7 +6572,7 @@
             ]
         },
         {
-            "id": 223,
+            "id": 195,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7307,25 +6590,7 @@
             ]
         },
         {
-            "id": 224,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:blaze",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 225,
+            "id": 196,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7343,7 +6608,7 @@
             ]
         },
         {
-            "id": 226,
+            "id": 197,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7361,25 +6626,7 @@
             ]
         },
         {
-            "id": 227,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:cave_spider",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 228,
+            "id": 198,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7397,7 +6644,7 @@
             ]
         },
         {
-            "id": 229,
+            "id": 199,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7415,7 +6662,7 @@
             ]
         },
         {
-            "id": 230,
+            "id": 200,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7433,25 +6680,7 @@
             ]
         },
         {
-            "id": 231,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:creeper",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 232,
+            "id": 201,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7469,7 +6698,7 @@
             ]
         },
         {
-            "id": 233,
+            "id": 202,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7487,48 +6716,7 @@
             ]
         },
         {
-            "id": 234,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:drowned",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 235,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:elder_guardian",
-                            "use_random": false,
-                            "num": 1
-                        },
-                        {
-                            "id": "minecraft:guardian",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 6
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 237,
+            "id": 203,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7546,43 +6734,7 @@
             ]
         },
         {
-            "id": 238,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:endermite",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 239,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:evoker",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 240,
+            "id": 204,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7600,7 +6752,7 @@
             ]
         },
         {
-            "id": 241,
+            "id": 205,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7618,43 +6770,7 @@
             ]
         },
         {
-            "id": 242,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:ghast",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 243,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:giant",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 244,
+            "id": 206,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7672,7 +6788,7 @@
             ]
         },
         {
-            "id": 245,
+            "id": 207,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7690,40 +6806,7 @@
             ]
         },
         {
-            "id": 246,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:guardian",
-                            "use_random": false,
-                            "num": 3
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 247,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:hoglin",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 248,
+            "id": 208,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7741,43 +6824,7 @@
             ]
         },
         {
-            "id": 249,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:husk",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 250,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:illusioner",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 251,
+            "id": 209,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7795,7 +6842,7 @@
             ]
         },
         {
-            "id": 252,
+            "id": 210,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7813,25 +6860,7 @@
             ]
         },
         {
-            "id": 253,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:magma_cube",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 254,
+            "id": 211,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7849,7 +6878,7 @@
             ]
         },
         {
-            "id": 255,
+            "id": 212,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7867,7 +6896,7 @@
             ]
         },
         {
-            "id": 256,
+            "id": 213,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7885,7 +6914,7 @@
             ]
         },
         {
-            "id": 257,
+            "id": 214,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7903,7 +6932,7 @@
             ]
         },
         {
-            "id": 258,
+            "id": 215,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7921,25 +6950,7 @@
             ]
         },
         {
-            "id": 259,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:phantom",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 260,
+            "id": 216,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -7957,61 +6968,7 @@
             ]
         },
         {
-            "id": 261,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:piglin",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 262,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:piglin_brute",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 263,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:pillager",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 264,
+            "id": 217,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8029,7 +6986,7 @@
             ]
         },
         {
-            "id": 265,
+            "id": 218,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8047,7 +7004,7 @@
             ]
         },
         {
-            "id": 266,
+            "id": 219,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8065,7 +7022,7 @@
             ]
         },
         {
-            "id": 267,
+            "id": 220,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8083,22 +7040,7 @@
             ]
         },
         {
-            "id": 268,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:ravager",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 269,
+            "id": 221,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8116,7 +7058,7 @@
             ]
         },
         {
-            "id": 270,
+            "id": 222,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8134,61 +7076,7 @@
             ]
         },
         {
-            "id": 271,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:shulker",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 272,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:silverfish",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 273,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:skeleton",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 274,
+            "id": 223,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8206,25 +7094,7 @@
             ]
         },
         {
-            "id": 275,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:slime",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 276,
+            "id": 224,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8242,7 +7112,7 @@
             ]
         },
         {
-            "id": 277,
+            "id": 225,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8260,25 +7130,7 @@
             ]
         },
         {
-            "id": 278,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:spider",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 279,
+            "id": 226,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8296,25 +7148,7 @@
             ]
         },
         {
-            "id": 280,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:stray",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 281,
+            "id": 227,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8332,7 +7166,7 @@
             ]
         },
         {
-            "id": 282,
+            "id": 228,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8350,7 +7184,7 @@
             ]
         },
         {
-            "id": 283,
+            "id": 229,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8368,7 +7202,7 @@
             ]
         },
         {
-            "id": 284,
+            "id": 230,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8386,7 +7220,7 @@
             ]
         },
         {
-            "id": 285,
+            "id": 231,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8404,25 +7238,7 @@
             ]
         },
         {
-            "id": 286,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:vex",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 287,
+            "id": 232,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8440,25 +7256,7 @@
             ]
         },
         {
-            "id": 288,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:vindicator",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 289,
+            "id": 233,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8476,58 +7274,7 @@
             ]
         },
         {
-            "id": 290,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:warden",
-                            "use_random": false,
-                            "num": 1
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 291,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:witch",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 292,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:wither_skeleton",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 293,
+            "id": 234,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8545,43 +7292,7 @@
             ]
         },
         {
-            "id": 294,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:zoglin",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 295,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:zombie",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 296,
+            "id": 235,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8599,43 +7310,7 @@
             ]
         },
         {
-            "id": 297,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:zombie_villager",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 298,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:zombified_piglin",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 299,
+            "id": 236,
             "steps": [
                 {
                     "action": "drop_items",
@@ -8797,7 +7472,7 @@
             ]
         },
         {
-            "id": 300,
+            "id": 237,
             "steps": [
                 {
                     "action": "spawn_mobs",
@@ -8815,39 +7490,6 @@
                                 "min": 1,
                                 "max": 5
                             }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 301,
-            "steps": [
-                {
-                    "action": "fall_blocks",
-                    "spec": [
-                        {
-                            "id": "minecraft:diamond_block",
-                            "pos": {
-                                "offset": {
-                                    "x": 0,
-                                    "y": 8,
-                                    "z": 0
-                                }
-                            }
-                        }
-                    ]
-                },
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:lightning_bolt",
-                            "name": null,
-                            "name_visible": false,
-                            "is_baby": false,
-                            "use_random": false,
-                            "num": 1
                         }
                     ]
                 }

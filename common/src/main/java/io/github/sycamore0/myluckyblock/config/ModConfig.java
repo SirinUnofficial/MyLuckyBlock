@@ -8,5 +8,5 @@ public class ModConfig {
     public boolean autoDisableLuckyBlockStructure = false;
     public boolean autoDisableLuckyBlockBoss = false;
     public boolean autoDisableLuckyBlockExplosions = false;
-    public int maxPassengerDepth = 12;
+    public int maxPassengerDepth = 16;
 }

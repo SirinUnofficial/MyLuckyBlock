@@ -29,7 +29,7 @@
                     "action": "drop_items",
                     "spec": [
                         {
-                            "id": "minecraft:iron_nautilus_armor"
+                            "id": "minecraft:wooden_spear"
                         }
                     ]
                 }
@@ -42,7 +42,7 @@
                     "action": "drop_items",
                     "spec": [
                         {
-                            "id": "minecraft:golden_nautilus_armor"
+                            "id": "minecraft:stone_spear"
                         }
                     ]
                 }
@@ -55,7 +55,7 @@
                     "action": "drop_items",
                     "spec": [
                         {
-                            "id": "minecraft:diamond_nautilus_armor"
+                            "id": "minecraft:copper_spear"
                         }
                     ]
                 }
@@ -65,181 +65,10 @@
             "id": 5,
             "steps": [
                 {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:netherite_nautilus_armor"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:wooden_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:stone_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:copper_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:iron_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:golden_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:diamond_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:netherite_spear"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "steps": [
-                {
-                    "action": "drop_items",
-                    "spec": [
-                        {
-                            "id": "minecraft:netherite_horse_armor"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "steps": [
-                {
                     "action": "spawn_mobs",
                     "spec": [
                         {
                             "id": "minecraft:nautilus",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:zombie_nautilus",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:parched",
-                            "use_random": true,
-                            "random_num": {
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "steps": [
-                {
-                    "action": "spawn_mobs",
-                    "spec": [
-                        {
-                            "id": "minecraft:camel_husk",
                             "use_random": true,
                             "random_num": {
                                 "min": 1,

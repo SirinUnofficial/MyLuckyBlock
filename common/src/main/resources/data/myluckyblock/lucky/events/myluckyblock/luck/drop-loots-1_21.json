@@ -1,0 +1,195 @@
+{
+    "name": "Drop Loot Event Pack for 1.21",
+    "version": "3.0",
+    "info": "Trial chamber loot tables dropped as items.",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.20.6,99.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_common"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_rare"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_unique"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_ominous"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_ominous_common"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_ominous_rare"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/reward_ominous_unique"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/supply"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/corridor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/intersection"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/intersection_barrel"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/trial_chambers/entrance"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "steps": [
+                {
+                    "action": "drop_loots",
+                    "spec": [
+                        {
+                            "id": "minecraft:chests/spawn_bonus_chest"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

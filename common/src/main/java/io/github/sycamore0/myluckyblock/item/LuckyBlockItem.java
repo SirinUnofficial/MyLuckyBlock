@@ -49,6 +49,8 @@ public class LuckyBlockItem extends BlockItem {
             tooltip.add(Component.translatable("tooltip.myluckyblock.prob.common", Component.literal(p.common() + "%").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("tooltip.myluckyblock.prob.lucky", Component.literal(p.lucky() + "%").withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("tooltip.myluckyblock.prob.unlucky", Component.literal(p.unlucky() + "%").withStyle(ChatFormatting.RED)).withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.myluckyblock.prob.ultra_lucky", Component.literal(p.ultraLucky() + "%").withStyle(ChatFormatting.LIGHT_PURPLE)).withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.myluckyblock.prob.ultra_unlucky", Component.literal(p.ultraUnlucky() + "%").withStyle(ChatFormatting.DARK_RED)).withStyle(ChatFormatting.GRAY));
 
             if (data.isLimitedOutcomes() && !data.outcomes().isEmpty()) {
                 tooltip.add(Component.translatable("tooltip.myluckyblock.limited_outcomes").withStyle(ChatFormatting.GOLD));

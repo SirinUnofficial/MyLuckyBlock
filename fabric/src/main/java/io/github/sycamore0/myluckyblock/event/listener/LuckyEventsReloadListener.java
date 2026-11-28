@@ -77,6 +77,10 @@ public class LuckyEventsReloadListener implements SimpleSynchronousResourceReloa
                             type = EventType.LUCKY;
                         } else if ("unluck".equalsIgnoreCase(subDir)) {
                             type = EventType.UNLUCKY;
+                        } else if ("ultra_luck".equalsIgnoreCase(subDir)) {
+                            type = EventType.ULTRA_LUCKY;
+                        } else if ("ultra_unluck".equalsIgnoreCase(subDir)) {
+                            type = EventType.ULTRA_UNLUCKY;
                         }
                     }
 

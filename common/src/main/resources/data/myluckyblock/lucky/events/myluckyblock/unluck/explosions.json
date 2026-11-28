@@ -10,7 +10,7 @@
                     "action": "create_explosions",
                     "spec": [
                         {
-                            "power": 100
+                            "power": 10
                         }
                     ]
                 }
@@ -109,6 +109,19 @@
                                     "z": 0
                                 }
                             }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "steps": [
+                {
+                    "action": "create_explosions",
+                    "spec": [
+                        {
+                            "power": 20
                         }
                     ]
                 }

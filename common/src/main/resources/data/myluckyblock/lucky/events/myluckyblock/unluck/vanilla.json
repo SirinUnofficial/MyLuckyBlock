@@ -1,0 +1,615 @@
+{
+    "name": "Vanilla Unluck Event Pack",
+    "version": "3.0",
+    "info": "Hostile mobs.",
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:blaze",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:cave_spider",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:creeper",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:drowned",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:elder_guardian",
+                            "use_random": false,
+                            "num": 1
+                        },
+                        {
+                            "id": "minecraft:guardian",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 6
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:endermite",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:evoker",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:ghast",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:giant",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:guardian",
+                            "use_random": false,
+                            "num": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:hoglin",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:husk",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:illusioner",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:magma_cube",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:phantom",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:piglin",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:piglin_brute",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:pillager",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:ravager",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:shulker",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:silverfish",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:skeleton",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:slime",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:spider",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:stray",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:vex",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:vindicator",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:warden",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:witch",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:wither_skeleton",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:zoglin",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:zombie",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:zombie_villager",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:zombified_piglin",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

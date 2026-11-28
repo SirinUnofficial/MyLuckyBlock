@@ -200,10 +200,13 @@ public class MyLuckyBlockCommand {
         EventPack meta = pack.eventPack();
         int luckyCount = pack.eventCountOf(EventType.LUCKY);
         int unluckyCount = pack.eventCountOf(EventType.UNLUCKY);
+        int ultraLuckyCount = pack.eventCountOf(EventType.ULTRA_LUCKY);
+        int ultraUnluckyCount = pack.eventCountOf(EventType.ULTRA_UNLUCKY);
         int commonCount = pack.eventCountOf(EventType.COMMON);
         int totalCount = pack.eventCount();
 
-        String stat = String.format("(total=%d, lucky=%d, unlucky=%d, common=%d)", totalCount, luckyCount, unluckyCount, commonCount);
+        String stat = String.format("(total=%d, lucky=%d, unlucky=%d, ultra_lucky=%d, ultra_unlucky=%d, common=%d)",
+                totalCount, luckyCount, unluckyCount, ultraLuckyCount, ultraUnluckyCount, commonCount);
 
         List<Component> lines = new ArrayList<>(4);
         lines.add(Component.literal(pack.packKey() + " " + stat).withStyle(ChatFormatting.AQUA));

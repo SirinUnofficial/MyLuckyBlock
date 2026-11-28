@@ -1,0 +1,56 @@
+{
+    "name": "Special Mobs Event Pack",
+    "version": "3.0",
+    "info": "A villager riding a stack of seven pigs.",
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:pig",
+                            "passengers": [
+                                {
+                                    "id": "minecraft:pig",
+                                    "passengers": [
+                                        {
+                                            "id": "minecraft:pig",
+                                            "passengers": [
+                                                {
+                                                    "id": "minecraft:pig",
+                                                    "passengers": [
+                                                        {
+                                                            "id": "minecraft:pig",
+                                                            "passengers": [
+                                                                {
+                                                                    "id": "minecraft:pig",
+                                                                    "passengers": [
+                                                                        {
+                                                                            "id": "minecraft:pig",
+                                                                            "passengers": [
+                                                                                {
+                                                                                    "id": "minecraft:villager",
+                                                                                    "randomize": true
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

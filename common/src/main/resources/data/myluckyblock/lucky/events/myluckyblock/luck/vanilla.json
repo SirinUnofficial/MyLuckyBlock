@@ -1,0 +1,757 @@
+{
+    "name": "Vanilla Luck Event Pack",
+    "version": "3.0",
+    "info": "Iron, gold, diamond and netherite events.",
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:golden_sword",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_shovel",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_pickaxe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_hoe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_axe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_sword",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_shovel",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_pickaxe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_hoe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_axe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:diamond_sword",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_shovel",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_pickaxe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_hoe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_axe",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:golden_horse_armor",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:leather_horse_armor",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_horse_armor",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_horse_armor",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_helmet",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_chestplate",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_leggings",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_boots",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_sword",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:golden_helmet",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_chestplate",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_leggings",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_boots",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_sword",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:diamond_helmet",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_chestplate",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_leggings",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_boots",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_sword",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_sword",
+                            "use_random": false,
+                            "num": 1
+                        },
+                        {
+                            "id": "minecraft:shield",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:glistering_melon_slice",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 16
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:golden_carrot",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 12
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_ingot",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_block",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 4
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:gold_ingot",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:gold_block",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 4
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:diamond",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:diamond_block",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 4
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:netherite_hoe",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:apple",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 64
+                            }
+                        },
+                        {
+                            "id": "minecraft:golden_apple",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            }
+                        },
+                        {
+                            "id": "minecraft:enchanted_golden_apple",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 4
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_door",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 4
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:raw_iron",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:raw_iron_block",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 8
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:raw_gold",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 32
+                            }
+                        },
+                        {
+                            "id": "minecraft:raw_gold_block",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 8
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_nugget",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 64
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:gold_nugget",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 64
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_door",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 16
+                            }
+                        },
+                        {
+                            "id": "minecraft:iron_trapdoor",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 0,
+                                "max": 16
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:ancient_debris",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:nether_gold_ore",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 64
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "steps": [
+                {
+                    "action": "fall_blocks",
+                    "spec": [
+                        {
+                            "id": "minecraft:diamond_block",
+                            "pos": {
+                                "offset": {
+                                    "x": 0,
+                                    "y": 8,
+                                    "z": 0
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "action": "spawn_mobs",
+                    "spec": [
+                        {
+                            "id": "minecraft:lightning_bolt",
+                            "name": null,
+                            "name_visible": false,
+                            "is_baby": false,
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:totem_of_undying",
+                            "use_random": true,
+                            "random_num": {
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:elytra",
+                            "use_random": false,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

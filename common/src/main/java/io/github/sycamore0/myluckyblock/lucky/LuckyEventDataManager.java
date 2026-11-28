@@ -123,12 +123,27 @@ public class LuckyEventDataManager {
 
     @Nullable
     public EventDefinition getRandomEvent(String group, EventType type) {
-        List<EventDefinition> list = collect(group, type);
-        if (list.isEmpty() && type != EventType.COMMON) {
-            list = collect(group, EventType.COMMON);
-        }
+        List<EventDefinition> list = collectWithFallback(group, type);
         if (list.isEmpty()) return null;
         return list.get(ThreadLocalRandom.current().nextInt(list.size()));
+    }
+
+    private List<EventDefinition> collectWithFallback(String group, EventType type) {
+        List<EventDefinition> list = collect(group, type);
+        for (EventType fallback : fallbacksOf(type)) {
+            if (!list.isEmpty()) break;
+            list = collect(group, fallback);
+        }
+        return list;
+    }
+
+    private static EventType[] fallbacksOf(EventType type) {
+        return switch (type) {
+            case ULTRA_LUCKY -> new EventType[]{EventType.LUCKY, EventType.COMMON};
+            case ULTRA_UNLUCKY -> new EventType[]{EventType.UNLUCKY, EventType.COMMON};
+            case LUCKY, UNLUCKY -> new EventType[]{EventType.COMMON};
+            case COMMON -> new EventType[0];
+        };
     }
 
     @Nullable

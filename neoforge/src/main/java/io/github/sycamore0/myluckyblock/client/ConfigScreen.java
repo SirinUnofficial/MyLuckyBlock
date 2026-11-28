@@ -74,7 +74,7 @@ public final class ConfigScreen {
 
         general.addEntry(entry
                 .startIntSlider(Component.translatable("config.myluckyblock.max_passenger_depth"), config.maxPassengerDepth, 1, 32)
-                .setDefaultValue(12)
+                .setDefaultValue(16)
                 .setTooltip(tooltip("config.myluckyblock.max_passenger_depth.tooltip", "maxPassengerDepth"))
                 .setSaveConsumer(v -> config.maxPassengerDepth = v)
                 .build());

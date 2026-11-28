@@ -1,0 +1,130 @@
+{
+    "name": "Vanilla Luck Event Pack for 1.21.11",
+    "version": "3.0",
+    "info": "Iron, gold, diamond and netherite gear.",
+    "dependencies": [
+        {
+            "mod_id": "minecraft",
+            "version_range": "(1.21.10,99.0)"
+        }
+    ],
+    "random_events": [
+        {
+            "id": 1,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_nautilus_armor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:golden_nautilus_armor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:diamond_nautilus_armor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:netherite_nautilus_armor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:iron_spear"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:golden_spear"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:diamond_spear"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:netherite_spear"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "steps": [
+                {
+                    "action": "drop_items",
+                    "spec": [
+                        {
+                            "id": "minecraft:netherite_horse_armor"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

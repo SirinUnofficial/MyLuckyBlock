@@ -45,6 +45,8 @@
     "tooltip.myluckyblock.hold_shift": "按住 <Shift> 查看事件概率",
     "tooltip.myluckyblock.prob.common": "普通: %s",
     "tooltip.myluckyblock.prob.lucky": "幸运: %s",
+    "tooltip.myluckyblock.prob.ultra_lucky": "超级幸运：%s",
+    "tooltip.myluckyblock.prob.ultra_unlucky": "超级不幸：%s",
     "tooltip.myluckyblock.prob.unlucky": "不幸: %s",
     "tooltip.myluckyblock.limited_outcomes": "限定结果集: ",
 

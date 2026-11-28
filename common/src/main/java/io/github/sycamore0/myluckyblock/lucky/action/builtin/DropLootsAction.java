@@ -29,8 +29,11 @@ public final class DropLootsAction implements LuckyAction {
     private static void dropLoots(ServerLevel serverLevel, Vec3 pos, String lootTableId, long seed) {
         ResourceKey<LootTable> lootTableResourceKey = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(lootTableId));
         LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(lootTableResourceKey);
-        LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, pos);
-        ObjectArrayList<ItemStack> itemStacks = lootTable.getRandomItems(builder.create(LootContextParamSets.COMMAND), seed);
+        LootParams params = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, pos)
+                .create(LootContextParamSets.COMMAND);
+        ObjectArrayList<ItemStack> itemStacks = seed == 0L
+                ? lootTable.getRandomItems(params)
+                : lootTable.getRandomItems(params, seed);
 
         for (ItemStack itemStack : itemStacks) {
             ItemEntity itemEntity = new ItemEntity(serverLevel, pos.x(), pos.y(), pos.z(), itemStack);

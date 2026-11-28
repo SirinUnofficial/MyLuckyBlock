@@ -42,17 +42,32 @@ public record LuckyBlockData(int luckyValue, boolean isLimitedOutcomes, List<Str
 
     public static EventProbabilities probabilitiesFor(int luckyValue) {
         int value = Mth.clamp(luckyValue, MIN_LUCKY_VALUE, MAX_LUCKY_VALUE);
+        int magnitude = Math.abs(value);
+
         int lucky;
-        int unlucky;
-        if (value >= 0) {
-            lucky = Math.min(100, value + 1);
-            unlucky = (value <= 50) ? 1 : 0;
+        int ultraLucky;
+        if (magnitude <= 50) {
+            lucky = 10 + magnitude;
+            ultraLucky = 1;
+        } else if (magnitude <= 86) {
+            lucky = 10 + magnitude;
+            ultraLucky = Math.min(4, (magnitude - 40) / 10);
+        } else if (magnitude <= 90) {
+            lucky = 96 - Math.round((magnitude - 86) * 1.5f);
+            ultraLucky = 4 + Math.round((magnitude - 86) * 1.5f);
         } else {
-            unlucky = Math.min(100, -value + 1);
-            lucky = (value >= -50) ? 1 : 0;
+            lucky = 90 - (magnitude - 90);
+            ultraLucky = 10 + (magnitude - 90);
         }
-        int common = 100 - lucky - unlucky;
-        return new EventProbabilities(common, lucky, unlucky);
+
+        int unlucky = magnitude <= 50 ? Math.round(10 - 0.2f * magnitude) : 0;
+        int ultraUnlucky = magnitude <= 50 ? Math.round(1 - magnitude / 50.0f) : 0;
+        int common = Math.max(0, 100 - lucky - unlucky - ultraLucky - ultraUnlucky);
+
+        if (value < 0) {
+            return new EventProbabilities(common, unlucky, lucky, ultraUnlucky, ultraLucky);
+        }
+        return new EventProbabilities(common, lucky, unlucky, ultraLucky, ultraUnlucky);
     }
 
     public static LuckyBlockData fromItemStack(ItemStack itemStack) {
@@ -90,5 +105,5 @@ public record LuckyBlockData(int luckyValue, boolean isLimitedOutcomes, List<Str
         return luckyValue == 0 && !isLimitedOutcomes && outcomes.isEmpty();
     }
 
-    public record EventProbabilities(int common, int lucky, int unlucky) {}
+    public record EventProbabilities(int common, int lucky, int unlucky, int ultraLucky, int ultraUnlucky) {}
 }

@@ -45,6 +45,8 @@
     "tooltip.myluckyblock.hold_shift": "Hold <Shift> to see event probabilities",
     "tooltip.myluckyblock.prob.common": "Common: %s",
     "tooltip.myluckyblock.prob.lucky": "Lucky: %s",
+    "tooltip.myluckyblock.prob.ultra_lucky": "Ultra Lucky: %s",
+    "tooltip.myluckyblock.prob.ultra_unlucky": "Ultra Unlucky: %s",
     "tooltip.myluckyblock.prob.unlucky": "Unlucky: %s",
     "tooltip.myluckyblock.limited_outcomes": "Limited Outcomes: ",
 
